@@ -12,9 +12,6 @@
     flex-basis: calc(50% - 10px);
     margin-bottom: 20px;
 }
-body{
-    padding-left: 40px;
-}
 .astronaut-image-container {
      position: absolute;
      top: 50%;
