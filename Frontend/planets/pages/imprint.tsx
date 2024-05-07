@@ -42,7 +42,7 @@ const ImprintPage: React.FC = () => {
 
                 <div className="flex justify-center absolute bottom-5 w-full">
                     <button className="scroll-to-team " onClick={scrollToTeam}>
-                        <Image className="scroll-button-img" src='/images/downButton.svg' alt='Scroll Down' width={72}
+                        <Image className="scroll-button-img" src='/images/down-button.svg' alt='Scroll Down' width={72}
                                height={72}/>
                     </button>
                 </div>
@@ -88,7 +88,7 @@ const ImprintPage: React.FC = () => {
                 </div>
                 <div className="flex justify-center">
                     <button className="scroll-to-first-screen" onClick={scrollToFirstScreen}>
-                        <Image className="scroll-button-img" src='/images/upButton.svg' alt='Scroll Up' width={72}
+                        <Image className="scroll-button-img" src='/images/up-button.svg' alt='Scroll Up' width={72}
                                height={72}/>
                     </button>
                 </div>
