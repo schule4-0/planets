@@ -1,0 +1,8 @@
+@media only screen and (max-width: 1024px) {
+    .astronaut-image {
+        width: 200px;
+    }
+}
+.team-members-container div{
+    flex-basis: 50%;
+}
