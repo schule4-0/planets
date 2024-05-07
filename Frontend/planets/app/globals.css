@@ -19,3 +19,11 @@ body {
     text-wrap: balance;
   }
 }
+.border--black--yellow{
+  background-image: url("../public/images/bg-black-yellow.svg");
+  padding: 20px;
+}
+
+.bg-star{
+  background-image: url("../public/images/star-field.svg");
+}
