@@ -28,8 +28,8 @@ const ImprintPage: React.FC = () => {
                 <title>impressum</title>
                 <meta name="description" content="Welcome to my website"/>
             </Head>
-            <div ref={firstScreenRef} className="first-screen container mx-auto py-8 h-full flex flex-col">
-                <div className="impressum-content">
+            <div ref={firstScreenRef} className="h-screen relative container mx-auto p-8 flex justify-between items-center">
+                <div className="flex flex-col">
                     <h1 className="text-4xl font-bold mb-4">Impressum</h1>
                     <h2 className="text-1xl font-bold mb-4">Angaben gemäß § 5 TMG</h2>
                     <p>Benedikt Gack & Lennart Gastler Lerntechnologien GbR</p>
@@ -38,33 +38,32 @@ const ImprintPage: React.FC = () => {
                     <p>Telefon: +49 151 50764719<br/>E-Mail: <a
                         href="mailto:webmaster@gackundgastler.de">webmaster@gackundgastler.de</a></p>
                 </div>
-                <div className="astronaut-image-container mx-auto justify-center">
-                    <Image className="astronaut-image" src='/images/astronaut.svg' alt='Astronaut' width={229}
-                           height={363}/>
-                </div>
-                <div className="flex justify-center align-bottom">
-                    <button className="scroll-to-team" onClick={scrollToTeam}>
+
+                    <Image className="astronaut-image h-auto" src='/images/astronaut.svg' alt='Astronaut' width={300} height={150}/>
+
+                <div className="flex justify-center absolute bottom-5 w-full">
+                    <button className="scroll-to-team " onClick={scrollToTeam}>
                         <Image className="scroll-button-img" src='/images/downButton.svg' alt='Scroll Down' width={72}
                                height={72}/>
                     </button>
                 </div>
             </div>
-            <div ref={teamRef} className="team-section container mx-auto">
+            <div ref={teamRef} className="container mx-auto p-8">
                 <h1 className="text-4xl font-bold mb-4">Team</h1>
-                <div className="team-members-container mx-auto py-8 flex justify-between">
+                <div className="team-members-container mx-auto py-8 flex justify-between mb-3 flex-wrap">
                     <TeamMember
                         image="/images/Emma.png"
                         name="Emma Zimmermann"
                         desc1="Mobiele Medien, 6.Semester"
                         desc2="Werkstudentin UI/UX Design"
-                        tags={["UI/UX Design", "Frontend Development"]}
+                        tags={["UI/UX Design"]}
                     />
                     <TeamMember
                         image="/images/Petya.png"
                         name="Petya Ivanova"
                         desc1="Mobile Medien, 6.Semester"
                         desc2="Werkstudentin UI/UX Design"
-                        tags={["UI/UX Design", "Frontend Development"]}
+                        tags={["UI/UX Design"]}
                     />
                     <TeamMember
                         image="/images/Matze.png"

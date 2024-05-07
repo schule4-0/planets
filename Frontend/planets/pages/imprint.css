@@ -1,44 +1,8 @@
-.first-screen {
-    height: 100vh;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding-left: 20px;
+@media only screen and (max-width: 1024px) {
+    .astronaut-image {
+        width: 200px;
+    }
 }
-
-.impressum-content {
-    display: flex;
-    flex-direction: column;
-}
-
-.astronaut-image-container {
-    position: absolute;
-    top: 50%;
-    right: 5%;
-    transform: translateY(-50%);
-}
-
-.astronaut-image {
-    width: 300px;
-    height: auto;
-}
-
-.scroll-to-team {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.team-section {
-    position: relative;
-}
-
-.team-members-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-bottom: 20px;
+.team-members-container div{
+    flex-basis: 50%;
 }
