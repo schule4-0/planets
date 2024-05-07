@@ -1,10 +1,9 @@
 import React, { useRef } from 'react';
 import './imprint.css';
-import TeamMember from '../app/components/TeamMember/TeamMember';
+import TeamMember from '@/app/components/teamMember/TeamMember';
 import Image from "next/image";
 import Layout from '../app/layout';
 import Head from "next/head";
-
 
 const ImprintPage: React.FC = () => {
     const teamRef = useRef<HTMLDivElement>(null);
@@ -43,7 +42,7 @@ const ImprintPage: React.FC = () => {
 
                 <div className="flex justify-center absolute bottom-5 w-full">
                     <button className="scroll-to-team " onClick={scrollToTeam}>
-                        <Image className="scroll-button-img" src='/images/downButton.svg' alt='Scroll Down' width={72}
+                        <Image className="scroll-button-img" src='/images/down-button.svg' alt='Scroll Down' width={72}
                                height={72}/>
                     </button>
                 </div>
@@ -52,35 +51,35 @@ const ImprintPage: React.FC = () => {
                 <h1 className="text-4xl font-bold mb-4">Team</h1>
                 <div className="team-members-container mx-auto py-8 flex justify-between mb-3 flex-wrap">
                     <TeamMember
-                        image="/images/Emma.png"
+                        image="/images/emma.png"
                         name="Emma Zimmermann"
                         desc1="Mobiele Medien, 6.Semester"
                         desc2="Werkstudentin UI/UX Design"
                         tags={["UI/UX Design"]}
                     />
                     <TeamMember
-                        image="/images/Petya.png"
+                        image="/images/petya.png"
                         name="Petya Ivanova"
                         desc1="Mobile Medien, 6.Semester"
                         desc2="Werkstudentin UI/UX Design"
                         tags={["UI/UX Design"]}
                     />
                     <TeamMember
-                        image="/images/Matze.png"
+                        image="/images/matze.png"
                         name="Matthias Stöppler"
                         desc1="Mobile Medien, 10.Semester"
                         desc2=""
                         tags={["Entwicklung"]}
                     />
                     <TeamMember
-                        image="/images/Dorina.png"
+                        image="/images/dorina.png"
                         name="Dorina Sobiecki"
                         desc1="Mobiele Medien, 6.Semester"
                         desc2="Werkstudentin App Entwicklung"
                         tags={["Entwicklung", "Management"]}
                     />
                     <TeamMember
-                        image="/images/Sebastian.png"
+                        image="/images/sebastian.png"
                         name="Sebastian Maier"
                         desc1="Medien Informatk, 6.Semester"
                         desc2="Werkstudent Software Entwicklung"
@@ -89,7 +88,7 @@ const ImprintPage: React.FC = () => {
                 </div>
                 <div className="flex justify-center">
                     <button className="scroll-to-first-screen" onClick={scrollToFirstScreen}>
-                        <Image className="scroll-button-img" src='/images/upButton.svg' alt='Scroll Up' width={72}
+                        <Image className="scroll-button-img" src='/images/up-button.svg' alt='Scroll Up' width={72}
                                height={72}/>
                     </button>
                 </div>

@@ -1,5 +1,5 @@
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
-import Footer from "@/app/components/Footer/Footer";
+import Footer from "@/app/components/footer/Footer";
 
 class MyDocument extends Document {
     static async getInitialProps(ctx: DocumentContext) {
