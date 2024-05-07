@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import './imprint.css';
 import TeamMember from '../app/components/TeamMember/TeamMember';
 import Image from "next/image";
-import Layout from '../app/components/layout';
+import Layout from '../app/layout';
 import Head from "next/head";
 
 
@@ -25,8 +25,8 @@ const ImprintPage: React.FC = () => {
     return (
         <Layout>
             <Head>
-                <title>impressum</title>
-                <meta name="description" content="Welcome to my website"/>
+                <title>Impressum</title>
+                <meta name="description" content="Welcome to my imprint"/>
             </Head>
             <div ref={firstScreenRef} className="h-screen relative container mx-auto p-8 flex justify-between items-center">
                 <div className="flex flex-col">
