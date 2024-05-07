@@ -51,35 +51,35 @@ const ImprintPage: React.FC = () => {
                 <h1 className="text-4xl font-bold mb-4">Team</h1>
                 <div className="team-members-container mx-auto py-8 flex justify-between mb-3 flex-wrap">
                     <TeamMember
-                        image="/images/Emma.png"
+                        image="/images/emma.png"
                         name="Emma Zimmermann"
                         desc1="Mobiele Medien, 6.Semester"
                         desc2="Werkstudentin UI/UX Design"
                         tags={["UI/UX Design"]}
                     />
                     <TeamMember
-                        image="/images/Petya.png"
+                        image="/images/petya.png"
                         name="Petya Ivanova"
                         desc1="Mobile Medien, 6.Semester"
                         desc2="Werkstudentin UI/UX Design"
                         tags={["UI/UX Design"]}
                     />
                     <TeamMember
-                        image="/images/Matze.png"
+                        image="/images/matze.png"
                         name="Matthias Stöppler"
                         desc1="Mobile Medien, 10.Semester"
                         desc2=""
                         tags={["Entwicklung"]}
                     />
                     <TeamMember
-                        image="/images/Dorina.png"
+                        image="/images/dorina.png"
                         name="Dorina Sobiecki"
                         desc1="Mobiele Medien, 6.Semester"
                         desc2="Werkstudentin App Entwicklung"
                         tags={["Entwicklung", "Management"]}
                     />
                     <TeamMember
-                        image="/images/Sebastian.png"
+                        image="/images/sebastian.png"
                         name="Sebastian Maier"
                         desc1="Medien Informatk, 6.Semester"
                         desc2="Werkstudent Software Entwicklung"
