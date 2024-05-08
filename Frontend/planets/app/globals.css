@@ -19,9 +19,12 @@ body {
     text-wrap: balance;
   }
 }
-.border--black--yellow{
-  background-image: url("../public/images/bg-black-yellow.svg");
+
+.border--black--yellow {
+  background-image: url("../public/images/border-black-yellow.svg");
+  border-radius: 1rem;
   padding: 20px;
+  background-size: cover;
 }
 
 .bg-star{
