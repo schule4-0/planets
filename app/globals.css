@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  /*color: rgb(var(--foreground-rgb));*/
+  background: linear-gradient(to bottom, #040758, #4F0080);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.border--black--yellow {
+  background-image: url("../public/images/border-black-yellow.svg");
+  border-radius: 1rem;
+  padding: 20px;
+  background-size: cover;
+}
+
+.bg-star{
+  background-image: url("../public/images/star-field.svg");
+}
