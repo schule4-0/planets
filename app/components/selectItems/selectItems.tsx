@@ -3,7 +3,7 @@ import Image from "next/image";
 
 interface ImageItem {
     src: string;
-    alt: string;
+    desc: string;
 }
 
 interface selectItemsProps {
@@ -17,15 +17,17 @@ const SelectItems: React.FC<selectItemsProps> = ({images, colorCodes, onClick}) 
     const renderImages = () => {
         if (images) {
             return images.map((image, index) => (
-                <Image
-                    onClick={() => onClick(index)}
-                    className={"hover:cursor-pointer rounded-2xl border-black border-8 w-32 h-32 mb-2 " + (index !== images.length - 1 ? "mr-28" : "")}
-                    key={index}
-                    src={image.src}
-                    alt={image.alt}
-                    width={124}
-                    height={124}
-                />
+                <div key={index} onClick={() => onClick(index)}
+                     className={"hover:cursor-pointer inline-block mb-6 " + (index !== images.length - 1 ? "mr-28" : "")}>
+                    <Image
+                        className={"rounded-2xl border-black border-8 w-32 h-32 mb-4"}
+                        src={image.src}
+                        alt={image.desc}
+                        width={124}
+                        height={124}
+                    />
+                    <p className={"text-center"}>{image.desc}</p>
+                </div>
             ));
         }
         return null;
@@ -36,7 +38,7 @@ const SelectItems: React.FC<selectItemsProps> = ({images, colorCodes, onClick}) 
             return colorCodes.map((colorCode, index) => (
                 <div
                     onClick={() => onClick(index)}
-                    className={"hover:cursor-pointer rounded-2xl border-black border-8 w-24 h-24 mb-2 p-0.5 " + (index !== colorCodes.length - 1 ? "mr-10" : "")}
+                    className={"hover:cursor-pointer inline-block rounded-2xl border-black border-8 w-24 h-24 mb-6 p-0.5 " + (index !== colorCodes.length - 1 ? "mr-10" : "")}
                     key={index}
                 >
                     <div className="rounded-md w-full h-full" style={{backgroundColor: colorCode}}/>
@@ -47,7 +49,7 @@ const SelectItems: React.FC<selectItemsProps> = ({images, colorCodes, onClick}) 
     }
 
     return (
-        <div className={"flex justify-start w-full flex-wrap"}>
+        <div>
             {renderImages()}
             {renderColorCodes()}
         </div>
