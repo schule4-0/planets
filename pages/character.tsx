@@ -4,6 +4,7 @@ import SelectLayout from "@/app/selectLayout";
 import ActionButton from "@/app/components/actionButton/ActionButton";
 import SelectItems from "@/app/components/selectItems/selectItems";
 import "./character.css"
+import "../app/globals.css";
 import Image from "next/image";
 
 interface Color {
@@ -80,7 +81,7 @@ const Character: React.FC = () => {
             return (
                 <div className="h-full w-auto flex justify-center items-center">
                     <Image className="character-image" src={`/images/${selectedImage === 0 ? 'girl' : 'boy'}_${colorWord}.svg`}
-                           alt="Selected Character"  width={400} height={627} />
+                           alt="Ausgewählter Charakter"  width={400} height={627} />
                 </div>
             );
         } else {
@@ -96,22 +97,22 @@ const Character: React.FC = () => {
             return (
                 <Layout>
                     <div>
-                        <h1 className="text-4xl font-bold mb-4 text-center">Bau deinen Charakter</h1>
-                        <h2 className="text-4xl font-bold mb-4">Geschlecht</h2>
+                        <h1 className="font-bold mb-4 text-center">Erstelle deinen Charakter</h1>
+                        <h2 className="font-bold mb-4">Geschlecht</h2>
                         <div className="text-center">
                             <SelectItems onClick={handleImageClick} images={[
                                 {src: `/images/girl_${colorWord}.svg`, desc: "Weiblich"},
                                 {src: `/images/boy_${colorWord}.svg`, desc: "Männlich"},
                             ]}/>
                         </div>
-                        <h2 className="text-4xl font-bold mb-4">Haarfarbe</h2>
+                        <h2 className="font-bold mb-4">Haarfarbe</h2>
                         <div className="text-center">
                             <SelectItems onClick={handleColorClick} colorCodes={colors.map(color => color.code)}/>
                         </div>
                         <div>
                             <div>
                                 <div className="flex items-center mb-4">
-                                    <label className="text-4xl font-bold">Name </label>
+                                    <label className="h2 font-bold">Name </label>
                                     <input
                                         ref={nameInputRef}
                                         id="nameInput"
@@ -119,7 +120,7 @@ const Character: React.FC = () => {
                                         value={name}
                                         onChange={handleNameChange}
                                         placeholder="Trage deinen Namen ein"
-                                        className="w-full text-4xl text-black rounded-2xl border-2 border-black ml-2 p-2"
+                                        className="h2 w-full text-3xl text-black rounded-2xl border-2 border-black ml-2 p-2"
                                     />
                                 </div>
                             </div>
