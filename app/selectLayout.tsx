@@ -12,7 +12,7 @@ interface SelectLayoutProps {
     actionButton: ReactNode;
 }
 
-const SelectLayout: React.FC<SelectLayoutProps> = ({ leftChildren, rightChildren, actionButton }) => {
+const SelectLayout: React.FC<SelectLayoutProps> = ({leftChildren, rightChildren, actionButton }) => {
     return (
         <div className="min-h-screen bg-star">
             <div className={`${inter.className} flex justify-between p-20 z-0`}>
