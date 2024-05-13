@@ -97,7 +97,7 @@ const Character: React.FC = () => {
             return (
                 <Layout>
                     <div>
-                        <h1 className="font-bold mb-4 text-center">Erstelle deinen Charakter</h1>
+                        <h1 className="font-bold mb-4 text-center">Entwerfe deinen Charakter</h1>
                         <h2 className="font-bold mb-4">Geschlecht</h2>
                         <div className="text-center">
                             <SelectItems onClick={handleImageClick} images={[
