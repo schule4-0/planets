@@ -109,7 +109,7 @@ const Character: React.FC = () => {
                             <SelectItems onClick={handleColorClick} colorCodes={colors.map(color => color.code)}/>
                         </div>
                         <div>
-                            <div className="flex flex-wrap">
+                            <div>
                                 <div className="flex items-center mb-4">
                                     <label className="text-4xl font-bold">Name </label>
                                     <input
