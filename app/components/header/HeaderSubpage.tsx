@@ -6,7 +6,7 @@ const HeaderSubpage: React.FC = () => {
         <header className="flex justify-between items-center bg-[#000582] p-4 text-white relative">
             <div className="flex items-center">
                 <Image src="/images/logo.png" alt="Logo" width={50} height={50} className="mr-2" />
-                <div className="text-lg font-bold" style={{ fontFamily: 'Agency FB', maxWidth: '100px' }}>
+                <div className="text-lg font-bold font-agency max-w-28">
                     Planeten Entdecker
                 </div>
             </div>
@@ -28,3 +28,4 @@ const HeaderSubpage: React.FC = () => {
 }
 
 export default HeaderSubpage;
+
