@@ -1,26 +1,26 @@
 import React from 'react';
-import styles from './HeaderSubpage.module.css'; 
+import Image from 'next/image'; 
 
 const HeaderSubpage: React.FC = () => {
     return (
-        <header className={styles.header}>
-            <div className={styles.header__logoContainer}>
-                <img src="/images/logo.png" alt="Logo" className={styles.header__logo} />
-                <div className={styles.header__title}>
+        <header className="flex justify-between items-center bg-[#000582] p-4 text-white relative">
+            <div className="flex items-center">
+                <Image src="/images/logo.png" alt="Logo" width={50} height={50} className="mr-2" />
+                <div className="text-lg font-bold" style={{ fontFamily: 'Agency FB', maxWidth: '100px' }}>
                     Planeten Entdecker
                 </div>
             </div>
-            <nav className={styles.menu}>
-                <div className={styles.menuItem}>
-                    <a href="#" className={styles.menuLink}>Aufgaben</a>
-                    <img src="/images/aufgaben.png" alt="Aufgaben" className={styles.menuLogo} />
-                </div>
-                <div className={styles.menuItem}>
-                    <a href="#" className={styles.menuLink}>Spiele</a>
-                    <img src="/images/spiele.png" alt="Spiele" className={styles.menuLogo} />
-                </div>
-                <div className={styles.burgerMenu}>
-                    <img src="/images/hamburger-menu.png" alt="Menü" className={styles.burgerIcon} />
+            <nav className="flex items-center">
+                <a href="#" className="flex items-center mr-5 text-white no-underline hover:underline text-lg">
+                    Aufgaben
+                    <Image src="/images/aufgaben.png" alt="Aufgaben" width={30} height={30} className="ml-1 mr-1"/>
+                </a>
+                <a href="#" className="flex items-center text-white no-underline hover:underline text-lg">
+                    Spiele
+                    <Image src="/images/spiele.png" alt="Spiele" width={30} height={30} className="ml-1 mr-1"/>
+                </a>
+                <div className="flex items-center justify-center">
+                    <Image src="/images/hamburger-menu.png" alt="Menü" width={100} height={100} className="cursor-pointer ml-10"/>
                 </div>
             </nav>
         </header>

@@ -1,13 +1,12 @@
-
 import React from 'react';
-import styles from './HeaderMain.module.css'; // CSS-Modul für Stilisierung
+import Image from 'next/image';  
 
 const HeaderMain: React.FC = () => {
     return (
-        <header className={styles.header}>
-            <div className={styles.logoContainer}>
-                <img src="/images/logo.png" alt="Logo" className={styles.logo} />
-                <div className={styles.title}>
+        <header className="flex justify-between items-center p-4 text-white relative bg-cover" style={{ backgroundImage: 'url(/images/headerbg.svg)' }}>
+            <div className="flex items-center">
+                <Image src="/images/logo.png" alt="Logo" width={50} height={50} className="mr-2" />
+                <div className="text-2xl font-bold" style={{ fontFamily: 'Agency FB' }}>
                     Planeten Entdecker
                 </div>
             </div>
@@ -16,4 +15,3 @@ const HeaderMain: React.FC = () => {
 }
 
 export default HeaderMain;
-

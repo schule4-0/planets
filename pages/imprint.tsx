@@ -4,8 +4,6 @@ import TeamMember from '@/app/components/teamMember/TeamMember';
 import Image from "next/image";
 import Layout from '../app/layout';
 import Head from "next/head";
-import HeaderSubpage from '@/app/components/header/HeaderSubpage';
-import HeaderMain from '@/app/components/header/HeaderMain';
 
 
 const ImprintPage: React.FC = () => {
@@ -26,8 +24,6 @@ const ImprintPage: React.FC = () => {
 
     return (
         <Layout>
-            <HeaderSubpage />
-            <HeaderMain />
             <Head>
                 <title>Impressum</title>
                 <meta name="description" content="Welcome to my imprint"/>
