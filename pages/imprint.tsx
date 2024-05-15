@@ -5,6 +5,7 @@ import Image from "next/image";
 import Layout from '../app/layout';
 import Head from "next/head";
 
+
 const ImprintPage: React.FC = () => {
     const teamRef = useRef<HTMLDivElement>(null);
     const firstScreenRef = useRef<HTMLDivElement>(null);
