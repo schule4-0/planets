@@ -30,3 +30,7 @@ body {
 .bg-star{
   background-image: url("../public/images/star-field.svg");
 }
+
+.bg-header{
+  background-color: #000582;
+}
