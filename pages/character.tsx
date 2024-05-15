@@ -1,13 +1,13 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Layout from '../app/layout';
-import SelectLayout from "@/app/selectLayout";
-import ActionButton from "@/app/components/actionButton/ActionButton";
-import SelectItems from "@/app/components/selectItems/selectItems";
-import "./character.css";
-import "../app/globals.css";
-import Image from "next/image";
-import {getStoredValue, setStoredValue} from '@/app/utils/storageUtils';
-import {getHairColors} from '@/app/utils/colorUtils';
+import SelectLayout from '@/app/selectLayout';
+import ActionButton from '@/app/components/actionButton/ActionButton';
+import SelectItems from '@/app/components/selectItems/selectItems';
+import './character.css';
+import '../app/globals.css';
+import Image from 'next/image';
+import { getStoredValue, setStoredValue } from '@/app/utils/storageUtils';
+import { getHairColors } from '@/app/utils/colorUtils';
 
 const Character: React.FC = () => {
     const isClient = typeof window !== 'undefined';
@@ -17,100 +17,97 @@ const Character: React.FC = () => {
     const nameInputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
-        if (isClient) {
-            const storedName = getStoredValue('characterName');
-            if (storedName) {
-                setName(storedName);
-            }
+        const loadStoredValues = async () => {
+            const storedName = await getStoredValue('characterName');
+            if (storedName) setName(storedName);
 
-            const storedImageType = getStoredValue('selectedImageType');
-            if (storedImageType) {
-                setSelectedImageType(storedImageType);
-            }
+            const storedImageType = await getStoredValue('selectedImageType');
+            if (storedImageType) setSelectedImageType(storedImageType);
 
-            const storedColorWord = getStoredValue('selectedHairColorWord');
-            if (storedColorWord) {
-                setSelectedColorWord(storedColorWord);
-            }
-        }
+            const storedColorWord = await getStoredValue('selectedHairColorWord');
+            if (storedColorWord) setSelectedColorWord(storedColorWord);
+        };
+
+        if (isClient) loadStoredValues();
     }, [isClient]);
 
-    const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleNameChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const newName = e.target.value;
         setName(newName);
-        if (isClient) {
-            setStoredValue('characterName', newName);
-        }
+        if (isClient) await setStoredValue('characterName', newName);
     };
 
-    const handleImageClick = (type: string) => {
+    const handleImageClick = async (type: string) => {
         setSelectedImageType(type);
-        if (isClient) {
-            setStoredValue('selectedImageType', type);
-        }
+        if (isClient) await setStoredValue('selectedImageType', type);
     };
 
-    const handleColorClick = (index: number) => {
+    const handleColorClick = async (index: number) => {
         const colorWord = getHairColors()[index].word;
         setSelectedColorWord(colorWord);
-        if (isClient) {
-            setStoredValue('selectedHairColorWord', colorWord);
-        }
+        if (isClient) await setStoredValue('selectedHairColorWord', colorWord);
     };
 
-    const renderLeftChildren = () => {
-        return (
-            <div className="h-full w-auto flex justify-center items-center">
-                <Image className="character-image" src={`/images/${selectedImageType}_${selectedColorWord}.svg`}
-                       alt="Ausgewählter Charakter" width={400} height={627} />
-            </div>
-        );
-    };
+    const renderLeftChildren = () => (
+        <div className="h-full w-auto flex justify-center items-center">
+            <Image
+                className="character-image"
+                src={`/images/${selectedImageType}_${selectedColorWord}.svg`}
+                alt="Selected Character"
+                width={400}
+                height={627}
+            />
+        </div>
+    );
 
-    const renderRightChildren = () => {
-        return (
-            <Layout>
-                <div>
-                    <h1 className="font-bold mb-4 text-center">Entwerfe deinen Charakter</h1>
-                    <h2 className="font-bold mb-4">Geschlecht</h2>
-                    <div className="text-center">
-                        <SelectItems onClick={index => handleImageClick(index === 0 ? 'girl' : 'boy')} images={[
-                            { src: `/images/girl_${selectedColorWord}.svg`, desc: "Weiblich" },
-                            { src: `/images/boy_${selectedColorWord}.svg`, desc: "Männlich" },
-                        ]} />
-                    </div>
-                    <h2 className="font-bold mb-4">Haarfarbe</h2>
-                    <div className="text-center">
-                        <SelectItems onClick={handleColorClick} colorCodes={getHairColors().map(color => color.code)} />
-                    </div>
-                    <div>
-                        <div>
-                            <div className="flex items-center mb-4">
-                                <label className="h2 font-bold">Name </label>
-                                <input
-                                    ref={nameInputRef}
-                                    id="nameInput"
-                                    type="text"
-                                    value={name}
-                                    onChange={handleNameChange}
-                                    placeholder="Trage deinen Namen ein"
-                                    className="h2 w-full text-3xl text-black rounded-2xl border-2 border-black ml-2 p-2"
-                                />
-                            </div>
-                        </div>
-                    </div>
+    const renderRightChildren = () => (
+        <Layout>
+            <div>
+                <h1 className="font-bold mb-4 text-center">Design Your Character</h1>
+                <h2 className="font-bold mb-4">Gender</h2>
+                <div className="text-center">
+                    <SelectItems
+                        onClick={(index) => handleImageClick(index === 0 ? 'girl' : 'boy')}
+                        images={[
+                            { src: `/images/girl_${selectedColorWord}.svg`, desc: 'Female' },
+                            { src: `/images/boy_${selectedColorWord}.svg`, desc: 'Male' },
+                        ]}
+                    />
                 </div>
-            </Layout>
-        );
+                <h2 className="font-bold mb-4">Hair Color</h2>
+                <div className="text-center">
+                    <SelectItems
+                        onClick={handleColorClick}
+                        colorCodes={getHairColors().map((color) => color.code)}
+                    />
+                </div>
+                <div className="flex items-center mb-4">
+                    <label className="h2 font-bold">Name</label>
+                    <input
+                        ref={nameInputRef}
+                        id="nameInput"
+                        type="text"
+                        value={name}
+                        onChange={handleNameChange}
+                        placeholder="Enter your name"
+                        className="h2 w-full text-3xl text-black rounded-2xl border-2 border-black ml-2 p-2"
+                    />
+                </div>
+            </div>
+        </Layout>
+    );
+
+    // TODO: Implement routing logic
+    const rocketPage = () => {
+        // Implement navigation logic here
     };
-    //TODO Routing
-    let rocketpage;
+
     return (
         <div>
             <SelectLayout
                 leftChildren={renderLeftChildren()}
                 rightChildren={renderRightChildren()}
-                actionButton={<ActionButton onClick={rocketpage}/>}
+                actionButton={<ActionButton onClick={rocketPage} />}
             />
         </div>
     );
