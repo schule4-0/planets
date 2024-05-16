@@ -85,7 +85,8 @@ const MapPage: React.FC = () => {
                 ))}
                 <div className={"planet"}>
                     <Image
-                        priority={true}
+                        /* We use unoptimized because the optimized version causes problems for gifs */
+                        unoptimized={true}
                         className="planet--sun  max-w-none absolute -left-56 hover:cursor-pointer"
                         src={getImageSrc('Sun', hoveredPlanet === 'Sun', selectedPlanet === 'Sun')}
                         alt="Sonne"
