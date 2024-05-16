@@ -18,6 +18,11 @@ export const removeStoredValue = async (key: string): Promise<void> => {
                 resolve();
         });
 };
+export const getRocketWing = async (): Promise<string | null> => {
+        return new Promise((resolve) => {
+                getStoredValue("spaceshipSelectedImageIndex").then(resolve);
+        });
+};
 
 export const getGender = async (): Promise<string | null> => {
         return new Promise((resolve) => {
@@ -28,6 +33,12 @@ export const getGender = async (): Promise<string | null> => {
 export const getHairColor = async (): Promise<string | null> => {
         return new Promise((resolve) => {
                 getStoredValue("selectedHairColorWord").then(resolve);
+        });
+};
+
+export const getRocketColor = async (): Promise<any> => {
+        return new Promise((resolve) => {
+                getStoredValue("selectedRocketColorWord").then(resolve);
         });
 };
 
@@ -42,10 +53,20 @@ export const setGender = async (value: string): Promise<void> => {
                 setStoredValue("selectedGender", value).then(resolve);
         });
 };
+export const setRocketWing  = async (value: string): Promise<void> => {
+        return new Promise((resolve) => {
+                setStoredValue("selectedWing", value).then(resolve);
+        });
+};
 
 export const setHairColor = async (value: string): Promise<void> => {
         return new Promise((resolve) => {
                 setStoredValue("selectedHairColorWord", value).then(resolve);
+        });
+};
+export const setRocketColor = async (value: string): Promise<void> => {
+        return new Promise((resolve) => {
+                setStoredValue("selectedRocketColorWord", value).then(resolve);
         });
 };
 

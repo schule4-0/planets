@@ -1,98 +1,81 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '../app/layout';
-import SelectLayout from "@/app/selectLayout";
-import ActionButton from "@/app/components/actionButton/ActionButton";
-import SelectItems from "@/app/components/selectItems/selectItems";
-import "../app/globals.css";
-import Image from "next/image";
-
-interface Color {
-    code: string;
-    word: string;
-}
+import SelectLayout from '@/app/selectLayout';
+import ActionButton from '@/app/components/actionButton/ActionButton';
+import SelectItems from '@/app/components/selectItems/selectItems';
+import '../app/globals.css';
+import Image from 'next/image';
+import {getRocketWing, getRocketColor, setRocketWing, setRocketColor} from '@/app/utils/storageUtils';
+import {getRocketColors} from '@/app/utils/colorUtils';
 
 const Spaceship: React.FC = () => {
-    const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
-    const [selectedColorIndex, setSelectedColorIndex] = useState<number>(0);
-    const [isClient, setIsClient] = useState<boolean>(false);
+    const isClient = typeof window !== 'undefined';
+    const [selectedWingType, setSelectedWingType] = useState<string>('wing1');
+    const [selectedColor, setSelectedRocketColor] = useState<any>(`orange`);
 
     useEffect(() => {
-        setIsClient(true);
+        const loadStoredValues = async () => {
+            const storedWingType = await getRocketWing();
+            if (storedWingType) setSelectedWingType(storedWingType);
 
-        const storedImageIndex = localStorage.getItem('spaceshipSelectedImageIndex');
-        if (storedImageIndex) {
-            setSelectedImageIndex(parseInt(storedImageIndex));
-        }
+            const storedRocketColors = await getRocketColor();
+            if (storedRocketColors) setSelectedRocketColor(storedRocketColors);
+        };
 
-        const storedColorIndex = localStorage.getItem('spaceshipSelectedColorIndex');
-        if (storedColorIndex) {
-            setSelectedColorIndex(parseInt(storedColorIndex));
-        }
-    }, []);
+        if (isClient) loadStoredValues();
+    }, [isClient]);
 
-    const handleImageClick = (index: number) => {
-        setSelectedImageIndex(index);
-        localStorage.setItem('spaceshipSelectedImageIndex', index.toString());
+
+    const handleImageClick = async (type: string) => {
+        setSelectedWingType(type);
+        if (isClient) await setRocketWing(type);
     };
 
-    const handleColorClick = (index: number) => {
-        setSelectedColorIndex(index);
-        localStorage.setItem('spaceshipSelectedColorIndex', index.toString());
+    const handleColorClick = async (index: number) => {
+        const colorWord = getRocketColors()[index].word;
+        setSelectedRocketColor(colorWord);
+        if (isClient) await setRocketColor(colorWord);
     };
 
-    const colors: Color[] = [
-        { code: "#FF9900", word: "orange" },
-        { code: "#5EC71E", word: "green" },
-        { code: "#0E5CF3", word: "blue" },
-        { code: "#CA0000", word: "red" },
-        { code: "#FF00F5", word: "pink" },
-        { code: "#7A41F3", word: "purple" },
-        { code: "#FFE500", word: "yellow" }
-    ];
+    const renderLeftChildren = () => (
+        <div className="flex justify-center items-center h-full">
+            <Image
+                src={`/images/${selectedWingType}_${selectedColor}.svg`}
+                alt="Spaceship"
+                width={250}
+                height={250}
+            />
+        </div>
+    );
 
-    const renderLeftChildren = () => {
-        if (isClient) {
-            const selectedImage = localStorage.getItem('spaceshipSelectedImageIndex') ? parseInt(localStorage.getItem('spaceshipSelectedImageIndex')!) : selectedImageIndex;
-            const selectedColor = localStorage.getItem('spaceshipSelectedColorIndex') ? parseInt(localStorage.getItem('spaceshipSelectedColorIndex')!) : selectedColorIndex;
-            return (
-                    <div className="flex justify-center items-center h-full">
-                        <Image
-                            src={`/images/spaceshipform${selectedImage}_${colors[selectedColor].word}.svg`}
-                            alt="Spaceship"
-                            width={250}
-                            height={250}
-                        />
-                    </div>
-            );
-        } else {
-            return null;
-        }
-    };
+    const renderRightChildren = () => (
+        <Layout>
+            <div>
+                <h2 className="font-bold mb-4 text-center">Build Your Spaceship</h2>
+                <h2 className="font-bold mb-4">Wing Type</h2>
+                <div className="text-center">
+                    <SelectItems
+                        onClick={(index) => handleImageClick(index === 0 ? 'wing1' : 'wing2')}
+                        images={[
+                            { src: `/images/wing1.png`, desc: 'Wing 1' },
+                            { src: `/images/wing2.png`, desc: 'Wing 2' },
+                        ]}
+                    />
+                </div>
+                <h2 className="font-bold mb-4">Color</h2>
+                <div className="text-center">
+                    <SelectItems
+                        onClick={handleColorClick}
+                        colorCodes={getRocketColors().map((color) => color.code)}
+                    />
+                </div>
+            </div>
+        </Layout>
+    );
 
-    const renderRightChildren = () => {
-        if (isClient) {
-            const colorWord = colors[selectedColorIndex].word;
-            return (
-                <Layout>
-                    <div>
-                        <h2 className="font-bold mb-4 text-center">Baue deine Rakete</h2>
-                        <h2 className="font-bold mb-4">Flügelform</h2>
-                        <div className="text-center">
-                            <SelectItems onClick={handleImageClick} images={[
-                                { src: `/images/wing1.png`, desc: "Form 1" },
-                                { src: `/images/wing2.png`, desc: "Form 2" },
-                            ]} />
-                        </div>
-                        <h2 className="font-bold mb-4">Farbe</h2>
-                        <div className="text-center">
-                            <SelectItems onClick={handleColorClick} colorCodes={colors.map(color => color.code)} />
-                        </div>
-                    </div>
-                </Layout>
-            );
-        } else {
-            return null;
-        }
+    // TODO: Implement routing logic
+    const characterPage = () => {
+        // Implement navigation logic here
     };
 
     return (
@@ -100,12 +83,7 @@ const Spaceship: React.FC = () => {
             <SelectLayout
                 leftChildren={renderLeftChildren()}
                 rightChildren={renderRightChildren()}
-                actionButton={<ActionButton onClick={() => {
-                    localStorage.removeItem('spaceshipSelectedImageIndex');
-                    localStorage.removeItem('spaceshipSelectedColorIndex');
-                    setSelectedImageIndex(0);
-                    setSelectedColorIndex(0);
-                }} />}
+                actionButton={<ActionButton onClick={characterPage} />}
             />
         </div>
     );
