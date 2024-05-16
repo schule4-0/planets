@@ -98,6 +98,8 @@ const MapPage: React.FC = () => {
                     <div
                         className={`planet__name--sun left-4 !absolute planet__name ${selectedPlanet === 'Sun' ? 'planet__name--selected' : ''} ${planetCompletion.Sun ? 'planet__name--completed' : ''}`}
                         onClick={() => planetClick('Sun')}
+                        onMouseEnter={() => handleMouseEnter('Sun')}
+                        onMouseLeave={handleMouseLeave}
                     >
                         Sonne
                     </div>

@@ -174,7 +174,7 @@
 .planet__name--selected {
     background-color: white;
     color: #282B46;
-    font-weight: bold;
+    text-shadow: 0.15rem 0 0 #282B46;
 }
 
 .planet__name--completed {
@@ -206,5 +206,5 @@
 .planet__name--completed.planet__name--selected {
     background-color: #CEFACE;
     color: #186B21;
-    font-weight: bold;
+    text-shadow: 0.15rem 0 0 #186B21;
 }
