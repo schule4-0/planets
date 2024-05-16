@@ -6,25 +6,25 @@ import SelectItems from '@/app/components/selectItems/selectItems';
 import './character.css';
 import '../app/globals.css';
 import Image from 'next/image';
-import { getStoredValue, setStoredValue } from '@/app/utils/storageUtils';
+import { getGender, getHairColor, getCharacterName, setGender, setHairColor, setCharacterName } from '@/app/utils/storageUtils';
 import { getHairColors } from '@/app/utils/colorUtils';
 
 const Character: React.FC = () => {
     const isClient = typeof window !== 'undefined';
     const [name, setName] = useState<string>('');
-    const [selectedImageType, setSelectedImageType] = useState<string>('girl');
+    const [selectedGender, setSelectedGender] = useState<string>('girl');
     const [selectedColorWord, setSelectedColorWord] = useState<string>('dark');
     const nameInputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
         const loadStoredValues = async () => {
-            const storedName = await getStoredValue('characterName');
+            const storedName = await getCharacterName();
             if (storedName) setName(storedName);
 
-            const storedImageType = await getStoredValue('selectedImageType');
-            if (storedImageType) setSelectedImageType(storedImageType);
+            const storedImageType = await getGender();
+            if (storedImageType) setSelectedGender(storedImageType);
 
-            const storedColorWord = await getStoredValue('selectedHairColorWord');
+            const storedColorWord = await getHairColor();
             if (storedColorWord) setSelectedColorWord(storedColorWord);
         };
 
@@ -34,25 +34,25 @@ const Character: React.FC = () => {
     const handleNameChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const newName = e.target.value;
         setName(newName);
-        if (isClient) await setStoredValue('characterName', newName);
+        if (isClient) await setCharacterName(newName);
     };
 
     const handleImageClick = async (type: string) => {
-        setSelectedImageType(type);
-        if (isClient) await setStoredValue('selectedImageType', type);
+        setSelectedGender(type);
+        if (isClient) await setGender(type);
     };
 
     const handleColorClick = async (index: number) => {
         const colorWord = getHairColors()[index].word;
         setSelectedColorWord(colorWord);
-        if (isClient) await setStoredValue('selectedHairColorWord', colorWord);
+        if (isClient) await setHairColor(colorWord);
     };
 
     const renderLeftChildren = () => (
         <div className="h-full w-auto flex justify-center items-center">
             <Image
                 className="character-image"
-                src={`/images/${selectedImageType}_${selectedColorWord}.svg`}
+                src={`/images/${selectedGender}_${selectedColorWord}.svg`}
                 alt="Selected Character"
                 width={400}
                 height={627}

@@ -2,6 +2,10 @@ import React, {useEffect, useRef, useState} from 'react';
 import './map.css';
 import Layout from '../app/layout';
 import Image from "next/image";
+import {
+    getNeptune, getUranus, getSaturn, getJupiter, getMars,
+    getEarth, getVenus, getMercury, getSun
+} from '@/app/utils/storageUtils';
 
 const MapPage: React.FC = () => {
     const [selectedPlanet, setSelectedPlanet] = useState<string | null>(null);
@@ -10,31 +14,29 @@ const MapPage: React.FC = () => {
     const orbitContainerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const fetchPlanetCompletion = async () => {
-            //@todo Replace with actual data
-            const completionData = {
-                Neptune: true,
-                Uranus: false,
-                Saturn: false,
-                Jupiter: true,
-                Mars: true,
-                Earth: false,
-                Venus: true,
-                Mercury: false,
-                Sun: true
+            const fetchPlanetCompletion = async () => {
+                const completionData = {
+                    Neptune: (await getNeptune()) !== null,
+                    Uranus: (await getUranus()) !== null,
+                    Saturn: (await getSaturn()) !== null,
+                    Jupiter: (await getJupiter()) !== null,
+                    Mars: (await getMars()) !== null,
+                    Earth: (await getEarth()) !== null,
+                    Venus: (await getVenus()) !== null,
+                    Mercury: (await getMercury()) !== null,
+                    Sun: (await getSun()) !== null
+                };
+                setPlanetCompletion(completionData);
             };
-            setPlanetCompletion(completionData);
-        };
 
-        //fix for screens with smaller height
-        if (orbitContainerRef.current) {
-            const orbitContainer = orbitContainerRef.current;
-            if (window.screen.availHeight <= 950) {
-                orbitContainer.style.height = "170vh";
+            if (orbitContainerRef.current) {
+                const orbitContainer = orbitContainerRef.current;
+                if (window.screen.availHeight <= 950) {
+                    orbitContainer.style.height = "170vh";
+                }
             }
-        }
 
-        fetchPlanetCompletion();
+            fetchPlanetCompletion();
     }, []);
 
     const planetClick = (planet: string): void => {
@@ -61,7 +63,6 @@ const MapPage: React.FC = () => {
                     <div className={`orbit absolute rounded-full orbit--${planet.toLowerCase()}`} key={planet}>
                         <div className="planet absolute flex flex-col align-middle gap-4 z-50">
                             <Image
-                                /* We use unoptimized because the optimized version causes problems for gifs */
                                 unoptimized={true}
                                 className={"hover:cursor-pointer"}
                                 src={getImageSrc(planet, hoveredPlanet === planet, selectedPlanet === planet)}
@@ -85,7 +86,6 @@ const MapPage: React.FC = () => {
                 ))}
                 <div className={"planet"}>
                     <Image
-                        /* We use unoptimized because the optimized version causes problems for gifs */
                         unoptimized={true}
                         className="planet--sun  max-w-none absolute -left-56 hover:cursor-pointer"
                         src={getImageSrc('Sun', hoveredPlanet === 'Sun', selectedPlanet === 'Sun')}
