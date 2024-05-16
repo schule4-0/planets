@@ -41,29 +41,34 @@ const Spaceship: React.FC = () => {
     };
 
     const colors: Color[] = [
-        { code: "#000000", word: "dark" },
-        { code: "#A52A2A", word: "brown" },
-        { code: "#DC143C", word: "crimson" },
-        { code: "#FF8C00", word: "darkorange" },
-        { code: "#FFD700", word: "gold" },
-        { code: "#ADFF2F", word: "greenyellow" },
-        { code: "#4B0082", word: "indigo" },
-        { code: "#FF69B4", word: "hotpink" },
+        { code: "#FF9900", word: "orange" },
+        { code: "#5EC71E", word: "green" },
+        { code: "#0E5CF3", word: "blue" },
+        { code: "#CA0000", word: "red" },
+        { code: "#FF00F5", word: "pink" },
+        { code: "#7A41F3", word: "purple" },
+        { code: "#FFE500", word: "yellow" }
     ];
 
     const renderLeftChildren = () => {
-        return (
-            <div>
-                <div className="text-center mt-2">
-                    <Image
-                        src={`/images/spaceship1_${colors[selectedColorIndex].word}.svg`}
-                        alt="Spaceship"
-                        width={250}
-                        height={250}
-                    />
+        if (isClient) {
+            const selectedImage = localStorage.getItem('spaceshipSelectedImageIndex') ? parseInt(localStorage.getItem('spaceshipSelectedImageIndex')!) : selectedImageIndex;
+            const selectedColor = localStorage.getItem('spaceshipSelectedColorIndex') ? parseInt(localStorage.getItem('spaceshipSelectedColorIndex')!) : selectedColorIndex;
+            return (
+                <div>
+                    <div className="text-center mt-2">
+                        <Image
+                            src={`/images/spaceshipform${selectedImage}_${colors[selectedColor].word}.svg`}
+                            alt="Spaceship"
+                            width={250}
+                            height={250}
+                        />
+                    </div>
                 </div>
-            </div>
-        )
+            );
+        } else {
+            return null;
+        }
     };
 
     const renderRightChildren = () => {
@@ -76,13 +81,13 @@ const Spaceship: React.FC = () => {
                         <h2 className="font-bold mb-4">Flügelform</h2>
                         <div className="text-center">
                             <SelectItems onClick={handleImageClick} images={[
-                                {src: `/images/spaceship1_${colorWord}.svg`, desc: "Form 1"},
-                                {src: `/images/spaceship2_${colorWord}.svg`, desc: "Form 2"},
-                            ]}/>
+                                { src: `/images/spaceshipform0_${colorWord}.svg`, desc: "Form 1" },
+                                { src: `/images/spaceshipform1_${colorWord}.svg`, desc: "Form 2" },
+                            ]} />
                         </div>
                         <h2 className="font-bold mb-4">Farbe</h2>
                         <div className="text-center">
-                            <SelectItems onClick={handleColorClick} colorCodes={colors.map(color => color.code)}/>
+                            <SelectItems onClick={handleColorClick} colorCodes={colors.map(color => color.code)} />
                         </div>
                     </div>
                 </Layout>
@@ -105,7 +110,7 @@ const Spaceship: React.FC = () => {
                 }} />}
             />
         </div>
-    )
+    );
 };
 
 export default Spaceship;
