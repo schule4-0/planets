@@ -55,8 +55,7 @@ const Spaceship: React.FC = () => {
             const selectedImage = localStorage.getItem('spaceshipSelectedImageIndex') ? parseInt(localStorage.getItem('spaceshipSelectedImageIndex')!) : selectedImageIndex;
             const selectedColor = localStorage.getItem('spaceshipSelectedColorIndex') ? parseInt(localStorage.getItem('spaceshipSelectedColorIndex')!) : selectedColorIndex;
             return (
-                <div>
-                    <div className="text-center mt-2">
+                    <div className="flex justify-center items-center h-full">
                         <Image
                             src={`/images/spaceshipform${selectedImage}_${colors[selectedColor].word}.svg`}
                             alt="Spaceship"
@@ -64,7 +63,6 @@ const Spaceship: React.FC = () => {
                             height={250}
                         />
                     </div>
-                </div>
             );
         } else {
             return null;
@@ -81,8 +79,8 @@ const Spaceship: React.FC = () => {
                         <h2 className="font-bold mb-4">Flügelform</h2>
                         <div className="text-center">
                             <SelectItems onClick={handleImageClick} images={[
-                                { src: `/images/spaceshipform0_${colorWord}.svg`, desc: "Form 1" },
-                                { src: `/images/spaceshipform1_${colorWord}.svg`, desc: "Form 2" },
+                                { src: `/images/wing1.png`, desc: "Form 1" },
+                                { src: `/images/wing2.png`, desc: "Form 2" },
                             ]} />
                         </div>
                         <h2 className="font-bold mb-4">Farbe</h2>
