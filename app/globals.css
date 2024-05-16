@@ -41,3 +41,10 @@ h2,.h2{
 .bg-header{
   background-color: #000582;
 }
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
