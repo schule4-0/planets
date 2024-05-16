@@ -1,0 +1,210 @@
+.orbit {
+    border-right: white dashed 3px;
+}
+
+.orbit--merkur {
+    height: 40rem;
+    width: 40rem;
+    top: calc(50% - 20rem);
+    left: calc(0% - 20rem);
+
+    .planet {
+        bottom: 14%;
+        right: -22%;
+        align-items: flex-start;
+        flex-direction: column-reverse;
+
+        img {
+            width: 5rem;
+        }
+    }
+}
+
+.orbit--venus {
+    height: 56rem;
+    width: 56rem;
+    top: calc(50% - 28rem);
+    left: calc(0% - 28rem);
+
+    .planet {
+        align-items: flex-start;
+        flex-direction: column-reverse;
+        bottom: 72%;
+        right: -11%;
+
+        img {
+            width: 7rem;
+        }
+    }
+}
+
+.orbit--erde {
+    height: 72rem;
+    width: 72rem;
+    top: calc(50% - 36rem);
+    left: calc(0% - 36rem);
+
+    .planet {
+        top: 38%;
+        right: -11.5%;
+        align-items: flex-start;
+        flex-direction: column-reverse;
+
+        img {
+            width: 7rem;
+        }
+    }
+}
+
+.orbit--mars {
+    height: 88rem;
+    width: 88rem;
+    top: calc(50% - 44rem);
+    left: calc(0% - 44rem);
+
+    .planet {
+        align-items: flex-end;
+        bottom: 25%;
+        right: -1%;
+
+        img {
+            width: 6rem;
+        }
+    }
+}
+
+.orbit--jupiter {
+    height: 104rem;
+    width: 104rem;
+    top: calc(50% - 52rem);
+    left: calc(0% - 52rem);
+
+    .planet {
+        align-items: flex-start;
+        flex-direction: column-reverse;
+        top: 23%;
+        right: -5.5%;
+
+        img {
+            width: 14rem;
+        }
+    }
+}
+
+.orbit--saturn {
+    height: 120rem;
+    width: 120rem;
+    top: calc(50% - 60rem);
+    left: calc(0% - 60rem);
+
+    .planet {
+        align-items: flex-start;
+        flex-direction: column-reverse;
+        bottom: 33%;
+        right: -7.5%;
+
+        img {
+            width: 23rem;
+        }
+    }
+}
+
+.orbit--uranus {
+    height: 136rem;
+    width: 136rem;
+    top: calc(50% - 68rem);
+    left: calc(0% - 68rem);
+
+    .planet {
+        align-items: flex-start;
+        flex-direction: column-reverse;
+        top: 32%;
+        right: -6.5%;
+
+        img {
+            width: 10rem;
+        }
+    }
+}
+
+.orbit--neptune {
+    height: 155rem;
+    width: 155rem;
+    top: calc(50% - 77.5rem);
+    left: calc(0% - 77.5rem);
+
+    .planet {
+        align-items: flex-end;
+        bottom: 45%;
+        right: -3.3%;
+        padding-right: 2rem;
+
+        img {
+            width: 7rem;
+        }
+    }
+}
+
+.planet--sun {
+    top: calc(50% - 14rem);
+
+}
+
+/* planet names*/
+
+.planet__name--sun {
+    top: calc(50% - 19rem);
+}
+
+
+.planet__name {
+    background-color: #282B46;
+    border-radius: 2.2rem;
+    padding: 0.37rem 2.7rem;
+    color: white;
+    font-size: 3rem;
+}
+
+.planet__name:hover {
+    cursor: pointer;
+    background-color: white;
+    color: #282B46;
+}
+
+.planet__name--selected {
+    background-color: white;
+    color: #282B46;
+    text-shadow: 0.15rem 0 0 #282B46;
+}
+
+.planet__name--completed {
+    background-color: white;
+    padding: 0.37rem 3.3rem;
+    padding-left: 1.75rem;
+    color: #186B21;
+    position: relative;
+}
+
+.planet__name--completed::after {
+    content: '';
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    right: 10px;
+    top: 53%;
+    transform: translateY(-50%);
+    background-image: url('/images/check.svg');
+    background-size: cover;
+}
+
+.planet__name--completed:hover {
+    color: #186B21;
+    background-color: #CEFACE;
+}
+
+.planet__name--completed.planet__name--selected {
+    background-color: #CEFACE;
+    color: #186B21;
+    text-shadow: 0.15rem 0 0 #186B21;
+}
