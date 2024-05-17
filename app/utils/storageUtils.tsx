@@ -1,7 +1,6 @@
 export const getStoredValue = async (key: string): Promise<any> => {
         return new Promise((resolve) => {
                 resolve(localStorage.getItem(key));
-                console.log(localStorage.getItem(key))
         });
 };
 
@@ -20,62 +19,42 @@ export const removeStoredValue = async (key: string): Promise<void> => {
 };
 
 export const getRocketType = async (): Promise<string | null> => {
-        return new Promise((resolve) => {
-                getStoredValue("selectedRocket").then(resolve);
-        });
+        return getStoredValue("selectedRocket");
+
 };
 
 export const getGender = async (): Promise<string | null> => {
-        return new Promise((resolve) => {
-                getStoredValue("selectedGender").then(resolve);
-        });
+        return getStoredValue("selectedGender")
 };
 
 export const getHairColor = async (): Promise<string | null> => {
-        return new Promise((resolve) => {
-                getStoredValue("selectedHairColorWord").then(resolve);
-        });
+        return getStoredValue("selectedHairColorWord")
 };
 
 export const getRocketColor = async (): Promise<any> => {
-        return new Promise((resolve) => {
-                getStoredValue("selectedRocketColorWord").then(resolve);
-        });
+        return getStoredValue("selectedRocketColorWord")
 };
 
 export const getCharacterName = async (): Promise<string | null> => {
-        return new Promise((resolve) => {
-                getStoredValue("characterName").then(resolve);
-        });
+        return getStoredValue("characterName")
 };
 
 export const setGender = async (value: string): Promise<void> => {
-        return new Promise((resolve) => {
-                setStoredValue("selectedGender", value).then(resolve);
-        });
+        return setStoredValue("selectedGender", value)
 };
 
 export const setRocketType  = async (value: string): Promise<void> => {
-        return new Promise((resolve) => {
-                setStoredValue("selectedRocket", value).then(resolve);
-        });
+        return setStoredValue("selectedRocket", value)
 };
 
 export const setHairColor = async (value: string): Promise<void> => {
-        return new Promise((resolve) => {
-                setStoredValue("selectedHairColorWord", value).then(resolve);
-        });
+        return setStoredValue("selectedHairColorWord", value)
 };
 export const setRocketColor = async (value: string): Promise<void> => {
-        return new Promise((resolve) => {
-                setStoredValue("selectedRocketColorWord", value).then(resolve);
-        });
+        return setStoredValue("selectedRocketColorWord", value)
 };
-
 export const setCharacterName = async (value: string): Promise<void> => {
-        return new Promise((resolve) => {
-                setStoredValue("characterName", value).then(resolve);
-        });
+        return setStoredValue("characterName", value)
 };
 
 export const getNeptune = async (): Promise<boolean> => {

@@ -29,6 +29,7 @@ const MapPage: React.FC = () => {
                 setPlanetCompletion(completionData);
             };
 
+            //fix for screens with smaller height
             if (orbitContainerRef.current) {
                 const orbitContainer = orbitContainerRef.current;
                 if (window.screen.availHeight <= 950) {
@@ -63,6 +64,7 @@ const MapPage: React.FC = () => {
                     <div className={`orbit absolute rounded-full orbit--${planet.toLowerCase()}`} key={planet}>
                         <div className="planet absolute flex flex-col align-middle gap-4 z-50">
                             <Image
+                                /* We use unoptimized because the optimized version causes problems for gifs */
                                 unoptimized={true}
                                 className={"hover:cursor-pointer"}
                                 src={getImageSrc(planet, hoveredPlanet === planet, selectedPlanet === planet)}
@@ -86,6 +88,7 @@ const MapPage: React.FC = () => {
                 ))}
                 <div className={"planet"}>
                     <Image
+                        /* We use unoptimized because the optimized version causes problems for gifs */
                         unoptimized={true}
                         className="planet--sun  max-w-none absolute -left-56 hover:cursor-pointer"
                         src={getImageSrc('Sun', hoveredPlanet === 'Sun', selectedPlanet === 'Sun')}
