@@ -63,18 +63,18 @@ const Character: React.FC = () => {
     const renderRightChildren = () => (
         <Layout>
             <div>
-                <h1 className="font-bold mb-4 text-center">Design Your Character</h1>
-                <h2 className="font-bold mb-4">Gender</h2>
+                <h1 className="font-bold mb-4 text-center">Entwerfe deinen Charakter</h1>
+                <h2 className="font-bold mb-4">Geschlecht</h2>
                 <div className="text-center">
                     <SelectItems
                         onClick={(index) => handleImageClick(index === 0 ? 'girl' : 'boy')}
                         images={[
-                            { src: `/images/girl_${selectedColorWord}.svg`, desc: 'Female' },
-                            { src: `/images/boy_${selectedColorWord}.svg`, desc: 'Male' },
+                            { src: `/images/girl_${selectedColorWord}.svg`, desc: 'weiblich' },
+                            { src: `/images/boy_${selectedColorWord}.svg`, desc: 'männlich' },
                         ]}
                     />
                 </div>
-                <h2 className="font-bold mb-4">Hair Color</h2>
+                <h2 className="font-bold mb-4">Haarfarbe</h2>
                 <div className="text-center">
                     <SelectItems
                         onClick={handleColorClick}
