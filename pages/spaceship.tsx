@@ -5,30 +5,49 @@ import ActionButton from '@/app/components/actionButton/ActionButton';
 import SelectItems from '@/app/components/selectItems/selectItems';
 import '../app/globals.css';
 import Image from 'next/image';
-import {getRocketWing, getRocketColor, setRocketWing, setRocketColor} from '@/app/utils/storageUtils';
-import {getRocketColors} from '@/app/utils/colorUtils';
+import {
+    getRocketWing,
+    getRocketColor,
+    setRocketWing,
+    setRocketColor,
+    setRocketType,
+    getRocketType, // Assuming this function exists
+} from '@/app/utils/storageUtils';
+import { getRocketColors } from '@/app/utils/colorUtils';
 
 const Spaceship: React.FC = () => {
     const isClient = typeof window !== 'undefined';
     const [selectedWingType, setSelectedWingType] = useState<string>('wing1');
-    const [selectedColor, setSelectedRocketColor] = useState<any>(`orange`);
+    const [selectedColor, setSelectedRocketColor] = useState<string>('orange');
+    const [selectedRocketType, setSelectedRocketType] = useState<string>('rocket1');
 
     useEffect(() => {
         const loadStoredValues = async () => {
             const storedWingType = await getRocketWing();
-            if (storedWingType) setSelectedWingType(storedWingType);
-
+            if (storedWingType) {
+                setSelectedWingType(storedWingType);
+                await setRocketTypeByWing(storedWingType);
+            }
             const storedRocketColors = await getRocketColor();
             if (storedRocketColors) setSelectedRocketColor(storedRocketColors);
+
+            const storedRocketType = await getRocketType();
+            if (storedRocketType) setSelectedRocketType(storedRocketType);
         };
 
         if (isClient) loadStoredValues();
     }, [isClient]);
 
+    const setRocketTypeByWing = async (wingType: string) => {
+        const rocketType = wingType === 'wing1' ? 'rocket1' : 'rocket2';
+        if (isClient) await setRocketType(rocketType);
+        setSelectedRocketType(rocketType);
+    };
 
     const handleImageClick = async (type: string) => {
-        setSelectedWingType(type);
-        if (isClient) await setRocketWing(type);
+        setSelectedRocketType(type);
+        if (isClient) await setRocketType(type);
+        await setRocketTypeByWing(type);
     };
 
     const handleColorClick = async (index: number) => {
@@ -40,8 +59,8 @@ const Spaceship: React.FC = () => {
     const renderLeftChildren = () => (
         <div className="flex justify-center items-center h-full">
             <Image
-                src={`/images/${selectedWingType}_${selectedColor}.svg`}
-                alt="Spaceship"
+                src={`/images/rocket/${selectedRocketType}_${selectedColor}.png`}
+                alt="Rakete"
                 width={250}
                 height={250}
             />
@@ -51,18 +70,18 @@ const Spaceship: React.FC = () => {
     const renderRightChildren = () => (
         <Layout>
             <div>
-                <h2 className="font-bold mb-4 text-center">Build Your Spaceship</h2>
-                <h2 className="font-bold mb-4">Wing Type</h2>
+                <h2 className="font-bold mb-4 text-center">Baue deine Rakete</h2>
+                <h2 className="font-bold mb-4">Flügelform</h2>
                 <div className="text-center">
                     <SelectItems
                         onClick={(index) => handleImageClick(index === 0 ? 'wing1' : 'wing2')}
                         images={[
-                            { src: `/images/wing1.png`, desc: 'Wing 1' },
-                            { src: `/images/wing2.png`, desc: 'Wing 2' },
+                            { src: `/images/rocket/wing1_${selectedColor}.png`, desc: 'Flügel 1' },
+                            { src: `/images/rocket/wing2_${selectedColor}.png`, desc: 'Flügel 2' },
                         ]}
                     />
                 </div>
-                <h2 className="font-bold mb-4">Color</h2>
+                <h2 className="font-bold mb-4">Farbe</h2>
                 <div className="text-center">
                     <SelectItems
                         onClick={handleColorClick}

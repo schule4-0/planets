@@ -23,6 +23,11 @@ export const getRocketWing = async (): Promise<string | null> => {
                 getStoredValue("spaceshipSelectedImageIndex").then(resolve);
         });
 };
+export const getRocketType = async (): Promise<string | null> => {
+        return new Promise((resolve) => {
+                getStoredValue("selectedRocket").then(resolve);
+        });
+};
 
 export const getGender = async (): Promise<string | null> => {
         return new Promise((resolve) => {
@@ -53,9 +58,16 @@ export const setGender = async (value: string): Promise<void> => {
                 setStoredValue("selectedGender", value).then(resolve);
         });
 };
+
 export const setRocketWing  = async (value: string): Promise<void> => {
         return new Promise((resolve) => {
                 setStoredValue("selectedWing", value).then(resolve);
+        });
+};
+
+export const setRocketType  = async (value: string): Promise<void> => {
+        return new Promise((resolve) => {
+                setStoredValue("selectedRocket", value).then(resolve);
         });
 };
 
