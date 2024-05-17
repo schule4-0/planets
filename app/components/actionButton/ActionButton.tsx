@@ -7,7 +7,7 @@ interface ActionButtonProps {
 const ActionButton: FC<ActionButtonProps> = ({ onClick }) => {
     return (
         <button className="action-button" onClick={onClick}>
-            <svg className="w-12 h-12"
+            <svg className="w-32 h-32"
                  viewBox="0 0 120 120"
                  fill="none"
                  xmlns="http://www.w3.org/2000/svg"
