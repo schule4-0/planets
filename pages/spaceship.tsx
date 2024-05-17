@@ -6,48 +6,33 @@ import SelectItems from '@/app/components/selectItems/selectItems';
 import '../app/globals.css';
 import Image from 'next/image';
 import {
-    getRocketWing,
     getRocketColor,
-    setRocketWing,
     setRocketColor,
     setRocketType,
-    getRocketType, // Assuming this function exists
+    getRocketType
 } from '@/app/utils/storageUtils';
 import { getRocketColors } from '@/app/utils/colorUtils';
 
 const Spaceship: React.FC = () => {
     const isClient = typeof window !== 'undefined';
-    const [selectedWingType, setSelectedWingType] = useState<string>('wing1');
     const [selectedColor, setSelectedRocketColor] = useState<string>('orange');
     const [selectedRocketType, setSelectedRocketType] = useState<string>('rocket1');
 
     useEffect(() => {
         const loadStoredValues = async () => {
-            const storedWingType = await getRocketWing();
-            if (storedWingType) {
-                setSelectedWingType(storedWingType);
-                await setRocketTypeByWing(storedWingType);
-            }
+            const selectedRocketType = await getRocketType();
+            if (selectedRocketType) setSelectedRocketType(selectedRocketType);
+
             const storedRocketColors = await getRocketColor();
             if (storedRocketColors) setSelectedRocketColor(storedRocketColors);
-
-            const storedRocketType = await getRocketType();
-            if (storedRocketType) setSelectedRocketType(storedRocketType);
         };
 
         if (isClient) loadStoredValues();
     }, [isClient]);
 
-    const setRocketTypeByWing = async (wingType: string) => {
-        const rocketType = wingType === 'wing1' ? 'rocket1' : 'rocket2';
-        if (isClient) await setRocketType(rocketType);
-        setSelectedRocketType(rocketType);
-    };
-
     const handleImageClick = async (type: string) => {
         setSelectedRocketType(type);
         if (isClient) await setRocketType(type);
-        await setRocketTypeByWing(type);
     };
 
     const handleColorClick = async (index: number) => {
@@ -74,7 +59,7 @@ const Spaceship: React.FC = () => {
                 <h2 className="font-bold mb-4">Flügelform</h2>
                 <div className="text-center">
                     <SelectItems
-                        onClick={(index) => handleImageClick(index === 0 ? 'wing1' : 'wing2')}
+                        onClick={(index) => handleImageClick(index === 0 ? 'rocket1' : 'rocket2')}
                         images={[
                             { src: `/images/rocket/wing1_${selectedColor}.png`, desc: 'Flügel 1' },
                             { src: `/images/rocket/wing2_${selectedColor}.png`, desc: 'Flügel 2' },
