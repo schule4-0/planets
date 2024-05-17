@@ -20,7 +20,6 @@ export const removeStoredValue = async (key: string): Promise<void> => {
 
 export const getRocketType = async (): Promise<string | null> => {
         return getStoredValue("selectedRocket");
-
 };
 
 export const getGender = async (): Promise<string | null> => {
