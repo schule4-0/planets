@@ -2,16 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom Fonts */
+@font-face {
+  font-family: 'Agency FB';
+  src: url('fonts/Agency_FB/WebFonts/Agency_FB.eot');
+  src: url('fonts/Agency_FB/WebFonts/Agency_FB.eot?#iefix') format('embedded-opentype'),
+  url('fonts/Agency_FB/WebFonts/Agency_FB.woff2') format('woff2'),
+  url('fonts/Agency_FB/WebFonts/Agency_FB.woff') format('woff'),
+  url('fonts/Agency_FB/WebFonts/Agency_FB.ttf') format('truetype'),
+  url('fonts/Agency_FB/WebFonts/Agency_FB.svg#Agency_FB') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Agency FB';
+  src: url('fonts/Agency_FB/WebFonts_Bold/Agency_FB.eot');
+  src: url('fonts/Agency_FB/WebFonts_Bold/Agency_FB.eot?#iefix') format('embedded-opentype'),
+  url('fonts/Agency_FB/WebFonts_Bold/Agency_FB.woff2') format('woff2'),
+  url('fonts/Agency_FB/WebFonts_Bold/Agency_FB.woff') format('woff'),
+  url('fonts/Agency_FB/WebFonts_Bold/Agency_FB.ttf') format('truetype'),
+  url('fonts/Agency_FB/WebFonts_Bold/Agency_FB.svg#Agency_FB') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('fonts/Inter/static/Inter-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('fonts/Inter/static/Inter-Bold.ttf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Global CSS */
+
 :root {
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 0, 0, 0;
   --background-end-rgb: 0, 0, 0;
+  --font-base: 'Inter',serif;
+  --font-heading: 'Agency FB', serif;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  /*color: rgb(var(--foreground-rgb));*/
   background: linear-gradient(to bottom, #040758, #4F0080);
+  font-family: var(--font-base);
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 @layer utilities {
@@ -30,7 +73,12 @@ body {
 .bg-star{
   background-image: url("../public/images/star-field.svg");
 }
-h1{
+
+h1,.h1,h2,.h2,h3,h4,h5,h6{
+  font-family: var(--font-heading);
+  font-weight: bold;
+}
+h1,.h1{
     font-size: 3rem;
 }
 h2,.h2{
