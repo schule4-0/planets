@@ -76,7 +76,7 @@ const MapPage: React.FC = () => {
                                 onMouseLeave={handleMouseLeave}
                             />
                             <div
-                                className={`h1 hover:cursor-pointer planet__name ${selectedPlanet === planet ? 'planet__name--selected' : ''} ${planetCompletion[planet] ? 'planet__name--completed' : ''}`}
+                                className={`hover:cursor-pointer planet__name ${selectedPlanet === planet ? 'planet__name--selected' : ''} ${planetCompletion[planet] ? 'planet__name--completed' : ''}`}
                                 onClick={() => planetClick(planet)}
                                 onMouseEnter={() => handleMouseEnter(planet)}
                                 onMouseLeave={handleMouseLeave}
