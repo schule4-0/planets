@@ -76,8 +76,8 @@ const Character: React.FC = () => {
     const renderRightChildren = () => (
         <Layout>
             <div>
-                <h1 className="font-bold mb-4 text-center">Entwerfe deinen Charakter</h1>
-                <h2 className="font-bold mb-4">Frisur</h2>
+                <h1 className="mb-4 text-center">Entwerfe deinen Charakter</h1>
+                <h2 className="mb-4">Frisur</h2>
                 <div className="text-center">
                     <SelectItems
                         onClick={(index) => {
@@ -92,8 +92,8 @@ const Character: React.FC = () => {
                         ]}
                     />
                 </div>
-                <h2 className="font-bold mb-4">Haarfarbe</h2>
-                <div className="text-left">
+                <h2 className="mb-4">Haarfarbe</h2>
+                <div className="text-center">
                     <SelectItems
                         onClick={handleHairColorClick}
                         colorCodes={getHairColors().map((color) => color.code)}
@@ -107,7 +107,7 @@ const Character: React.FC = () => {
                     />
                 </div>
                 <div className="flex items-center mb-4">
-                    <label className="h2 font-bold">Name</label>
+                    <label className="h2">Name</label>
                     <input
                         ref={nameInputRef}
                         id="nameInput"
