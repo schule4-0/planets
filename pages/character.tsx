@@ -3,17 +3,27 @@ import Layout from '../app/layout';
 import SelectLayout from '@/app/selectLayout';
 import ActionButton from '@/app/components/actionButton/ActionButton';
 import SelectItems from '@/app/components/selectItems/selectItems';
+import CharacterImage from "@/app/components/character/CharacterImage";
 import './character.css';
 import '../app/globals.css';
-import Image from 'next/image';
-import { getGender, getHairColor, getCharacterName, setGender, setHairColor, setCharacterName } from '@/app/utils/storageUtils';
-import { getHairColors } from '@/app/utils/colorUtils';
+import {
+    getHair,
+    getHairColor,
+    getCharacterName,
+    setHair,
+    setHairColor,
+    setCharacterName,
+    setSkinColor, getSkinColor
+} from '@/app/utils/storageUtils';
+import { getHairColors,getSkinColors } from '@/app/utils/colorUtils';
 
 const Character: React.FC = () => {
     const isClient = typeof window !== 'undefined';
     const [name, setName] = useState<string>('');
-    const [selectedGender, setSelectedGender] = useState<string>('girl');
-    const [selectedColorWord, setSelectedColorWord] = useState<string>('dark');
+    const [selectedHair, setSelectedHair] = useState<string>('short-curly')
+    const [selectedHairColorCode, setSelectedHairColorCode] = useState<string>('#000000');
+    const [selectedSkinColorCode, setSelectedSkinColorCode] = useState<string>('#FCD8B1');
+
     const nameInputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
@@ -21,11 +31,14 @@ const Character: React.FC = () => {
             const storedName = await getCharacterName();
             if (storedName) setName(storedName);
 
-            const storedImageType = await getGender();
-            if (storedImageType) setSelectedGender(storedImageType);
+            const storedHair = await getHair();
+            if (storedHair) setSelectedHair(storedHair);
 
-            const storedColorWord = await getHairColor();
-            if (storedColorWord) setSelectedColorWord(storedColorWord);
+            const storedHairColorCode = await getHairColor();
+            if (storedHairColorCode) setSelectedHairColorCode(storedHairColorCode);
+
+            const storedSkinColorCode = await getSkinColor();
+            if (storedSkinColorCode) setSelectedSkinColorCode(storedSkinColorCode);
         };
 
         if (isClient) loadStoredValues();
@@ -38,25 +51,25 @@ const Character: React.FC = () => {
     };
 
     const handleImageClick = async (type: string) => {
-        setSelectedGender(type);
-        if (isClient) await setGender(type);
+        setSelectedHair(type);
+        if (isClient) await setHair(type);
     };
 
-    const handleColorClick = async (index: number) => {
-        const colorWord = getHairColors()[index].word;
-        setSelectedColorWord(colorWord);
+    const handleHairColorClick = async (index: number) => {
+        const colorWord = getHairColors()[index].code;
+        setSelectedHairColorCode(colorWord);
         if (isClient) await setHairColor(colorWord);
     };
 
+    const handleSkinColorClick = async (index: number) => {
+        const colorWord = getSkinColors()[index].code;
+        setSelectedSkinColorCode(colorWord);
+        if (isClient) await setSkinColor(colorWord);
+    };
+
     const renderLeftChildren = () => (
-        <div className="h-full w-auto flex justify-center items-center">
-            <Image
-                className="character-image"
-                src={`/images/${selectedGender}_${selectedColorWord}.svg`}
-                alt="Selected Character"
-                width={400}
-                height={627}
-            />
+        <div className="character-image h-full w-full flex justify-center items-center">
+            <CharacterImage hairColor={selectedHairColorCode} hairType={selectedHair} skinColor ={selectedSkinColorCode}></CharacterImage>
         </div>
     );
 
@@ -64,21 +77,33 @@ const Character: React.FC = () => {
         <Layout>
             <div>
                 <h1 className="font-bold mb-4 text-center">Entwerfe deinen Charakter</h1>
-                <h2 className="font-bold mb-4">Geschlecht</h2>
+                <h2 className="font-bold mb-4">Frisur</h2>
                 <div className="text-center">
                     <SelectItems
-                        onClick={(index) => handleImageClick(index === 0 ? 'girl' : 'boy')}
+                        onClick={(index) => {
+                            const desc = ['short-curly', 'short-straight', 'long-curly', 'long-straight'][index];
+                            handleImageClick(desc);
+                        }}
                         images={[
-                            { src: `/images/girl_${selectedColorWord}.svg`, desc: 'weiblich' },
-                            { src: `/images/boy_${selectedColorWord}.svg`, desc: 'männlich' },
+                            {src: `/images/kids/short-curly.svg`, desc: 'short-curly'},
+                            {src: `/images/kids/short-straight.svg`, desc: 'short-straight'},
+                            {src: `/images/kids/long-curly.svg`, desc: 'long-curly'},
+                            {src: `/images/kids/long-straight.svg`, desc: 'long-straight'},
                         ]}
                     />
                 </div>
                 <h2 className="font-bold mb-4">Haarfarbe</h2>
-                <div className="text-center">
+                <div className="text-left">
                     <SelectItems
-                        onClick={handleColorClick}
+                        onClick={handleHairColorClick}
                         colorCodes={getHairColors().map((color) => color.code)}
+                    />
+                </div>
+                <h2 className="font-bold mb-4">Hautfarbe</h2>
+                <div className="text-left">
+                    <SelectItems
+                        onClick={handleSkinColorClick}
+                        colorCodes={getSkinColors().map((color) => color.code)}
                     />
                 </div>
                 <div className="flex items-center mb-4">
@@ -107,7 +132,7 @@ const Character: React.FC = () => {
             <SelectLayout
                 leftChildren={renderLeftChildren()}
                 rightChildren={renderRightChildren()}
-                actionButton={<ActionButton onClick={rocketPage} />}
+                actionButton={<ActionButton onClick={rocketPage}/>}
             />
         </div>
     );

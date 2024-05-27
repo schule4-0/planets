@@ -26,7 +26,6 @@ const SelectItems: React.FC<selectItemsProps> = ({images, colorCodes, onClick}) 
                         width={124}
                         height={124}
                     />
-                    <p className={"text-center"}>{image.desc}</p>
                 </div>
             ));
         }

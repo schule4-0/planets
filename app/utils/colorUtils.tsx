@@ -9,6 +9,13 @@ const hairColors: Color[] = [
     { code: "#673614", word: "brown" },
     { code: "#DF5026", word: "orange" }
 ];
+
+const getSkinColor: Color[] = [
+    { code: "#FCD8B1", word: "hell" },
+    { code: "#AF875C", word: "mittel" },
+    { code: "#3C210F", word: "dunkel" },
+];
+
 const rocketColor: Color[] = [
     { code: "#FF9900", word: "orange" },
     { code: "#5EC71E", word: "green" },
@@ -20,5 +27,6 @@ const rocketColor: Color[] = [
 ];
 const getHairColors = (): Color[] => hairColors;
 const getRocketColors = (): Color[] => rocketColor;
+const getSkinColors = (): Color[] => getSkinColor;
 
-export { getHairColors, getRocketColors};
+export { getHairColors, getRocketColors, getSkinColors};
