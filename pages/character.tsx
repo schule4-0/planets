@@ -22,6 +22,7 @@ const Character: React.FC = () => {
     const [name, setName] = useState<string>('');
     const [selectedHair, setSelectedHair] = useState<string>('short-curly')
     const [selectedHairColorCode, setSelectedHairColorCode] = useState<string>('#000000');
+    const [lastSelectedHairColorCode, setLastSelectedHairColorCode] = useState<string>('#000000');
     const [selectedSkinColorCode, setSelectedSkinColorCode] = useState<string>('#FCD8B1');
 
     const nameInputRef = useRef<HTMLInputElement>(null);
@@ -57,6 +58,7 @@ const Character: React.FC = () => {
 
     const handleHairColorClick = async (index: number) => {
         const colorWord = getHairColors()[index].code;
+        setLastSelectedHairColorCode(selectedHairColorCode);
         setSelectedHairColorCode(colorWord);
         if (isClient) await setHairColor(colorWord);
     };
@@ -69,7 +71,7 @@ const Character: React.FC = () => {
 
     const renderLeftChildren = () => (
         <div className="character-image h-full w-full flex justify-center items-center">
-            <CharacterImage hairColor={selectedHairColorCode} hairType={selectedHair} skinColor ={selectedSkinColorCode}></CharacterImage>
+            <CharacterImage hairColor={selectedHairColorCode} lastHairColor={lastSelectedHairColorCode} hairType={selectedHair} skinColor ={selectedSkinColorCode}></CharacterImage>
         </div>
     );
 
