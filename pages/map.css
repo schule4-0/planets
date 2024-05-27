@@ -3,37 +3,37 @@
 }
 
 .orbit--merkur {
-    height: 40rem;
-    width: 40rem;
-    top: calc(50% - 20rem);
-    left: calc(0% - 20rem);
+    height: 45rem;
+    width: 45rem;
+    top: calc(50% - 22.5rem);
+    left: calc(0% - 22.5rem);
 
     .planet {
         bottom: 14%;
-        right: -22%;
+        right: -19%;
         align-items: flex-start;
         flex-direction: column-reverse;
 
-        img {
-            width: 5rem;
+        video {
+            width: 3.25rem;
         }
     }
 }
 
 .orbit--venus {
-    height: 56rem;
-    width: 56rem;
-    top: calc(50% - 28rem);
-    left: calc(0% - 28rem);
+    height: 58rem;
+    width: 58rem;
+    top: calc(50% - 29rem);
+    left: calc(0% - 29rem);
 
     .planet {
         align-items: flex-start;
         flex-direction: column-reverse;
         bottom: 72%;
-        right: -11%;
+        right: -11.5%;
 
-        img {
-            width: 7rem;
+        video {
+            width: 6.25rem;
         }
     }
 }
@@ -46,47 +46,47 @@
 
     .planet {
         top: 38%;
-        right: -11.5%;
-        align-items: flex-start;
+        right: -5.5%;
+        align-items: flex-end;
         flex-direction: column-reverse;
 
-        img {
-            width: 7rem;
+        video {
+            width: 7.125rem;
         }
     }
 }
 
 .orbit--mars {
-    height: 88rem;
-    width: 88rem;
-    top: calc(50% - 44rem);
-    left: calc(0% - 44rem);
+    height: 87rem;
+    width: 87rem;
+    top: calc(50% - 43.5rem);
+    left: calc(0% - 43.5rem);
 
     .planet {
         align-items: flex-end;
         bottom: 25%;
-        right: -1%;
+        right: -0.5%;
 
-        img {
-            width: 6rem;
+        video {
+            width: 4.94rem;
         }
     }
 }
 
 .orbit--jupiter {
-    height: 104rem;
-    width: 104rem;
-    top: calc(50% - 52rem);
-    left: calc(0% - 52rem);
+    height: 103rem;
+    width: 103rem;
+    top: calc(50% - 51.5rem);
+    left: calc(0% - 51.5rem);
 
     .planet {
-        align-items: flex-start;
+        align-items: center;
         flex-direction: column-reverse;
         top: 23%;
         right: -5.5%;
 
-        img {
-            width: 14rem;
+        video {
+            width: 16.25rem;
         }
     }
 }
@@ -98,40 +98,43 @@
     left: calc(0% - 60rem);
 
     .planet {
-        align-items: flex-start;
+        align-items: center;
         flex-direction: column-reverse;
         bottom: 33%;
-        right: -7.5%;
+        right: -10%;
 
-        img {
-            width: 23rem;
+        video {
+            width: 26.87rem;
+        }
+        div{
+            margin-right: 2rem;
         }
     }
 }
 
 .orbit--uranus {
-    height: 136rem;
-    width: 136rem;
-    top: calc(50% - 68rem);
-    left: calc(0% - 68rem);
+    height: 138rem;
+    width: 138rem;
+    top: calc(50% - 69rem);
+    left: calc(0% - 69rem);
 
     .planet {
         align-items: flex-start;
         flex-direction: column-reverse;
         top: 32%;
-        right: -6.5%;
+        right: -7.5%;
 
-        img {
-            width: 10rem;
+        video {
+            width: 7.5rem;
         }
     }
 }
 
-.orbit--neptune {
-    height: 155rem;
-    width: 155rem;
-    top: calc(50% - 77.5rem);
-    left: calc(0% - 77.5rem);
+.orbit--neptun {
+    height: 157rem;
+    width: 157rem;
+    top: calc(50% - 78.5rem);
+    left: calc(0% - 78.5rem);
 
     .planet {
         align-items: flex-end;
@@ -139,21 +142,21 @@
         right: -3.3%;
         padding-right: 2rem;
 
-        img {
-            width: 7rem;
+        video {
+            width: 6.44rem;
         }
     }
 }
 
 .planet--sun {
-    top: calc(50% - 14rem);
+    top: calc(50% - 20rem);
 
 }
 
 /* planet names*/
 
 .planet__name--sun {
-    top: calc(50% - 19rem);
+    top: calc(50% - 24rem);
 }
 
 
