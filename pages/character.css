@@ -1,3 +1,4 @@
-.character-image{
+.character-image svg{
     max-height: 35rem;
+    height: 100%;
 }
