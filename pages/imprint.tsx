@@ -30,11 +30,11 @@ const ImprintPage: React.FC = () => {
             </Head>
             <div ref={firstScreenRef} className="h-screen relative container mx-auto p-8 flex justify-between items-center">
                 <div className="flex flex-col">
-                    <h1 className="text-4xl font-bold mb-4">Impressum</h1>
-                    <h2 className="text-1xl font-bold mb-4">Angaben gemäß § 5 TMG</h2>
+                    <h1 className="text-4xl mb-4">Impressum</h1>
+                    <h2 className="text-1xl mb-4">Angaben gemäß § 5 TMG</h2>
                     <p>Benedikt Gack & Lennart Gastler Lerntechnologien GbR</p>
                     <p>Miraweg 6<br/>70565 Stuttgart</p>
-                    <h2 className="text-0.5xl font-bold mb-4">Kontakt</h2>
+                    <h2 className="text-0.5xl mb-4">Kontakt</h2>
                     <p>Telefon: +49 151 50764719<br/>E-Mail: <a
                         href="mailto:webmaster@gackundgastler.de">webmaster@gackundgastler.de</a></p>
                 </div>
@@ -49,7 +49,7 @@ const ImprintPage: React.FC = () => {
                 </div>
             </div>
             <div ref={teamRef} className="container mx-auto p-8">
-                <h1 className="text-4xl font-bold mb-4">Team</h1>
+                <h1 className="text-4xl mb-4">Team</h1>
                 <div className="team-members-container mx-auto py-8 flex justify-between mb-3 flex-wrap">
                     <TeamMember
                         image="/images/emma.png"

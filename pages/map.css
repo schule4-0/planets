@@ -163,6 +163,8 @@
     padding: 0.37rem 2.7rem;
     color: white;
     font-size: 3rem;
+    font-family: var(--font-heading);
+    font-weight: normal;
 }
 
 .planet__name:hover {
