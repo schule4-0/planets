@@ -11,9 +11,9 @@ const hairColors: Color[] = [
 ];
 
 const getSkinColor: Color[] = [
-    { code: "#FCD8B1", word: "hell" },
-    { code: "#AF875C", word: "mittel" },
-    { code: "#3C210F", word: "dunkel" },
+    { code: "#FCD8B1", word: "bright" },
+    { code: "#AF875C", word: "middle" },
+    { code: "#3C210F", word: "dark" },
 ];
 
 const rocketColor: Color[] = [
