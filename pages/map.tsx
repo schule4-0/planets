@@ -1,7 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import './map.css';
 import Layout from '../app/layout';
-import Image from "next/image";
 import {
     getNeptune, getUranus, getSaturn, getJupiter, getMars,
     getEarth, getVenus, getMercury, getSun
@@ -10,7 +9,6 @@ import {getPlanetName} from '@/app/utils/planetUtils';
 
 const MapPage: React.FC = () => {
     const [selectedPlanet, setSelectedPlanet] = useState<string | null>(null);
-    const [hoveredPlanet, setHoveredPlanet] = useState<string | null>(null);
     const [planetCompletion, setPlanetCompletion] = useState<{ [key: string]: boolean }>({});
     const orbitContainerRef = useRef<HTMLDivElement>(null);
 
@@ -71,21 +69,29 @@ const MapPage: React.FC = () => {
 
     const planetClick = (planet: string): void => {
         if (isDisabled(planet)) return;
+        if (selectedPlanet !== null && selectedPlanet !== planet) {
+            let planetVideo: HTMLVideoElement = window.document.getElementById(selectedPlanet) as HTMLVideoElement;
+            planetVideo?.play();
+        }
         setSelectedPlanet(planet);
     }
 
     const handleMouseEnter = (planet: string): void => {
         if (isDisabled(planet)) return;
-        setHoveredPlanet(planet);
+        let planetVideo: HTMLVideoElement = window.document.getElementById(planet) as HTMLVideoElement;
+        planetVideo.pause();
     }
 
     const handleMouseLeave = (planet: string): void => {
         if (isDisabled(planet)) return;
-        setHoveredPlanet(null);
+        if (selectedPlanet !== planet) {
+            let planetVideo: HTMLVideoElement = window.document.getElementById(planet) as HTMLVideoElement;
+            planetVideo.play();
+        }
     }
 
-    const getImageSrc = (planet: string, isHovered: boolean, isSelected: boolean): string => {
-        return (isHovered || isSelected) ? `/images/planets/${planet}.gif` : `/images/planets/${planet}.png`;
+    const getVideoSource = (planet: string): string => {
+        return `/images/planets/${planet.toLowerCase()}.webm`;
     }
 
     return (
@@ -94,14 +100,14 @@ const MapPage: React.FC = () => {
                  className="bg-star h-screen hide-scrollbar relative overflow-y-hidden overflow-x-auto">
                 {['neptune', 'uranus', 'saturn', 'jupiter', 'mars', 'earth', 'venus', 'mercury'].map((planet) => (
                     <div className={`orbit absolute rounded-full orbit--${planet}`} key={planet}>
-                        <div className="disable planet absolute flex flex-col align-middle gap-4 z-50"
-                             id={`${planet}-planet`}>
-                            <Image
-                                /* We use unoptimized because the optimized version causes problems for gifs */
-                                unoptimized={true}
+                        <div className="disable planet absolute flex flex-col align-middle gap-4 z-50" id={`${planet}-planet`}>
+                            <video
+                                id={planet}
                                 className={"hover:cursor-pointer"}
-                                src={getImageSrc(planet, hoveredPlanet === planet, selectedPlanet === planet)}
-                                alt={planet}
+                                autoPlay
+                                loop
+                                muted
+                                src={getVideoSource(planet)}
                                 width={100}
                                 height={100}
                                 onClick={() => planetClick(planet)}
@@ -119,15 +125,16 @@ const MapPage: React.FC = () => {
                         </div>
                     </div>
                 ))}
-                <div className={"disable planet"} id={"sun-planet"}>
-                    <Image
-                        /* We use unoptimized because the optimized version causes problems for gifs */
-                        unoptimized={true}
-                        className="planet--sun  max-w-none absolute -left-56 hover:cursor-pointer"
-                        src={getImageSrc('sun', hoveredPlanet === 'sun', selectedPlanet === 'sun')}
-                        alt="Sonne"
-                        width={450}
-                        height={450}
+                <div className={"disable planet"}>
+                    <video
+                        id={"sun"}
+                        className="planet--sun max-w-none absolute -left-96 hover:cursor-pointer"
+                        autoPlay
+                        loop
+                        muted
+                        src={getVideoSource('sun')}
+                        width={650}
+                        height={650}
                         onClick={() => planetClick('sun')}
                         onMouseEnter={() => handleMouseEnter('sun')}
                         onMouseLeave={() => handleMouseLeave('sun')}
