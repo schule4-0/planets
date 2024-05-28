@@ -97,7 +97,7 @@
   --font-heading: 'Orbitron', serif;
 }
 
-body {
+body {    
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(to bottom, #040758, #4F0080);
   font-family: var(--font-base);
