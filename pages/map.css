@@ -20,7 +20,7 @@
 
     .planet {
         bottom: 14%;
-        right: -19%;
+        right: -22%;
         align-items: flex-start;
         flex-direction: column-reverse;
 
@@ -40,7 +40,7 @@
         align-items: flex-start;
         flex-direction: column-reverse;
         bottom: 72%;
-        right: -11.5%;
+        right: -15.5%;
 
         video {
             width: 6.25rem;

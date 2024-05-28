@@ -1,7 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import './map.css';
 import Layout from '../app/layout';
-import Image from "next/image";
 import {
     getNeptune, getUranus, getSaturn, getJupiter, getMars,
     getEarth, getVenus, getMercury, getSun
@@ -10,7 +9,6 @@ import {getPlanetName} from '@/app/utils/planetUtils';
 
 const MapPage: React.FC = () => {
     const [selectedPlanet, setSelectedPlanet] = useState<string | null>(null);
-    const [hoveredPlanet, setHoveredPlanet] = useState<string | null>(null);
     const [planetCompletion, setPlanetCompletion] = useState<{ [key: string]: boolean }>({});
     const orbitContainerRef = useRef<HTMLDivElement>(null);
 
@@ -80,14 +78,12 @@ const MapPage: React.FC = () => {
 
     const handleMouseEnter = (planet: string): void => {
         if (isDisabled(planet)) return;
-        setHoveredPlanet(planet);
         let planetVideo: HTMLVideoElement = window.document.getElementById(planet) as HTMLVideoElement;
         planetVideo.pause();
     }
 
     const handleMouseLeave = (planet: string): void => {
         if (isDisabled(planet)) return;
-        setHoveredPlanet(null);
         if (selectedPlanet !== planet) {
             let planetVideo: HTMLVideoElement = window.document.getElementById(planet) as HTMLVideoElement;
             planetVideo.play();
@@ -104,7 +100,7 @@ const MapPage: React.FC = () => {
                  className="bg-star h-screen hide-scrollbar relative overflow-y-hidden overflow-x-auto">
                 {['neptune', 'uranus', 'saturn', 'jupiter', 'mars', 'earth', 'venus', 'mercury'].map((planet) => (
                     <div className={`orbit absolute rounded-full orbit--${planet}`} key={planet}>
-                        <div className="disable planet absolute flex flex-col align-middle gap-4 z-50">
+                        <div className="disable planet absolute flex flex-col align-middle gap-4 z-50" id={`${planet}-planet`}>
                             <video
                                 id={planet}
                                 className={"hover:cursor-pointer"}
