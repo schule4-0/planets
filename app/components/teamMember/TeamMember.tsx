@@ -19,7 +19,7 @@ const TeamMember: React.FC<TeamMemberProps> = ({ image, name, desc1, desc2, tags
         <div>
             <Image className={`${styles['team-member__image']}`} src={image} alt={name} width={185} height={185}/>
             <div className="p-3 lg:p-4">
-                <h2 className="font-semibold mb-1 lg:mb-1.5">{name}</h2>
+                <h2 className="mb-1 lg:mb-1.5">{name}</h2>
                 <p>{desc1}</p>
                 <p>{desc2}</p>
                 <ul className="mt-2.5 lg:mt-3">

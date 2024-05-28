@@ -6,7 +6,7 @@ const HeaderSubpage: React.FC = () => {
         <header className="flex justify-between items-center bg-header p-4 text-white">
             <div className="flex items-center">
                 <Image src="/images/logo.png" alt="Logo" width={50} height={50} className="mr-2" />
-                <div className="text-lg font-bold font-agency max-w-28">
+                <div className="text-lg max-w-28">
                     Planeten Entdecker
                 </div>
             </div>
