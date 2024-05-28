@@ -1,0 +1,48 @@
+{
+  "story": [
+    {
+      "id": "1",
+      "leftDialog": "Hallo, Ich bin Mara.",
+      "leftCharacterSrc": "/images/girl.svg",
+      "rightCharacterSrc": "/images/alien.svg",
+      "rightDialog": "",
+      "backgroundimg": "/images/background_childroom.svg",
+      "button": {
+        "next": "2"
+      }
+    },
+    {
+      "id": "2",
+      "leftDialog": "",
+      "leftCharacterSrc": "/images/girl.svg",
+      "rightDialog": "Hallo Mara, ich bin Gustav!",
+      "rightCharacterSrc": "/images/alien.svg",
+      "backgroundimg": "/images/background_childroom.svg",
+      "button": {
+        "next": "3"
+      }
+    },
+    {
+      "id": "3",
+      "leftDialog": "Schön, dich kennenzulernen?",
+      "leftCharacterSrc": "/images/girl.svg",
+      "rightCharacterSrc": "/images/alien.svg",
+      "rightDialog": "",
+      "backgroundimg": "/images/background_childroom.svg",
+      "button": {
+        "next": "4"
+      }
+    },
+    {
+      "id": "4",
+      "leftDialog": "",
+      "leftCharacterSrc": "/images/girl.svg",
+      "rightCharacterSrc": "/images/alien.svg",
+      "rightDialog": "Welche Farbe hat der Himmel?",
+      "backgroundimg": "/images/background_childroom.svg",
+      "button": {
+        "next": "4"
+      }
+    }
+  ]
+}
