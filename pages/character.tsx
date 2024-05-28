@@ -118,7 +118,7 @@ const Character: React.FC = () => {
                         colorCodes={getHairColors().map((color) => color.code)}
                     />
                 </div>
-                <h2 className="font-bold mb-4">Hautfarbe</h2>
+                <h2 className="mb-4">Hautfarbe</h2>
                 <div>
                     <SelectItems
                         onClick={handleSkinColorClick}
