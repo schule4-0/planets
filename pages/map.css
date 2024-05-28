@@ -1,8 +1,18 @@
+.planet.disable {
+    .planet__name, .planet__name--sun{
+        cursor: default;
+        visibility: hidden;
+    }
+    video,img{
+        cursor: default;
+    }
+}
+
 .orbit {
     border-right: white dashed 3px;
 }
 
-.orbit--merkur {
+.orbit--mercury {
     height: 40rem;
     width: 40rem;
     top: calc(50% - 20rem);
@@ -38,7 +48,7 @@
     }
 }
 
-.orbit--erde {
+.orbit--earth {
     height: 72rem;
     width: 72rem;
     top: calc(50% - 36rem);
@@ -163,7 +173,7 @@
     padding: 0.37rem 2.7rem;
     color: white;
     font-size: 3rem;
-    font-family: var(--font-heading);
+    font-family: var(--font-heading), serif;
     font-weight: normal;
 }
 
