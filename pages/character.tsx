@@ -22,9 +22,7 @@ const Character: React.FC = () => {
     const [name, setName] = useState<string>('');
     const [selectedHair, setSelectedHair] = useState<string>('short-curly')
     const [selectedHairColorCode, setSelectedHairColorCode] = useState<string>('#000000');
-    const [lastSelectedHairColorCode, setLastSelectedHairColorCode] = useState<string>('#000000');
     const [selectedSkinColorCode, setSelectedSkinColorCode] = useState<string>('#FCD8B1');
-
     const nameInputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
@@ -58,7 +56,6 @@ const Character: React.FC = () => {
 
     const handleHairColorClick = async (index: number) => {
         const colorWord = getHairColors()[index].code;
-        setLastSelectedHairColorCode(selectedHairColorCode);
         setSelectedHairColorCode(colorWord);
         if (isClient) await setHairColor(colorWord);
     };
@@ -71,7 +68,7 @@ const Character: React.FC = () => {
 
     const renderLeftChildren = () => (
         <div className="character-image h-full w-full flex justify-center items-center">
-            <CharacterImage hairColor={selectedHairColorCode} lastHairColor={lastSelectedHairColorCode} hairType={selectedHair} skinColor ={selectedSkinColorCode}></CharacterImage>
+            <CharacterImage hairColor={selectedHairColorCode}  hairType={selectedHair} skinColor ={selectedSkinColorCode}></CharacterImage>
         </div>
     );
 
@@ -80,29 +77,49 @@ const Character: React.FC = () => {
             <div>
                 <h1 className="mb-4 text-center">Entwerfe deinen Charakter</h1>
                 <h2 className="mb-4">Frisur</h2>
-                <div className="text-center">
+                <div>
                     <SelectItems
                         onClick={(index) => {
                             const desc = ['short-curly', 'short-straight', 'long-curly', 'long-straight'][index];
                             handleImageClick(desc);
                         }}
-                        images={[
-                            {src: `/images/kids/short-curly.svg`, desc: 'short-curly'},
-                            {src: `/images/kids/short-straight.svg`, desc: 'short-straight'},
-                            {src: `/images/kids/long-curly.svg`, desc: 'long-curly'},
-                            {src: `/images/kids/long-straight.svg`, desc: 'long-straight'},
+                        components={[
+                            <CharacterImage
+                                key="short-curly-hair"
+                                hairColor={selectedHairColorCode}
+                                hairType="short-curly-hair"
+                                skinColor={selectedSkinColorCode}
+                            />,
+                            <CharacterImage
+                                key="short-straight-hair"
+                                hairColor={selectedHairColorCode}
+                                hairType="short-straight-hair"
+                                skinColor={selectedSkinColorCode}
+                            />,
+                            <CharacterImage
+                                key="long-curly-hair"
+                                hairColor={selectedHairColorCode}
+                                hairType="long-curly-hair"
+                                skinColor={selectedSkinColorCode}
+                            />,
+                            <CharacterImage
+                                key="long-straight-hair"
+                                hairColor={selectedHairColorCode}
+                                hairType="long-straight-hair"
+                                skinColor={selectedSkinColorCode}
+                            />,
                         ]}
                     />
                 </div>
                 <h2 className="mb-4">Haarfarbe</h2>
-                <div className="text-left">
+                <div>
                     <SelectItems
                         onClick={handleHairColorClick}
                         colorCodes={getHairColors().map((color) => color.code)}
                     />
                 </div>
                 <h2 className="font-bold mb-4">Hautfarbe</h2>
-                <div className="text-left">
+                <div>
                     <SelectItems
                         onClick={handleSkinColorClick}
                         colorCodes={getSkinColors().map((color) => color.code)}

@@ -2,70 +2,70 @@
 <svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 187.024665176868439 424.243606961794285">
   <defs>
     <style>
-      .cls-1, .cls-2 {
+      .long-straight .cls-1, .long-straight .cls-2 {
         fill: #fff;
       }
 
-      .cls-1, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9, .cls-10, .cls-11, .cls-12 {
+      .long-straight .cls-1, .long-straight .cls-3, .long-straight .cls-4, .long-straight .cls-5, .long-straight .cls-6, .long-straight .cls-7, .long-straight .cls-8, .long-straight .cls-9, .long-straight .cls-10, .long-straight .cls-11, .long-straight .cls-12 {
         stroke: #231f20;
       }
 
-      .cls-1, .cls-4, .cls-5, .cls-6, .cls-7, .cls-9, .cls-10 {
+      .long-straight .cls-1, .long-straight .cls-4, .long-straight .cls-5, .long-straight .cls-6, .long-straight .cls-7, .long-straight .cls-9, .long-straight .cls-10 {
         stroke-miterlimit: 10;
       }
 
-      .cls-1, .cls-4, .cls-6, .cls-7, .cls-8, .cls-9, .cls-10, .cls-11 {
+      .long-straight .cls-1, .long-straight .cls-4, .long-straight .cls-6, .long-straight .cls-7, .long-straight .cls-8, .long-straight .cls-9, .long-straight .cls-10, .long-straight .cls-11 {
         stroke-width: 3px;
       }
 
-      .cls-3 {
-        fill: #ffcb48;
+      .long-straight .cls-3 {
+        fill: #hairColor;
         stroke-width: 2.69019252061844px;
       }
 
-      .cls-3, .cls-8, .cls-9, .cls-11, .cls-12 {
+      .long-straight .cls-3, .long-straight .cls-8, .long-straight .cls-9, .long-straight .cls-11, .long-straight .cls-12 {
         stroke-linecap: round;
       }
 
-      .cls-3, .cls-8, .cls-11, .cls-12 {
+      .long-straight .cls-3, .long-straight .cls-8, .long-straight .cls-11, .long-straight .cls-12 {
         stroke-linejoin: round;
       }
 
-      .cls-4, .cls-9, .cls-13 {
+      .long-straight .cls-4, .long-straight .cls-9, .long-straight .cls-13 {
         fill: #db8aa1;
       }
 
-      .cls-5 {
+      .long-straight .cls-5 {
         fill: #199747;
         stroke-width: 2px;
       }
 
-      .cls-6, .cls-12 {
-        fill: #fcd8b1;
+      .long-straight .cls-6, .long-straight .cls-12 {
+        fill: #skinColor;
       }
 
-      .cls-7, .cls-11 {
+      .long-straight .cls-7, .long-straight .cls-11 {
         fill: #0194c0;
       }
 
-      .cls-8 {
+      .long-straight .cls-8 {
         fill: #266bb5;
       }
 
-      .cls-10 {
+      .long-straight .cls-10 {
         fill: #3d2912;
       }
 
-      .cls-12 {
+      .long-straight .cls-12 {
         stroke-width: 3.29081475734711px;
       }
 
-      .cls-14 {
+      .long-straight .cls-14 {
         fill: #231f20;
       }
     </style>
   </defs>
-  <g id="Layer_1-2" data-name="Layer 1">
+  <g class="long-straight" id="Layer_1-2" data-name="Layer 1">
     <g>
       <path class="cls-3" d="m92.147586494684219,12.490572980102115c.3720703125-.729034423828125,2.197265625-4.045013427734375.917236328125-6.72613525390625-2.89404296875-6.0616455078125-19.742431640625-4.86138916015625-28.7388916015625-2.44586181640625C30.718631416559219,12.342074444945865,15.840335518121719,62.715731671508365,9.905521064996719,82.80902390783649,4.165774971246719,102.242342999633365,1.861209541559219,120.42767625158649,1.345096260309219,136.31219773596149c4.74462890625,5.809814453125,11.3819580078125,12.480377197266534,20.4012451171875,18.274627685547784,26.9677734375,17.32476806640625,55.839111328125,14.357696533203125,65.9136962890625,12.83245849609375-2.32373046875-103.443420410157159-.0167236328125-146.103546142579034,4.487548828125-154.928710937500909Z"/>
       <path class="cls-3" d="m94.876956611871719,12.490572980102115c-.3763427734375-.7371826171875-2.1956787109375-4.04815673828125-.9171142578125-6.72613525390625,2.89404296875-6.0616455078125,19.742431640625-4.86138916015625,28.73876953125-2.44586181640625,33.6072998046875,9.02349853515625,48.4857177734375,59.39715576171875,54.42041015625,79.490447998046875,5.7398681640625,19.433319091796875,8.0443115234375,37.61865234375,8.560546875,53.503173828125-5.8875732421875,6.117858886719659-14.7291259765625,13.824645996094659-26.965087890625,20.109039306641534-23.212158203125,11.9217529296875-45.1533203125,11.79779052734375-55.767822265625,10.998046875-.32275390625-103.364074707032159-3.56005859375-146.094238281250909-8.0697021484375-154.928710937500909Z"/>

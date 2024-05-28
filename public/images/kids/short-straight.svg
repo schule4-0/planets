@@ -2,73 +2,73 @@
 <svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168.419921875 415.964234190378193">
   <defs>
     <style>
-      .cls-1 {
+      .short-straight .cls-1 {
         fill: #fff;
       }
 
-      .cls-2 {
-        fill: #haircolor;
+      .short-straight .cls-2 {
+        fill: #hairColor;
         stroke-width: 2.69019252061844px;
       }
 
-      .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9 {
+      .short-straight .cls-2, .short-straight .cls-3, .short-straight .cls-4, .short-straight .cls-5, .short-straight .cls-6, .short-straight .cls-7, .short-straight .cls-8, .short-straight .cls-9 {
         stroke: #231f20;
       }
 
-      .cls-2, .cls-3, .cls-5, .cls-6, .cls-8, .cls-9 {
+      .short-straight .cls-2, .short-straight .cls-3, .short-straight .cls-5, .short-straight .cls-6, .short-straight .cls-8, .short-straight .cls-9 {
         stroke-linecap: round;
       }
 
-      .cls-2, .cls-3, .cls-6, .cls-8, .cls-9 {
+      .short-straight .cls-2, .short-straight .cls-3, .short-straight .cls-6, .short-straight .cls-8, .short-straight .cls-9 {
         stroke-linejoin: round;
       }
 
-      .cls-3 {
+      .short-straight .cls-3 {
         fill: #2c9148;
       }
 
-      .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8 {
+      .short-straight .cls-3, .short-straight .cls-4, .short-straight .cls-5, .short-straight .cls-6, .short-straight .cls-7, .short-straight .cls-8 {
         stroke-width: 3px;
       }
 
-      .cls-4, .cls-5, .cls-7 {
+      .short-straight .cls-4, .short-straight .cls-5, .short-straight .cls-7 {
         stroke-miterlimit: 10;
       }
 
-      .cls-4, .cls-9 {
-        fill: #fcd8b1;
+      .short-straight .cls-4, .short-straight .cls-9 {
+        fill: #skinColor;
       }
 
-      .cls-5 {
+      .short-straight .cls-5 {
         fill: #268340;
       }
 
-      .cls-6 {
+      .short-straight .cls-6 {
         fill: #266bb5;
       }
 
-      .cls-7 {
+      .short-straight .cls-7 {
         fill: #3d2912;
       }
 
-      .cls-10 {
+      .short-straight .cls-10 {
         fill: #db8aa1;
       }
 
-      .cls-8 {
+      .short-straight .cls-8 {
         fill: #0194c0;
       }
 
-      .cls-9 {
+      .short-straight .cls-9 {
         stroke-width: 3.29081475734711px;
       }
 
-      .cls-11 {
+      .short-straight .cls-11 {
         fill: #231f20;
       }
     </style>
   </defs>
-  <g id="Layer_1-2" data-name="Layer 1">
+  <g class="short-straight" id="Layer_1-2" data-name="Layer 1">
     <g>
       <path class="cls-4" d="m72.026107845073057,152.982627501083698c.986320495609107,2.263580322265625,2.189552307128906,5.8812255859375,2.140129089359107,10.3948974609375-.021751403810413,1.98626708984375-.281608581539331,3.73895263671875-.611465454099744,5.19744873046875,3.289848327629443,1.01324462890625,7.894523620600012,2.04925537109375,13.452224731439856,2.14013671875,4.6463775634802.075958251953125,8.605270385740369-.530792236328125,11.617828369140625-1.222930908203125-.188919067379175-2.06671142578125-.255310058590112-4.549468994140625,0-7.33758544921875.324035644529431-3.538726806640625,1.071762084959119-6.537109375,1.834396362308325-8.866241455078125-9.477706909179688-.101898193359375-18.955406188968482-.203826904296875-28.433113098148169-.30572509765625Z"/>
       <path class="cls-4" d="m49.242954311141148,378.424942280764299c.509552001951306,5.19744873046875,1.019104003900793,10.3948974609375,1.528656005861194,15.59234619140625,3.289855957029431,1.01324462890625,7.89453125,2.04925537109375,13.452239990228918,2.14013671875,4.646362304691138.075927734375,8.605255126951306-.53082275390625,11.617828369140625-1.22296142578125.611450195310681-5.4012451171875,1.222930908199487-10.80255126953125,1.834381103519263-16.20379638671875-9.477691650388806-.1019287109375-18.955413818359375-.203857421875-28.43310546875-.30572509765625Z"/>

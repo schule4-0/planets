@@ -2,103 +2,103 @@
 <svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 243.42985 426.83803">
   <defs>
     <style>
-      .cls-1 {
+      .astro-long-straight .cls-1 {
         fill: #fff;
       }
 
-      .cls-2 {
-        fill: #ffcb48;
+      .astro-long-straight .cls-2 {
+        fill: #hairColor;
         stroke-linecap: round;
         stroke-linejoin: round;
         stroke-width: 2.69019px;
       }
 
-      .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9, .cls-10, .cls-11, .cls-12, .cls-13, .cls-14, .cls-15, .cls-16, .cls-17 {
+      .astro-long-straight .cls-2, .astro-long-straight .cls-3, .astro-long-straight .cls-4, .astro-long-straight .cls-5, .astro-long-straight .cls-6, .astro-long-straight .cls-7, .astro-long-straight .cls-8, .astro-long-straight .cls-9, .astro-long-straight .cls-10, .astro-long-straight .cls-11, .astro-long-straight .cls-12, .astro-long-straight .cls-13, .astro-long-straight .cls-14, .astro-long-straight .cls-15, .astro-long-straight .cls-16, .astro-long-straight .cls-17 {
         stroke: #231f20;
       }
 
-      .cls-3 {
+      .astro-long-straight .cls-3 {
         fill: #23419a;
       }
 
-      .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9, .cls-10, .cls-11, .cls-12, .cls-13, .cls-14, .cls-15, .cls-16, .cls-17 {
+      .astro-long-straight .cls-3, .astro-long-straight .cls-4, .astro-long-straight .cls-5, .astro-long-straight .cls-6, .astro-long-straight .cls-7, .astro-long-straight .cls-8, .astro-long-straight .cls-9, .astro-long-straight .cls-10, .astro-long-straight .cls-11, .astro-long-straight .cls-12, .astro-long-straight .cls-13, .astro-long-straight .cls-14, .astro-long-straight .cls-15, .astro-long-straight .cls-16, .astro-long-straight .cls-17 {
         stroke-miterlimit: 10;
       }
 
-      .cls-3, .cls-4, .cls-6, .cls-7, .cls-8, .cls-9, .cls-12, .cls-13, .cls-17 {
+      .astro-long-straight .cls-3, .astro-long-straight .cls-4, .astro-long-straight .cls-6, .astro-long-straight .cls-7, .astro-long-straight .cls-8, .astro-long-straight .cls-9, .astro-long-straight .cls-12, .astro-long-straight .cls-13, .astro-long-straight .cls-17 {
         stroke-width: 2px;
       }
 
-      .cls-4 {
+      .astro-long-straight .cls-4 {
         fill: #ce3927;
       }
 
-      .cls-5 {
-        fill: #fcd8b1;
+      .astro-long-straight .cls-5 {
+        fill: #skinColor;
       }
 
-      .cls-5, .cls-10, .cls-11, .cls-15, .cls-16 {
+      .astro-long-straight .cls-5, .astro-long-straight .cls-10, .astro-long-straight .cls-11, .astro-long-straight .cls-15, .astro-long-straight .cls-16 {
         stroke-width: 3px;
       }
 
-      .cls-6, .cls-17 {
+      .astro-long-straight .cls-6, .astro-long-straight .cls-17 {
         fill: #1d172c;
       }
 
-      .cls-7 {
+      .astro-long-straight .cls-7 {
         fill: #eee81b;
       }
 
-      .cls-8 {
+      .astro-long-straight .cls-8 {
         fill: #273a83;
       }
 
-      .cls-9 {
+      .astro-long-straight .cls-9 {
         fill: #e8e8e8;
       }
 
-      .cls-10 {
+      .astro-long-straight .cls-10 {
         fill: #3d2912;
       }
 
-      .cls-18 {
+      .astro-long-straight .cls-18 {
         fill: #db8aa1;
       }
 
-      .cls-11 {
+      .astro-long-straight .cls-11 {
         fill: #ef4136;
       }
 
-      .cls-12 {
+      .astro-long-straight .cls-12 {
         fill: #dcdbdb;
       }
 
-      .cls-13 {
+      .astro-long-straight .cls-13 {
         fill: #cf6528;
       }
 
-      .cls-14 {
+      .astro-long-straight .cls-14 {
         stroke-width: 2.17621px;
       }
 
-      .cls-14, .cls-16 {
+      .astro-long-straight .cls-14, .astro-long-straight .cls-16 {
         fill: #cccccb;
       }
 
-      .cls-15 {
+      .astro-long-straight .cls-15 {
         fill: #b5b5b6;
       }
 
-      .cls-19 {
+      .astro-long-straight .cls-19 {
         fill: #231f20;
       }
 
-      .cls-17 {
+      .astro-long-straight .cls-17 {
         opacity: .53;
       }
     </style>
   </defs>
-  <g id="Layer_1-2" data-name="Layer 1">
+  <g class="astro-long-straight" id="Layer_1-2" data-name="Layer 1">
     <path class="cls-6" d="m203.45108,105.73261c0,1.46002-.04004,2.91998-.12012,4.35999v.01001c-1.47998,28.42999-17.37988,53.03998-40.5199,66.66998-10.01001,5.91003-21.37,9.75-33.51001,10.95001-2.72009.28003-5.48999.41998-8.28003.41998-2.08997,0-4.16003-.07996-6.20007-.22998-10.87988-.81-21.15991-3.71997-30.44995-8.34998-26.86987-13.35004-45.41992-40.92004-45.78003-72.86005v-.00995c-.01001-.32001-.01001-.64001-.01001-.96002,0-45.51001,36.91016-82.40002,82.44006-82.40002,45.52002,0,82.43005,36.89001,82.43005,82.40002Z"/>
     <path class="cls-2" d="m54.84135,181.57002v-.01c-.5-1.54-.65-2.76-.69-3.27-.64.08-1.59.17-2.75.13h-.01"/>
     <path class="cls-16" d="m93.49613,184.91587c-3.21362.04172-8.19067.45932-13.75793,2.54138-10.74524,4.01852-17.08459,11.76736-22.70056,18.80255-4.39832,5.50983-6.85706,9.92273-10.23523,15.98566-4.2655,7.65543-8.91833,16.05292-12.13611,27.80466-1.47192,5.37561-3.0127,12.69397-3.53955,21.54089-2.17896,2.09683-5.14941,5.28424-8.02551,9.63058-3.46509,5.23648-6.66174,9.9805-7.10828,16.50955-.46399,6.78372,1.98865,15.91309,6.90454,16.98727,2.70557.59122,5.29468-1.44604,5.88538-1.91083,3.17725-2.49997,3.13025-5.89081,5.80884-13.14651,1.12366-3.04385,2.23853-5.44452,2.98096-6.95541-.64478,1.33066-1.53296,3.25433-2.47717,5.6304-1.98828,5.00345-1.75171,5.7905-1.42102,6.06387.59497.49179,1.98071-.27698,2.44592-.53503,4.91199-2.72491,8.68066-19.66183,9.91077-25.62421,2.12219-1.73196,4.56409-3.83102,7.19495-6.30179,2.45032-2.30127,4.93933-4.80811,7.42749-7.5351,10.41406-11.41406,17.33496-22.8757,21.9292-32.1944,3.21375-7.4744,6.47742-16.89569,8.62036-28.03241,1.35254-7.0293,2.02246-13.51489,2.29297-19.26114Z"/>
