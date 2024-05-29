@@ -2,73 +2,73 @@
 <svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 187.02003 424.23922">
   <defs>
     <style>
-      .cls-1 {
+      .long-straight .cls-1 {
         fill: #fff;
       }
 
-      .cls-2 {
-        fill: #ffcb48;
+      .long-straight .cls-2 {
+        fill: #hairColor;
         stroke-width: 2.69019px;
       }
 
-      .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9 {
+      .long-straight .cls-2, .long-straight .cls-3, .long-straight .cls-4, .long-straight .cls-5, .long-straight .cls-6, .long-straight .cls-7, .long-straight .cls-8, .long-straight .cls-9 {
         stroke: #231f20;
       }
 
-      .cls-2, .cls-3, .cls-5, .cls-6, .cls-8, .cls-9 {
+      .long-straight .cls-2, .long-straight .cls-3, .long-straight .cls-5, .long-straight .cls-6, .long-straight .cls-8, .long-straight .cls-9 {
         stroke-linecap: round;
       }
 
-      .cls-2, .cls-3, .cls-6, .cls-8, .cls-9 {
+      .long-straight .cls-2, .long-straight .cls-3, .long-straight .cls-6, .long-straight .cls-8, .long-straight .cls-9 {
         stroke-linejoin: round;
       }
 
-      .cls-3 {
+      .long-straight .cls-3 {
         fill: #2c9148;
       }
 
-      .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8 {
+      .long-straight .cls-3, .long-straight .cls-4, .long-straight .cls-5, .long-straight .cls-6, .long-straight .cls-7, .long-straight .cls-8 {
         stroke-width: 3px;
       }
 
-      .cls-4, .cls-5, .cls-7 {
+      .long-straight .cls-4, .long-straight .cls-5, .long-straight .cls-7 {
         stroke-miterlimit: 10;
       }
 
-      .cls-4, .cls-9 {
-        fill: #fcd8b1;
+      .long-straight .cls-4, .long-straight .cls-9 {
+        fill: #skinColor;
       }
 
-      .cls-5 {
+      .long-straight .cls-5 {
         fill: #268340;
       }
 
-      .cls-6 {
+      .long-straight .cls-6 {
         fill: #266bb5;
       }
 
-      .cls-7 {
+      .long-straight .cls-7 {
         fill: #3d2912;
       }
 
-      .cls-10 {
+      .long-straight .cls-10 {
         fill: #db8aa1;
       }
 
-      .cls-8 {
+      .long-straight .cls-8 {
         fill: #0194c0;
       }
 
-      .cls-9 {
+      .long-straight .cls-9 {
         stroke-width: 3.29081px;
       }
 
-      .cls-11 {
+      .long-straight .cls-11 {
         fill: #231f20;
       }
     </style>
   </defs>
-  <g id="Layer_1-2" data-name="Layer 1">
+  <g class="long-straight" id="Layer_1-2" data-name="Layer 1">
     <g>
       <path class="cls-2" d="m185.67493,135.91153c-6.11987,6.28998-14.95996,13.87-26.95996,20.10999-25.90991,13.47998-50.86987,12.54999-62.86987,11.21002-12.94019,1.81-43,3.98999-72.12012-13.29004-9.51001-5.63995-16.86011-12.13-22.37988-18.02997.50977-15.88,2.81982-34.07001,8.55981-53.5C17.06482,58.17154,31.02503,10.91153,64.32508,2.92154c11.03979-2.65002,21.32983-.29004,28.73975,2.45001.06396,11.31177.17065,16.7862.31738,16.78732s.33667-5.47326.57275-16.78732c6.59009-2.96002,16.31006-5.73004,27.70996-2.74005,0,0,.51001.15002,1.03003.29004,33.61011,9.01996,48.48999,59.39996,54.41992,79.48999,5.73999,19.42999,8.05005,37.62,8.56006,53.5Z"/>
       <path class="cls-4" d="m80.25051,161.25761c.98632,2.26358,2.18955,5.88123,2.14013,10.3949-.02175,1.98627-.28161,3.73895-.61147,5.19745,3.28985,1.01324,7.89452,2.04926,13.45222,2.14014,4.64638.07596,8.60527-.53079,11.61783-1.22293-.18892-2.06671-.25531-4.54947,0-7.33759.32404-3.53873,1.07176-6.53711,1.8344-8.86624-9.47771-.1019-18.95541-.20383-28.43311-.30573Z"/>

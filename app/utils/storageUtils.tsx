@@ -22,12 +22,16 @@ export const getRocketType = async (): Promise<string | null> => {
         return getStoredValue("selectedRocket");
 };
 
-export const getGender = async (): Promise<string | null> => {
-        return getStoredValue("selectedGender")
+export const getHair = async (): Promise<string | null> => {
+        return getStoredValue("selectedHair")
 };
 
 export const getHairColor = async (): Promise<string | null> => {
-        return getStoredValue("selectedHairColorWord")
+        return getStoredValue("selectedHairColorCode")
+};
+
+export const getSkinColor = async (): Promise<string | null> => {
+        return getStoredValue("selectedSkinColorCode")
 };
 
 export const getRocketColor = async (): Promise<any> => {
@@ -38,8 +42,8 @@ export const getCharacterName = async (): Promise<string | null> => {
         return getStoredValue("characterName")
 };
 
-export const setGender = async (value: string): Promise<void> => {
-        return setStoredValue("selectedGender", value)
+export const setHair = async (value: string): Promise<void> => {
+        return setStoredValue("selectedHair", value)
 };
 
 export const setRocketType  = async (value: string): Promise<void> => {
@@ -47,7 +51,11 @@ export const setRocketType  = async (value: string): Promise<void> => {
 };
 
 export const setHairColor = async (value: string): Promise<void> => {
-        return setStoredValue("selectedHairColorWord", value)
+        return setStoredValue("selectedHairColorCode", value)
+};
+
+export const setSkinColor = async (value: string): Promise<void> => {
+        return setStoredValue("selectedSkinColorCode", value)
 };
 export const setRocketColor = async (value: string): Promise<void> => {
         return setStoredValue("selectedRocketColorWord", value)

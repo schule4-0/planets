@@ -55,8 +55,8 @@ const Spaceship: React.FC = () => {
     const renderRightChildren = () => (
         <Layout>
             <div>
-                <h2 className="font-bold mb-4 text-center">Baue deine Rakete</h2>
-                <h2 className="font-bold mb-4">Flügelform</h2>
+                <h1 className="mb-4 text-center">Baue deine Rakete</h1>
+                <h2 className="mb-4">Flügelform</h2>
                 <div className="text-center">
                     <SelectItems
                         onClick={(index) => handleImageClick(index === 0 ? 'rocket1' : 'rocket2')}
@@ -66,7 +66,7 @@ const Spaceship: React.FC = () => {
                         ]}
                     />
                 </div>
-                <h2 className="font-bold mb-4">Farbe</h2>
+                <h2 className="mb-4">Farbe</h2>
                 <div className="text-center">
                     <SelectItems
                         onClick={handleColorClick}
