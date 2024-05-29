@@ -13,7 +13,7 @@ const SelectLayout: React.FC<SelectLayoutProps> = ({leftChildren, rightChildren,
         <div className="min-h-screen bg-star">
             <div className={"flex justify-between p-20 z-0"}>
                 <div className="w-2/5 mr-28 border--black--yellow">
-                    <div className="inner-box">
+                    <div className="inner-box flex items-center">
                         {leftChildren}
                     </div>
                 </div>

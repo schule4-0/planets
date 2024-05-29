@@ -67,7 +67,7 @@ const Character: React.FC = () => {
     };
 
     const renderLeftChildren = () => (
-        <div className="h-full w-full flex justify-center items-center">
+        <div className="character-image h-full w-full flex justify-center items-center">
             <CharacterImage hairColor={selectedHairColorCode}  hairType={selectedHair} skinColor ={selectedSkinColorCode}></CharacterImage>
         </div>
     );

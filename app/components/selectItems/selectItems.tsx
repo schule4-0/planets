@@ -18,10 +18,13 @@ const SelectItems: React.FC<SelectItemsProps> = ({ images, colorCodes, component
     const renderImages = () => {
         if (images) {
             return images.map((image, index) => (
-                <div key={index} onClick={() => onClick(index)}
-                     className={"hover:cursor-pointer mb-6 mr-10"}>
+                <div
+                    key={index}
+                    onClick={() => onClick(index)}
+                    className={`hover:cursor-pointer mb-6 ${index !== images.length - 1 ? 'mr-10' : ''}`}
+                >
                     <Image
-                        className={"rounded-2xl p-1 border-black border-8 w-32 h-32 mb-4"}
+                        className="rounded-2xl p-1 border-black border-8 w-28 h-28 mb-4"
                         src={image.src}
                         alt={image.desc}
                         width={124}
@@ -31,7 +34,8 @@ const SelectItems: React.FC<SelectItemsProps> = ({ images, colorCodes, component
             ));
         }
         return null;
-    }
+    };
+
 
     const renderColorCodes = () => {
         if (colorCodes) {
@@ -51,14 +55,18 @@ const SelectItems: React.FC<SelectItemsProps> = ({ images, colorCodes, component
     const renderComponents = () => {
         if (components) {
             return components.map((component, index) => (
-                <div key={index} onClick={() => onClick(index)}
-                     className={"rounded-2xl p-1 border-black border-8 w-32 h-32 hover:cursor-pointer mb-6 mr-10 "}>
+                <div
+                    key={index}
+                    onClick={() => onClick(index)}
+                    className={`rounded-2xl p-1 border-black border-8 w-28 h-28 hover:cursor-pointer mb-6 ${index !== components.length - 1 ? 'mr-10' : ''}`}
+                >
                     {component}
                 </div>
             ));
         }
         return null;
-    }
+    };
+
 
     return (
         <div className="flex flex-wrap">
