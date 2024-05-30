@@ -1,157 +1,191 @@
-import React, {useEffect, useRef, useState} from 'react';
-import './map.css';
-import Layout from '../app/layout';
+import React, { useEffect, useRef, useState } from "react";
+import "./map.css";
+import Layout from "../app/layout";
 import {
-    getNeptune, getUranus, getSaturn, getJupiter, getMars,
-    getEarth, getVenus, getMercury, getSun
-} from '@/app/utils/storageUtils';
-import {getPlanetName} from '@/app/utils/planetUtils';
+  getNeptune,
+  getUranus,
+  getSaturn,
+  getJupiter,
+  getMars,
+  getEarth,
+  getVenus,
+  getMercury,
+  getSun,
+} from "@/app/utils/storageUtils";
+import { getPlanetName } from "@/app/utils/planetUtils";
+
+export type Planets =
+  | "EARTH"
+  | "NEPTUE"
+  | "URANUS"
+  | "SATURN"
+  | "JUPITER"
+  | "MARS"
+  | "VENUS"
+  | "MERCURY"
+  | "SUN";
 
 const MapPage: React.FC = () => {
-    const [selectedPlanet, setSelectedPlanet] = useState<string | null>(null);
-    const [planetCompletion, setPlanetCompletion] = useState<{ [key: string]: boolean }>({});
-    const orbitContainerRef = useRef<HTMLDivElement>(null);
+  const [selectedPlanet, setSelectedPlanet] = useState<string | null>(null);
+  const [planetCompletion, setPlanetCompletion] = useState<{
+    [key: string]: boolean;
+  }>({});
+  const orbitContainerRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
-        const fetchPlanetCompletion = async () => {
-            const completionData = {
-                neptune: (await getNeptune()) !== null,
-                uranus: (await getUranus()) !== null,
-                saturn: (await getSaturn()) !== null,
-                jupiter: (await getJupiter()) !== null,
-                mars: (await getMars()) !== null,
-                earth: (await getEarth()) !== null,
-                venus: (await getVenus()) !== null,
-                mercury: (await getMercury()) !== null,
-                sun: (await getSun()) !== null
-            };
-            setPlanetCompletion(completionData);
-        };
-
-        //fix for screens with smaller height
-        if (orbitContainerRef.current) {
-            const orbitContainer = orbitContainerRef.current;
-            if (window.screen.availHeight <= 950) {
-                orbitContainer.style.height = "170vh";
-            }
-        }
-
-        fetchPlanetCompletion();
-    }, []);
-
-    useEffect(() => {
-        if (Object.keys(planetCompletion).length > 0) {
-            enablePlanet(planetCompletion);
-        }
-    }, [planetCompletion]);
-
-    const enablePlanet = (completionData: { [key: string]: boolean }): void => {
-        let planetsName: string[] = ["earth"];
-        // Enable other rock planets if earth completed
-        if (completionData["earth"]) {
-            planetsName.push("mercury", "venus", "mars");
-        }
-        planetsName.forEach((name) => {
-            let planetName = window.document.getElementById(name + "-planet");
-            if (planetName) {
-                planetName.classList.remove("disable");
-            }
-        });
+  useEffect(() => {
+    const fetchPlanetCompletion = async () => {
+      const completionData = {
+        neptune: (await getNeptune()) !== null,
+        uranus: (await getUranus()) !== null,
+        saturn: (await getSaturn()) !== null,
+        jupiter: (await getJupiter()) !== null,
+        mars: (await getMars()) !== null,
+        earth: (await getEarth()) !== null,
+        venus: (await getVenus()) !== null,
+        mercury: (await getMercury()) !== null,
+        sun: (await getSun()) !== null,
+      };
+      setPlanetCompletion(completionData);
     };
 
-    const isDisabled = (planet: string): boolean => {
-        let planetName = window.document.getElementById(planet.toLowerCase() + "-planet");
-        if (planetName) {
-            return planetName.classList.contains("disable");
-        }
-        return true;
+    //fix for screens with smaller height
+    if (orbitContainerRef.current) {
+      const orbitContainer = orbitContainerRef.current;
+      if (window.screen.availHeight <= 950) {
+        orbitContainer.style.height = "170vh";
+      }
     }
 
-    const planetClick = (planet: string): void => {
-        if (isDisabled(planet)) return;
-        if (selectedPlanet !== null && selectedPlanet !== planet) {
-            let planetVideo: HTMLVideoElement = window.document.getElementById(selectedPlanet) as HTMLVideoElement;
-            planetVideo?.play();
-        }
-        setSelectedPlanet(planet);
-    }
+    fetchPlanetCompletion();
+  }, []);
 
-    const handleMouseEnter = (planet: string): void => {
-        if (isDisabled(planet)) return;
-        let planetVideo: HTMLVideoElement = window.document.getElementById(planet) as HTMLVideoElement;
-        planetVideo.pause();
+  useEffect(() => {
+    if (Object.keys(planetCompletion).length > 0) {
+      enablePlanet(planetCompletion);
     }
+  }, [planetCompletion]);
 
-    const handleMouseLeave = (planet: string): void => {
-        if (isDisabled(planet)) return;
-        if (selectedPlanet !== planet) {
-            let planetVideo: HTMLVideoElement = window.document.getElementById(planet) as HTMLVideoElement;
-            planetVideo.play();
-        }
+  const enablePlanet = (completionData: { [key: string]: boolean }): void => {
+    let planetsName: string[] = ["earth"];
+    // Enable other rock planets if earth completed
+    if (completionData["earth"]) {
+      planetsName.push("mercury", "venus", "mars");
     }
+    planetsName.forEach((name) => {
+      let planetName = window.document.getElementById(name + "-planet");
+      if (planetName) {
+        planetName.classList.remove("disable");
+      }
+    });
+  };
 
-    const getVideoSource = (planet: string): string => {
-        return `/images/planets/${planet.toLowerCase()}.webm`;
-    }
-
-    return (
-        <Layout>
-            <div ref={orbitContainerRef}
-                 className="bg-star h-screen hide-scrollbar relative overflow-y-hidden overflow-x-auto">
-                {['neptune', 'uranus', 'saturn', 'jupiter', 'mars', 'earth', 'venus', 'mercury'].map((planet) => (
-                    <div className={`orbit absolute rounded-full orbit--${planet}`} key={planet}>
-                        <div className="disable planet absolute flex flex-col align-middle gap-4 z-50" id={`${planet}-planet`}>
-                            <video
-                                id={planet}
-                                className={"hover:cursor-pointer"}
-                                autoPlay
-                                loop
-                                muted
-                                src={getVideoSource(planet)}
-                                width={100}
-                                height={100}
-                                onClick={() => planetClick(planet)}
-                                onMouseEnter={() => handleMouseEnter(planet)}
-                                onMouseLeave={() => handleMouseLeave(planet)}
-                            />
-                            <div
-                                className={`disable hover:cursor-pointer planet__name ${selectedPlanet === planet ? 'planet__name--selected' : ''} ${planetCompletion[planet] ? 'planet__name--completed' : ''}`}
-                                onClick={() => planetClick(planet)}
-                                onMouseEnter={() => handleMouseEnter(planet)}
-                                onMouseLeave={() => handleMouseLeave(planet)}
-                            >
-                                {getPlanetName(planet)}
-                            </div>
-                        </div>
-                    </div>
-                ))}
-                <div className={"disable planet"}>
-                    <video
-                        id={"sun"}
-                        className="planet--sun max-w-none absolute -left-96 hover:cursor-pointer"
-                        autoPlay
-                        loop
-                        muted
-                        src={getVideoSource('sun')}
-                        width={650}
-                        height={650}
-                        onClick={() => planetClick('sun')}
-                        onMouseEnter={() => handleMouseEnter('sun')}
-                        onMouseLeave={() => handleMouseLeave('sun')}
-                    />
-                    <div
-                        id={"sun-name"}
-                        className={`planet__name--sun left-4 !absolute planet__name ${selectedPlanet === 'Sun' ? 'planet__name--selected' : ''} ${planetCompletion.Sun ? 'planet__name--completed' : ''}`}
-                        onClick={() => planetClick('sun')}
-                        onMouseEnter={() => handleMouseEnter('sun')}
-                        onMouseLeave={() => handleMouseLeave('sun')}
-                    >
-                        {getPlanetName("sun")}
-                    </div>
-                </div>
-            </div>
-        </Layout>
-    );
+  return (
+    <Layout>
+      <div
+        ref={orbitContainerRef}
+        className="bg-star h-screen hide-scrollbar relative overflow-y-hidden overflow-x-auto"
+      >
+        {[
+          "neptune",
+          "uranus",
+          "saturn",
+          "jupiter",
+          "mars",
+          "earth",
+          "venus",
+          "mercury",
+        ].map((planet) => (
+          <PlanetDetails
+            planet={planet}
+            key={planet}
+            currentPlanet={selectedPlanet}
+            setCurrentPlanet={setSelectedPlanet}
+            planetCompleted={planetCompletion[planet]}
+          />
+        ))}
+        <PlanetDetails
+          planet="sun"
+          currentPlanet={selectedPlanet}
+          setCurrentPlanet={setSelectedPlanet}
+          planetCompleted={false}
+        />
+      </div>
+    </Layout>
+  );
 };
+
+function PlanetDetails({
+  planet,
+  currentPlanet,
+  setCurrentPlanet,
+  planetCompleted,
+}: {
+  planet: string;
+  currentPlanet: string | null;
+  setCurrentPlanet: (planet: string) => void;
+  planetCompleted: boolean;
+}) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const planetRef = useRef<HTMLDivElement>(null);
+
+  const isDisabled = (): boolean => {
+    return planetRef.current?.classList.contains("disable") ?? false;
+  };
+
+  const planetClick = (planet: string): void => {
+    if (isDisabled()) return;
+    videoRef.current?.play();
+    setCurrentPlanet(planet);
+  };
+
+  const handleMouseEnter = (planet: string): void => {
+    if (isDisabled()) return;
+    videoRef.current?.pause();
+  };
+
+  const handleMouseLeave = (planet: string): void => {
+    if (isDisabled()) return;
+    if (currentPlanet !== planet) {
+      videoRef.current?.play();
+    }
+  };
+
+  const getVideoSource = (planet: string): string => {
+    return `/images/planets/${planet.toLowerCase()}.webm`;
+  };
+
+  return (
+    <div className={`orbit absolute rounded-full orbit--${planet}`}>
+      <div
+        className="disable planet absolute flex flex-col align-middle gap-4 z-50"
+        ref={planetRef}
+        id={`${planet}-planet`}
+      >
+        <video
+          ref={videoRef}
+          id={planet}
+          className={"hover:cursor-pointer"}
+          autoPlay
+          loop
+          muted
+          src={getVideoSource(planet)}
+          width={100}
+          height={100}
+          onClick={() => planetClick(planet)}
+          onMouseEnter={() => handleMouseEnter(planet)}
+          onMouseLeave={() => handleMouseLeave(planet)}
+        />
+        <div
+          className={`disable hover:cursor-pointer planet__name ${currentPlanet === planet ? "planet__name--selected" : ""} ${planetCompleted ? "planet__name--completed" : ""}`}
+          onClick={() => planetClick(planet)}
+          onMouseEnter={() => handleMouseEnter(planet)}
+          onMouseLeave={() => handleMouseLeave(planet)}
+        >
+          {getPlanetName(planet)}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default MapPage;

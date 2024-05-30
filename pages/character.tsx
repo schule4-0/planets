@@ -1,160 +1,172 @@
-import React, { useEffect, useRef, useState } from 'react';
-import Layout from '../app/layout';
-import SelectLayout from '@/app/selectLayout';
-import ActionButton from '@/app/components/actionButton/ActionButton';
-import SelectItems from '@/app/components/selectItems/selectItems';
+import React, { useEffect, useRef, useState } from "react";
+import Layout from "../app/layout";
+import SelectLayout from "@/app/selectLayout";
+import ActionButton from "@/app/components/actionButton/ActionButton";
+import SelectItems from "@/app/components/selectItems/selectItems";
 import CharacterImage from "@/app/components/character/CharacterImage";
-import './character.css';
-import '../app/globals.css';
+import "./character.css";
+import "../app/globals.css";
 import {
-    getHair,
-    getHairColor,
-    getCharacterName,
-    setHair,
-    setHairColor,
-    setCharacterName,
-    setSkinColor, getSkinColor
-} from '@/app/utils/storageUtils';
-import { getHairColors,getSkinColors } from '@/app/utils/colorUtils';
+  getHair,
+  getHairColor,
+  getCharacterName,
+  setHair,
+  setHairColor,
+  setCharacterName,
+  setSkinColor,
+  getSkinColor,
+} from "@/app/utils/storageUtils";
+import { getHairColors, getSkinColors } from "@/app/utils/colorUtils";
 
 const Character: React.FC = () => {
-    const isClient = typeof window !== 'undefined';
-    const [name, setName] = useState<string>('');
-    const [selectedHair, setSelectedHair] = useState<string>('short-curly')
-    const [selectedHairColorCode, setSelectedHairColorCode] = useState<string>('#000000');
-    const [selectedSkinColorCode, setSelectedSkinColorCode] = useState<string>('#FCD8B1');
-    const nameInputRef = useRef<HTMLInputElement>(null);
+  const isClient = typeof window !== "undefined";
+  const [name, setName] = useState<string>("");
+  const [selectedHair, setSelectedHair] = useState<string>("short-curly");
+  const [selectedHairColorCode, setSelectedHairColorCode] =
+    useState<string>("#000000");
+  const [selectedSkinColorCode, setSelectedSkinColorCode] =
+    useState<string>("#FCD8B1");
+  const nameInputRef = useRef<HTMLInputElement>(null);
 
-    useEffect(() => {
-        const loadStoredValues = async () => {
-            const storedName = await getCharacterName();
-            if (storedName) setName(storedName);
+  useEffect(() => {
+    const loadStoredValues = async () => {
+      const storedName = await getCharacterName();
+      if (storedName) setName(storedName);
 
-            const storedHair = await getHair();
-            if (storedHair) setSelectedHair(storedHair);
+      const storedHair = await getHair();
+      if (storedHair) setSelectedHair(storedHair);
 
-            const storedHairColorCode = await getHairColor();
-            if (storedHairColorCode) setSelectedHairColorCode(storedHairColorCode);
+      const storedHairColorCode = await getHairColor();
+      if (storedHairColorCode) setSelectedHairColorCode(storedHairColorCode);
 
-            const storedSkinColorCode = await getSkinColor();
-            if (storedSkinColorCode) setSelectedSkinColorCode(storedSkinColorCode);
-        };
-
-        if (isClient) loadStoredValues();
-    }, [isClient]);
-
-    const handleNameChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-        const newName = e.target.value;
-        setName(newName);
-        if (isClient) await setCharacterName(newName);
+      const storedSkinColorCode = await getSkinColor();
+      if (storedSkinColorCode) setSelectedSkinColorCode(storedSkinColorCode);
     };
 
-    const handleImageClick = async (type: string) => {
-        setSelectedHair(type);
-        if (isClient) await setHair(type);
-    };
+    if (isClient) loadStoredValues();
+  }, [isClient]);
 
-    const handleHairColorClick = async (index: number) => {
-        const colorWord = getHairColors()[index].code;
-        setSelectedHairColorCode(colorWord);
-        if (isClient) await setHairColor(colorWord);
-    };
+  const handleNameChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newName = e.target.value;
+    setName(newName);
+    if (isClient) await setCharacterName(newName);
+  };
 
-    const handleSkinColorClick = async (index: number) => {
-        const colorWord = getSkinColors()[index].code;
-        setSelectedSkinColorCode(colorWord);
-        if (isClient) await setSkinColor(colorWord);
-    };
+  const handleImageClick = async (type: string) => {
+    setSelectedHair(type);
+    if (isClient) await setHair(type);
+  };
 
-    const renderLeftChildren = () => (
-        <div className="h-full w-full flex justify-center items-center">
-            <CharacterImage hairColor={selectedHairColorCode}  hairType={selectedHair} skinColor ={selectedSkinColorCode}></CharacterImage>
-        </div>
-    );
+  const handleHairColorClick = async (index: number) => {
+    const colorWord = getHairColors()[index].code;
+    setSelectedHairColorCode(colorWord);
+    if (isClient) await setHairColor(colorWord);
+  };
 
-    const renderRightChildren = () => (
-        <Layout>
-            <div>
-                <h1 className="mb-4 text-center">Entwerfe deinen Charakter</h1>
-                <h2 className="mb-4">Frisur</h2>
-                <div>
-                    <SelectItems
-                        onClick={(index) => {
-                            const desc = ['short-curly', 'short-straight', 'long-curly', 'long-straight'][index];
-                            handleImageClick(desc);
-                        }}
-                        components={[
-                            <CharacterImage
-                                key="short-curly-hair"
-                                hairColor={selectedHairColorCode}
-                                hairType="short-curly-hair"
-                                skinColor={selectedSkinColorCode}
-                            />,
-                            <CharacterImage
-                                key="short-straight-hair"
-                                hairColor={selectedHairColorCode}
-                                hairType="short-straight-hair"
-                                skinColor={selectedSkinColorCode}
-                            />,
-                            <CharacterImage
-                                key="long-curly-hair"
-                                hairColor={selectedHairColorCode}
-                                hairType="long-curly-hair"
-                                skinColor={selectedSkinColorCode}
-                            />,
-                            <CharacterImage
-                                key="long-straight-hair"
-                                hairColor={selectedHairColorCode}
-                                hairType="long-straight-hair"
-                                skinColor={selectedSkinColorCode}
-                            />,
-                        ]}
-                    />
-                </div>
-                <h2 className="mb-4">Haarfarbe</h2>
-                <div>
-                    <SelectItems
-                        onClick={handleHairColorClick}
-                        colorCodes={getHairColors().map((color) => color.code)}
-                    />
-                </div>
-                <h2 className="mb-4">Hautfarbe</h2>
-                <div>
-                    <SelectItems
-                        onClick={handleSkinColorClick}
-                        colorCodes={getSkinColors().map((color) => color.code)}
-                    />
-                </div>
-                <div className="flex items-center mb-4">
-                    <label className="h2">Name</label>
-                    <input
-                        ref={nameInputRef}
-                        id="nameInput"
-                        type="text"
-                        value={name}
-                        onChange={handleNameChange}
-                        placeholder="Enter your name"
-                        className="h2 w-full text-3xl text-black rounded-2xl border-2 border-black ml-2 p-2"
-                    />
-                </div>
-            </div>
-        </Layout>
-    );
+  const handleSkinColorClick = async (index: number) => {
+    const colorWord = getSkinColors()[index].code;
+    setSelectedSkinColorCode(colorWord);
+    if (isClient) await setSkinColor(colorWord);
+  };
 
-    // TODO: Implement routing logic
-    const rocketPage = () => {
-        // Implement navigation logic here
-    };
+  const renderLeftChildren = () => (
+    <div className="h-full w-full flex justify-center items-center">
+      <CharacterImage
+        hairColor={selectedHairColorCode}
+        hairType={selectedHair}
+        skinColor={selectedSkinColorCode}
+      ></CharacterImage>
+    </div>
+  );
 
-    return (
+  const renderRightChildren = () => (
+    <Layout>
+      <div>
+        <h1 className="mb-4 text-center">Entwerfe deinen Charakter</h1>
+        <h2 className="mb-4">Frisur</h2>
         <div>
-            <SelectLayout
-                leftChildren={renderLeftChildren()}
-                rightChildren={renderRightChildren()}
-                actionButton={<ActionButton onClick={rocketPage}/>}
-            />
+          <SelectItems
+            onClick={(index) => {
+              const desc = [
+                "short-curly",
+                "short-straight",
+                "long-curly",
+                "long-straight",
+              ][index];
+              handleImageClick(desc);
+            }}
+            components={[
+              <CharacterImage
+                key="short-curly-hair"
+                hairColor={selectedHairColorCode}
+                hairType="short-curly-hair"
+                skinColor={selectedSkinColorCode}
+              />,
+              <CharacterImage
+                key="short-straight-hair"
+                hairColor={selectedHairColorCode}
+                hairType="short-straight-hair"
+                skinColor={selectedSkinColorCode}
+              />,
+              <CharacterImage
+                key="long-curly-hair"
+                hairColor={selectedHairColorCode}
+                hairType="long-curly-hair"
+                skinColor={selectedSkinColorCode}
+              />,
+              <CharacterImage
+                key="long-straight-hair"
+                hairColor={selectedHairColorCode}
+                hairType="long-straight-hair"
+                skinColor={selectedSkinColorCode}
+              />,
+            ]}
+          />
         </div>
-    );
+        <h2 className="mb-4">Haarfarbe</h2>
+        <div>
+          <SelectItems
+            onClick={handleHairColorClick}
+            colorCodes={getHairColors().map((color) => color.code)}
+          />
+        </div>
+        <h2 className="mb-4">Hautfarbe</h2>
+        <div>
+          <SelectItems
+            onClick={handleSkinColorClick}
+            colorCodes={getSkinColors().map((color) => color.code)}
+          />
+        </div>
+        <div className="flex items-center mb-4">
+          <label className="h2">Name</label>
+          <input
+            ref={nameInputRef}
+            id="nameInput"
+            type="text"
+            value={name}
+            onChange={handleNameChange}
+            placeholder="Enter your name"
+            className="h2 w-full text-3xl text-black rounded-2xl border-2 border-black ml-2 p-2"
+          />
+        </div>
+      </div>
+    </Layout>
+  );
+
+  // TODO: Implement routing logic
+  const rocketPage = () => {
+    // Implement navigation logic here
+  };
+
+  return (
+    <div>
+      <SelectLayout
+        leftChildren={renderLeftChildren()}
+        rightChildren={renderRightChildren()}
+        actionButton={<ActionButton onClick={rocketPage} />}
+      />
+    </div>
+  );
 };
 
 export default Character;
