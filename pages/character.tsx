@@ -4,7 +4,6 @@ import SelectLayout from '@/app/selectLayout';
 import ActionButton from '@/app/components/actionButton/ActionButton';
 import SelectItems from '@/app/components/selectItems/selectItems';
 import CharacterImage from "@/app/components/character/CharacterImage";
-import './character.css';
 import '../app/globals.css';
 import {
     getHair,
@@ -91,7 +90,7 @@ const Character: React.FC = () => {
     };
 
     const renderLeftChildren = () => (
-        <div className="character-image h-full w-full flex justify-center items-center">
+        <div className="h-full w-full flex justify-center items-center">
             <CharacterImage hairColor={selectedHairColorCode} hairType={selectedHair}
                             skinColor={selectedSkinColorCode}></CharacterImage>
         </div>
