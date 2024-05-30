@@ -10,7 +10,6 @@ import {
 } from '@/app/utils/storageUtils';
 
 const FirstDialog = () => {
-  const isClient = typeof window !== 'undefined';
   const [currentSceneIndex, setCurrentSceneIndex] = useState(0);
   const [currentDialogIndex, setCurrentDialogIndex] = useState(0);
   const [dialog, setDialog] = useState(dialogData.story[0].dialog);
@@ -38,15 +37,17 @@ const FirstDialog = () => {
     }
   };
 
+  const handleAnswerSelect = (isCorrect: boolean) => {
+    if (isCorrect) {
+      setTimeout(() => {
+        handleNext();
+      }, 1000); // 1 second delay
+    } else {
+      console.log('Wrong answer');
+    }
+  };
+
   useEffect(() => {
-    const hairColorCode = localStorage.getItem('selectedHairColorCode') || '';
-    const hair = localStorage.getItem('selectedHair') || '';
-    const skinColorCode = localStorage.getItem('selectedSkinColorCode') || '';
-
-    setSelectedHairColorCode(hairColorCode);
-    setSelectedHair(hair);
-    setSelectedSkinColorCode(skinColorCode);
-
     const loadStoredValues = async () => {
       const storedHair = await getHair();
       if (storedHair) setSelectedHair(storedHair);
@@ -58,8 +59,18 @@ const FirstDialog = () => {
       if (storedSkinColorCode) setSelectedSkinColorCode(storedSkinColorCode);
     };
 
-    if (isClient) loadStoredValues();
-  }, [isClient]);
+    if (typeof window !== 'undefined') {
+      const hairColorCode = localStorage.getItem('selectedHairColorCode') || '';
+      const hair = localStorage.getItem('selectedHair') || '';
+      const skinColorCode = localStorage.getItem('selectedSkinColorCode') || '';
+
+      setSelectedHairColorCode(hairColorCode);
+      setSelectedHair(hair);
+      setSelectedSkinColorCode(skinColorCode);
+
+      loadStoredValues();
+    }
+  }, []);
 
   return (
     <div>
@@ -75,6 +86,7 @@ const FirstDialog = () => {
         rightCharacter={images.rightCharacter}
         dialog={dialog[currentDialogIndex]}
         actionButton={<ActionButton onClick={handleNext} />}
+        onAnswerSelect={handleAnswerSelect}
       />
     </div>
   );
