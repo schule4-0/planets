@@ -30,7 +30,7 @@ const getHairColorIndex = (colorCode: string): number => {
     return hairColors.findIndex(color => color.code === colorCode);
 };
 
-const getSKinColorIndex = (colorCode: string): number => {
+const getSkinColorIndex = (colorCode: string): number => {
     return skinColors.findIndex(color => color.code === colorCode);
 };
 
@@ -42,4 +42,4 @@ const getHairColors = (): Color[] => hairColors;
 const getSkinColors = (): Color[] => skinColors;
 const getRocketColors = (): Color[] => rocketColors;
 
-export { getHairColors,getSkinColors, getRocketColors, getSKinColorIndex, getRocketColorIndex,getHairColorIndex};
+export { getHairColors,getSkinColors, getRocketColors, getSkinColorIndex, getRocketColorIndex,getHairColorIndex};

@@ -17,7 +17,7 @@ import {
 } from '@/app/utils/storageUtils';
 import {
     getHairColorIndex,
-    getHairColors, getSKinColorIndex,
+    getHairColors, getSkinColorIndex,
     getSkinColors
 } from '@/app/utils/colorUtils';
 
@@ -52,7 +52,7 @@ const Character: React.FC = () => {
             const storedSkinColorCode = await getSkinColor();
             if (storedSkinColorCode) {
                 setSelectedSkinColorCode(storedSkinColorCode);
-                setSelectedIndexSkinColor(getSKinColorIndex(storedSkinColorCode));
+                setSelectedIndexSkinColor(getSkinColorIndex(storedSkinColorCode));
             }
         };
 
