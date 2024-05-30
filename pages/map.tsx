@@ -5,6 +5,7 @@ import {
     getPlanetState
 } from "@/app/utils/storageUtils";
 import {getPlanetName, Planets} from "@/app/utils/planetUtils";
+import ActionButton from "@/app/components/actionButton/ActionButton";
 
 const MapPage: React.FC = () => {
     const [selectedPlanet, setSelectedPlanet] = useState<string | null>(null);
@@ -93,6 +94,9 @@ const MapPage: React.FC = () => {
                         showOnly={showOnly}
                     />
                 ))}
+                {showOnly &&
+                        <ActionButton onClick={() =>{}}/>
+                }
             </div>
         </Layout>
     );
