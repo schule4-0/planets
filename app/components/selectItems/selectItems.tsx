@@ -13,7 +13,7 @@ interface SelectItemsProps {
     onClick: (index: number) => void;
 }
 
-const SelectItems: React.FC<SelectItemsProps> = ({ images, colorCodes, components, onClick }) => {
+const SelectItems: React.FC<SelectItemsProps> = ({images, colorCodes, components, onClick}) => {
 
     const renderImages = () => {
         if (images) {

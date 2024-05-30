@@ -4,143 +4,156 @@
 
 /* Custom Fonts */
 @font-face {
-  font-family: 'Orbitron';
-  src: url('fonts/orbitron/static/Orbitron-Regular.ttf');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'Orbitron';
+    src: url('fonts/orbitron/static/Orbitron-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: 'Orbitron';
-  src: url('fonts/orbitron/static/Orbitron-Bold.ttf');
-  font-weight: bold;
-  font-style: normal;
+    font-family: 'Orbitron';
+    src: url('fonts/orbitron/static/Orbitron-Bold.ttf');
+    font-weight: bold;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: 'Orbitron';
-  src: url('fonts/orbitron/static/Orbitron-Medium.ttf');
-  font-weight: 500;
-  font-style: normal;
+    font-family: 'Orbitron';
+    src: url('fonts/orbitron/static/Orbitron-Medium.ttf');
+    font-weight: 500;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: 'Orbitron';
-  src: url('fonts/orbitron/static/Orbitron-SemiBold.ttf');
-  font-weight: 600;
-  font-style: normal;
+    font-family: 'Orbitron';
+    src: url('fonts/orbitron/static/Orbitron-SemiBold.ttf');
+    font-weight: 600;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: 'Orbitron';
-  src: url('fonts/orbitron/static/Orbitron-ExtraBold.ttf');
-  font-weight: 800;
-  font-style: normal;
+    font-family: 'Orbitron';
+    src: url('fonts/orbitron/static/Orbitron-ExtraBold.ttf');
+    font-weight: 800;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: 'Orbitron';
-  src: url('fonts/orbitron/static/Orbitron-Black.ttf');
-  font-weight: 900;
-  font-style: normal;
+    font-family: 'Orbitron';
+    src: url('fonts/orbitron/static/Orbitron-Black.ttf');
+    font-weight: 900;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: 'Inter';
-  src: url('fonts/inter/static/Inter-Regular.ttf');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'Inter';
+    src: url('fonts/inter/static/Inter-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: 'Inter';
-  src: url('fonts/inter/static/Inter-Bold.ttf');
-  font-weight: bold;
-  font-style: normal;
+    font-family: 'Inter';
+    src: url('fonts/inter/static/Inter-Bold.ttf');
+    font-weight: bold;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: 'Inter';
-  src: url('fonts/inter/static/Inter-Medium.ttf');
-  font-weight: 500;
-  font-style: normal;
+    font-family: 'Inter';
+    src: url('fonts/inter/static/Inter-Medium.ttf');
+    font-weight: 500;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: 'Inter';
-  src: url('fonts/inter/static/Inter-SemiBold.ttf');
-  font-weight: 600;
-  font-style: normal;
+    font-family: 'Inter';
+    src: url('fonts/inter/static/Inter-SemiBold.ttf');
+    font-weight: 600;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: 'Inter';
-  src: url('fonts/inter/static/Inter-ExtraBold.ttf');
-  font-weight: 800;
-  font-style: normal;
+    font-family: 'Inter';
+    src: url('fonts/inter/static/Inter-ExtraBold.ttf');
+    font-weight: 800;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: 'Inter';
-  src: url('fonts/inter/static/Inter-Black.ttf');
-  font-weight: 900;
-  font-style: normal;
+    font-family: 'Inter';
+    src: url('fonts/inter/static/Inter-Black.ttf');
+    font-weight: 900;
+    font-style: normal;
 }
 
 /* Global CSS */
 
 :root {
-  --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 0, 0, 0;
-  --background-end-rgb: 0, 0, 0;
-  --font-base: 'Inter', serif;
-  --font-heading: 'Orbitron', serif;
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+    --font-base: 'Inter', serif;
+    --font-heading: 'Orbitron', serif;
+    --header-height: 88px;
 }
 
-body {    
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom, #040758, #4F0080);
-  font-family: var(--font-base);
-  font-size: 1.5rem;
-  font-weight: bold;
+body {
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(to bottom, #040758, #4F0080);
+    font-family: var(--font-base);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+header {
+    height: var(--header-height);
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+    .text-balance {
+        text-wrap: balance;
+    }
 }
 
 .border--black--yellow {
-  background-image: url("../public/images/border-black-yellow.svg");
-  border-radius: 1rem;
-  padding: 20px;
-  background-size: cover;
+    background-image: url("../public/images/border-black-yellow.svg");
+    border-radius: 1rem;
+    padding: 20px;
+    background-size: cover;
 }
 
-.bg-star{
-  background-image: url("../public/images/star-field.svg");
+.bg-star {
+    background-image: url("../public/images/star-field.svg");
 }
 
-h1,.h1,h2,.h2,h3,h4,h5,h6{
-  font-family: var(--font-heading);
-  font-weight: bold;
+h1, .h1, h2, .h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: bold;
 }
-h1,.h1{
+
+h1, .h1 {
     font-size: 3rem;
 }
-h2,.h2{
-  font-size: 2rem;
+
+h2, .h2 {
+    font-size: 2rem;
 }
 
 
-.bg-header{
-  background-color: #000582;
+.bg-header {
+    background-color: #000582;
 }
+
 .hide-scrollbar::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
+
 .hide-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.page-container {
+    height: calc(100vh - var(--header-height));
 }
