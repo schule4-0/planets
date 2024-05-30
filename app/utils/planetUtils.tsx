@@ -1,26 +1,38 @@
-export const getPlanetName = (planet: string, lang: string = "de"): string => {
+export type Planets =
+    | "EARTH"
+    | "NEPTUNE"
+    | "URANUS"
+    | "SATURN"
+    | "JUPITER"
+    | "MARS"
+    | "VENUS"
+    | "MERCURY"
+    | "SUN";
+
+
+export const getPlanetName = (planet: Planets, lang: string = "de"): string => {
     if (lang !== "de") {
-        return planet.charAt(0).toUpperCase() + planet.slice(1);
+        return planet.charAt(0) + planet.toLowerCase().slice(1);
     }
 
-    switch (planet.toLowerCase().trim()) {
-        case "sun":
+    switch (planet) {
+        case "SUN":
             return "Sonne";
-        case "mercury":
+        case "MERCURY":
             return "Merkur";
-        case "venus":
+        case "VENUS":
             return "Venus";
-        case "earth":
+        case "EARTH":
             return "Erde";
-        case "mars":
+        case "MARS":
             return "Mars";
-        case "jupiter":
+        case "JUPITER":
             return "Jupiter";
-        case "saturn":
+        case "SATURN":
             return "Saturn";
-        case "uranus":
+        case "URANUS":
             return "Uranus";
-        case "neptune":
+        case "NEPTUNE":
             return "Neptun";
         default:
             return "Planet";
