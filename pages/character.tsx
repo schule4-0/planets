@@ -177,8 +177,8 @@ const Character: React.FC = () => {
             <SelectLayout
                 leftChildren={renderLeftChildren()}
                 rightChildren={renderRightChildren()}
-                actionButton={<ActionButton onClick={rocketPage}/>}
             />
+            <ActionButton onClick={rocketPage()}/>
         </div>
     );
 };

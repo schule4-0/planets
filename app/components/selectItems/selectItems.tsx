@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Image from "next/image";
 
 interface ImageItem {
@@ -48,7 +48,7 @@ const SelectItems: React.FC<SelectItemsProps> = ({images, colorCodes, components
             return colorCodes.map((colorCode, index) => (
                 <div
                     onClick={() => handleItemClick(index)}
-                    className={`hover:cursor-pointer rounded-2xl border-8 w-20 h-20 mb-6 mr-10 p-0.5`}
+                    className={`hover:cursor-pointer rounded-2xl border-8 w-20 h-20 mb-6 p-0.5 ${index !== colorCodes.length - 1 ? 'mr-10' : ''}`}
                     key={index}
                     style={{ borderColor: selectedIndex === index ? 'var(--active-color)' : 'black'}}
                 >
