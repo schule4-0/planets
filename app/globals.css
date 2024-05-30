@@ -96,7 +96,8 @@
     --font-base: 'Inter', serif;
     --font-heading: 'Orbitron', serif;
     --header-height: 88px;
-    --active-color: #8C07DF
+    --active-color: #8C07DF;
+    --action-button-size: 120px;
 }
 
 body {

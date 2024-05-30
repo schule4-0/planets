@@ -6,6 +6,7 @@ import {
     getEarth, getVenus, getMercury, getSun
 } from '@/app/utils/storageUtils';
 import {getPlanetName} from '@/app/utils/planetUtils';
+import ActionButton from "@/app/components/actionButton/ActionButton";
 
 const MapPage: React.FC = () => {
     const [selectedPlanet, setSelectedPlanet] = useState<string | null>(null);
@@ -97,7 +98,7 @@ const MapPage: React.FC = () => {
     return (
         <Layout>
             <div ref={orbitContainerRef}
-                 className="bg-star h-screen hide-scrollbar relative overflow-y-hidden overflow-x-auto">
+                 className="bg-star page-container hide-scrollbar relative overflow-y-hidden overflow-x-auto">
                 {['neptune', 'uranus', 'saturn', 'jupiter', 'mars', 'earth', 'venus', 'mercury'].map((planet) => (
                     <div className={`orbit absolute rounded-full orbit--${planet}`} key={planet}>
                         <div className="disable planet absolute flex flex-col align-middle gap-4 z-50" id={`${planet}-planet`}>
@@ -149,6 +150,7 @@ const MapPage: React.FC = () => {
                         {getPlanetName("sun")}
                     </div>
                 </div>
+                <ActionButton onClick={() =>{}}/>
             </div>
         </Layout>
     );

@@ -104,8 +104,8 @@ const Spaceship: React.FC = () => {
             <SelectLayout
                 leftChildren={renderLeftChildren()}
                 rightChildren={renderRightChildren()}
-                actionButton={<ActionButton onClick={characterPage} />}
             />
+            <ActionButton onClick={characterPage()}/>
         </div>
     );
 };
