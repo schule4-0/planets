@@ -1,3 +1,14 @@
+.show-only{
+    video {
+        cursor: default!important;
+    }
+    .planet__name{
+        cursor: default!important;
+        background-color: #282B46!important;
+        color: white!important;
+    }
+}
+
 .planet.disable {
     .planet__name {
         cursor: default;
@@ -134,8 +145,8 @@
     .planet {
         align-items: center;
         flex-direction: column-reverse;
-        bottom: 33%;
-        right: -10%;
+        bottom: 31%;
+        right: -9.5%;
 
         video {
             width: 26.87rem;
