@@ -1,53 +1,83 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import DialogLayout from '../app/dialoglayout';
+import dialogData from '../public/data/dialog.json';
 import ActionButton from '@/app/components/actionButton/ActionButton';
+import CharacterImage from "@/app/components/character/CharacterImage";
+import {
+  getHair,
+  getHairColor,
+  getSkinColor
+} from '@/app/utils/storageUtils';
 
-interface Scene {
-  id: string;
-  leftDialog: string;
-  leftCharacterSrc: string;
-  rightCharacterSrc: string;
-  rightDialog: string;
-  backgroundimg: string;
-  button: {
-    next: string;
-  };
-}
-
-const Home = () => {
-  const [scenes, setScenes] = useState<Scene[]>([]);
-  const [currentScene, setCurrentScene] = useState(0);
-
-  useEffect(() => {
-    const fetchScenes = async () => {
-      const response = await fetch('/data/dialog.json');
-      const data = await response.json();
-      setScenes(data.story);
-    };
-    fetchScenes();
-  }, []);
+const FirstDialog = () => {
+  const isClient = typeof window !== 'undefined';
+  const [currentSceneIndex, setCurrentSceneIndex] = useState(0);
+  const [currentDialogIndex, setCurrentDialogIndex] = useState(0);
+  const [dialog, setDialog] = useState(dialogData.story[0].dialog);
+  const [images, setImages] = useState(dialogData.story[0].images[0]);
+  const [selectedHair, setSelectedHair] = useState<string>('short-curly');
+  const [selectedHairColorCode, setSelectedHairColorCode] = useState<string>('#000000');
+  const [selectedSkinColorCode, setSelectedSkinColorCode] = useState<string>('#FCD8B1');
 
   const handleNext = () => {
-    const nextSceneIndex = scenes.findIndex(scene => scene.id === scenes[currentScene].button.next);
-    if (nextSceneIndex !== -1) {
-      setCurrentScene(nextSceneIndex);
+    const currentDialogLength = dialogData.story[currentSceneIndex].dialog.length;
+
+    if (currentDialogIndex < currentDialogLength - 1) {
+      setCurrentDialogIndex(currentDialogIndex + 1);
+    } else {
+      const nextSceneIndex = currentSceneIndex + 1;
+
+      if (nextSceneIndex < dialogData.story.length) {
+        setCurrentSceneIndex(nextSceneIndex);
+        setCurrentDialogIndex(0);
+        setDialog(dialogData.story[nextSceneIndex].dialog);
+        setImages(dialogData.story[nextSceneIndex].images[0]);
+      } else {
+        console.log('Story is finished');
+      }
     }
   };
 
-  if (scenes.length === 0) {
-    return <div>Loading...</div>;
-  }
+  useEffect(() => {
+    const hairColorCode = localStorage.getItem('selectedHairColorCode') || '';
+    const hair = localStorage.getItem('selectedHair') || '';
+    const skinColorCode = localStorage.getItem('selectedSkinColorCode') || '';
+
+    setSelectedHairColorCode(hairColorCode);
+    setSelectedHair(hair);
+    setSelectedSkinColorCode(skinColorCode);
+
+    const loadStoredValues = async () => {
+      const storedHair = await getHair();
+      if (storedHair) setSelectedHair(storedHair);
+
+      const storedHairColorCode = await getHairColor();
+      if (storedHairColorCode) setSelectedHairColorCode(storedHairColorCode);
+
+      const storedSkinColorCode = await getSkinColor();
+      if (storedSkinColorCode) setSelectedSkinColorCode(storedSkinColorCode);
+    };
+
+    if (isClient) loadStoredValues();
+  }, [isClient]);
 
   return (
-    <DialogLayout
-      leftCharacterSrc={scenes[currentScene].leftCharacterSrc}
-      rightCharacterSrc={scenes[currentScene].rightCharacterSrc}
-      leftDialog={scenes[currentScene].leftDialog}
-      rightDialog={scenes[currentScene].rightDialog}
-      backgroundImage={scenes[currentScene].backgroundimg}
-      actionButton={<ActionButton onClick={handleNext} />}
-    />
+    <div>
+      <DialogLayout
+        backgroundimg={images.backgroundimg}
+        leftCharacter={
+          <CharacterImage
+            hairColor={selectedHairColorCode}
+            hairType={selectedHair}
+            skinColor={selectedSkinColorCode}
+          />
+        }
+        rightCharacter={images.rightCharacter}
+        dialog={dialog[currentDialogIndex]}
+        actionButton={<ActionButton onClick={handleNext} />}
+      />
+    </div>
   );
 };
 
-export default Home;
+export default FirstDialog;

@@ -1,4 +1,5 @@
 import React from 'react';
+import './speechBubble.css';
 
 interface SpeechBubbleProps {
   text: string;
@@ -6,18 +7,16 @@ interface SpeechBubbleProps {
 }
 
 const SpeechBubble: React.FC<SpeechBubbleProps> = ({ text, direction }) => {
-  const bubbleImage = direction === 'left' ? '/images/speechBoobleLeft.svg' : '/images/speechBoobleRight.svg';
+  const bubbleStyles = {
+    alignSelf: direction === 'left' ? 'flex-start' : 'flex-end',
+    backgroundColor: direction === 'left' ? '#fff' : '#F3F3F3',
+    color: direction === 'left' ? '#000' : '#333',
+  };
 
   return (
-    <div className="relative w-full h-full p-6 bg-no-repeat bg-center bg-cover" style={{ backgroundImage: `url(${bubbleImage})`, backgroundSize: '100% auto' }}>
-  <div className="flex h-full items-center justify-center">
-    <p className="text-center text-black m-auto p-4 max-w-full break-words" style={{ maxWidth: '60%' }}> 
-      {text}
-    </p>
-  </div>
-</div>
-
-
+    <div className={`speech-bubble ${direction}`} style={bubbleStyles}>
+      <p>{text}</p>
+    </div>
   );
 };
 
