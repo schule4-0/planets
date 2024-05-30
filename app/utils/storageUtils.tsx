@@ -66,22 +66,10 @@ export const setCharacterName = async (value: string): Promise<void> => {
     return setStoredValue("characterName", value)
 };
 
-const planetStoredNameMap: Record<Planets, string> = {
-    SUN: "sun",
-    MERCURY: "mercury",
-    VENUS: "venus",
-    EARTH: "earth",
-    MARS: "mars",
-    JUPITER: "jupiter",
-    SATURN: "saturn",
-    URANUS: "uranus",
-    NEPTUNE: "neptune",
-};
-
 export function getPlanetState(planet: Planets) {
-    return getStoredValue(planetStoredNameMap[planet]);
+    return getStoredValue(planet.toLowerCase());
 }
 
 export const setPlanetState = async (planet: Planets, value: boolean): Promise<void> => {
-    return setStoredValue(planetStoredNameMap[planet], value);
+    return setStoredValue(planet.toLowerCase(), value);
 }
