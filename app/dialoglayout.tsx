@@ -5,7 +5,7 @@ import SpeechBubble from './components/speechBubble/speechBubble';
 interface DialogItem {
   speaker: string;
   text: string;
-  image?: string; 
+  image?: string; // optionales Bild
   question?: {
     answer: string;
     isCorrect: boolean;
@@ -42,10 +42,13 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
 
   return (
     <div className="min-h-screen bg-cover bg-center relative" style={{ backgroundImage: `url(${backgroundimg})` }}>
-      <div className="flex justify-between p-20 relative z-0 h-full">
-        <div className="w-1/5 flex items-end mb-12">
-          {leftCharacter}
-        </div>
+      <div className="absolute bottom-0 left-0 mb-9 ml-5" style={{ marginBottom: '35px' }}>
+        {leftCharacter}
+      </div>
+      <div className="absolute bottom-0 right-0 mb-9 mr-20" style={{ marginBottom: '35px' }}>
+        <Image src={rightCharacter} alt="Rechte Figur" width={250} height={250} />
+      </div>
+      <div className="flex justify-center items-center p-20 relative z-0 h-full">
         <div className="w-3/5 flex flex-col items-center mb-10">
           {dialog.speaker === 'left' && <SpeechBubble text={dialog.text} direction="left" />}
           {dialog.speaker === 'right' && <SpeechBubble text={dialog.text} direction="right" />}
@@ -76,11 +79,8 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
             </div>
           )}
         </div>
-        <div className="w-1/5 flex items-end mb-12">
-          <Image src={rightCharacter} alt="Rechte Figur" width={250} height={250} />
-        </div>
       </div>
-      <div className="text-right pb-6 pr-6 absolute bottom-0 right-0 z-10">
+      <div className="absolute bottom-0 right-0 text-right pb-6 pr-6 z-10">
         {actionButton}
       </div>
     </div>
