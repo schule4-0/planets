@@ -20,7 +20,7 @@ const SelectLayout: React.FC<SelectLayoutProps> = ({leftChildren, rightChildren,
                     </div>
 
                     <div className="w-3/6 border--black--yellow">
-                        <div className="inner-box overflow-scroll">
+                        <div className="inner-box overflow-auto">
                             {rightChildren}
                         </div>
                     </div>

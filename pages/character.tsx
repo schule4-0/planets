@@ -15,7 +15,11 @@ import {
     setCharacterName,
     setSkinColor, getSkinColor
 } from '@/app/utils/storageUtils';
-import {getHairColorIndex, getHairColors, getSkinColorIndex, getSkinColors} from '@/app/utils/colorUtils';
+import {
+    getHairColorIndex,
+    getHairColors, getSKinColorIndex,
+    getSkinColors
+} from '@/app/utils/colorUtils';
 
 const Character: React.FC = () => {
     const isClient = typeof window !== 'undefined';
@@ -42,13 +46,13 @@ const Character: React.FC = () => {
             const storedHairColorCode = await getHairColor();
             if (storedHairColorCode) {
                 setSelectedHairColorCode(storedHairColorCode);
-                setSelectedIndexHairColor(getHairColorIndex(storedHairColorCode)); // Pass the index
+                setSelectedIndexHairColor(getHairColorIndex(storedHairColorCode));
             }
 
             const storedSkinColorCode = await getSkinColor();
             if (storedSkinColorCode) {
                 setSelectedSkinColorCode(storedSkinColorCode);
-                setSelectedIndexSkinColor(getSkinColorIndex(storedSkinColorCode)); // Pass the index
+                setSelectedIndexSkinColor(getSKinColorIndex(storedSkinColorCode));
             }
         };
 
