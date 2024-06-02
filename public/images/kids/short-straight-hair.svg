@@ -2,25 +2,25 @@
 <svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150.12946 172.22156">
   <defs>
     <style>
-      .cls-1 {
-        fill: #ffcb48;
+      .short-straight-hair .cls-1 {
+        fill: #hairColor;
         stroke-linecap: round;
         stroke-linejoin: round;
         stroke-width: 2.69019px;
       }
 
-      .cls-1, .cls-2 {
+      .short-straight-hair .cls-1, .short-straight-hair .cls-2 {
         stroke: #231f20;
       }
 
-      .cls-2 {
-        fill: #fcd8b1;
+      .short-straight-hair .cls-2 {
+        fill: #skinColor;
         stroke-miterlimit: 10;
         stroke-width: 3px;
       }
     </style>
   </defs>
-  <g id="Layer_1-2" data-name="Layer 1">
+  <g class="short-straight-hair" id="Layer_1-2" data-name="Layer 1">
     <path class="cls-2" d="m61.52122,152.98263c.98632,2.26358,2.18955,5.88123,2.14013,10.3949-.02175,1.98627-.28161,3.73895-.61147,5.19745,3.28985,1.01324,7.89452,2.04926,13.45222,2.14014,4.64638.07596,8.60527-.53079,11.61783-1.22293-.18892-2.06671-.25531-4.54947,0-7.33759.32404-3.53873,1.07176-6.53711,1.8344-8.86624-9.47771-.1019-18.95541-.20383-28.43311-.30573Z"/>
     <ellipse class="cls-2" cx="138.71088" cy="92.7272" rx="13.33645" ry="9.80543" transform="translate(24.53049 214.39018) rotate(-80.57965)"/>
     <ellipse class="cls-2" cx="11.41858" cy="94.75723" rx="9.80543" ry="13.33645" transform="translate(-15.35553 3.14684) rotate(-9.42035)"/>
