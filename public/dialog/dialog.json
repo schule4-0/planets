@@ -10,12 +10,12 @@
       ],
       "dialog": [
         {
-          "speaker": "right",
+          "speaker": "left",
           "text": "Hallo Mara, Ich bin Gustav vom Planeten Krypton. Krypton liegt in einer fernen Galaxie. Doch ich bin hier auf der Erde gestrandet als mein Raumschiff von einem Kometen getroffen wurde."
         },
         {
-          "speaker": "left",
-          "text": "Hallo Gustav, das ist ja spannend. Ich habe noch nie einen Alien getroffen. Erzähl mir mehr über den Welttraum, die Sterne und die Planeten. Wohin gehts?",
+          "speaker": "right",
+          "text": "Hallo Gustav, das ist ja spannend. Ich habe noch nie einen Alien getroffen. Erzähl mir mehr über den Weltraum, die Sterne und die Planeten. Wohin gehts?",
           "question": [
             {
               "answer": "Zum tiefen Wald",
@@ -23,21 +23,23 @@
             },
             {
               "answer": "Zum hohen Berg",
-              "isCorrect": false
+              "isCorrect": false,
+              "hint": "Überlege, ob Gustav in einer offenen oder geschlossenen Umgebung gelandet sein könnte."
             },
             {
               "answer": "Zur großen Wüste",
-              "isCorrect": false
+              "isCorrect": false,
+              "hint": "Wüsten sind oft weitläufig und trocken. Ist das ein guter Ort zum Landen?"
             }
           ]
         },
         {
           "speaker": "left",
-          "text": "Natürlich, Zog! Aber wie kann ich dir helfen? Ich habe noch nie ein Raumschiff gesehen!"
+          "text": "Natürlich, Aber wie kann ich dir helfen? Ich habe noch nie ein Raumschiff gesehen!"
         },
         {
           "speaker": "right",
-          "text": "Keine Sorge, Emma. Ich habe eine Karte, die uns zeigt, was wir brauchen. Lass uns gemeinsam auf ein Abenteuer gehen!",
+          "text": "Keine Sorge, Mara. Ich habe eine Karte, die uns zeigt, was wir brauchen. Lass uns gemeinsam auf ein Abenteuer gehen!",
           "image": "/images/rectangle.png"
         }
       ]

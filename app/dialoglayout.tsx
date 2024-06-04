@@ -7,17 +7,18 @@ import { getHair, getHairColor, getSkinColor } from '@/app/utils/storageUtils';
 interface DialogItem {
   speaker: string;
   text: string;
-  image?: string; 
+  image?: string;
   question?: {
     answer: string;
     isCorrect: boolean;
+    hint?: string;
   }[];
 }
 
 interface DialogLayoutProps {
   dialogData: any;
   actionButton?: React.ReactNode;
-  onEnd: () => void; 
+  onEnd: () => void;
 }
 
 const DialogLayout: React.FC<DialogLayoutProps> = ({
@@ -28,12 +29,12 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
   const [currentSceneIndex, setCurrentSceneIndex] = useState(0);
   const [currentDialogIndex, setCurrentDialogIndex] = useState(0);
   const [dialog, setDialog] = useState<DialogItem[]>(dialogData.story[0].dialog);
-  const [images, setImages] = useState(dialogData.story[0].images[0]);
+  const [images, setImages] = useState(dialogData.story[currentSceneIndex].images[0]);
   const [selectedHair, setSelectedHair] = useState<string>('short-curly');
   const [selectedHairColorCode, setSelectedHairColorCode] = useState<string>('#000000');
   const [selectedSkinColorCode, setSelectedSkinColorCode] = useState<string>('#FCD8B1');
-  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
-  const [feedback, setFeedback] = useState<{ index: number; isCorrect: boolean } | null>(null);
+  const [feedback, setFeedback] = useState<{ index: number; isCorrect: boolean; hint?: string } | null>(null);
+  const [attempts, setAttempts] = useState<number[]>([]);
 
   useEffect(() => {
     const loadStoredValues = async () => {
@@ -52,30 +53,35 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
   useEffect(() => {
     setDialog(dialogData.story[currentSceneIndex].dialog);
     setImages(dialogData.story[currentSceneIndex].images[0]);
-  }, [currentSceneIndex]);
+    setFeedback(null);
+    setAttempts([]);
+  }, [currentSceneIndex, dialogData.story]);
 
   const handleNext = () => {
     const currentDialogLength = dialogData.story[currentSceneIndex].dialog.length;
     if (currentDialogIndex < currentDialogLength - 1) {
       setCurrentDialogIndex(currentDialogIndex + 1);
+      setFeedback(null);
+      setAttempts([]);
     } else {
       const nextSceneIndex = currentSceneIndex + 1;
       if (nextSceneIndex < dialogData.story.length) {
         setCurrentSceneIndex(nextSceneIndex);
         setCurrentDialogIndex(0);
       } else {
-        onEnd(); 
+        onEnd();
       }
     }
   };
 
-  const handleAnswerClick = (index: number, isCorrect: boolean) => {
-    setSelectedAnswer(index);
-    setFeedback({ index, isCorrect });
-    if (isCorrect) {
+  const handleAnswerClick = (index: number, isCorrect: boolean, hint?: string) => {
+    setFeedback({ index, isCorrect, hint });
+    if (!isCorrect) {
+      setAttempts(prev => [...prev, index]);
+    } else {
       setTimeout(() => {
         handleNext();
-      }, 1000); // 1 second delay
+      }, 1000);
     }
   };
 
@@ -93,8 +99,12 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
       </div>
       <div className="flex justify-center p-20 relative z-0 h-full">
         <div className="w-3/5 flex flex-col items-center mb-10">
-          {dialog[currentDialogIndex].speaker === 'left' && <SpeechBubble text={dialog[currentDialogIndex].text} direction="left" />}
-          {dialog[currentDialogIndex].speaker === 'right' && <SpeechBubble text={dialog[currentDialogIndex].text} direction="right" />}
+          {dialog[currentDialogIndex].speaker === 'left' && (
+            <SpeechBubble text={dialog[currentDialogIndex].text} direction="left" />
+          )}
+          {dialog[currentDialogIndex].speaker === 'right' && (
+            <SpeechBubble text={feedback && !feedback.isCorrect && feedback.hint ? feedback.hint : dialog[currentDialogIndex].text} direction="right" />
+          )}
           {dialog[currentDialogIndex].image && (
             <div className="flex justify-center mb-4 w-full">
               <Image src={dialog[currentDialogIndex].image as string} alt="Dialog Bild" width={150} height={100} />
@@ -103,19 +113,23 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
           {dialog[currentDialogIndex].question && (
             <div className="flex flex-col items-center mt-4 w-full">
               {dialog[currentDialogIndex]?.question?.map((q, index) => (
-                <button
-                  key={index}
-                  className={`w-full max-w-md px-4 py-2 h-24 m-2 rounded-lg transition-colors duration-300
-                    ${feedback && feedback.index === index 
-                      ? (feedback.isCorrect 
-                          ? 'bg-[#186B21] text-white' 
-                          : 'bg-[#8D2020] text-white') 
-                      : 'bg-[#9747FF] text-white hover:bg-white hover:text-[#9747FF]'}
-                    text-center`}
-                  onClick={() => handleAnswerClick(index, q.isCorrect)}
-                >
-                  {q.answer}
-                </button>
+                <div key={index} className="w-full max-w-md px-4 py-2">
+                  <button
+                    className={`w-full h-24 rounded-lg transition-colors duration-300
+                      ${feedback && feedback.index === index 
+                        ? (feedback.isCorrect 
+                            ? 'bg-[#186B21] text-white' 
+                            : 'bg-[#8D2020] text-white') 
+                        : attempts.includes(index) 
+                        ? 'bg-[#8D2020] text-white opacity-50' 
+                        : 'bg-[#9747FF] text-white hover:bg-white hover:text-[#9747FF]'}
+                      text-center`}
+                    onClick={() => handleAnswerClick(index, q.isCorrect, q.hint)}
+                    disabled={attempts.includes(index)}
+                  >
+                    {q.answer}
+                  </button>
+                </div>
               ))}
             </div>
           )}
