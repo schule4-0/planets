@@ -1,0 +1,46 @@
+{
+    "story": [
+      {
+        "images": [
+          {
+            "backgroundimg": "/images/background_rocket.svg",
+            "leftCharacter": "player",
+            "rightCharacter": "/images/alien.svg"
+          }
+        ],
+        "dialog": [
+          {
+            "speaker": "right",
+            "text": "Hier ist das Raumschiff!"
+          },
+          {
+            "speaker": "right",
+            "text": "Welcher Planet ist ein Gesteinsplanet?",
+            "question": [
+              {
+                "answer": "Sonne",
+                "isCorrect": false
+              },
+              {
+                "answer": "Mars",
+                "isCorrect": true
+              },
+              {
+                "answer": "Saturn",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "speaker": "right",
+            "text": "Super, richtig der Mars ist ein Gesteinsplanet!"
+          },
+          {
+            "speaker": "left",
+            "text": "Erzähl mir mehr darüber"
+           
+          }
+        ]
+      }
+    ]
+  }

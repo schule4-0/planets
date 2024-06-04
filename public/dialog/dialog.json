@@ -41,52 +41,6 @@
           "image": "/images/rectangle.png"
         }
       ]
-    },
-    {
-      "images": [
-        {
-          "backgroundimg": "/images/background_rocket.svg",
-          "leftCharacter": "player",
-          "rightCharacter": "/images/alien.svg"
-        }
-      ],
-      "dialog": [
-        {
-          "speaker": "left",
-          "text": "Gustav, wohin führt uns die Karte als erstes?"
-        },
-        {
-          "speaker": "right",
-          "text": "Zuerst müssen wir in den tiefen Wald, um ein seltenes Kristall zu finden. Dieser Kristall ist notwendig, um mein Raumschiff zu reparieren."
-        },
-        {
-          "speaker": "left",
-          "text": "Das klingt aufregend! Lass uns keine Zeit verlieren und sofort losgehen."
-        }
-      ]
-    },
-    {
-      "images": [
-        {
-          "backgroundimg": "/images/background_childroom.svg",
-          "leftCharacter": "player",
-          "rightCharacter": "/images/alien.svg"
-        }
-      ],
-      "dialog": [
-        {
-          "speaker": "right",
-          "text": "Hier sind wir, Mara. Die Karte zeigt, dass der Kristall tief in dieser Höhle versteckt ist."
-        },
-        {
-          "speaker": "left",
-          "text": "Es ist ganz schön dunkel hier drin. Hast du eine Taschenlampe oder etwas, das uns Licht gibt?"
-        },
-        {
-          "speaker": "right",
-          "text": "Ja, ich habe etwas Besseres! Mein Anzug kann leuchten. Folge mir, Mara."
-        }
-      ]
     }
   ]
 }

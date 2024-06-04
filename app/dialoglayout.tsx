@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import SpeechBubble from './components/speechBubble/speechBubble';
+import CharacterImage from "@/app/components/character/CharacterImage";
+import { getHair, getHairColor, getSkinColor } from '@/app/utils/storageUtils';
 
 interface DialogItem {
   speaker: string;
@@ -13,55 +15,104 @@ interface DialogItem {
 }
 
 interface DialogLayoutProps {
-  backgroundimg: string;
-  leftCharacter: React.ReactNode;
-  rightCharacter: string;
-  dialog: DialogItem;
-  actionButton: React.ReactNode;
-  onAnswerSelect?: (isCorrect: boolean) => void;
+  dialogData: any;
+  actionButton?: React.ReactNode;
 }
 
 const DialogLayout: React.FC<DialogLayoutProps> = ({
-  backgroundimg,
-  leftCharacter,
-  rightCharacter,
-  dialog,
+  dialogData,
   actionButton,
-  onAnswerSelect,
 }) => {
+  const [currentSceneIndex, setCurrentSceneIndex] = useState(0);
+  const [currentDialogIndex, setCurrentDialogIndex] = useState(0);
+  const [dialog, setDialog] = useState<DialogItem[]>(dialogData.story[0].dialog);
+  const [images, setImages] = useState(dialogData.story[0].images[0]);
+  const [selectedHair, setSelectedHair] = useState<string>('short-curly');
+  const [selectedHairColorCode, setSelectedHairColorCode] = useState<string>('#000000');
+  const [selectedSkinColorCode, setSelectedSkinColorCode] = useState<string>('#FCD8B1');
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [feedback, setFeedback] = useState<{ index: number; isCorrect: boolean } | null>(null);
+
+  useEffect(() => {
+    const loadStoredValues = async () => {
+      const storedHair = await getHair();
+      const storedHairColorCode = await getHairColor();
+      const storedSkinColorCode = await getSkinColor();
+
+      if (storedHair) setSelectedHair(storedHair);
+      if (storedHairColorCode) setSelectedHairColorCode(storedHairColorCode);
+      if (storedSkinColorCode) setSelectedSkinColorCode(storedSkinColorCode);
+    };
+
+    if (typeof window !== 'undefined') {
+      const hairColorCode = localStorage.getItem('selectedHairColorCode') || '';
+      const hair = localStorage.getItem('selectedHair') || '';
+      const skinColorCode = localStorage.getItem('selectedSkinColorCode') || '';
+
+      setSelectedHairColorCode(hairColorCode);
+      setSelectedHair(hair);
+      setSelectedSkinColorCode(skinColorCode);
+
+      loadStoredValues();
+    }
+  }, []);
+
+  useEffect(() => {
+    setDialog(dialogData.story[currentSceneIndex].dialog);
+    setImages(dialogData.story[currentSceneIndex].images[0]);
+  }, [currentSceneIndex]);
+
+  const handleNext = () => {
+    const currentDialogLength = dialogData.story[currentSceneIndex].dialog.length;
+
+    if (currentDialogIndex < currentDialogLength - 1) {
+      setCurrentDialogIndex(currentDialogIndex + 1);
+    } else {
+      const nextSceneIndex = currentSceneIndex + 1;
+
+      if (nextSceneIndex < dialogData.story.length) {
+        setCurrentSceneIndex(nextSceneIndex);
+        setCurrentDialogIndex(0);
+      }
+    }
+  };
 
   const handleAnswerClick = (index: number, isCorrect: boolean) => {
     setSelectedAnswer(index);
     setFeedback({ index, isCorrect });
-    if (isCorrect && onAnswerSelect) {
-      onAnswerSelect(isCorrect);
+    if (isCorrect) {
+      setTimeout(() => {
+        handleNext();
+      }, 1000); // 1 second delay
     }
   };
 
   return (
-    <div className="min-h-screen bg-cover bg-center relative" style={{ backgroundImage: `url(${backgroundimg})` }}>
+    <div className="min-h-screen bg-cover bg-center relative" style={{ backgroundImage: `url(${images.backgroundimg})` }}>
       <div className="absolute bottom-0 left-0 mb-9 ml-5" style={{ marginBottom: '35px' }}>
-        {leftCharacter}
+        <CharacterImage
+          hairColor={selectedHairColorCode}
+          hairType={selectedHair}
+          skinColor={selectedSkinColorCode}
+        />
       </div>
       <div className="absolute bottom-0 right-0 mb-9 mr-20" style={{ marginBottom: '35px' }}>
-        <Image src={rightCharacter} alt="Rechte Figur" width={250} height={250} />
+        <Image src={images.rightCharacter} alt="Rechte Figur" width={250} height={250} />
       </div>
       <div className="flex justify-center items-center p-20 relative z-0 h-full">
         <div className="w-3/5 flex flex-col items-center mb-10">
-          {dialog.speaker === 'left' && <SpeechBubble text={dialog.text} direction="left" />}
-          {dialog.speaker === 'right' && <SpeechBubble text={dialog.text} direction="right" />}
-          {dialog.image && (
+          {dialog[currentDialogIndex].speaker === 'left' && <SpeechBubble text={dialog[currentDialogIndex].text} direction="left" />}
+          {dialog[currentDialogIndex].speaker === 'right' && <SpeechBubble text={dialog[currentDialogIndex].text} direction="right" />}
+          {dialog[currentDialogIndex].image && (
             <div className="flex justify-center mb-4 w-full">
               <div className="mx-auto">
-                <Image src={dialog.image} alt="Dialog Bild" width={150} height={100} />
+                <Image src={dialog[currentDialogIndex].image} alt="Dialog Bild" width={150} height={100} />
               </div>
             </div>
           )}
-          {dialog.question && (
+          {dialog[currentDialogIndex].question && (
             <div className="flex flex-col items-center mt-4 w-full">
-              {dialog.question.map((q, index) => (
+              {dialog[currentDialogIndex].question.map((q, index) => (
                 <button
                   key={index}
                   className={`w-full max-w-md px-4 py-2 h-24 m-2 rounded-lg transition-colors duration-300
@@ -81,7 +132,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
         </div>
       </div>
       <div className="absolute bottom-0 right-0 text-right pb-6 pr-6 z-10">
-        {actionButton}
+        {actionButton ? React.cloneElement(actionButton as React.ReactElement<any>, { onClick: handleNext }) : null}
       </div>
     </div>
   );
