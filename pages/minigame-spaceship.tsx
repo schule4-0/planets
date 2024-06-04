@@ -35,7 +35,7 @@ const MiniGameSpaceship: React.FC = () => {
         }
     };
 
-    const pickup = (event: MouseEvent | React.TouchEvent) => {
+    const pickup = (event: React.MouseEvent | React.TouchEvent) => {
         const target = event.currentTarget as HTMLElement;
         moving = target;
         clone = target.cloneNode(true) as HTMLElement;
@@ -48,7 +48,7 @@ const MiniGameSpaceship: React.FC = () => {
         move(event);
     };
 
-    function move(event: MouseEvent | React.TouchEvent) {
+    function move(event: React.MouseEvent | MouseEvent | React.TouchEvent) {
         if (clone) {
             if ('clientX' in event) {
                 clone.style.left = `${event.clientX - clone.clientWidth / 2}px`;
@@ -88,7 +88,7 @@ const MiniGameSpaceship: React.FC = () => {
 
 
     const handleMouseDown = (event: React.MouseEvent) => {
-        pickup(event.nativeEvent);
+        pickup(event);
         document.addEventListener('mousemove', (event) => move(event));
         document.addEventListener('mouseup', handleMouseUp);
     };
