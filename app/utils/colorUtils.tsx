@@ -10,13 +10,13 @@ const hairColors: Color[] = [
     { code: "#DF5026", word: "orange" }
 ];
 
-const getSkinColor: Color[] = [
+const skinColors: Color[] = [
     { code: "#FCD8B1", word: "bright" },
     { code: "#AF875C", word: "middle" },
     { code: "#3C210F", word: "dark" },
 ];
 
-const rocketColor: Color[] = [
+const rocketColors: Color[] = [
     { code: "#FF9900", word: "orange" },
     { code: "#5EC71E", word: "green" },
     { code: "#0E5CF3", word: "blue" },
@@ -25,8 +25,21 @@ const rocketColor: Color[] = [
     { code: "#7A41F3", word: "purple" },
     { code: "#FFE500", word: "yellow" }
 ];
-const getHairColors = (): Color[] => hairColors;
-const getRocketColors = (): Color[] => rocketColor;
-const getSkinColors = (): Color[] => getSkinColor;
 
-export { getHairColors, getRocketColors, getSkinColors};
+const getHairColorIndex = (colorCode: string): number => {
+    return hairColors.findIndex(color => color.code === colorCode);
+};
+
+const getSkinColorIndex = (colorCode: string): number => {
+    return skinColors.findIndex(color => color.code === colorCode);
+};
+
+const getRocketColorIndex = (colorCode: string): number => {
+    return rocketColors.findIndex(color => color.code === colorCode);
+};
+
+const getHairColors = (): Color[] => hairColors;
+const getSkinColors = (): Color[] => skinColors;
+const getRocketColors = (): Color[] => rocketColors;
+
+export { getHairColors,getSkinColors, getRocketColors, getSkinColorIndex, getRocketColorIndex,getHairColorIndex};

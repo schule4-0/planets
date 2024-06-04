@@ -11,38 +11,53 @@ import {
     setRocketType,
     getRocketType
 } from '@/app/utils/storageUtils';
-import { getRocketColors } from '@/app/utils/colorUtils';
+import {getRocketColorIndex, getRocketColors} from '@/app/utils/colorUtils';
 
 const Spaceship: React.FC = () => {
     const isClient = typeof window !== 'undefined';
     const [selectedColor, setSelectedRocketColor] = useState<string>('orange');
     const [selectedRocketType, setSelectedRocketType] = useState<string>('rocket1');
+    const [selectRocketTypeIndex, setSelectRocketTypeIndex] = useState<number>(0);
+    const [selectedColorIndex, setSelectedColorIndex] = useState<number>(0);
+    const rocketTypes: string[] = ["rocket1", "rocket2"];
 
     useEffect(() => {
         const loadStoredValues = async () => {
             const selectedRocketType = await getRocketType();
-            if (selectedRocketType) setSelectedRocketType(selectedRocketType);
+            if (selectedRocketType){
+                setSelectedRocketType(selectedRocketType);
+                setSelectRocketTypeIndex(getRocketIndex(selectedRocketType));
+            }
 
             const storedRocketColors = await getRocketColor();
-            if (storedRocketColors) setSelectedRocketColor(storedRocketColors);
+            if (storedRocketColors){
+                setSelectedRocketColor(storedRocketColors);
+                setSelectedColorIndex(getRocketColorIndex(storedRocketColors));
+            }
         };
 
         if (isClient) loadStoredValues();
     }, [isClient]);
 
+    const getRocketIndex = (rocketType: string): number => {
+        return rocketTypes.indexOf(rocketType);
+    };
+
     const handleImageClick = async (type: string) => {
         setSelectedRocketType(type);
+        setSelectRocketTypeIndex(getRocketIndex(type));
         if (isClient) await setRocketType(type);
     };
 
     const handleColorClick = async (index: number) => {
         const colorWord = getRocketColors()[index].word;
         setSelectedRocketColor(colorWord);
+        setSelectedColorIndex(index)
         if (isClient) await setRocketColor(colorWord);
     };
 
     const renderLeftChildren = () => (
-        <div className="flex justify-center items-center h-full">
+        <div className="h-full w-full flex justify-center items-center">
             <Image
                 src={`/images/rocket/${selectedRocketType}_${selectedColor}.png`}
                 alt="Rakete"
@@ -64,6 +79,7 @@ const Spaceship: React.FC = () => {
                             { src: `/images/rocket/wing1_${selectedColor}.png`, desc: 'Flügel 1' },
                             { src: `/images/rocket/wing2_${selectedColor}.png`, desc: 'Flügel 2' },
                         ]}
+                        selectedIndex={selectRocketTypeIndex}
                     />
                 </div>
                 <h2 className="mb-4">Farbe</h2>
@@ -71,6 +87,7 @@ const Spaceship: React.FC = () => {
                     <SelectItems
                         onClick={handleColorClick}
                         colorCodes={getRocketColors().map((color) => color.code)}
+                        selectedIndex={selectedColorIndex}
                     />
                 </div>
             </div>
@@ -83,12 +100,12 @@ const Spaceship: React.FC = () => {
     };
 
     return (
-        <div>
+        <div className="bg-star">
             <SelectLayout
                 leftChildren={renderLeftChildren()}
                 rightChildren={renderRightChildren()}
-                actionButton={<ActionButton onClick={characterPage} />}
             />
+            <ActionButton onClick={characterPage()}/>
         </div>
     );
 };
