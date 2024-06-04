@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import SpeechBubble from './components/speechBubble/speechBubble';
+import SpeechBubble from '@/app/components/speechBubble/speechBubble';
 import CharacterImage from "@/app/components/character/CharacterImage";
 import { getHair, getHairColor, getSkinColor } from '@/app/utils/storageUtils';
 
 interface DialogItem {
   speaker: string;
   text: string;
-  image?: string; // optionales Bild
+  image?: string; 
   question?: {
     answer: string;
     isCorrect: boolean;
@@ -17,11 +17,13 @@ interface DialogItem {
 interface DialogLayoutProps {
   dialogData: any;
   actionButton?: React.ReactNode;
+  onEnd: () => void; 
 }
 
 const DialogLayout: React.FC<DialogLayoutProps> = ({
   dialogData,
   actionButton,
+  onEnd,
 }) => {
   const [currentSceneIndex, setCurrentSceneIndex] = useState(0);
   const [currentDialogIndex, setCurrentDialogIndex] = useState(0);
@@ -35,26 +37,16 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
 
   useEffect(() => {
     const loadStoredValues = async () => {
-      const storedHair = await getHair();
-      const storedHairColorCode = await getHairColor();
-      const storedSkinColorCode = await getSkinColor();
+      const storedHair = await getHair() || 'short-curly';
+      const storedHairColorCode = await getHairColor() || '#000000';
+      const storedSkinColorCode = await getSkinColor() || '#FCD8B1';
 
-      if (storedHair) setSelectedHair(storedHair);
-      if (storedHairColorCode) setSelectedHairColorCode(storedHairColorCode);
-      if (storedSkinColorCode) setSelectedSkinColorCode(storedSkinColorCode);
+      setSelectedHair(storedHair);
+      setSelectedHairColorCode(storedHairColorCode);
+      setSelectedSkinColorCode(storedSkinColorCode);
     };
 
-    if (typeof window !== 'undefined') {
-      const hairColorCode = localStorage.getItem('selectedHairColorCode') || '';
-      const hair = localStorage.getItem('selectedHair') || '';
-      const skinColorCode = localStorage.getItem('selectedSkinColorCode') || '';
-
-      setSelectedHairColorCode(hairColorCode);
-      setSelectedHair(hair);
-      setSelectedSkinColorCode(skinColorCode);
-
-      loadStoredValues();
-    }
+    loadStoredValues();
   }, []);
 
   useEffect(() => {
@@ -64,15 +56,15 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
 
   const handleNext = () => {
     const currentDialogLength = dialogData.story[currentSceneIndex].dialog.length;
-
     if (currentDialogIndex < currentDialogLength - 1) {
       setCurrentDialogIndex(currentDialogIndex + 1);
     } else {
       const nextSceneIndex = currentSceneIndex + 1;
-
       if (nextSceneIndex < dialogData.story.length) {
         setCurrentSceneIndex(nextSceneIndex);
         setCurrentDialogIndex(0);
+      } else {
+        onEnd(); 
       }
     }
   };
@@ -88,31 +80,29 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-cover bg-center relative" style={{ backgroundImage: `url(${images.backgroundimg})` }}>
-      <div className="absolute bottom-0 left-0 mb-9 ml-5" style={{ marginBottom: '35px' }}>
+    <div className="bg-cover bg-center relative page-container" style={{ backgroundImage: `url(${images.backgroundimg})` }}>
+      <div className="absolute bottom-0 left-0 mb-9 ml-5" style={{ width: '250px' }}>
         <CharacterImage
           hairColor={selectedHairColorCode}
           hairType={selectedHair}
           skinColor={selectedSkinColorCode}
         />
       </div>
-      <div className="absolute bottom-0 right-0 mb-9 mr-20" style={{ marginBottom: '35px' }}>
+      <div className="absolute bottom-0 right-0 mb-9 mr-20">
         <Image src={images.rightCharacter} alt="Rechte Figur" width={250} height={250} />
       </div>
-      <div className="flex justify-center items-center p-20 relative z-0 h-full">
+      <div className="flex justify-center p-20 relative z-0 h-full">
         <div className="w-3/5 flex flex-col items-center mb-10">
           {dialog[currentDialogIndex].speaker === 'left' && <SpeechBubble text={dialog[currentDialogIndex].text} direction="left" />}
           {dialog[currentDialogIndex].speaker === 'right' && <SpeechBubble text={dialog[currentDialogIndex].text} direction="right" />}
           {dialog[currentDialogIndex].image && (
             <div className="flex justify-center mb-4 w-full">
-              <div className="mx-auto">
-                <Image src={dialog[currentDialogIndex].image} alt="Dialog Bild" width={150} height={100} />
-              </div>
+              <Image src={dialog[currentDialogIndex].image as string} alt="Dialog Bild" width={150} height={100} />
             </div>
           )}
           {dialog[currentDialogIndex].question && (
             <div className="flex flex-col items-center mt-4 w-full">
-              {dialog[currentDialogIndex].question.map((q, index) => (
+              {dialog[currentDialogIndex]?.question?.map((q, index) => (
                 <button
                   key={index}
                   className={`w-full max-w-md px-4 py-2 h-24 m-2 rounded-lg transition-colors duration-300
