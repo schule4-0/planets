@@ -3,7 +3,7 @@
   <defs>
     <style>
       .long-curly-hair .cls-1 {
-        fill: #hairColor;
+        fill: #color;
         stroke-linecap: round;
         stroke-linejoin: round;
         stroke-width: 2.69019px;

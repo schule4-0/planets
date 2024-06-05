@@ -3,8 +3,8 @@ import Layout from '../app/layout';
 import SelectLayout from '@/app/selectLayout';
 import ActionButton from '@/app/components/actionButton/ActionButton';
 import SelectItems from '@/app/components/selectItems/selectItems';
+import SVGColorChanger from "@/app/components/svg/SVGColorChanger";
 import '../app/globals.css';
-import Image from 'next/image';
 import {
     getRocketColor,
     setRocketColor,
@@ -19,7 +19,7 @@ const Spaceship: React.FC = () => {
     const [selectedRocketType, setSelectedRocketType] = useState<string>('rocket1');
     const [selectRocketTypeIndex, setSelectRocketTypeIndex] = useState<number>(0);
     const [selectedColorIndex, setSelectedColorIndex] = useState<number>(0);
-    const rocketTypes: string[] = ["rocket1", "rocket2"];
+    const rocketTypes: string[] = ["kids/short-straight", "kids/short-straight"];
 
     useEffect(() => {
         const loadStoredValues = async () => {
@@ -58,12 +58,7 @@ const Spaceship: React.FC = () => {
 
     const renderLeftChildren = () => (
         <div className="h-full w-full flex justify-center items-center">
-            <Image
-                src={`/images/rocket/${selectedRocketType}_${selectedColor}.png`}
-                alt="Rakete"
-                width={250}
-                height={250}
-            />
+            <SVGColorChanger color={selectedColor} type={`rocket/${selectedRocketType}`} />
         </div>
     );
 
@@ -75,9 +70,17 @@ const Spaceship: React.FC = () => {
                 <div className="text-center">
                     <SelectItems
                         onClick={(index) => handleImageClick(index === 0 ? 'rocket1' : 'rocket2')}
-                        images={[
-                            { src: `/images/rocket/wing1_${selectedColor}.png`, desc: 'Flügel 1' },
-                            { src: `/images/rocket/wing2_${selectedColor}.png`, desc: 'Flügel 2' },
+                        components={[
+                            <SVGColorChanger
+                                key="rocket1"
+                                color={selectedColor}
+                                type="kids/short-straight"
+                            />,
+                            <SVGColorChanger
+                                key="rocket2"
+                                color={selectedColor}
+                                type="kids/long-straight"
+                            />
                         ]}
                         selectedIndex={selectRocketTypeIndex}
                     />
