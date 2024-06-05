@@ -7,6 +7,7 @@ import "./minigame-spaceship.css";
 const MiniGameSpaceship: React.FC = () => {
 
     const dropRefs = useRef<{ [key: string]: HTMLImageElement | null }>({});
+    const actionButtonRef = useRef<HTMLInputElement>(null);
     const images = [
         {id: 'Top', src: '/images/raumschiff_top.png', alt: 'Raumschiffteil Unten'},
         {id: 'Middle1', src: '/images/raumschiff_middle1.png', alt: 'Raumschiffteil Unten'},
@@ -16,7 +17,7 @@ const MiniGameSpaceship: React.FC = () => {
     const imagesRandom = structuredClone(images).sort((a, b) => a.src.localeCompare(b.alt));
     let moving: HTMLElement | null = null;
     let clone: HTMLElement | null = null;
-
+    let allDropped = 0
     const allowDrop = (event: React.DragEvent<HTMLDivElement>) => {
         event.preventDefault();
     };
@@ -32,6 +33,9 @@ const MiniGameSpaceship: React.FC = () => {
         if (moving && dropZoneElement && draggedElementId === dropZoneId.replace('drop', 'drag')) {
             dropZoneElement.style.filter = "none";
             moving.style.visibility = "hidden";
+            if (++allDropped === images.length) {
+                actionButtonRef.current?.classList.remove("hidden")
+            }
         }
     };
 
@@ -52,10 +56,10 @@ const MiniGameSpaceship: React.FC = () => {
         if (clone) {
             if ('clientX' in event) {
                 clone.style.left = `${event.clientX - clone.clientWidth / 2}px`;
-                clone.style.top = `${event.clientY - clone.clientHeight / 2}px`;
+                clone.style.top = `${(event.clientY - clone.clientHeight / 2)-10}px`;
             } else {
                 clone.style.left = `${event.changedTouches[0].clientX - clone.clientWidth / 2}px`;
-                clone.style.top = `${event.changedTouches[0].clientY - clone.clientHeight / 2}px`;
+                clone.style.top = `${(event.changedTouches[0].clientY - clone.clientHeight / 2)-10}px`;
             }
         }
     }
@@ -176,7 +180,7 @@ const MiniGameSpaceship: React.FC = () => {
                 src={src}
                 draggable="true"
                 onDragStart={onDragStart}
-                className="mt-4 w-full"
+                className="mt-4 w-full cursor-grab"
                 width={width}
                 height={height}
             />
@@ -219,27 +223,15 @@ const MiniGameSpaceship: React.FC = () => {
         );
     }
 
-    const nextPage = () => {
-        let allDropped = true
-        Object.keys(dropRefs.current).forEach(dropZoneId => {
-            const dropZoneElement = document.getElementById(dropZoneId);
-            if (dropZoneElement && dropZoneElement.style.filter !== "none") {
-                allDropped = false
-                return
-            }
-        })
-        if (allDropped) {
-            //@todo add routing
-        }
-    };
-
     return (
         <div className="bg-star">
             <SelectLayout
                 leftChildren={renderLeftChildren()}
                 rightChildren={renderRightChildren()}
             />
-            <ActionButton onClick={nextPage}/>
+            <div ref={actionButtonRef} className={"hidden"}>
+                <ActionButton onClick={() => console.log("Action button clicked")}/>
+            </div>
         </div>
     );
 };
