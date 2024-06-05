@@ -19,7 +19,7 @@ const Spaceship: React.FC = () => {
     const [selectedRocketType, setSelectedRocketType] = useState<string>('rocket1');
     const [selectRocketTypeIndex, setSelectRocketTypeIndex] = useState<number>(0);
     const [selectedColorIndex, setSelectedColorIndex] = useState<number>(0);
-    const rocketTypes: string[] = ["kids/short-straight", "kids/short-straight"];
+    const rocketTypes: string[] = ["rocket1", "rocket2"];
 
     useEffect(() => {
         const loadStoredValues = async () => {
@@ -74,12 +74,12 @@ const Spaceship: React.FC = () => {
                             <SVGColorChanger
                                 key="rocket1"
                                 color={selectedColor}
-                                type="kids/short-straight"
+                                type="rocket/rocket1"
                             />,
                             <SVGColorChanger
                                 key="rocket2"
                                 color={selectedColor}
-                                type="kids/long-straight"
+                                type="rocket/rocket2"
                             />
                         ]}
                         selectedIndex={selectRocketTypeIndex}
