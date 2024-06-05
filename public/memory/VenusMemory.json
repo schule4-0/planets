@@ -1,0 +1,40 @@
+{
+  "page" : [
+    {
+    "headline": "Venus Entdeckungen: Ein Gedächtnisspiel",
+    "content" : "Decke abwechselnd zwei Karten auf und sammle Paare von passenden Bildern, um mehr über die Venus zu lernen."
+  }
+  ],
+  "cards": [
+    {
+      "keyword": "atmosphere",
+      "src": "/images/memory/atmosphere.svg",
+      "content": "Die Atmosphäre der Venus besteht hauptsächlich aus Kohlendioxid und erzeugt einen starken Treibhauseffekt."
+    },
+    {
+      "keyword": "cloud",
+      "src": "/images/memory/cloud.svg",
+      "content": "Die Venus hat eine dichte Wolkendecke aus Schwefelsäure, die sie gelblich erscheinen lässt."
+    },
+    {
+      "keyword": "earth_venus",
+      "src": "/images/memory/earth_venus.svg",
+      "content": "Die Venus wird oft als Schwesterplanet der Erde bezeichnet, da sie fast gleich groß ist."
+    },
+    {
+      "keyword": "rotation",
+      "src": "/images/memory/rotation.svg",
+      "content": "Die Venus dreht sich super langsam um sich selbst. Ein Tag auf der Venus dauert länger als ein Jahr!"
+    },
+    {
+      "keyword": "temperature",
+      "src": "/images/memory/temperature.svg",
+      "content": "Die Venus ist der heißeste Planet in unserem Sonnensystem mit Durchschnittstemperaturen von etwa 465 Grad Celsius."
+    },
+    {
+      "keyword": "vulcan",
+      "src": "/images/memory/vulcan.svg",
+      "content": "Die Venus ist voll von Vulkanen. Einige davon sind möglicherweise noch aktiv!"
+    }
+  ]
+}

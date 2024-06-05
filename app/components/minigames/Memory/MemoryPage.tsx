@@ -1,12 +1,16 @@
-import MemoryGame from "@/app/components/minigames/Memory/MemoryGame";
 import React from "react";
+import MemoryGame from "@/app/components/minigames/Memory/MemoryGame";
+import cardData from '@/public/memory/VenusMemory.json';
 
 const MemoryPage: React.FC = () => {
+    const headline = cardData.page[0].headline;
+    const content = cardData.page[0].content;
+
     return (
         <div className="flex flex-col justify-center items-center page-container bg-star p-4">
             <div className="text-center mb-4">
-                <h1 className="text-3xl font-bold mb-16 h1">Venus Entdeckungen: Ein Gedächtnisspiel</h1>
-                <h2 className="text-xl font-medium mb-8 h2">Decke abwechselnd zwei Karten auf und sammle Paare von passenden Bildern, um mehr über die Venus zu lernen.</h2>
+                <h1 className="mb-16 h1">{headline}</h1>
+                <h2 className="mb-8 h2">{content}</h2>
             </div>
             <MemoryGame />
         </div>
@@ -14,4 +18,3 @@ const MemoryPage: React.FC = () => {
 }
 
 export default MemoryPage;
-

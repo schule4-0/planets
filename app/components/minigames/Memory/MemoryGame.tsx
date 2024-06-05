@@ -3,6 +3,7 @@ import Image from 'next/image';
 import PopupWindow from './PopupWindow';
 import type { FC } from 'react';
 import ActionButton from "@/app/components/actionButton/ActionButton";
+import cardData from '@/public/memory/VenusMemory.json';
 
 type Card = {
     id: number;
@@ -10,15 +11,6 @@ type Card = {
     src: string;
     matched: boolean;
 };
-
-const cardImages = [
-    { keyword: 'atmosphere', src: '/images/memory/atmosphere.svg', content: 'Die Atmosphäre der Venus besteht hauptsächlich aus Kohlendioxid und erzeugt einen starken Treibhauseffekt.' },
-    { keyword: 'cloud', src: '/images/memory/cloud.svg', content: 'Die Venus hat eine dichte Wolkendecke aus Schwefelsäure, die sie gelblich erscheinen lässt.' },
-    { keyword: 'earth_venus', src: '/images/memory/earth_venus.svg', content: 'Die Venus wird oft als Schwesterplanet der Erde bezeichnet, da sie fast gleich groß ist.' },
-    { keyword: 'distance', src: '/images/memory/distance.svg', content: 'Zur Venus kann man nur mit einer Rakete fliegen, denn sie ist 40 Millionen Kilometer von der Erde entfernt.' },
-    { keyword: 'temperature', src: '/images/memory/temperature.svg', content: 'Die Venus ist der heißeste Planet in unserem Sonnensystem mit Durchschnittstemperaturen von etwa 465 Grad Celsius.' },
-    { keyword: 'vulcan', src: '/images/memory/vulcan.svg', content: 'Die Venus ist voll von Vulkanen. Einige davon sind möglicherweise noch aktiv!' },
-];
 
 const MemoryGame: FC = () => {
     const [cards, setCards] = useState<Card[]>([]);
@@ -37,7 +29,7 @@ const MemoryGame: FC = () => {
     };
 
     const generateInitialCards = (): Card[] => {
-        const duplicatedImages = cardImages.flatMap(image => [image, image]);
+        const duplicatedImages = cardData.cards.flatMap(image => [image, image]);
         return shuffleArray(duplicatedImages.map((image, index) => ({ id: index, ...image, matched: false })));
     };
 
@@ -62,7 +54,7 @@ const MemoryGame: FC = () => {
     };
 
     const showPopup = (keyword: string) => {
-        const matchedImage = cardImages.find(image => image.keyword === keyword);
+        const matchedImage = cardData.cards.find(image => image.keyword === keyword);
         if (matchedImage) {
             setPopupContent({ content: matchedImage.content, imageUrl: matchedImage.src });
         }
