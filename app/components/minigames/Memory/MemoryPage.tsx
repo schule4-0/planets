@@ -16,8 +16,8 @@ interface MemoryPageProps {
     cardData: CardData;
 }
 
-const MemoryPage: React.FC<MemoryPageProps> = ({ cardData }) => {
-    const { headline, content } = cardData.page[0];
+const MemoryPage: React.FC<MemoryPageProps> = ({cardData}) => {
+    const {headline, content} = cardData.page[0];
 
     return (
         <div className="flex flex-col justify-center items-center page-container bg-star p-4">
@@ -25,7 +25,7 @@ const MemoryPage: React.FC<MemoryPageProps> = ({ cardData }) => {
                 <h1 className="mb-16">{headline}</h1>
                 <h2 className="mb-8">{content}</h2>
             </div>
-            <MemoryGame cardData={cardData} />
+            <MemoryGame cardData={cardData}/>
         </div>
     );
 }

@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import {useState, useEffect} from 'react';
 import Image from 'next/image';
 import PopupWindow from './PopupWindow';
-import type { FC } from 'react';
+import type {FC} from 'react';
 import ActionButton from "@/app/components/actionButton/ActionButton";
 
 interface CardImage {
@@ -26,7 +26,7 @@ type Card = {
     matched: boolean;
 };
 
-const MemoryGame: FC<MemoryGameProps> = ({ cardData }) => {
+const MemoryGame: FC<MemoryGameProps> = ({cardData}) => {
     const [cards, setCards] = useState<Card[]>([]);
     const [flipped, setFlipped] = useState<number[]>([]);
     const [matched, setMatched] = useState<number[]>([]);
@@ -44,7 +44,7 @@ const MemoryGame: FC<MemoryGameProps> = ({ cardData }) => {
 
     const generateInitialCards = (): Card[] => {
         const duplicatedImages = cardData.cards.flatMap((image: CardImage) => [image, image]);
-        return shuffleArray(duplicatedImages.map((image, index) => ({ id: index, ...image, matched: false })));
+        return shuffleArray(duplicatedImages.map((image, index) => ({id: index, ...image, matched: false})));
     };
 
     const shuffleArray = (array: any[]): any[] => {
@@ -70,7 +70,7 @@ const MemoryGame: FC<MemoryGameProps> = ({ cardData }) => {
     const showPopup = (keyword: string) => {
         const matchedImage = cardData.cards.find(image => image.keyword === keyword);
         if (matchedImage) {
-            setPopupContent({ content: matchedImage.content, imageUrl: matchedImage.src });
+            setPopupContent({content: matchedImage.content, imageUrl: matchedImage.src});
         }
     };
 
@@ -84,14 +84,16 @@ const MemoryGame: FC<MemoryGameProps> = ({ cardData }) => {
     return (
         <div className="grid grid-cols-4 gap-4 bg-star">
             {cards.map((card, index) => (
-                <div key={card.id} className="relative w-[157px] h-[157px] hover:cursor-pointer " onClick={() => handleCardClick(index)}>
-                    <Image src={flipped.includes(index) || matched.includes(index) ? card.src : '/images/memory/rocket_card.svg'} alt={card.keyword} width={157} height={157} />
-                </div>
+                <Image key={card.id} className="w-[157px] h-[157px] hover:cursor-pointer "
+                       onClick={() => handleCardClick(index)}
+                       src={flipped.includes(index) || matched.includes(index) ? card.src : '/images/memory/rocket_card.svg'}
+                       alt={card.keyword} width={157} height={157}/>
             ))}
             {popupContent && (
-                <PopupWindow content={popupContent.content} imageUrl={popupContent.imageUrl} onClose={handleClosePopup} />
+                <PopupWindow content={popupContent.content} imageUrl={popupContent.imageUrl}
+                             onClose={handleClosePopup}/>
             )}
-            {allMatched && <ActionButton onClick={() => console.log("Action button clicked" + allMatched)} />}
+            {allMatched && <ActionButton onClick={() => console.log("Action button clicked" + allMatched)}/>}
         </div>
     );
 };
