@@ -70,7 +70,7 @@ const MemoryGame: FC = () => {
     return (
         <div className="grid grid-cols-4 gap-4 bg-star">
             {cards.map((card, index) => (
-                <div key={card.id} className="relative w-[157px] h-[157px]" onClick={() => handleCardClick(index)}>
+                <div key={card.id} className="relative w-[157px] h-[157px] hover:cursor-pointer " onClick={() => handleCardClick(index)}>
                     <Image src={flipped.includes(index) || matched.includes(index) ? card.src : '/images/memory/rocket_card.svg'} alt={card.keyword} width={157} height={157} />
                 </div>
             ))}
