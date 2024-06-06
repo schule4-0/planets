@@ -18,9 +18,7 @@ const PopupWindow: FC<PopupWindowProps> = ({ content, imageUrl, onClose }) => {
                     <p className="mb-4">{content}</p>
                     <Image src={imageUrl} alt="Popup Image" width={150} height={150} className="ml-4"/>
                 </div>
-                <div className="flex justify-center mt-4">
                     <ActionButton onClick={onClose} />
-                </div>
             </div>
         </div>
     );
