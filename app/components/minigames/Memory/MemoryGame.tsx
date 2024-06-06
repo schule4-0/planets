@@ -3,7 +3,21 @@ import Image from 'next/image';
 import PopupWindow from './PopupWindow';
 import type { FC } from 'react';
 import ActionButton from "@/app/components/actionButton/ActionButton";
-import cardData from '@/public/memory/VenusMemory.json';
+
+interface CardImage {
+    keyword: string;
+    src: string;
+    content: string;
+}
+
+interface CardData {
+    page: { headline: string; content: string }[];
+    cards: CardImage[];
+}
+
+interface MemoryGameProps {
+    cardData: CardData;
+}
 
 type Card = {
     id: number;
@@ -12,7 +26,7 @@ type Card = {
     matched: boolean;
 };
 
-const MemoryGame: FC = () => {
+const MemoryGame: FC<MemoryGameProps> = ({ cardData }) => {
     const [cards, setCards] = useState<Card[]>([]);
     const [flipped, setFlipped] = useState<number[]>([]);
     const [matched, setMatched] = useState<number[]>([]);
@@ -29,7 +43,7 @@ const MemoryGame: FC = () => {
     };
 
     const generateInitialCards = (): Card[] => {
-        const duplicatedImages = cardData.cards.flatMap(image => [image, image]);
+        const duplicatedImages = cardData.cards.flatMap((image: CardImage) => [image, image]);
         return shuffleArray(duplicatedImages.map((image, index) => ({ id: index, ...image, matched: false })));
     };
 
