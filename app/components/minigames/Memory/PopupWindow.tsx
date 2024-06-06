@@ -12,7 +12,7 @@ type PopupWindowProps = {
 const PopupWindow: FC<PopupWindowProps> = ({content, imageUrl, onClose}) => {
     return (
         <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50">
-            <div className="text-black popup-box bg-white rounded-lg p-14 m-4 max-w-xl relative">
+            <div className="text-black popup-box bg-white rounded-lg p-14 m-4 max-w-2xl relative">
                 <div className="flex items-center">
                     <div>
                         <h2 className="mb-10">Richtig!</h2>
