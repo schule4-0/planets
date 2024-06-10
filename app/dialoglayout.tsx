@@ -98,7 +98,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
         <Image src={images.rightCharacter} alt="Rechte Figur" width={250} height={250} />
       </div>
       <div className="flex justify-center p-20 relative z-0 h-full">
-        <div className="w-3/5 flex flex-col items-center mb-10">
+        <div className="w-3/5 flex flex-col items-center mb-5">
           {dialog[currentDialogIndex].speaker === 'left' && (
             <SpeechBubble text={dialog[currentDialogIndex].text} direction="left" />
           )}
@@ -110,36 +110,36 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
               <Image src={dialog[currentDialogIndex].image as string} alt="Dialog Bild" width={150} height={100} />
             </div>
           )}
-          {dialog[currentDialogIndex].question && (
-            <div className="flex flex-col items-center mt-4 w-full">
-              {dialog[currentDialogIndex]?.question?.map((q, index) => (
-                <div key={index} className="w-full max-w-md px-4 py-2">
-                  <button
-                    className={`w-full h-24 rounded-lg transition-colors duration-300
-                      ${feedback && feedback.index === index 
-                        ? (feedback.isCorrect 
-                            ? 'bg-[#186B21] text-white' 
-                            : 'bg-[#8D2020] text-white') 
-                        : attempts.includes(index) 
-                        ? 'bg-[#8D2020] text-white opacity-50' 
-                        : 'bg-[#9747FF] text-white hover:bg-white hover:text-[#9747FF]'}
-                      text-center`}
-                    onClick={() => handleAnswerClick(index, q.isCorrect, q.hint)}
-                    disabled={attempts.includes(index)}
-                  >
-                    {q.answer}
-                  </button>
-                </div>
-              ))}
-            </div>
-          )}
+          <div className="w-full flex flex-col items-center mt-auto">
+            {dialog[currentDialogIndex].question?.map((q, index) => (
+              <div key={index} className="w-full max-w-md px-4 py-2">
+                <button
+                  className={`w-full h-24 rounded-lg transition-colors duration-300
+                    ${feedback && feedback.index === index 
+                      ? (feedback.isCorrect 
+                          ? 'bg-[#186B21] text-white' 
+                          : 'bg-[#8D2020] text-white') 
+                      : attempts.includes(index) 
+                      ? 'bg-[#8D2020] text-white opacity-50' 
+                      : 'bg-[#9747FF] text-white hover:bg-white hover:text-[#9747FF]'}
+                    text-center`}
+                  onClick={() => handleAnswerClick(index, q.isCorrect, q.hint)}
+                  disabled={attempts.includes(index)}
+                >
+                  {q.answer}
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <div className="absolute bottom-0 right-0 text-right pb-6 pr-6 z-10">
-        {actionButton ? React.cloneElement(actionButton as React.ReactElement<any>, { onClick: handleNext }) : null}
+        {actionButton && !dialog[currentDialogIndex].question && React.cloneElement(actionButton as React.ReactElement<any>, { onClick: handleNext })}
       </div>
     </div>
   );
+  
+  
 };
 
 export default DialogLayout;
