@@ -5,11 +5,11 @@ const CHARACTER_WIDTH = 5;
 const CHARACTER_HEIGHT = 5;
 const METEOR_WIDTH = 12;
 const METEOR_HEIGHT = 12;
-const METEOR_FALL_SPEED = 5;
-const METEOR_CREATION_INTERVAL = 1000;
+const METEOR_FALL_SPEED = 3;
+const METEOR_CREATION_INTERVAL = 1500;
 const COLLISION_THRESHOLD = 0.01;
 
-const Home = () => {
+const Home: React.FC = () => {
     const [position, setPosition] = useState<number>(50);
     const [meteors, setMeteors] = useState<{ id: number; position: number; top: number }[]>([]);
     const [score, setScore] = useState<number>(0);
@@ -26,6 +26,14 @@ const Home = () => {
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, [position]);
+
+    const moveLeft = () => {
+        setPosition((prev) => Math.max(prev - 5, 0));
+    };
+
+    const moveRight = () => {
+        setPosition((prev) => Math.min(prev + 5, 100));
+    };
 
     useEffect(() => {
         const meteorInterval = setInterval(() => {
@@ -104,6 +112,12 @@ const Home = () => {
                     alt="Meteor"
                 />
             ))}
+            <button className="absolute bottom-4 left-4" onClick={moveLeft}>
+                <Image src="/images/mercury_minigame/button_left.png" alt="Left" width={32} height={32} />
+            </button>
+            <button className="absolute bottom-4 right-4" onClick={moveRight}>
+                <Image src="/images/mercury_minigame/button_right.png" alt="Right" width={32} height={32} />
+            </button>
         </div>
     );
 };
