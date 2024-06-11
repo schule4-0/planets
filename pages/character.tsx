@@ -3,7 +3,7 @@ import Layout from '../app/layout';
 import SelectLayout from '@/app/selectLayout';
 import ActionButton from '@/app/components/actionButton/ActionButton';
 import SelectItems from '@/app/components/selectItems/selectItems';
-import CharacterImage from "@/app/components/character/CharacterImage";
+import SVGColorChanger from "@/app/components/svg/SVGColorChanger";
 import '../app/globals.css';
 import {
     getHair,
@@ -23,14 +23,14 @@ import {
 const Character: React.FC = () => {
     const isClient = typeof window !== 'undefined';
     const [name, setName] = useState<string>('');
-    const [selectedHair, setSelectedHair] = useState<string>('short-curly')
+    const [selectedHair, setSelectedHair] = useState<string>('kids/short-curly')
     const [selectedHairColorCode, setSelectedHairColorCode] = useState<string>('#000000');
     const [selectedSkinColorCode, setSelectedSkinColorCode] = useState<string>('#FCD8B1');
     const nameInputRef = useRef<HTMLInputElement>(null);
     const [selectedIndexHairType, setSelectedIndexHairType] = useState<number>(0);
     const [selectedIndexHairColor, setSelectedIndexHairColor] = useState<number>(0);
     const [selectedIndexSkinColor, setSelectedIndexSkinColor] = useState<number>(0);
-    const hairTypes: string[] = ['short-curly', 'short-straight', 'long-curly', 'long-straight'];
+    const hairTypes: string[] = ['kids/short-curly', 'kids/short-straight', 'kids/long-curly', 'kids/long-straight'];
     useEffect(() => {
         const loadStoredValues = async () => {
             const storedName = await getCharacterName();
@@ -91,8 +91,8 @@ const Character: React.FC = () => {
 
     const renderLeftChildren = () => (
         <div className="h-full w-full flex justify-center items-center">
-            <CharacterImage hairColor={selectedHairColorCode} hairType={selectedHair}
-                            skinColor={selectedSkinColorCode}></CharacterImage>
+            <SVGColorChanger color={selectedHairColorCode} type={selectedHair}
+                             skinColor={selectedSkinColorCode}></SVGColorChanger>
         </div>
     );
 
@@ -107,28 +107,28 @@ const Character: React.FC = () => {
                         handleImageClick(desc);
                     }}
                     components={[
-                        <CharacterImage
+                        <SVGColorChanger
                             key="short-curly-hair"
-                            hairColor={selectedHairColorCode}
-                            hairType="short-curly-hair"
+                            color={selectedHairColorCode}
+                            type="kids/short-curly-hair"
                             skinColor={selectedSkinColorCode}
                         />,
-                        <CharacterImage
+                        <SVGColorChanger
                             key="short-straight-hair"
-                            hairColor={selectedHairColorCode}
-                            hairType="short-straight-hair"
+                            color={selectedHairColorCode}
+                            type="kids/short-straight-hair"
                             skinColor={selectedSkinColorCode}
                         />,
-                        <CharacterImage
+                        <SVGColorChanger
                             key="long-curly-hair"
-                            hairColor={selectedHairColorCode}
-                            hairType="long-curly-hair"
+                            color={selectedHairColorCode}
+                            type="kids/long-curly-hair"
                             skinColor={selectedSkinColorCode}
                         />,
-                        <CharacterImage
+                        <SVGColorChanger
                             key="long-straight-hair"
-                            hairColor={selectedHairColorCode}
-                            hairType="long-straight-hair"
+                            color={selectedHairColorCode}
+                            type="kids/long-straight-hair"
                             skinColor={selectedSkinColorCode}
                         />,
                     ]}
