@@ -72,14 +72,14 @@ const Spaceship: React.FC = () => {
                         onClick={(index) => handleImageClick(index === 0 ? 'rocket1' : 'rocket2')}
                         components={[
                             <SVGColorChanger
-                                key="rocket1"
+                                key="wing1"
                                 color={selectedColor}
-                                type="rocket/rocket1"
+                                type="rocket/wing1"
                             />,
                             <SVGColorChanger
-                                key="rocket2"
+                                key="wing2"
                                 color={selectedColor}
-                                type="rocket/rocket2"
+                                type="rocket/wing2"
                             />
                         ]}
                         selectedIndex={selectRocketTypeIndex}
