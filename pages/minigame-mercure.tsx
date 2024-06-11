@@ -3,8 +3,8 @@ import Image from 'next/image';
 
 const CHARACTER_WIDTH = 5;
 const CHARACTER_HEIGHT = 5;
-const METEOR_WIDTH = 12;
-const METEOR_HEIGHT = 12;
+const METEOR_WIDTH = 10;
+const METEOR_HEIGHT = 10;
 const METEOR_FALL_SPEED = 3;
 const METEOR_CREATION_INTERVAL = 1500;
 const COLLISION_THRESHOLD = 0.01;
@@ -97,7 +97,7 @@ const Home: React.FC = () => {
                 className="absolute bottom-4"
                 style={{ left: `${position}%`, transition: 'left 0.1s' }}
             >
-                <Image src="/images/kids/astronaut.svg" alt="Character" width={48} height={48} />
+                <Image src="/images/kids/astronaut.svg" alt="Character" width={100} height={100} />
             </div>
             {meteors.map((meteor) => (
                 <img
