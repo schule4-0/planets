@@ -50,7 +50,7 @@ const Spaceship: React.FC = () => {
     };
 
     const handleColorClick = async (index: number) => {
-        const colorWord = getRocketColors()[index].word;
+        const colorWord = getRocketColors()[index].code;
         setSelectedRocketColor(colorWord);
         setSelectedColorIndex(index)
         if (isClient) await setRocketColor(colorWord);
