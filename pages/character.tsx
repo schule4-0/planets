@@ -5,6 +5,8 @@ import ActionButton from '@/app/components/actionButton/ActionButton';
 import SelectItems from '@/app/components/selectItems/selectItems';
 import SVGColorChanger from "@/app/components/svg/SVGColorChanger";
 import '../app/globals.css';
+import {useRouter} from "next/router";
+
 import {
     getHair,
     getHairColor,
@@ -12,11 +14,13 @@ import {
     setHair,
     setHairColor,
     setCharacterName,
-    setSkinColor, getSkinColor
+    setSkinColor,
+    getSkinColor
 } from '@/app/utils/storageUtils';
 import {
     getHairColorIndex,
-    getHairColors, getSkinColorIndex,
+    getHairColors,
+    getSkinColorIndex,
     getSkinColors
 } from '@/app/utils/colorUtils';
 
@@ -31,38 +35,35 @@ const Character: React.FC = () => {
     const [selectedIndexHairColor, setSelectedIndexHairColor] = useState<number>(0);
     const [selectedIndexSkinColor, setSelectedIndexSkinColor] = useState<number>(0);
     const hairTypes: string[] = ['kids/short-curly', 'kids/short-straight', 'kids/long-curly', 'kids/long-straight'];
+    const router = useRouter();
+
     useEffect(() => {
         const loadStoredValues = async () => {
-            const storedName = await getCharacterName();
-            if (storedName) setName(storedName);
+            if (isClient) {
+                const storedName = await getCharacterName();
+                if (storedName) setName(storedName);
 
-            const storedHair = await getHair();
-            if (storedHair) {
-                setSelectedHair(storedHair);
-                setSelectedIndexHairType(getHairIndex(storedHair));
-            }
+                const storedHair = await getHair();
+                if (storedHair) {
+                    setSelectedHair(storedHair);
+                    setSelectedIndexHairType(getHairIndex(storedHair));
+                }
 
-            const storedHairColorCode = await getHairColor();
-            if (storedHairColorCode) {
-                setSelectedHairColorCode(storedHairColorCode);
-                setSelectedIndexHairColor(getHairColorIndex(storedHairColorCode));
-            }
+                const storedHairColorCode = await getHairColor();
+                if (storedHairColorCode) {
+                    setSelectedHairColorCode(storedHairColorCode);
+                    setSelectedIndexHairColor(getHairColorIndex(storedHairColorCode));
+                }
 
-            const storedSkinColorCode = await getSkinColor();
-            if (storedSkinColorCode) {
-                setSelectedSkinColorCode(storedSkinColorCode);
-                setSelectedIndexSkinColor(getSkinColorIndex(storedSkinColorCode));
+                const storedSkinColorCode = await getSkinColor();
+                if (storedSkinColorCode) {
+                    setSelectedSkinColorCode(storedSkinColorCode);
+                    setSelectedIndexSkinColor(getSkinColorIndex(storedSkinColorCode));
+                }
             }
         };
-
-        if (isClient) loadStoredValues();
+        loadStoredValues();
     }, [isClient]);
-
-    const handleNameChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-        const newName = e.target.value;
-        setName(newName);
-        if (isClient) await setCharacterName(newName);
-    };
 
     const getHairIndex = (hairType: string): number => {
         return hairTypes.indexOf(hairType);
@@ -87,6 +88,12 @@ const Character: React.FC = () => {
         setSelectedSkinColorCode(colorWord);
         setSelectedIndexSkinColor(index)
         if (isClient) await setSkinColor(colorWord);
+    };
+
+    const handleNameChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const newName = e.target.value;
+        setName(newName);
+        if (isClient) await setCharacterName(newName);
     };
 
     const renderLeftChildren = () => (
@@ -166,9 +173,8 @@ const Character: React.FC = () => {
         </Layout>
     );
 
-    // TODO: Implement routing logic
-    const rocketPage = () => {
-        // Implement navigation logic here
+    const nextPage = () => {
+        router.push('/dialog');
     };
 
     return (
@@ -177,7 +183,7 @@ const Character: React.FC = () => {
                 leftChildren={renderLeftChildren()}
                 rightChildren={renderRightChildren()}
             />
-            <ActionButton onClick={rocketPage()}/>
+            <ActionButton onClick={nextPage}/>
         </div>
     );
 };
