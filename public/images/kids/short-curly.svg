@@ -7,7 +7,7 @@
       }
 
       .short-curly .cls-2 {
-        fill: #hairColor;
+        fill: #color;
         stroke-width: 2.69019252061844px;
       }
 
@@ -19,7 +19,7 @@
         stroke-linecap: round;
       }
 
-      .short-curly .cls-2, .short-curly .cls-3, .short-curly .cls-6, .short-curly .cls-8, .short-curly .cls-9 {
+      .short-curly .cls-2, .short-curlycolor .cls-3, .short-curly .cls-6, .short-curly .cls-8, .short-curly .cls-9 {
         stroke-linejoin: round;
       }
 

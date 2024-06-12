@@ -2,8 +2,12 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import SpeechBubble from '@/app/components/speechBubble/speechBubble';
-import CharacterImage from "@/app/components/character/CharacterImage";
-import { getHair, getHairColor, getSkinColor } from '@/app/utils/storageUtils';
+import CharacterImage from "@/app/components/svg/SVGColorChanger";
+import {
+  getHair,
+  getHairColor,
+  getSkinColor
+} from '@/app/utils/storageUtils';
 
 interface DialogItem {
   speaker: string;
@@ -114,14 +118,28 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
   };
   
 
+  const leftImage = () =>{
+    if (images.leftCharacter === "player"){
+      if(!selectedHair.includes("kids/")){
+        setSelectedHair("kids/" + selectedHair)
+      }
+      return(
+          <CharacterImage
+              color={selectedHairColorCode}
+              type={selectedHair}
+              skinColor={selectedSkinColorCode}
+          />
+      )
+    }
+    return (
+        <Image src={images.leftCharacter} alt="Linke Figur" width={200} height={250} />
+    )
+  }
+
   return (
     <div className="bg-cover bg-center relative page-container" style={{ backgroundImage: `url(${images.backgroundimg})` }}>
       <div className="absolute bottom-0 left-0 mb-9 ml-5" style={{ width: '200px' }}>
-        <CharacterImage
-          hairColor={selectedHairColorCode}
-          hairType={selectedHair}
-          skinColor={selectedSkinColorCode}
-        />
+        ${leftImage()}
       </div>
       <div className="absolute bottom-0 right-0 mb-9 mr-20">
         <Image src={images.rightCharacter} alt="Rechte Figur" width={200} height={250} />

@@ -1,18 +1,18 @@
-import React, { useEffect, useRef } from 'react';
+import React, {useEffect, useRef} from 'react';
 
 interface CharacterImageProps {
-    hairColor: string;
-    hairType: string;
-    skinColor: string;
+    color: string;
+    type: string;
+    skinColor?: string;
 }
 
-const CharacterImage: React.FC<CharacterImageProps> = ({ hairColor, hairType, skinColor }) => {
+const SVGColorChanger: React.FC<CharacterImageProps> = ({color, type, skinColor}) => {
     const svgContainerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const loadSvg = async () => {
             try {
-                let svgPath = `/images/kids/${hairType}.svg`;
+                let svgPath = `/images/${type}.svg`;
 
                 const response = await fetch(svgPath);
                 const svgText = await response.text();
@@ -21,8 +21,10 @@ const CharacterImage: React.FC<CharacterImageProps> = ({ hairColor, hairType, sk
                 const svgDoc = parser.parseFromString(svgText, 'image/svg+xml');
                 const svgElement = svgDoc.documentElement;
 
-                svgElement.innerHTML = svgElement.innerHTML.replace(/#hairColor/g, hairColor);
-                svgElement.innerHTML = svgElement.innerHTML.replace(/#skinColor/g, skinColor);
+                svgElement.innerHTML = svgElement.innerHTML.replace(/#color/g, color);
+                if (skinColor) {
+                    svgElement.innerHTML = svgElement.innerHTML.replace(/#skinColor/g, skinColor);
+                }
 
                 if (svgContainerRef.current) {
                     svgContainerRef.current.innerHTML = '';
@@ -36,9 +38,9 @@ const CharacterImage: React.FC<CharacterImageProps> = ({ hairColor, hairType, sk
         };
 
         loadSvg();
-    }, [hairType, hairColor, skinColor]);
+    }, [type, color, skinColor]);
 
     return <div className={"w-full h-full"} ref={svgContainerRef}></div>;
 };
 
-export default CharacterImage;
+export default SVGColorChanger;
