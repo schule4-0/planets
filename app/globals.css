@@ -157,5 +157,8 @@ h2, .h2 {
 
 .page-container {
     height: calc(100vh - var(--header-height));
-    width: 100%;
+}
+
+.min-page-container {
+    min-height: calc(100vh - var(--header-height));
 }
