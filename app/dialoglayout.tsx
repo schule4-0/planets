@@ -38,6 +38,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
   const [selectedSkinColorCode, setSelectedSkinColorCode] = useState<string>('#FCD8B1');
   const [feedback, setFeedback] = useState<{ index: number; isCorrect: boolean; hint?: string } | null>(null);
   const [attempts, setAttempts] = useState<number[]>([]);
+  const [hideSpeechBubble, setHideSpeechBubble] = useState<boolean>(false);
 
   useEffect(() => {
     const loadStoredValues = async () => {
@@ -58,6 +59,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
     setImages(dialogData.story[currentSceneIndex].images[0]);
     setFeedback(null);
     setAttempts([]);
+    setHideSpeechBubble(false);
   }, [currentSceneIndex, dialogData.story]);
 
   const handleNext = () => {
@@ -66,6 +68,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
       setCurrentDialogIndex(currentDialogIndex + 1);
       setFeedback(null);
       setAttempts([]);
+      setHideSpeechBubble(false);
     } else {
       const nextSceneIndex = currentSceneIndex + 1;
       if (nextSceneIndex < dialogData.story.length) {
@@ -93,6 +96,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
       setAttempts(prev => [...prev, index]);
       proceedToNext();
     } else {
+      setHideSpeechBubble(true);
       setTimeout(() => {
         if (currentDialogIndex < dialog.length) {
           const currentDialog = dialog[currentDialogIndex];
@@ -112,7 +116,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
 
   return (
     <div className="bg-cover bg-center relative page-container" style={{ backgroundImage: `url(${images.backgroundimg})` }}>
-      <div className="absolute bottom-0 left-0 mb-9 ml-5" style={{ width: '250px' }}>
+      <div className="absolute bottom-0 left-0 mb-9 ml-5" style={{ width: '200px' }}>
         <CharacterImage
           hairColor={selectedHairColorCode}
           hairType={selectedHair}
@@ -120,19 +124,19 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
         />
       </div>
       <div className="absolute bottom-0 right-0 mb-9 mr-20">
-        <Image src={images.rightCharacter} alt="Rechte Figur" width={250} height={250} />
+        <Image src={images.rightCharacter} alt="Rechte Figur" width={200} height={250} />
       </div>
-      <div className="flex justify-center p-20 relative z-0 h-full">
+      <div className="flex justify-center p-10 relative z-0 h-full">
         <div className="w-3/5 flex flex-col items-center mb-5">
           {dialog[currentDialogIndex].speaker === 'left' && (
             <SpeechBubble text={dialog[currentDialogIndex].text} direction="left" />
           )}
-          {dialog[currentDialogIndex].speaker === 'right' && (
+          {!hideSpeechBubble && dialog[currentDialogIndex].speaker === 'right' && (
             <SpeechBubble text={feedback && !feedback.isCorrect && feedback.hint ? feedback.hint : dialog[currentDialogIndex].text} direction="right" />
           )}
           {dialog[currentDialogIndex].image && (
             <div className="flex justify-center mb-4 w-full">
-              <Image src={dialog[currentDialogIndex].image as string} alt="Dialog Bild" width={150} height={100} />
+              <Image src={dialog[currentDialogIndex].image as string} alt="Dialog Bild" width={300} height={100} />
             </div>
           )}
           <div className="w-full flex flex-col items-center mt-auto">
