@@ -91,7 +91,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
 
   return (
     <div className="bg-cover bg-center relative page-container" style={{ backgroundImage: `url(${images.backgroundimg})` }}>
-      <div className="absolute bottom-0 left-0 mb-9 ml-5" style={{ width: '250px' }}>
+      <div className="absolute bottom-0 left-0 mb-9 ml-5" style={{ width: '200px' }}>
         <CharacterImage
           hairColor={selectedHairColorCode}
           hairType={selectedHair}
@@ -99,9 +99,9 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
         />
       </div>
       <div className="absolute bottom-0 right-0 mb-9 mr-20">
-        <Image src={images.rightCharacter} alt="Rechte Figur" width={250} height={250} />
+        <Image src={images.rightCharacter} alt="Rechte Figur" width={200} height={250} />
       </div>
-      <div className="flex justify-center p-20 pt-28 relative z-0 h-full">
+      <div className="flex justify-center p-10 relative z-0 h-full">
         <div className="w-3/5 flex flex-col items-center mb-5">
           {dialog[currentDialogIndex].speaker === 'left' && (
             <SpeechBubble text={dialog[currentDialogIndex].text} direction="left" />
