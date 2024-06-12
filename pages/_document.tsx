@@ -1,5 +1,4 @@
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
-import Footer from "@/app/components/footer/Footer";
 
 
 
@@ -15,7 +14,6 @@ class MyDocument extends Document {
                 <Head />
                 <body>
                 <Main />
-                <Footer/>
                 <NextScript />
                 </body>
             </Html>
