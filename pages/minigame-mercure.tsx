@@ -61,8 +61,8 @@ const Home: React.FC = () => {
                         const characterBounds = {
                             left: position,
                             right: position + CHARACTER_WIDTH,
-                            top: (100 - CHARACTER_HEIGHT),
-                            bottom: 100
+                            top: (95 - CHARACTER_HEIGHT),
+                            bottom: 95
                         };
 
                         const isCollision = (
@@ -76,7 +76,7 @@ const Home: React.FC = () => {
                             handleGameOver();
                             return false;
                         }
-                        return meteorBounds.top < 100;
+                        return meteorBounds.top < 95;
                     })
             );
             setScore((prev) => prev + 1);
@@ -91,8 +91,11 @@ const Home: React.FC = () => {
     };
 
     return (
-        <div className="relative page-container bg-star overflow-hidden">
+        <div className="relative page-container bg-star overflow-hidden h-screen">
             <div className="text-white absolute top-4 left-4">Score: {score}</div>
+            <div className="absolute bottom-0 w-full h-4">
+                <Image src="/images/mercury_minigame/meteorite_ground.png" alt="Ground" layout="fill" objectFit="cover" />
+            </div>
             <div
                 className="absolute bottom-4"
                 style={{ left: `${position}%`, transition: 'left 0.1s' }}
