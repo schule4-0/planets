@@ -1,0 +1,7 @@
+.drop-zone {
+    height: calc(100% - 96px);
+
+    img {
+        margin-bottom: -1px;
+    }
+}

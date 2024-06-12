@@ -1,15 +1,50 @@
+.show-only{
+    video {
+        cursor: default!important;
+    }
+    .planet__name{
+        cursor: default!important;
+        background-color: #282B46!important;
+        color: white!important;
+    }
+}
+
 .planet.disable {
-    .planet__name, .planet__name--sun{
+    .planet__name {
         cursor: default;
         visibility: hidden;
     }
-    video,img{
+
+    video {
         cursor: default;
     }
 }
 
 .orbit {
     border-right: white dashed 3px;
+}
+
+.orbit--sun {
+    border: none;
+    height: 100%;
+    top: calc(50% - 17rem);
+    left: -17rem;
+    width: 34rem;
+
+    .planet {
+        align-items: flex-end;
+        flex-direction: column-reverse;
+
+        video {
+            width: 100%;
+        }
+
+        div {
+            top: calc(50% - 24rem);
+            position: absolute;
+            margin-left: 5rem;
+        }
+    }
 }
 
 .orbit--mercury {
@@ -110,13 +145,14 @@
     .planet {
         align-items: center;
         flex-direction: column-reverse;
-        bottom: 33%;
-        right: -10%;
+        bottom: 31%;
+        right: -9.5%;
 
         video {
             width: 26.87rem;
         }
-        div{
+
+        div {
             margin-right: 2rem;
         }
     }
@@ -158,17 +194,7 @@
     }
 }
 
-.planet--sun {
-    top: calc(50% - 20rem);
-
-}
-
 /* planet names*/
-
-.planet__name--sun {
-    top: calc(50% - 24rem);
-}
-
 
 .planet__name {
     background-color: #282B46;

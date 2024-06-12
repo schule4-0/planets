@@ -7,7 +7,7 @@
       }
 
       .astro-long-straight .cls-2 {
-        fill: #hairColor;
+        fill: #color;
         stroke-linecap: round;
         stroke-linejoin: round;
         stroke-width: 2.69019px;
