@@ -103,7 +103,7 @@
 body {
     color: rgb(var(--foreground-rgb));
     background: linear-gradient(to bottom, #040758, #4F0080);
-    font-family: var(--font-base);
+    font-family: var(--font-base), serif;
     font-size: 1.5rem;
     font-weight: bold;
 }
@@ -130,12 +130,18 @@ header {
 }
 
 h1, .h1, h2, .h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
+    font-family: var(--font-heading), serif;
     font-weight: bold;
 }
 
 h1, .h1 {
     font-size: 3rem;
+}
+
+.subtitles{
+    font-family: var(--font-heading), serif;
+    font-weight: normal;
+    font-size: 2rem;
 }
 
 h2, .h2 {
