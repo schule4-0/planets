@@ -1,14 +1,14 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import DialogLayout from '../app/dialoglayout';
-import dialogData from '../public/dialog/dialog2.json';
+import dialogData from '../public/dialog/earth.json';
 import ActionButton from '@/app/components/actionButton/ActionButton';
 
-const Dialog2 = () => {
+const Earth = () => {
   const router = useRouter();
 
   const handleRouting = () => {
-    router.push('/sonne'); 
+    router.push('/spaceship'); 
   };
 
   return (
@@ -20,4 +20,4 @@ const Dialog2 = () => {
   );
 };
 
-export default Dialog2;
+export default Earth;

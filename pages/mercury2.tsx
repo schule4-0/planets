@@ -1,23 +1,23 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import DialogLayout from '../app/dialoglayout';
-import dialogData from '../public/dialog/dialog2.json';
+import dialogData from '../public/dialog/mercury2.json';
 import ActionButton from '@/app/components/actionButton/ActionButton';
 
-const Dialog2 = () => {
+const Mercury2 = () => {
   const router = useRouter();
 
   const handleRouting = () => {
-    router.push('/sonne'); 
+    router.push('/map'); 
   };
 
   return (
     <DialogLayout
       dialogData={dialogData}
       actionButton={<ActionButton onClick={() => { } } />}
-      onEnd={handleRouting}
+      onEnd={handleRouting} 
     />
   );
 };
 
-export default Dialog2;
+export default Mercury2;

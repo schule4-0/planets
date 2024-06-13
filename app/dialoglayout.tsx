@@ -114,7 +114,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
   return (
     <div className="bg-cover bg-center relative page-container" style={{ backgroundImage: `url(${images.backgroundimg})` }}>
       <div className="absolute bottom-0 left-0 mb-9 ml-5" style={{ width: '200px' }}>
-        ${leftImage()}
+        {leftImage()}
       </div>
       <div className="absolute bottom-0 right-0 mb-9 mr-20">
         <Image src={images.rightCharacter} alt="Rechte Figur" width={200} height={250} />
