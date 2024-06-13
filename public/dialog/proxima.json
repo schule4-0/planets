@@ -3,7 +3,7 @@
       {
         "images": [
           {
-            "backgroundimg":  "/images/background_childroom.png",
+            "backgroundimg":  "/images/background_rocket.png",
             "leftCharacter": "player",
             "rightCharacter": "/images/alien.svg"
           }
