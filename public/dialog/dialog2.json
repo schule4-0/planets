@@ -10,36 +10,23 @@
       ],
       "dialog": [
         {
-          "speaker": "right",
-          "text": "Hier ist das Raumschiff!"
+          "speaker": "left",
+          "text": "Hallo Mara, Ich bin Gustav vom Planeten Krypton. Krypton liegt in einer fernen Galaxie. Doch ich bin hier auf der Erde gestrandet, als mein Raumschiff von einem Kometen getroffen wurde."
         },
         {
           "speaker": "right",
-          "text": "Welcher Planet ist ein Gesteinsplanet?",
+          "text": "Hallo Gustav, das ist ja spannend. Ich habe noch nie einen Alien getroffen. Erzähl mir mehr über den Weltraum, die Sterne und die Planeten. Wohin gehts?",
           "question": [
             {
-              "answer": "Sonne",
-              "isCorrect": false,
-              "hint": "Die Sonne ist ein Stern, kein Planet."
+              "answer": "Ja, ich möchte mehr erfahren!",
+              "isCorrect": true,
+              "route": "/dialog"
             },
             {
-              "answer": "Mars",
-              "isCorrect": true
-            },
-            {
-              "answer": "Saturn",
-              "isCorrect": false,
-              "hint": "Saturn ist ein Gasriese mit einem beeindruckenden Ringsystem."
+              "answer": "Nein, ich habe jetzt keine Zeit.",
+              "isCorrect": false
             }
           ]
-        },
-        {
-          "speaker": "right",
-          "text": "Super, richtig! Der Mars ist ein Gesteinsplanet!"
-        },
-        {
-          "speaker": "left",
-          "text": "Erzähl mir mehr darüber"
         }
       ]
     }
