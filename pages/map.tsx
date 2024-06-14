@@ -16,11 +16,11 @@ const MapPage: React.FC = () => {
     const orbitContainerRef = useRef<HTMLDivElement>(null);
     const videoRefs = useRef<{ [key: string]: HTMLVideoElement | null }>({});
     const [showOnly, setShowOnly] = useState(false);
-    const [nextRoute, setNextRoute] = useState<string| null>("/map");
+    const [nextRoute, setNextRoute] = useState<string>("/map");
     const [allPlanetsCompleted, setAllPlanetsCompleted] = useState(false);
 
     const handleRouting = () => {
-        router.push(nextRoute? nextRoute: "/map");
+        router.push(nextRoute);
     };
 
     useEffect(() => {
@@ -40,7 +40,10 @@ const MapPage: React.FC = () => {
             // Check if all planets should show without function
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.has('show-only')) {
-                setNextRoute(urlParams.get('next-route'))
+                let path = urlParams.get('next-route')
+                if (path !== null){
+                    setNextRoute(path)
+                }
                 setShowOnly(true);
             }
             setPlanetCompletion(completionData);
