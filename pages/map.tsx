@@ -108,7 +108,7 @@ const MapPage: React.FC = () => {
                     />
                 ))}
                 {showOnly &&
-                        <ActionButton onClick={() =>{ }}/>
+                        <ActionButton onClick={() =>{router.push(nextRoute) }}/>
                 }
             </div>
         </Layout>
