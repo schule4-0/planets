@@ -1,0 +1,71 @@
+.speech-bubble {
+    position: relative;
+    width: 300px;
+    text-align: center;
+    line-height: 1.4em;
+    background-color: #fff;
+    border: 8px solid #333;
+    border-radius: 30px;
+    font-family: sans-serif;
+    padding: 20px;
+    font-size: large;
+  }
+  
+  .speech-bubble.left {
+    justify-content: flex-start;
+  }
+  
+  .speech-bubble.left:before {
+    left: 10px; 
+  }
+  
+  .speech-bubble.left:after {
+    left: 18px; 
+  }
+  
+  .speech-bubble.right {
+    justify-content: flex-end;
+  }
+  
+  .speech-bubble.right:before {
+    right: 10px; 
+  }
+  
+  .speech-bubble.right:after {
+    right: 18px; 
+  }
+  
+  .speech-bubble:before,
+  .speech-bubble:after {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+  }
+  
+  .speech-bubble.left:before {
+    bottom: -50px;
+    border: 25px solid;
+    border-color: #333 transparent transparent #333;
+  }
+  
+  .speech-bubble.left:after {
+    bottom: -29px;
+    border: 15px solid;
+    border-color: #fff transparent transparent #fff;
+  }
+  
+  .speech-bubble.right:before {
+    right: 30px;
+    bottom: -50px;
+    border: 25px solid;
+    border-color: #333 #333 transparent transparent;
+  }
+  
+  .speech-bubble.right:after {
+    right: 37px;
+    bottom: -32px;
+    border: 17px solid;
+    border-color: white white transparent transparent;
+  }
+  
