@@ -19,9 +19,7 @@ const MapPage: React.FC = () => {
     const [allPlanetsCompleted, setAllPlanetsCompleted] = useState(false);
     const [nextRoute, setNextRoute] = useState<string>("/map");
 
-    const handleRouting = () => {
-        router.push(nextRoute);
-    };
+
 
     useEffect(() => {
         const fetchPlanetCompletion = async () => {
