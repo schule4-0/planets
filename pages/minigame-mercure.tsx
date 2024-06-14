@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import {getCharacterName, getHair, getHairColor, getSkinColor} from "@/app/utils/storageUtils";
-import {getHairColorIndex, getSkinColorIndex} from "@/app/utils/colorUtils";
+import {getHair, getHairColor, getSkinColor} from "@/app/utils/storageUtils";
 import SVGColorChanger from "@/app/components/svg/SVGColorChanger";
 
 const CHARACTER_WIDTH = 20;
@@ -13,7 +12,7 @@ const getRandomSize = () => {
     return Math.random() * (12 - 6) + 6;
 };
 
-const Home: React.FC = () => {
+const MinigameMercure: React.FC = () => {
     const isClient = typeof window !== 'undefined';
     const [position, setPosition] = useState<number>(50);
     const [meteors, setMeteors] = useState<{ id: number; position: number; top: number; width: number; height: number }[]>([]);
@@ -164,4 +163,4 @@ const Home: React.FC = () => {
     );
 };
 
-export default Home;
+export default MinigameMercure;
