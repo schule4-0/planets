@@ -14,6 +14,7 @@ import {
 import {getRocketColorIndex, getRocketColors} from '@/app/utils/colorUtils';
 
 const Spaceship: React.FC = () => {
+
     const isClient = typeof window !== 'undefined';
     const [selectedColor, setSelectedRocketColor] = useState<string>('orange');
     const [selectedRocketType, setSelectedRocketType] = useState<string>('rocket1');
