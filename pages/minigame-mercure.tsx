@@ -1,25 +1,54 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import {getCharacterName, getHair, getHairColor, getSkinColor} from "@/app/utils/storageUtils";
+import {getHairColorIndex, getSkinColorIndex} from "@/app/utils/colorUtils";
+import SVGColorChanger from "@/app/components/svg/SVGColorChanger";
 
-const CHARACTER_WIDTH = 5;
-const CHARACTER_HEIGHT = 5;
-const METEOR_WIDTH = 10;
-const METEOR_HEIGHT = 10;
+const CHARACTER_WIDTH = 20;
+const CHARACTER_HEIGHT = 20;
 const METEOR_FALL_SPEED = 3;
 const METEOR_CREATION_INTERVAL = 1500;
-const COLLISION_THRESHOLD = 0.01;
+
+const getRandomSize = () => {
+    return Math.random() * (12 - 6) + 6;
+};
 
 const Home: React.FC = () => {
+    const isClient = typeof window !== 'undefined';
     const [position, setPosition] = useState<number>(50);
-    const [meteors, setMeteors] = useState<{ id: number; position: number; top: number }[]>([]);
+    const [meteors, setMeteors] = useState<{ id: number; position: number; top: number; width: number; height: number }[]>([]);
     const [score, setScore] = useState<number>(0);
+    const [selectedHair, setSelectedHair] = useState<string>('short-curly')
+    const [selectedHairColorCode, setSelectedHairColorCode] = useState<string>('#000000');
+    const [selectedSkinColorCode, setSelectedSkinColorCode] = useState<string>('#FCD8B1');
+    useEffect(() => {
+        const loadStoredValues = async () => {
+            if (isClient) {
+                const storedHair = await getHair();
+                if (storedHair) {
+                    setSelectedHair(storedHair);
+                }
+
+                const storedHairColorCode = await getHairColor();
+                if (storedHairColorCode) {
+                    setSelectedHairColorCode(storedHairColorCode);
+                }
+
+                const storedSkinColorCode = await getSkinColor();
+                if (storedSkinColorCode) {
+                    setSelectedSkinColorCode(storedSkinColorCode);
+                }
+            }
+        };
+        loadStoredValues();
+    }, [isClient]);
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
             if (e.key === 'ArrowLeft' && position > 0) {
-                setPosition((prev) => prev - 5);
-            } else if (e.key === 'ArrowRight' && position < 100) {
-                setPosition((prev) => prev + 5);
+                setPosition((prev) => Math.max(prev - 5, 0));
+            } else if (e.key === 'ArrowRight' && position < (100 - CHARACTER_WIDTH)) {
+                setPosition((prev) => Math.min(prev + 5, 100 - CHARACTER_WIDTH));
             }
         };
 
@@ -32,14 +61,15 @@ const Home: React.FC = () => {
     };
 
     const moveRight = () => {
-        setPosition((prev) => Math.min(prev + 5, 100));
+        setPosition((prev) => Math.min(prev + 5, 100 - CHARACTER_WIDTH));
     };
 
     useEffect(() => {
         const meteorInterval = setInterval(() => {
+            const size = getRandomSize();
             setMeteors((prev) => [
                 ...prev,
-                { id: Date.now(), position: Math.floor(Math.random() * 100), top: 0 }
+                { id: Date.now(), position: Math.floor(Math.random() * 100), top: 0, width: size, height: size }
             ]);
         }, METEOR_CREATION_INTERVAL);
 
@@ -51,25 +81,26 @@ const Home: React.FC = () => {
             setMeteors((prev) =>
                 prev.map((meteor) => ({ ...meteor, top: meteor.top + METEOR_FALL_SPEED }))
                     .filter((meteor) => {
-                        const meteorBounds = {
-                            left: meteor.position,
-                            right: meteor.position + METEOR_WIDTH,
-                            top: meteor.top,
-                            bottom: meteor.top + METEOR_HEIGHT
-                        };
-
                         const characterBounds = {
                             left: position,
                             right: position + CHARACTER_WIDTH,
-                            top: (95 - CHARACTER_HEIGHT),
+                            top: 95 - CHARACTER_HEIGHT,
                             bottom: 95
                         };
 
+                        const meteorBounds = {
+                            left: meteor.position,
+                            right: meteor.position + meteor.width,
+                            top: meteor.top,
+                            bottom: meteor.top + meteor.height
+                        };
+
                         const isCollision = (
-                            meteorBounds.left < characterBounds.right - COLLISION_THRESHOLD &&
-                            meteorBounds.right > characterBounds.left + COLLISION_THRESHOLD &&
-                            meteorBounds.bottom > characterBounds.top + COLLISION_THRESHOLD &&
-                            meteorBounds.top < characterBounds.bottom - COLLISION_THRESHOLD
+                            meteorBounds.left < characterBounds.right &&
+                            meteorBounds.right > characterBounds.left &&
+                            meteorBounds.bottom > characterBounds.top &&
+                            meteorBounds.top < characterBounds.bottom
+
                         );
 
                         if (isCollision) {
@@ -93,14 +124,19 @@ const Home: React.FC = () => {
     return (
         <div className="relative page-container bg-star overflow-hidden h-screen">
             <div className="text-white absolute top-4 left-4">Score: {score}</div>
-            <div className="absolute bottom-0 w-full h-4">
+            <div className="absolute bottom-0 w-full h-4" style={{ zIndex: 4 }}>
                 <Image src="/images/mercury_minigame/meteorite_ground.png" alt="Ground" layout="fill" objectFit="cover" />
             </div>
             <div
                 className="absolute bottom-4"
-                style={{ left: `${position}%`, transition: 'left 0.1s' }}
+                style={{ left: `${position}%`, transition: 'left 0.1s', width: `${CHARACTER_WIDTH}%`, height: `${CHARACTER_HEIGHT}%`, zIndex: 3 }}
             >
-                <Image src="/images/kids/astronaut.svg" alt="Character" width={100} height={100} />
+                <SVGColorChanger
+                    key="astro-caracter"
+                    color={selectedHairColorCode}
+                    type={"kids/astro-" + selectedHair}
+                    skinColor={selectedSkinColorCode}
+                />,
             </div>
             {meteors.map((meteor) => (
                 <img
@@ -110,16 +146,19 @@ const Home: React.FC = () => {
                     style={{
                         left: `${meteor.position}%`,
                         top: `${meteor.top}%`,
+                        width: `${meteor.width}%`,
+                        height: `${meteor.height}%`,
                         transition: 'top 0.1s',
+                        zIndex: 3
                     }}
                     alt="Meteor"
                 />
             ))}
-            <button className="absolute bottom-4 left-4" onClick={moveLeft}>
-                <Image src="/images/mercury_minigame/button_left.png" alt="Left" width={32} height={32} />
+            <button className="absolute bottom-8 left-8" onClick={moveLeft} style={{ zIndex: 4 }}>
+                <Image src="/images/mercury_minigame/button_left.png" alt="Left" width={64} height={64} />
             </button>
-            <button className="absolute bottom-4 right-4" onClick={moveRight}>
-                <Image src="/images/mercury_minigame/button_right.png" alt="Right" width={32} height={32} />
+            <button className="absolute bottom-8 right-8" onClick={moveRight} style={{ zIndex: 4 }}>
+                <Image src="/images/mercury_minigame/button_right.png" alt="Right" width={64} height={64} />
             </button>
         </div>
     );
