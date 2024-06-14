@@ -1,26 +1,29 @@
 import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
-import {getCharacterName, getHair, getHairColor, getSkinColor} from "@/app/utils/storageUtils";
-import {getHairColorIndex, getSkinColorIndex} from "@/app/utils/colorUtils";
+import {getHair, getHairColor, getSkinColor } from "@/app/utils/storageUtils";
 import SVGColorChanger from "@/app/components/svg/SVGColorChanger";
 
 const CHARACTER_WIDTH = 20;
 const CHARACTER_HEIGHT = 20;
 const METEOR_FALL_SPEED = 3;
 const METEOR_CREATION_INTERVAL = 1500;
+const SCORE_THRESHOLD = 150;
 
 const getRandomSize = () => {
     return Math.random() * (12 - 6) + 6;
 };
 
-const Home: React.FC = () => {
+const MinigameMercure: React.FC = () => {
     const isClient = typeof window !== 'undefined';
+    const router = useRouter();
     const [position, setPosition] = useState<number>(50);
     const [meteors, setMeteors] = useState<{ id: number; position: number; top: number; width: number; height: number }[]>([]);
     const [score, setScore] = useState<number>(0);
     const [selectedHair, setSelectedHair] = useState<string>('short-curly')
     const [selectedHairColorCode, setSelectedHairColorCode] = useState<string>('#000000');
     const [selectedSkinColorCode, setSelectedSkinColorCode] = useState<string>('#FCD8B1');
+
     useEffect(() => {
         const loadStoredValues = async () => {
             if (isClient) {
@@ -82,7 +85,7 @@ const Home: React.FC = () => {
                 prev.map((meteor) => ({ ...meteor, top: meteor.top + METEOR_FALL_SPEED }))
                     .filter((meteor) => {
                         const characterBounds = {
-                            left: position + 5 ,
+                            left: position + 5,
                             right: position - 5 + CHARACTER_WIDTH,
                             top: 100 - CHARACTER_HEIGHT,
                             bottom: 100
@@ -100,7 +103,6 @@ const Home: React.FC = () => {
                             meteorBounds.right > characterBounds.left &&
                             meteorBounds.bottom > characterBounds.top &&
                             meteorBounds.top < characterBounds.bottom
-
                         );
 
                         if (isCollision) {
@@ -110,11 +112,18 @@ const Home: React.FC = () => {
                         return meteorBounds.top < 95;
                     })
             );
-            setScore((prev) => prev + 1);
+            setScore((prev) => {
+                const newScore = prev + 1;
+                if (newScore >= SCORE_THRESHOLD) {
+                    //TODO coorect dilaog
+                    router.push('/dialog');
+                }
+                return newScore;
+            });
         }, 200);
 
         return () => clearInterval(gameInterval);
-    }, [position]);
+    }, [position, router]);
 
     const handleGameOver = () => {
         console.log('Game Over! Your score: ' + score);
@@ -129,14 +138,14 @@ const Home: React.FC = () => {
             </div>
             <div
                 className="absolute bottom-4 z-40"
-                style={{ left: `${position}%`, transition: 'left 0.1s', width: `${CHARACTER_WIDTH}%`, height: `${CHARACTER_HEIGHT}%`}}
+                style={{ left: `${position}%`, transition: 'left 0.1s', width: `${CHARACTER_WIDTH}%`, height: `${CHARACTER_HEIGHT}%` }}
             >
                 <SVGColorChanger
                     key="astro-caracter"
                     color={selectedHairColorCode}
                     type={"kids/astro-" + selectedHair}
                     skinColor={selectedSkinColorCode}
-                />,
+                />
             </div>
             {meteors.map((meteor) => (
                 <img
@@ -163,4 +172,4 @@ const Home: React.FC = () => {
     );
 };
 
-export default Home;
+export default MinigameMercure;
