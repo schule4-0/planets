@@ -7,7 +7,7 @@ const CollectedMars: React.FC = () => {
     const router = useRouter();
 
     const nextPage = () => {
-        router.push('/collectMars');
+        router.push('/collectmars');
     };
 
     return (
