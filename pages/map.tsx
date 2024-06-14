@@ -19,6 +19,9 @@ const MapPage: React.FC = () => {
     const [nextRoute, setNextRoute] = useState<string| null>("/map");
     const [allPlanetsCompleted, setAllPlanetsCompleted] = useState(false);
 
+    const handleRouting = () => {
+        router.push(nextRoute? nextRoute: "/map");
+    };
 
     useEffect(() => {
         const fetchPlanetCompletion = async () => {
@@ -104,7 +107,7 @@ const MapPage: React.FC = () => {
                     />
                 ))}
                 {showOnly &&
-                        <ActionButton onClick={() =>{ router.push(nextRoute ? nextRoute:"/map")}}/>
+                        <ActionButton onClick={() =>{ handleRouting()}}/>
                 }
             </div>
         </Layout>
