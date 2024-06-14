@@ -6,6 +6,7 @@ import {
 } from "@/app/utils/storageUtils";
 import {getPlanetName, Planets} from "@/app/utils/planetUtils";
 import ActionButton from "@/app/components/actionButton/ActionButton";
+import {router} from "next/client";
 
 const MapPage: React.FC = () => {
     const [selectedPlanet, setSelectedPlanet] = useState<string | null>(null);
@@ -16,8 +17,8 @@ const MapPage: React.FC = () => {
     const videoRefs = useRef<{ [key: string]: HTMLVideoElement | null }>({});
     const [showOnly, setShowOnly] = useState(false);
     const [allPlanetsCompleted, setAllPlanetsCompleted] = useState(false);
+    const [nextRoute, setNextRoute] = useState<string>('/map');
 
-    let nextRoute = "/map"
 
 
     useEffect(() => {
@@ -40,7 +41,7 @@ const MapPage: React.FC = () => {
                 setShowOnly(true);
                 let path = urlParams.get('next-route')
                 if (path !== null){
-                    nextRoute = path
+                    setNextRoute(path)
                 }
             }
             setPlanetCompletion(completionData);
