@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import SpeechBubble from '@/app/components/speechBubble/speechBubble';
 import CharacterImage from "@/app/components/svg/SVGColorChanger";
 import {
@@ -7,7 +8,6 @@ import {
   getHairColor,
   getSkinColor
 } from '@/app/utils/storageUtils';
-import {useRouter} from "next/router";
 
 interface DialogItem {
   speaker: string;
@@ -17,6 +17,7 @@ interface DialogItem {
     answer: string;
     isCorrect: boolean;
     hint?: string;
+    route?: string;
   }[];
 }
 
@@ -31,6 +32,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
   actionButton,
   onEnd,
 }) => {
+  const router = useRouter();
   const [currentSceneIndex, setCurrentSceneIndex] = useState(0);
   const [currentDialogIndex, setCurrentDialogIndex] = useState(0);
   const [dialog, setDialog] = useState<DialogItem[]>(dialogData.story[0].dialog);
@@ -41,8 +43,6 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
   const [feedback, setFeedback] = useState<{ index: number; isCorrect: boolean; hint?: string } | null>(null);
   const [attempts, setAttempts] = useState<number[]>([]);
   const [hideSpeechBubble, setHideSpeechBubble] = useState<boolean>(false);
-
-  const router = useRouter();
 
   useEffect(() => {
     const loadStoredValues = async () => {
@@ -86,11 +86,32 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
 
   const handleAnswerClick = (index: number, isCorrect: boolean, hint?: string) => {
     setFeedback({ index, isCorrect, hint });
+
+    const currentDialog = dialog[currentDialogIndex];
+    const questionCount = currentDialog.question ? currentDialog.question.length : 0;
+
+    const proceedToNext = () => {
+      if (questionCount <= 2) {
+        setTimeout(handleNext, 1000);
+      }
+    };
+
     if (!isCorrect) {
       setAttempts(prev => [...prev, index]);
+      proceedToNext();
     } else {
       setHideSpeechBubble(true);
       setTimeout(() => {
+        if (currentDialogIndex < dialog.length) {
+          const currentDialog = dialog[currentDialogIndex];
+          if (currentDialog.question && index < currentDialog.question.length) {
+            const question = currentDialog.question[index];
+            if (question && question.route) {
+              router.push(question.route);
+              return;
+            }
+          }
+        }
         handleNext();
       }, 1000);
     }
@@ -132,9 +153,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
               <SpeechBubble text={dialog[currentDialogIndex].text} direction="left"/>
           )}
           {!hideSpeechBubble && dialog[currentDialogIndex].speaker === 'right' && (
-              <SpeechBubble
-                  text={feedback && !feedback.isCorrect && feedback.hint ? feedback.hint : dialog[currentDialogIndex].text}
-                  direction="right"/>
+            <SpeechBubble text={feedback && !feedback.isCorrect && feedback.hint ? feedback.hint : dialog[currentDialogIndex].text} direction="right" />
           )}
           {dialog[currentDialogIndex].image && (
               <div className="flex justify-center mb-4 w-full">
@@ -165,7 +184,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
         </div>
       </div>
       <div className="absolute bottom-0 right-0 text-right pb-6 pr-6 z-10">
-        {actionButton && !dialog[currentDialogIndex].question && React.cloneElement(actionButton as React.ReactElement<any>, {onClick: handleNext})}
+      {actionButton && !dialog[currentDialogIndex].question && React.cloneElement(actionButton as React.ReactElement<any>, { onClick: handleNext })}
       </div>
       </div>
     }
