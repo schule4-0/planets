@@ -6,8 +6,10 @@ import {
 } from "@/app/utils/storageUtils";
 import {getPlanetName, Planets} from "@/app/utils/planetUtils";
 import ActionButton from "@/app/components/actionButton/ActionButton";
+import {useRouter} from "next/router";
 
 const MapPage: React.FC = () => {
+    const router = useRouter();
     const [selectedPlanet, setSelectedPlanet] = useState<string | null>(null);
     const [planetCompletion, setPlanetCompletion] = useState<{
         [key: string]: boolean;
@@ -15,6 +17,12 @@ const MapPage: React.FC = () => {
     const orbitContainerRef = useRef<HTMLDivElement>(null);
     const videoRefs = useRef<{ [key: string]: HTMLVideoElement | null }>({});
     const [showOnly, setShowOnly] = useState(false);
+    const [allPlanetsCompleted, setAllPlanetsCompleted] = useState(false);
+    const [nextRoute, setNextRoute] = useState<string>("/map");
+
+    const handleRouting = () => {
+        router.push(nextRoute);
+    };
 
     useEffect(() => {
         const fetchPlanetCompletion = async () => {
@@ -34,9 +42,16 @@ const MapPage: React.FC = () => {
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.has('show-only')) {
                 setShowOnly(true);
+                let path = urlParams.get('next-route')
+                if (path !== null){
+                    setNextRoute(path)
+                }
             }
-
             setPlanetCompletion(completionData);
+
+            // Check if all planets are completed
+            const allCompleted = Object.values(completionData).every(Boolean);
+            setAllPlanetsCompleted(allCompleted);
         };
 
         //fix for screens with smaller height
@@ -92,10 +107,11 @@ const MapPage: React.FC = () => {
                         disabled={!isEnabled(planet)}
                         videoRefs={videoRefs}
                         showOnly={showOnly}
+                        allPlanetsCompleted={allPlanetsCompleted}
                     />
                 ))}
                 {showOnly &&
-                        <ActionButton onClick={() =>{}}/>
+                        <ActionButton onClick={handleRouting}/>
                 }
             </div>
         </Layout>
@@ -109,7 +125,8 @@ function PlanetDetails({
                            planetCompleted,
                            disabled,
                            videoRefs,
-                           showOnly
+                           showOnly,
+                           allPlanetsCompleted
                        }: {
     planet: Planets;
     currentPlanet: string | null;
@@ -117,11 +134,16 @@ function PlanetDetails({
     planetCompleted: boolean;
     disabled: boolean,
     videoRefs: React.MutableRefObject<{ [key: string]: HTMLVideoElement | null }>;
-    showOnly: boolean
+    showOnly: boolean,
+    allPlanetsCompleted: boolean
 }) {
     const planetRef = useRef<HTMLDivElement>(null);
 
     const planetClick = (planet: string): void => {
+        if (allPlanetsCompleted){
+            window.location.href = "/planet-profile?planet=" + planet.toLowerCase();
+            return;
+        }
         if (disabled || showOnly) return;
         if (currentPlanet && videoRefs.current[currentPlanet]) {
             videoRefs.current[currentPlanet]?.play();

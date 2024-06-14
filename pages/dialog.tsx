@@ -8,7 +8,7 @@ const Dialog = () => {
   const router = useRouter();
 
   const handleRouting = () => {
-    router.push('/dialog2'); 
+    router.push('/spaceship');
   };
 
   return (
