@@ -27,14 +27,14 @@ import {
 const Character: React.FC = () => {
     const isClient = typeof window !== 'undefined';
     const [name, setName] = useState<string>('');
-    const [selectedHair, setSelectedHair] = useState<string>('short-curly')
+    const [selectedHair, setSelectedHair] = useState<string>('kids/short-curly')
     const [selectedHairColorCode, setSelectedHairColorCode] = useState<string>('#000000');
     const [selectedSkinColorCode, setSelectedSkinColorCode] = useState<string>('#FCD8B1');
     const nameInputRef = useRef<HTMLInputElement>(null);
     const [selectedIndexHairType, setSelectedIndexHairType] = useState<number>(0);
     const [selectedIndexHairColor, setSelectedIndexHairColor] = useState<number>(0);
     const [selectedIndexSkinColor, setSelectedIndexSkinColor] = useState<number>(0);
-    const hairTypes: string[] = ['short-curly', 'short-straight', 'long-curly', 'long-straight'];
+    const hairTypes: string[] = ['kids/short-curly', 'kids/short-straight', 'kids/long-curly', 'kids/long-straight'];
     const router = useRouter();
 
     useEffect(() => {
@@ -98,7 +98,7 @@ const Character: React.FC = () => {
 
     const renderLeftChildren = () => (
         <div className="h-full w-full flex justify-center items-center">
-            <SVGColorChanger color={selectedHairColorCode} type={"kids/" + selectedHair}
+            <SVGColorChanger color={selectedHairColorCode} type={selectedHair}
                              skinColor={selectedSkinColorCode}></SVGColorChanger>
         </div>
     );
