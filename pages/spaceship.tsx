@@ -109,7 +109,7 @@ const Spaceship: React.FC = () => {
                 leftChildren={renderLeftChildren()}
                 rightChildren={renderRightChildren()}
             />
-            <ActionButton onClick={nextPage()}/>
+            <ActionButton onClick={nextPage}/>
         </div>
     );
 };
