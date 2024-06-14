@@ -46,9 +46,9 @@ const Home: React.FC = () => {
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
             if (e.key === 'ArrowLeft' && position > 0) {
-                setPosition((prev) => Math.max(prev - 5, 0));
+                moveLeft()
             } else if (e.key === 'ArrowRight' && position < (100 - CHARACTER_WIDTH)) {
-                setPosition((prev) => Math.min(prev + 5, 100 - CHARACTER_WIDTH));
+                moveRight()
             }
         };
 
