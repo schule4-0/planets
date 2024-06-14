@@ -6,8 +6,10 @@ import {
 } from "@/app/utils/storageUtils";
 import {getPlanetName, Planets} from "@/app/utils/planetUtils";
 import ActionButton from "@/app/components/actionButton/ActionButton";
+import {useRouter} from "next/router";
 
 const MapPage: React.FC = () => {
+    const router = useRouter();
     const [selectedPlanet, setSelectedPlanet] = useState<string | null>(null);
     const [planetCompletion, setPlanetCompletion] = useState<{
         [key: string]: boolean;
@@ -16,7 +18,11 @@ const MapPage: React.FC = () => {
     const videoRefs = useRef<{ [key: string]: HTMLVideoElement | null }>({});
     const [showOnly, setShowOnly] = useState(false);
     const [allPlanetsCompleted, setAllPlanetsCompleted] = useState(false);
+    const [nextRoute, setNextRoute] = useState<string>("/map");
 
+    const handleRouting = () => {
+        router.push(nextRoute);
+    };
 
     useEffect(() => {
         const fetchPlanetCompletion = async () => {
@@ -36,6 +42,10 @@ const MapPage: React.FC = () => {
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.has('show-only')) {
                 setShowOnly(true);
+                let path = urlParams.get('next-route')
+                if (path !== null){
+                    setNextRoute(path)
+                }
             }
             setPlanetCompletion(completionData);
 
@@ -101,7 +111,7 @@ const MapPage: React.FC = () => {
                     />
                 ))}
                 {showOnly &&
-                        <ActionButton onClick={() =>{}}/>
+                        <ActionButton onClick={handleRouting}/>
                 }
             </div>
         </Layout>
