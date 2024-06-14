@@ -1,0 +1,90 @@
+{
+  "mercury": {
+    "header": "Merkur",
+    "info": {
+      "Größe": "4.880 km Durchmesser",
+      "Entfernung": "57,9 Millionen km zur Sonne",
+      "Temperatur": "−173°C bis 427°C",
+      "Monde": "Keine",
+      "Besonderheiten": "Kleinster Planet des Sonnensystems",
+      "Leben möglich?": "Nein"
+    }
+  },
+  "venus": {
+    "header": "Venus",
+    "info": {
+      "Größe": "12.104 km Durchmesser",
+      "Entfernung": "108,2 Millionen km zur Sonne",
+      "Temperatur": "Durchschnittlich 464°C",
+      "Monde": "Keine",
+      "Besonderheiten": "Heißeste Oberfläche aller Planeten",
+      "Leben möglich?": "Nein"
+    }
+  },
+  "earth": {
+    "header": "Erde",
+    "info": {
+      "Größe": "12.742 km Durchmesser",
+      "Entfernung": "149,6 Millionen km zur Sonne",
+      "Temperatur": "−88°C bis 58°C",
+      "Monde": "1",
+      "Besonderheiten": "Einziger Planet mit flüssigem Wasser",
+      "Leben möglich?": "Ja"
+    }
+  },
+  "mars": {
+    "header": "Mars - Der rote Planet",
+    "info": {
+      "Größe": "6.779 km Durchmesser",
+      "Entfernung": "227,9 Millionen km zur Sonne",
+      "Temperatur": "−143°C bis 35°C",
+      "Monde": "2",
+      "Besonderheiten": "Hat den höchsten Berg des Sonnensystems, Olympus Mons",
+      "Leben möglich?": "Unwahrscheinlich"
+    }
+  },
+  "jupiter": {
+    "header": "Jupiter",
+    "info": {
+      "Größe": "139.820 km Durchmesser",
+      "Entfernung": "778,5 Millionen km zur Sonne",
+      "Temperatur": "−145°C (obere Atmosphäre)",
+      "Monde": "79 bekannte Monde",
+      "Besonderheiten": "Größter Planet im Sonnensystem",
+      "Leben möglich?": "Unwahrscheinlich"
+    }
+  },
+  "saturn": {
+    "header": "Saturn",
+    "info": {
+      "Größe": "116.460 km Durchmesser",
+      "Entfernung": "1,434 Milliarden km zur Sonne",
+      "Temperatur": "−178°C (obere Atmosphäre)",
+      "Monde": "83 bekannte Monde",
+      "Besonderheiten": "Bekannt für seine markanten Ringe",
+      "Leben möglich?": "Unwahrscheinlich"
+    }
+  },
+  "uranus": {
+    "header": "Uranus",
+    "info": {
+      "Größe": "50.724 km Durchmesser",
+      "Entfernung": "2,871 Milliarden km zur Sonne",
+      "Temperatur": "−224°C",
+      "Monde": "27 bekannte Monde",
+      "Besonderheiten": "Rotiert auf seiner Seite",
+      "Leben möglich?": "Unwahrscheinlich"
+    }
+  },
+  "neptune": {
+    "header": "Neptun",
+    "info": {
+      "Größe": "49.244 km Durchmesser",
+      "Entfernung": "4,495 Milliarden km zur Sonne",
+      "Temperatur": "−218°C",
+      "Monde": "14 bekannte Monde",
+      "Besonderheiten": "Stärkste Winde im Sonnensystem",
+      "Leben möglich?": "Unwahrscheinlich"
+    }
+  }
+}
