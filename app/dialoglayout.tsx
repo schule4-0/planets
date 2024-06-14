@@ -120,13 +120,10 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
 
   const leftImage = () =>{
     if (images.leftCharacter === "player"){
-      if(!selectedHair.includes("kids/")){
-        setSelectedHair("kids/" + selectedHair)
-      }
       return(
           <CharacterImage
               color={selectedHairColorCode}
-              type={selectedHair}
+              type={"kids/" + selectedHair}
               skinColor={selectedSkinColorCode}
           />
       )
