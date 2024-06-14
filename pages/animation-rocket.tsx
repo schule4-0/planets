@@ -36,8 +36,10 @@ const LottieAnimation = () => {
         if (landing == "true"){
             path = '/rocketLanding.json'
         }
+        // @ts-ignore
         animationRef.current = lottie.loadAnimation({
-            container: containerRef.current,
+            // @ts-ignore
+            container: containerRef.current? containerRef.current: <></>,
             path: path,
             renderer: 'svg',
             loop: true,
