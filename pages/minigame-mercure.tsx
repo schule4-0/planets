@@ -82,10 +82,10 @@ const Home: React.FC = () => {
                 prev.map((meteor) => ({ ...meteor, top: meteor.top + METEOR_FALL_SPEED }))
                     .filter((meteor) => {
                         const characterBounds = {
-                            left: position,
-                            right: position + CHARACTER_WIDTH,
-                            top: 95 - CHARACTER_HEIGHT,
-                            bottom: 95
+                            left: position -5 ,
+                            right: position -5 + CHARACTER_WIDTH,
+                            top: 100 - CHARACTER_HEIGHT,
+                            bottom: 100
                         };
 
                         const meteorBounds = {
