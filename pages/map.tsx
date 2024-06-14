@@ -6,6 +6,7 @@ import {
 } from "@/app/utils/storageUtils";
 import {getPlanetName, Planets} from "@/app/utils/planetUtils";
 import ActionButton from "@/app/components/actionButton/ActionButton";
+import {router} from "next/client";
 
 const MapPage: React.FC = () => {
     const [selectedPlanet, setSelectedPlanet] = useState<string | null>(null);
@@ -15,6 +16,7 @@ const MapPage: React.FC = () => {
     const orbitContainerRef = useRef<HTMLDivElement>(null);
     const videoRefs = useRef<{ [key: string]: HTMLVideoElement | null }>({});
     const [showOnly, setShowOnly] = useState(false);
+    const [nextRoute, setNextRoute] = useState<string| null>("/map");
     const [allPlanetsCompleted, setAllPlanetsCompleted] = useState(false);
 
 
@@ -35,6 +37,7 @@ const MapPage: React.FC = () => {
             // Check if all planets should show without function
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.has('show-only')) {
+                setNextRoute(urlParams.get('next-route'))
                 setShowOnly(true);
             }
             setPlanetCompletion(completionData);
@@ -101,7 +104,7 @@ const MapPage: React.FC = () => {
                     />
                 ))}
                 {showOnly &&
-                        <ActionButton onClick={() =>{}}/>
+                        <ActionButton onClick={() =>{ router.push(nextRoute ? nextRoute:"/map")}}/>
                 }
             </div>
         </Layout>
