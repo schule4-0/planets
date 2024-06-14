@@ -124,12 +124,12 @@ const Home: React.FC = () => {
     return (
         <div className="relative page-container bg-star overflow-hidden h-screen">
             <div className="text-white absolute top-4 left-4">Score: {score}</div>
-            <div className="absolute bottom-0 w-full h-4" style={{ zIndex: 4 }}>
+            <div className="absolute bottom-0 w-full h-4 z-50">
                 <Image src="/images/mercury_minigame/meteorite_ground.png" alt="Ground" layout="fill" objectFit="cover" />
             </div>
             <div
-                className="absolute bottom-4"
-                style={{ left: `${position}%`, transition: 'left 0.1s', width: `${CHARACTER_WIDTH}%`, height: `${CHARACTER_HEIGHT}%`, zIndex: 3 }}
+                className="absolute bottom-4 z-40"
+                style={{ left: `${position}%`, transition: 'left 0.1s', width: `${CHARACTER_WIDTH}%`, height: `${CHARACTER_HEIGHT}%`}}
             >
                 <SVGColorChanger
                     key="astro-caracter"
@@ -142,22 +142,21 @@ const Home: React.FC = () => {
                 <img
                     key={meteor.id}
                     src="/images/mercury_minigame/meteorite.png"
-                    className="absolute"
+                    className="absolute z-30"
                     style={{
                         left: `${meteor.position}%`,
                         top: `${meteor.top}%`,
                         width: `${meteor.width}%`,
                         height: `${meteor.height}%`,
                         transition: 'top 0.1s',
-                        zIndex: 3
                     }}
                     alt="Meteor"
                 />
             ))}
-            <button className="absolute bottom-8 left-8" onClick={moveLeft} style={{ zIndex: 4 }}>
+            <button className="absolute bottom-8 left-8 z-50" onClick={moveLeft}>
                 <Image src="/images/mercury_minigame/button_left.png" alt="Left" width={64} height={64} />
             </button>
-            <button className="absolute bottom-8 right-8" onClick={moveRight} style={{ zIndex: 4 }}>
+            <button className="absolute bottom-8 right-8 z-50" onClick={moveRight}>
                 <Image src="/images/mercury_minigame/button_right.png" alt="Right" width={64} height={64} />
             </button>
         </div>
