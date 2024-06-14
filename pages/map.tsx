@@ -17,8 +17,6 @@ const MapPage: React.FC = () => {
     const videoRefs = useRef<{ [key: string]: HTMLVideoElement | null }>({});
     const [showOnly, setShowOnly] = useState(false);
     const [allPlanetsCompleted, setAllPlanetsCompleted] = useState(false);
-    const [nextRoute, setNextRoute] = useState<string>('/map');
-
 
 
     useEffect(() => {
@@ -40,9 +38,6 @@ const MapPage: React.FC = () => {
             if (urlParams.has('show-only')) {
                 setShowOnly(true);
                 let path = urlParams.get('next-route')
-                if (path !== null){
-                    setNextRoute(path)
-                }
             }
             setPlanetCompletion(completionData);
 
@@ -108,7 +103,7 @@ const MapPage: React.FC = () => {
                     />
                 ))}
                 {showOnly &&
-                        <ActionButton onClick={() =>{router.push(nextRoute) }}/>
+                        <ActionButton onClick={() =>{router.push('/dialog2') }}/>
                 }
             </div>
         </Layout>
