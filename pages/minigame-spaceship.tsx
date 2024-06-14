@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, { useRef } from 'react';
 import SelectLayout from '@/app/selectLayout';
 import ActionButton from '@/app/components/actionButton/ActionButton';
 import Image from "next/image";
@@ -26,7 +26,7 @@ const MiniGameSpaceship: React.FC = () => {
     };
 
     const drop = (dropZoneId: string) => {
-        const draggedElementId = moving?.id
+        const draggedElementId = moving?.id;
         const dropZoneElement = document.getElementById(dropZoneId);
 
         if (moving && dropZoneElement && draggedElementId === dropZoneId.replace('drop', 'drag')) {
@@ -86,17 +86,30 @@ const MiniGameSpaceship: React.FC = () => {
         }
     };
 
-
     const handleMouseDown = (event: React.MouseEvent) => {
         pickup(event);
-        document.addEventListener('mousemove', (event) => move(event));
+        document.addEventListener('mousemove', move);
         document.addEventListener('mouseup', handleMouseUp);
     };
 
     const handleMouseUp = () => {
         dropMovement();
-        document.removeEventListener('mousemove', () => move);
+        document.removeEventListener('mousemove', move);
         document.removeEventListener('mouseup', handleMouseUp);
+    };
+
+    const handleTouchStart = (event: React.TouchEvent) => {
+        pickup(event);
+        // @ts-ignore
+        document.addEventListener('touchmove', move);
+        document.addEventListener('touchend', handleTouchEnd);
+    };
+
+    const handleTouchEnd = () => {
+        dropMovement();
+        // @ts-ignore
+        document.removeEventListener('touchmove', move);
+        document.removeEventListener('touchend', handleTouchEnd);
     };
 
     const renderLeftChildren = () => (
@@ -112,9 +125,9 @@ const MiniGameSpaceship: React.FC = () => {
                         width={300}
                         height={100}
                         onMouseDown={handleMouseDown}
-                        onTouchStart={pickup}
+                        onTouchStart={handleTouchStart}
                         onTouchMove={move}
-                        onTouchEnd={dropMovement}
+                        onTouchEnd={handleTouchEnd}
                         onDragStart={drag}
                     />
                 ))}
@@ -220,14 +233,14 @@ const MiniGameSpaceship: React.FC = () => {
     }
 
     const nextPage = () => {
-        let allDropped = true
+        let allDropped = true;
         Object.keys(dropRefs.current).forEach(dropZoneId => {
             const dropZoneElement = document.getElementById(dropZoneId);
             if (dropZoneElement && dropZoneElement.style.filter !== "none") {
-                allDropped = false
-                return
+                allDropped = false;
+                return;
             }
-        })
+        });
         if (allDropped) {
             //@todo add routing
         }
@@ -239,7 +252,7 @@ const MiniGameSpaceship: React.FC = () => {
                 leftChildren={renderLeftChildren()}
                 rightChildren={renderRightChildren()}
             />
-            <ActionButton onClick={nextPage}/>
+            <ActionButton onClick={nextPage} />
         </div>
     );
 };
