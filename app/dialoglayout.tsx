@@ -134,7 +134,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
         <Image src={images.leftCharacter} alt="Linke Figur" width={200} height={250} />
     )
   }
-  const renderAction = () =>{
+  function renderAction(){
     if (dialogData.story[0].action !== undefined){
       return <>
         <div className={"absolute left-1/2 top-1/2 -ml-28 -mt-32"}>
@@ -145,7 +145,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
     return null
   }
 
-  const renderDialog = () =>{
+  function renderDialog(){
     if (dialogData.story[0].action === undefined) {
       return <div className={"h-full"}><div className="flex justify-center p-10 relative z-0 h-full">
         <div className="w-3/5 flex flex-col items-center mb-5">
