@@ -125,7 +125,7 @@ const Home: React.FC = () => {
         <div className="relative page-container bg-star overflow-hidden h-screen">
             <div className="text-white absolute top-4 left-4">Score: {score}</div>
             <div className="absolute bottom-0 w-full h-4 z-50">
-                <Image src="/images/mercury_minigame/meteorite_ground.png" alt="Ground" layout="fill" objectFit="cover" />
+                <Image src="/images/planets/ground/mercury_ground.png" alt="Ground" layout="fill" objectFit="cover" />
             </div>
             <div
                 className="absolute bottom-4 z-40"
