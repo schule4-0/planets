@@ -14,7 +14,7 @@ const getRandomSize = () => {
     return Math.random() * (12 - 6) + 6;
 };
 
-const MinigameMercure: React.FC = () => {
+const MinigameMercury: React.FC = () => {
     const isClient = typeof window !== 'undefined';
     const router = useRouter();
     const [position, setPosition] = useState<number>(50);
@@ -172,4 +172,4 @@ const MinigameMercure: React.FC = () => {
     );
 };
 
-export default MinigameMercure;
+export default MinigameMercury;
