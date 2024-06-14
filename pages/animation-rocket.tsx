@@ -1,66 +1,105 @@
-import React, {useEffect} from 'react';
-import { useRouter } from 'next/router';
-import Lottie from 'react-lottie';
-import * as animationStartData from '../public/rocket.json';
-import * as animationLandingData from '../public/roketlanding.json';
-//import "./animation-rocket.css"
+import React, {useEffect, useRef, useState} from 'react';
+import lottie, {AnimationItem} from 'lottie-web';
+import {useSearchParams} from 'next/navigation';
+import {getRocketColor, getRocketType} from "@/app/utils/storageUtils";
+import {getRocketColors} from "@/app/utils/colorUtils";
 
-const Dialog = () => {
-    const router = useRouter();
+const LottieAnimation = () => {
+    const isClient = typeof window !== 'undefined';
+    const containerRef = useRef<HTMLDivElement>(null);
+    const animationRef = useRef<AnimationItem>(null);
+    const searchParams = useSearchParams();
+    const planet = searchParams ? searchParams.get('planet') : "earth";
+    const landing = searchParams ? searchParams.get('landing') : "true";
+    const [selectedColor, setSelectedRocketColor] = useState<string>('orange');
+    const [selectedRocketType, setSelectedRocketType] = useState<string>('rocket1');
 
-    const handleRouting = () => {
-        router.push('/spaceship');
-    };
 
     useEffect(() => {
-        const timeoutId = setTimeout(() => {
+        const loadStoredValues = async () => {
+            const selectedRocketType = await getRocketType();
+            if (selectedRocketType) {
+                setSelectedRocketType(selectedRocketType);
+            }
+
+            const storedRocketColors = await getRocketColor();
+            if (storedRocketColors) {
+                setSelectedRocketColor(storedRocketColors);
+            }
+        };
+
+        if (isClient) loadStoredValues();
+    }, [isClient]);
+
+    useEffect(() => {
+        let path = '/rocket.json'
+        if (landing == "true"){
+            path = '/rocketLanding.json'
+        }
+        animationRef.current = lottie.loadAnimation({
+            container: containerRef.current,
+            path: path,
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            name: "Demo Animation",
+        });
+        return () => {
+            animationRef.current?.destroy();
+        };
+    }, [landing]);
+
+    useEffect(() => {
+        setTimeout(() => {
             const elements = document.querySelectorAll('*');
             const targetOpacity = '0.8';
-            const targetFill = 'rgb(255, 255, 255)';
 
-            let targetElementOpacity = null;
-            let targetElementFill: Element[] = [];
+            let targetElementOpacity: Element = document.createElement('div')
+
             elements.forEach(element => {
                 const style = getComputedStyle(element);
                 if (style.opacity === targetOpacity) {
                     targetElementOpacity = element;
                 }
-                if (element.getAttribute('fill') === targetFill) {
-                    console.log(element)
-                    targetElementFill.push(element);
-                }
             });
 
-            if (targetElementOpacity) {
-               targetElementOpacity.style.visibility = "hidden";
+            if (targetElementOpacity !== null) {
+                targetElementOpacity.parentElement?.classList.add("hidden");
             }
-            targetElementFill.forEach(element => {
-                element.style.visibility = "hidden";
+            swapImage();
+        }, 50);
+    }, );
+
+    const swapImage = () => {
+        const animation = animationRef.current;
+        if (animation && animation.renderer.elements.length > 0) {
+            const elements = animation.renderer.elements;
+            elements.some((element: { baseElement: { querySelector: (arg0: string) => any; }; }, index: number) => {
+                if (index === 4) {
+                    let image = element?.baseElement?.querySelector("image");
+                    if (image) {
+                        const colorWord = getRocketColors().find(color => color.code === selectedColor)?.word;
+                        image.setAttribute('href', "/images/rocket/" + selectedRocketType + "_" + colorWord + ".png");
+                    }
+                }
+                if (index === 8) {
+                    const image = element?.baseElement?.querySelector("image");
+                    if (image) {
+                        image.setAttribute('href', "/images/planets/" + planet + ".png");
+                    }
+                    containerRef.current?.classList.remove("hidden")
+                    return true;
+                }
+                return false;
             });
-        }, 10); // Delay of 1 second
-
-        // Clean up the timeout if the component unmounts
-        return () => clearTimeout(timeoutId);
-    }, []);
-
-    const defaultOptions = {
-        loop: true,
-        autoplay: true,
-        animationData: animationStartData,
-        rendererSettings: {
-            preserveAspectRatio: 'xMidYMid slice'
         }
     };
 
     return (
-        <div className={"page-container bg-star flex justify-end relative"}>
-            <Lottie style={{position: "absolute", height: "100%", width:"auto", margin: "auto"}}
-                options={defaultOptions}
-                height={1000}
-                width={1000}
-            />
+        <div className={`bg-star flex ${landing ? 'justify-end' : 'justify-start'} page-container`}>
+            <div className={"w-auto h-full hidden"} ref={containerRef}></div>
         </div>
     );
 };
 
-export default Dialog;
+export default LottieAnimation;
