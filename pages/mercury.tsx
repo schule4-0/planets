@@ -8,7 +8,7 @@ const Mercury = () => {
   const router = useRouter();
 
   const handleRouting = () => {
-    router.push('/minigame-mecury'); 
+    router.push('/minigame-mercury'); 
   };
 
   return (
