@@ -4,7 +4,6 @@ import { getPlanetsWithSpaceshipParts, Planets } from '@/app/utils/planetUtils';
 import { getPlanetState, setPlanetState } from '@/app/utils/storageUtils';
 import ActionButton from "@/app/components/actionButton/ActionButton";
 import {useRouter} from "next/router";
-import earth from "@/pages/earth";
 
 interface CollectedSpaceshipPartProps {
     imgSrc: string;
@@ -24,7 +23,7 @@ const CollectedSpaceshipPart: FC<CollectedSpaceshipPartProps> = ({ imgSrc, plane
 
     const updateCurrentParts = async () => {
         await setPlanetState(planet,true)
-        let count = 1;
+        let count = 0;
         for (const planet of planetsWithParts) {
             const state = await getPlanetState(planet);
             if (state) {
