@@ -32,13 +32,12 @@ const MapPage: React.FC = () => {
                 saturn: (await getPlanetState("SATURN")) !== null,
                 jupiter: (await getPlanetState("JUPITER")) !== null,
                 mars: (await getPlanetState("MARS")) !== null,
-                earth: (await getPlanetState("EARTH")) !== null,
+                earth: true,
                 venus: (await getPlanetState("VENUS")) !== null,
                 mercury: (await getPlanetState("MERCURY")) !== null,
                 sun: (await getPlanetState("SUN")) !== null,
             };
 
-            // Check if all planets should show without function
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.has('show-only')) {
                 setShowOnly(true);
@@ -111,7 +110,7 @@ const MapPage: React.FC = () => {
                     />
                 ))}
                 {showOnly &&
-                        <ActionButton onClick={handleRouting}/>
+                    <ActionButton onClick={handleRouting}/>
                 }
             </div>
         </Layout>
@@ -138,9 +137,10 @@ function PlanetDetails({
     allPlanetsCompleted: boolean
 }) {
     const planetRef = useRef<HTMLDivElement>(null);
+    const router = useRouter();
 
     const planetClick = (planet: string): void => {
-        if (allPlanetsCompleted){
+        if (allPlanetsCompleted) {
             window.location.href = "/planet-profile?planet=" + planet.toLowerCase();
             return;
         }
@@ -149,6 +149,10 @@ function PlanetDetails({
             videoRefs.current[currentPlanet]?.play();
         }
         setCurrentPlanet(planet);
+
+        if (!planetCompleted) {
+            router.push(`/${planet.toLowerCase()}`);
+        }
     };
 
     const handleMouseEnter = (): void => {
