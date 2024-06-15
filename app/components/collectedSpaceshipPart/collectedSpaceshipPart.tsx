@@ -4,6 +4,7 @@ import { getPlanetsWithSpaceshipParts, Planets } from '@/app/utils/planetUtils';
 import { getPlanetState, setPlanetState } from '@/app/utils/storageUtils';
 import ActionButton from "@/app/components/actionButton/ActionButton";
 import {useRouter} from "next/router";
+import earth from "@/pages/earth";
 
 interface CollectedSpaceshipPartProps {
     imgSrc: string;
@@ -13,7 +14,7 @@ interface CollectedSpaceshipPartProps {
 
 const CollectedSpaceshipPart: FC<CollectedSpaceshipPartProps> = ({ imgSrc, planet,nextPage }) => {
     const router = useRouter();
-    const [currentParts, setCurrentParts] = useState(1);
+    const [currentParts, setCurrentParts] = useState(0);
     const planetsWithParts = getPlanetsWithSpaceshipParts();
     const totalParts = planetsWithParts.length;
 
