@@ -168,7 +168,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
                               : 'bg-[#8D2020] text-white')
                           : attempts.includes(index)
                               ? 'bg-[#8D2020] text-white opacity-50'
-                              : 'bg-[#9747FF] text-white hover:bg-white hover:text-[#9747FF]'}
+                              : 'bg-[#9747FF] text-white'}
                     text-center`}
                       onClick={() => handleAnswerClick(index, q.isCorrect, q.hint)}
                       disabled={attempts.includes(index)}
@@ -192,7 +192,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
       <div className="bg-cover bg-center relative page-container"
            style={{backgroundImage: `url(${images.backgroundimg})`}}>
         <div className="absolute bottom-0 left-0 mb-9 ml-5" style={{width: '200px'}}>
-          ${leftImage()}
+          {leftImage()}
         </div>
         <div className="absolute bottom-0 right-0 mb-9 mr-20">
           <Image src={images.rightCharacter} alt="Rechte Figur" width={200} height={250}/>
