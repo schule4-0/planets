@@ -94,6 +94,7 @@ const MinigameSpaceshipDragdrop: React.FC = () => {
     const handleMouseDown = (event: React.MouseEvent) => {
         pickup(event);
         document.addEventListener('mousemove', (event) => move(event));
+        document.addEventListener('touchend', handleMouseUp)
         document.addEventListener('mouseup', handleMouseUp);
     };
 
@@ -101,6 +102,7 @@ const MinigameSpaceshipDragdrop: React.FC = () => {
         dropMovement();
         document.removeEventListener('mousemove', () => move);
         document.removeEventListener('mouseup', handleMouseUp);
+        document.removeEventListener('touchend', handleMouseUp)
     };
 
     const renderLeftChildren = () => (
