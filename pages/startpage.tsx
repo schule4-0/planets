@@ -56,7 +56,7 @@ const StartPage = () => {
 
 
     return (
-        <div className={"bg-star page-container flex items-center"}>
+        <div className={"bg-star page-container flex items-center justify-center"}>
             <div className="w-full h-full top-0 absolute z-50" ref={containerRef}></div>
             <h1 className={"px-32 text-center"}>Um dein Weltraumabenteuer zu starten drücke den Button!</h1>
             <ActionButton onClick={handleRouting}/>
