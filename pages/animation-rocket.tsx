@@ -39,7 +39,7 @@ const LottieAnimation = () => {
                 container: containerRef.current,
                 path: animationPath,
                 renderer: 'svg',
-                loop: true,
+                loop: false,
                 autoplay: true,
                 name: "Rocket",
             });
