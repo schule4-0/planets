@@ -2,7 +2,7 @@
   "mercury": {
     "header": "Merkur-Erkundung: Der kleine Planet",
     "info": {
-      "Gas- oder Steinplanet": "Steinplanet",
+      "Gas- oder Gesteinsplanet": "Gesteinsplanet",
       "Alter": "Ca. 4.6 Milliarden Jahre (gleiches Alter wie das Sonnensystem)",
       "Größe": "Durchmesser: Ca. 4.880 km",
       "Temperatur": "",
@@ -19,7 +19,7 @@
   "venus": {
     "header": "Venus-Erkundung: Der heiße Planet",
     "info": {
-      "Gas- oder Steinplanet": "Steinplanet",
+      "Gas- oder Gesteinsplanet": "Gesteinsplanet",
       "Alter": "Ca. 4.6 Milliarden Jahre (gleiches Alter wie das Sonnensystem)",
       "Größe": "Durchmesser: Ca. 12.104 km",
       "Temperatur": "Durchschnittlich ca. 465 °C (wegen des starken Treibhauseffekts)",
@@ -34,7 +34,7 @@
   "earth": {
     "header": "Erde",
     "info": {
-      "Gas- oder Steinplanet": "Steinplanet",
+      "Gas- oder Gesteinsplanet": "Gesteinsplanet",
       "Alter": "Ca. 4.6 Milliarden Jahre (gleiches Alter wie das Sonnensystem)",
       "Größe": "Durchmesser: Ca. 12.742 km",
       "Temperatur": "−88°C bis 58°C",
@@ -49,7 +49,7 @@
   "mars": {
     "header": "Mars-Erkundung: Der rote Planet",
     "info": {
-      "Gas- oder Steinplanet": "Steinplanet",
+      "Gas- oder Gesteinsplanet": "Gesteinsplanet",
       "Alter": "Ca. 4.6 Milliarden Jahre (gleiches Alter wie das Sonnensystem)",
       "Größe": "Durchmesser: Ca. 6.779 km",
       "Temperatur": "Durchschnittlich ca. -60 °C (kann zwischen -125 °C in der Nacht und 20 °C am Tag variieren)",
@@ -64,7 +64,7 @@
   "jupiter": {
     "header": "Jupiter",
     "info": {
-      "Gas- oder Steinplanet": "Gasplanet",
+      "Gas- oder Gesteinsplanet": "Gasplanet",
       "Alter": "Ca. 4,6 Milliarden Jahre",
       "Größe": "Durchmesser von etwa 139.820 km",
       "Temperatur": "Durchschnittlich -145 °C",
@@ -79,18 +79,22 @@
   "saturn": {
     "header": "Saturn",
     "info": {
-      "Größe": "116.460 km Durchmesser",
-      "Entfernung": "1,434 Milliarden km zur Sonne",
-      "Temperatur": "−178°C (obere Atmosphäre)",
-      "Monde": "83 bekannte Monde",
-      "Besonderheiten": "Bekannt für seine markanten Ringe",
-      "Leben möglich?": "Unwahrscheinlich"
+      "Gas- oder Gesteinsplanet": "Gasplanet",
+      "Alter": "Ca. 4,6 Milliarden Jahre",
+      "Größe": "Durchmesser von etwa 116.460 km",
+      "Temperatur": "Durchschnittlich -178 °C",
+      "Entfernung zur Sonne": "Ca. 1,43 Milliarden km",
+      "Entfernung zur Erde": "Variiert, durchschnittlich ca. 1,2 Milliarden km",
+      "Tagesdauer": "10 Stunden und 42 Minuten",
+      "Jahresdauer": "29,46 Erdenjahre",
+      "Besonderheit": "Das Ringsystem, bestehend aus unzähligen kleinen Partikeln, die von Mikrometern bis zu Metern groß sind",
+      "Monde": "146 bekannte Monde, darunter Titan, der zweitgrößte Mond im Sonnensystem und größer als der Planet Merkur"
     }
   },
   "uranus": {
     "header": "Uranus",
     "info": {
-      "Gas- oder Steinplanet": "Gasplanet",
+      "Gas- oder Gesteinsplanet": "Gasplanet",
       "Alter": "Etwa 4,5 Milliarden Jahre",
       "Größe": "Durchmesser von etwa 50.724 km",
       "Temperatur": "Durchschnittlich -224 °C",
@@ -105,7 +109,7 @@
   "neptune": {
     "header": "Neptun",
     "info": {
-      "Gas- oder Steinplanet": "Gasplanet (auch „Planet der Stürme“ genannt)",
+      "Gas- oder Gesteinsplanet": "Gasplanet (auch „Planet der Stürme“ genannt)",
       "Alter": "Etwa 4,5 Milliarden Jahre",
       "Größe": "Durchmesser von etwa 49.244 km",
       "Temperatur": "Durchschnittlich -214 °C",
@@ -120,7 +124,7 @@
   "sun": {
     "header": "Sonne",
     "info": {
-      "Gas- oder Steinplanet": "Die Sonne ist kein Planet, sondern ein Stern. Sie besteht hauptsächlich aus den Gasen Wasserstoff und Helium.",
+      "Gas- oder Gesteinsplanet": "Die Sonne ist kein Planet, sondern ein Stern. Sie besteht hauptsächlich aus den Gasen Wasserstoff und Helium.",
       "Alter": "etwa 4,5 Milliarden Jahre",
       "Größe": "Der Durchmesser der Sonne ist rund 1,4 Millionen km, etwa 109-mal so groß wie der der Erde.",
       "Temperatur": "Die Sonne hat im Kern eine Temperatur von etwa 15 Millionen °C. An der Oberfläche 'nur' noch 4.000-6.000 °C.",
