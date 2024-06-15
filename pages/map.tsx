@@ -7,7 +7,6 @@ import {
 import {getPlanetName, Planets} from "@/app/utils/planetUtils";
 import ActionButton from "@/app/components/actionButton/ActionButton";
 import {useRouter} from "next/router";
-import earth from "@/pages/earth";
 
 const MapPage: React.FC = () => {
     const router = useRouter();
@@ -143,7 +142,7 @@ function PlanetDetails({
 
     const planetClick = (planet: string): void => {
         if (allPlanetsCompleted) {
-            window.location.href = "/planet-profile?planet=" + planet.toLowerCase();
+            router.push("/planet-profile?planet=" + planet.toLowerCase())
             return;
         }
         if (disabled || showOnly) return;
@@ -153,7 +152,7 @@ function PlanetDetails({
         setCurrentPlanet(planet);
 
         if (!planetCompleted) {
-            router.push(`/${planet.toLowerCase()}`);
+            router.push(`/animation-rocket?landing=true&planet=${planet.toLowerCase()}`);
         }
     };
 

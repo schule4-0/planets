@@ -3,6 +3,7 @@ import lottie, { AnimationItem } from 'lottie-web';
 import { useSearchParams } from 'next/navigation';
 import { getRocketColor, getRocketType } from "@/app/utils/storageUtils";
 import { getRocketColors } from "@/app/utils/colorUtils";
+import {useRouter} from "next/router";
 
 const LottieAnimation = () => {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -12,6 +13,7 @@ const LottieAnimation = () => {
     const landing = searchParams ? searchParams.get('landing') : "true";
     const [selectedColor, setSelectedRocketColor] = useState<string>('orange');
     const [selectedRocketType, setSelectedRocketType] = useState<string>('rocket1');
+    const router = useRouter();
 
     useEffect(() => {
         const loadStoredValues = async () => {
@@ -42,11 +44,20 @@ const LottieAnimation = () => {
                 name: "Rocket",
             });
         }
+        animationRef.current?.addEventListener('complete', onAnimationComplete);
 
         return () => {
             animationRef.current?.destroy();
         };
     }, [landing]);
+
+    const onAnimationComplete = () => {
+        if (landing){
+            router.push(""+planet)
+        }else{
+            router.push("/map")
+        }
+    };
 
     useEffect(() => {
         setTimeout(() => {
@@ -80,14 +91,14 @@ const LottieAnimation = () => {
                     if (image) {
                         image.setAttribute('href', `/images/planets/${planet}.png`);
                     }
-                    containerRef.current?.classList.remove("hidden");
                 }
             });
         }
+        containerRef.current?.classList.remove("hidden")
     };
 
     return (
-        <div className={`bg-star flex ${landing ? 'justify-end' : 'justify-start'} page-container`}>
+        <div className={`bg-star flex ${landing ? 'justify-start' : 'justify-end'} page-container`}>
             <div className="w-auto h-full hidden" ref={containerRef}></div>
         </div>
     );
