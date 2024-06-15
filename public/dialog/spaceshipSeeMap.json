@@ -10,7 +10,7 @@
       ],
       "action": {
         "text": "Klicke hier!",
-        "route": "/map?show-only=true&next-route=/dialog"
+        "route": "/map"
       }
     }
   ]
