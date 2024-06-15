@@ -48,16 +48,17 @@ const MapPage: React.FC = () => {
             }
             setPlanetCompletion(completionData);
 
-            // Check if all planets are completed
-            const allCompleted = Object.values(completionData).every(Boolean);
-            setAllPlanetsCompleted(allCompleted);
+            // Check if all planets with spaceship parts are completed
+            if(completionData["earth"] && completionData["mercury"] && completionData["venus"] && completionData["mars"]){
+                setAllPlanetsCompleted(true);
+            }
         };
 
         //fix for screens with smaller height
         if (orbitContainerRef.current) {
             const orbitContainer = orbitContainerRef.current;
             if (window.screen.availHeight <= 950) {
-                orbitContainer.style.height = "170vh";
+                orbitContainer.style.height = "105vh";
             }
         }
 
