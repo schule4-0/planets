@@ -4,7 +4,7 @@ import ActionButton from '@/app/components/actionButton/ActionButton';
 import Image from "next/image";
 import "./minigame-spaceship.css";
 
-const MiniGameSpaceship: React.FC = () => {
+const MinigameSpaceshipDragdrop: React.FC = () => {
 
     const dropRefs = useRef<{ [key: string]: HTMLImageElement | null }>({});
     const actionButtonRef = useRef<HTMLInputElement>(null);
@@ -238,4 +238,4 @@ const MiniGameSpaceship: React.FC = () => {
     );
 };
 
-export default MiniGameSpaceship;
+export default MinigameSpaceshipDragdrop;
