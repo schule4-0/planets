@@ -19,11 +19,15 @@
           },
           {
             "speaker": "right",
-            "text": "Wenn du Lust hast auf weitere Herausforderungen, dann schau sie dir gerne an. Also gut *Name*… Pass auf dich auf und auf Wiedersehen!"
+            "text": "Wenn du Lust hast auf weitere Herausforderungen, dann schau sie dir gerne an. Also gut Pass auf dich auf und auf Wiedersehen!"
           },
           {
             "speaker": "left",
             "text": "Tschüss Ivorix! Gute Heimreise!"
+          },
+          {
+            "speaker": "right",
+            "text": "Räume du dein Tablet auf und schreib mir dann einen Brief, wie du alles fandest, und welcher und warum dein Lieblingsplanet war."
           }
         ]
       }

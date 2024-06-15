@@ -127,6 +127,15 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
           />
       )
     }
+    if (images.leftCharacter === "astro-player"){
+      return(
+          <CharacterImage
+              color={selectedHairColorCode}
+              type={"kids/astro-" + selectedHair}
+              skinColor={selectedSkinColorCode}
+          />
+      )
+    }
     return (
         <Image src={images.leftCharacter} alt="Linke Figur" width={200} height={250} />
     )

@@ -4,7 +4,7 @@
         "images": [
           {
             "backgroundimg": "/images/planets/ground/mars_ground.jpg",
-            "leftCharacter": "player",
+            "leftCharacter": "astro-player",
             "rightCharacter": "/images/alien.svg"
           }
         ],

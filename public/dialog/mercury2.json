@@ -4,7 +4,7 @@
         "images": [
           {
             "backgroundimg": "/images/planets/ground/mercury_ground.png",
-            "leftCharacter": "player",
+            "leftCharacter": "astro-player",
             "rightCharacter": "/images/alien.svg"
           }
         ],
