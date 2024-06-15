@@ -14,7 +14,7 @@ const StartPage = () => {
     };
 
     useEffect(() => {
-        const animationPath = '/startpage.json';
+        const animationPath = '/startPage.json';
 
         if (containerRef.current) {
             animationRef.current = lottie.loadAnimation({

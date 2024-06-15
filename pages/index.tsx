@@ -5,6 +5,6 @@ export default function Home() {
     const router = useRouter();
     //placeholder if we have a start screen
     useEffect(() => {
-        router.push('/character');
+        router.push('/startpage');
     }, []);
 }
