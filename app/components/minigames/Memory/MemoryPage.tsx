@@ -14,9 +14,10 @@ interface CardData {
 
 interface MemoryPageProps {
     cardData: CardData;
+    onEnd: () => void;
 }
 
-const MemoryPage: React.FC<MemoryPageProps> = ({cardData}) => {
+const MemoryPage: React.FC<MemoryPageProps> = ({cardData, onEnd}) => {
     const {headline, content} = cardData.page[0];
 
     return (
@@ -25,7 +26,7 @@ const MemoryPage: React.FC<MemoryPageProps> = ({cardData}) => {
                 <h1 className="mb-16">{headline}</h1>
                 <h2 className="mb-8">{content}</h2>
             </div>
-            <MemoryGame cardData={cardData}/>
+            <MemoryGame cardData={cardData} onEnd={onEnd}/>
         </div>
     );
 }

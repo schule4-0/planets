@@ -13,7 +13,7 @@ interface CollectedSpaceshipPartProps {
 
 const CollectedSpaceshipPart: FC<CollectedSpaceshipPartProps> = ({ imgSrc, planet,nextPage }) => {
     const router = useRouter();
-    const [currentParts, setCurrentParts] = useState(0);
+    const [currentParts, setCurrentParts] = useState(1);
     const planetsWithParts = getPlanetsWithSpaceshipParts();
     const totalParts = planetsWithParts.length;
 
@@ -23,7 +23,7 @@ const CollectedSpaceshipPart: FC<CollectedSpaceshipPartProps> = ({ imgSrc, plane
 
     const updateCurrentParts = async () => {
         await setPlanetState(planet,true)
-        let count = 0;
+        let count = 1;
         for (const planet of planetsWithParts) {
             const state = await getPlanetState(planet);
             if (state) {
