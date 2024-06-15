@@ -8,7 +8,7 @@ const SpaceshipSeeMap = () => {
     const router = useRouter();
 
     const handleRouting = () => {
-        router.push('/earth3');
+        router.push('/map');
     };
 
     return (

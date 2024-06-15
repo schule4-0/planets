@@ -2,11 +2,12 @@ import React, {useEffect, useRef, useState} from "react";
 import "./map.css";
 import Layout from "../app/layout";
 import {
-    getPlanetState
+    getPlanetState, setPlanetState
 } from "@/app/utils/storageUtils";
 import {getPlanetName, Planets} from "@/app/utils/planetUtils";
 import ActionButton from "@/app/components/actionButton/ActionButton";
 import {useRouter} from "next/router";
+import earth from "@/pages/earth";
 
 const MapPage: React.FC = () => {
     const router = useRouter();
@@ -37,7 +38,7 @@ const MapPage: React.FC = () => {
                 mercury: (await getPlanetState("MERCURY")) !== null,
                 sun: (await getPlanetState("SUN")) !== null,
             };
-
+            await setPlanetState("EARTH",true)
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.has('show-only')) {
                 setShowOnly(true);
