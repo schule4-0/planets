@@ -3,9 +3,9 @@
   "infoText": "Ziehe die Temperatur jeweils an die passende Stelle auf dem Planeten.",
   "dragText":[
     {"text": "-140°C", "dropZoneId": ["1","3"]},
-    {"text": "-140°C", "dropZoneId": ["1","3"]},
     {"text": "40°C", "dropZoneId": []},
     {"text": "20°C", "dropZoneId": ["2"]},
+    {"text": "-140°C", "dropZoneId": ["1","3"]},
     {"text": "10°C", "dropZoneId": []}
   ],
   "dropZones": {
