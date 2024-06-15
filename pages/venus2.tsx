@@ -8,7 +8,7 @@ const Venus2 = () => {
   const router = useRouter();
 
   const handleRouting = () => {
-    router.push('/map'); 
+    router.push('/animation-rocket?landing=false&planet=venus');
   };
 
   return (
