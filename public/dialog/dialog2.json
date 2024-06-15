@@ -1,0 +1,34 @@
+{
+  "story": [
+    {
+      "images": [
+        {
+          "backgroundimg": "/images/background_rocket.svg",
+          "leftCharacter": "player",
+          "rightCharacter": "/images/alien.svg"
+        }
+      ],
+      "dialog": [
+        {
+          "speaker": "left",
+          "text": "Hallo Mara, Ich bin Gustav vom Planeten Krypton. Krypton liegt in einer fernen Galaxie. Doch ich bin hier auf der Erde gestrandet, als mein Raumschiff von einem Kometen getroffen wurde."
+        },
+        {
+          "speaker": "right",
+          "text": "Hallo Gustav, das ist ja spannend. Ich habe noch nie einen Alien getroffen. Erzähl mir mehr über den Weltraum, die Sterne und die Planeten. Wohin gehts?",
+          "question": [
+            {
+              "answer": "Ja, ich möchte mehr erfahren!",
+              "isCorrect": true,
+              "route": "/dialog"
+            },
+            {
+              "answer": "Nein, ich habe jetzt keine Zeit.",
+              "isCorrect": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -103,7 +103,7 @@
 body {
     color: rgb(var(--foreground-rgb));
     background: linear-gradient(to bottom, #040758, #4F0080);
-    font-family: var(--font-base);
+    font-family: var(--font-base), serif;
     font-size: 1.5rem;
     font-weight: bold;
 }
@@ -129,7 +129,7 @@ header {
     background-image: url("../public/images/star-field.svg");
 }
 
-h1, .h1, .h1-sub,h2, .h2, h3, h4, h5, h6 {
+h1, .h1, h2, .h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
     font-weight: bold;
 }
@@ -139,6 +139,12 @@ h1, .h1 {
 }
 .h1-sub{
     font-size: 2.5rem;
+}
+
+.subtitles{
+    font-family: var(--font-heading), serif;
+    font-weight: normal;
+    font-size: 2rem;
 }
 
 h2, .h2 {
@@ -160,5 +166,8 @@ h2, .h2 {
 
 .page-container {
     height: calc(100vh - var(--header-height));
-    width: 100%;
+}
+
+.min-page-container {
+    min-height: calc(100vh - var(--header-height));
 }
