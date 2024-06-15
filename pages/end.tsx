@@ -8,7 +8,7 @@ const End = () => {
   const router = useRouter();
 
   const handleRouting = () => {
-    router.push('/'); 
+    router.push('/map');
   };
 
   return (
