@@ -8,7 +8,7 @@ const Endquiz = () => {
   const router = useRouter();
 
   const handleRouting = () => {
-    router.push('/map');
+    router.push('/end');
   };
 
   return (
