@@ -1,0 +1,21 @@
+{
+    "story": [
+      {
+        "images": [
+          {
+            "backgroundimg": "/images/planets/ground/venus_ground.jpg",
+            "leftCharacter": "player",
+            "rightCharacter": "/images/alien.svg"
+          }
+        ],
+        "dialog": [
+          {
+            "speaker": "right",
+            "text": "Spitze! Weiter geht’s mit unserem Abenteuer!"
+          }
+        ]
+      }
+    ]
+  }
+  
+
