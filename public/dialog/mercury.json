@@ -3,7 +3,7 @@
       {
         "images": [
           {
-            "backgroundimg": "/images/planets/ground/mercury_ground.png",
+            "backgroundimg": "/images/background_mercury.svg",
             "leftCharacter": "astro-player",
             "rightCharacter": "/images/alien.svg"
           }
