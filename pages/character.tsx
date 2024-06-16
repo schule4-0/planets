@@ -1,11 +1,11 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Layout from '../app/layout';
 import SelectLayout from '@/app/selectLayout';
 import ActionButton from '@/app/components/actionButton/ActionButton';
 import SelectItems from '@/app/components/selectItems/selectItems';
 import SVGColorChanger from "@/app/components/svg/SVGColorChanger";
 import '../app/globals.css';
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 
 import {
     getHair,
@@ -167,14 +167,14 @@ const Character: React.FC = () => {
                     value={name}
                     onChange={handleNameChange}
                     placeholder="Name"
-                    className="h2 w-full text-3xl text-black rounded-2xl border-2 border-black ml-2 p-2"
+                    className="h2 w-full text-3xl text-black rounded-2xl border-2 border-black ml-2 p-2 focus:outline-none"
                 />
             </div>
         </Layout>
     );
 
     const nextPage = () => {
-        router.push('/dialog');
+        router.push('/earth');
     };
 
     return (

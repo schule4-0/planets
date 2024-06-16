@@ -15,6 +15,7 @@ import {getRocketColorIndex, getRocketColors} from '@/app/utils/colorUtils';
 import {useRouter} from "next/router";
 
 const Spaceship: React.FC = () => {
+
     const isClient = typeof window !== 'undefined';
     const [selectedColor, setSelectedRocketColor] = useState<string>('orange');
     const [selectedRocketType, setSelectedRocketType] = useState<string>('rocket1');
@@ -100,7 +101,7 @@ const Spaceship: React.FC = () => {
     );
 
     const nextPage = () => {
-        router.push('/dialog2');
+        router.push('/earth2');
     };
 
     return (

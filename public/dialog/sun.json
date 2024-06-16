@@ -1,0 +1,125 @@
+{
+  "story": [
+    {
+      "images": [
+        {
+          "backgroundimg": "/images/background_rocket.svg",
+          "leftCharacter": "player",
+          "rightCharacter": "/images/alien.svg"
+        }
+      ],
+      "dialog": [
+        {
+          "speaker": "right",
+          "text": "Hey, das ist die Sonne, lass uns ein kleines Spiel spielen. Ich nenne dir ein paar Fakten und du entscheidest, ob es ein Planet oder eine Sonne ist!"
+        },
+        {
+          "speaker": "right",
+          "text": "Besteht hauptsächlich aus Gas.",
+          "question": [
+            {
+              "answer": "Sonne",
+              "isCorrect": true
+            },
+            {
+              "answer": "Planet",
+              "isCorrect": false,
+              "hint": "Die Sonne besteht hauptsächlich aus Gas."
+            }
+          ]
+        },
+        {
+          "speaker": "right",
+          "text": "Umkreist die Sonne.",
+          "question": [
+            {
+              "answer": "Planet",
+              "isCorrect": true
+            },
+            {
+              "answer": "Sonne",
+              "isCorrect": false,
+              "hint": "Planeten umkreisen die Sonne."
+            }
+          ]
+        },
+        {
+          "speaker": "right",
+          "text": "Hat eine Temperatur von 15 Millionen °C im Inneren.",
+          "question": [
+            {
+              "answer": "Sonne",
+              "isCorrect": true
+            },
+            {
+              "answer": "Planet",
+              "isCorrect": false,
+              "hint": "Nur die Sonne erreicht solch extreme Temperaturen."
+            }
+          ]
+        },
+        {
+          "speaker": "right",
+          "text": "Ist etwa 4,5 Milliarden Jahre alt.",
+          "question": [
+            {
+              "answer": "Sonne",
+              "isCorrect": true,
+              "hint": "Sowohl einige Planeten als auch die Sonne sind ungefähr so alt."
+            },
+            {
+              "answer": "Planet",
+              "isCorrect": true,
+              "hint": "Sowohl einige Planeten als auch die Sonne sind ungefähr so alt."
+            }
+          ]
+        },
+        {
+          "speaker": "right",
+          "text": "Hat keinen Mond.",
+          "question": [
+            {
+              "answer": "Sonne",
+              "isCorrect": true
+            },
+            {
+              "answer": "Planet",
+              "isCorrect": false,
+              "hint": "Die meisten Planeten haben Monde, die Sonne jedoch nicht."
+            }
+          ]
+        },
+        {
+          "speaker": "right",
+          "text": "Ist größer als die Erde.",
+          "question": [
+            {
+              "answer": "Sonne",
+              "isCorrect": true
+            },
+            {
+              "answer": "Planet",
+              "isCorrect": false,
+              "hint": "Die Sonne ist wesentlich größer als jeder Planet."
+            }
+          ]
+        },
+        {
+          "speaker": "right",
+          "text": "Braucht 365 Tage für einen Umlauf.",
+          "question": [
+            {
+              "answer": "Planet",
+              "isCorrect": true
+            },
+            {
+              "answer": "Sonne",
+              "isCorrect": false,
+              "hint": "Die Erde, ein Planet, benötigt etwa 365 Tage für einen Umlauf um die Sonne."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

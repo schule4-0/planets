@@ -24,7 +24,7 @@ const PlanetProfile: React.FC = () => {
 
     return (
         <Layout>
-            <div className="page-container bg-star relative flex items-center justify-end">
+            <div className="page-container bg-star relative flex items-center justify-end overflow-hidden">
                 <Image className={"h-full w-auto absolute left-4"} src={getImagePath(planetKey)} alt="planet" width={800} height={800} />
                 <div className={"bg-white p-6 overflow-y-auto rounded-2xl max-w-xl w-fit text-black z-10 h-5/6 mr-24"}>
                     <h1 className={"mb-6"}>{planetData[planetKey]?.header}</h1>

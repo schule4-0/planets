@@ -1,14 +1,14 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import DialogLayout from '../app/dialoglayout';
-import dialogData from '../public/dialog/dialog.json';
+import dialogData from '../public/dialog/mercury.json';
 import ActionButton from '@/app/components/actionButton/ActionButton';
 
-const Dialog = () => {
+const Mercury = () => {
   const router = useRouter();
 
   const handleRouting = () => {
-    router.push('/spaceship');
+    router.push('/minigame-mercury'); 
   };
 
   return (
@@ -20,4 +20,4 @@ const Dialog = () => {
   );
 };
 
-export default Dialog;
+export default Mercury;

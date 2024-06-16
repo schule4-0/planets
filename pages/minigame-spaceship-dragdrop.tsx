@@ -4,7 +4,7 @@ import ActionButton from '@/app/components/actionButton/ActionButton';
 import Image from "next/image";
 import "./minigame-spaceship.css";
 
-const MiniGameSpaceship: React.FC = () => {
+const MinigameSpaceshipDragdrop: React.FC = () => {
 
     const dropRefs = useRef<{ [key: string]: HTMLImageElement | null }>({});
     const actionButtonRef = useRef<HTMLInputElement>(null);
@@ -94,6 +94,7 @@ const MiniGameSpaceship: React.FC = () => {
     const handleMouseDown = (event: React.MouseEvent) => {
         pickup(event);
         document.addEventListener('mousemove', (event) => move(event));
+        document.addEventListener('touchend', handleMouseUp)
         document.addEventListener('mouseup', handleMouseUp);
     };
 
@@ -101,6 +102,7 @@ const MiniGameSpaceship: React.FC = () => {
         dropMovement();
         document.removeEventListener('mousemove', () => move);
         document.removeEventListener('mouseup', handleMouseUp);
+        document.removeEventListener('touchend', handleMouseUp)
     };
 
     const renderLeftChildren = () => (
@@ -236,4 +238,4 @@ const MiniGameSpaceship: React.FC = () => {
     );
 };
 
-export default MiniGameSpaceship;
+export default MinigameSpaceshipDragdrop;
