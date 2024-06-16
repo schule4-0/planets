@@ -1,0 +1,240 @@
+{
+    "story": [
+      {
+        "images": [
+          {
+            "backgroundimg": "/images/background_rocket.svg",
+            "leftCharacter": "player",
+            "rightCharacter": "/images/alien.svg"
+          }
+        ],
+        "dialog": [
+          {
+            "speaker": "right",
+            "text": "Das ist dein Sonnensystem: Es ist etwa 4,6 Milliarden Jahre alt. Die inneren, terrestrischen Planeten Merkur, Venus, Erde und Mars werden als Gesteinsplaneten bezeichnet."
+          },
+          {
+            "speaker": "right",
+            "text": "Die äußeren Planeten Jupiter, Saturn, Uranus und Neptun sind die Gasplaneten oder Riesenplaneten des Sonnensystems."
+          },
+          {
+            "speaker": "right",
+            "text": "Sie bestehen hauptsächlich aus Gasen wie Wasserstoff und Helium."
+          },
+          {
+            "speaker": "right",
+            "text": "Die Sonne ist der zentrale Stern des Sonnensystems und die Erde ist der dritte Planet von der Sonne aus, sowie der einzige bekannte Planet, auf dem es Leben gibt. "
+          },
+          {
+            "speaker": "right",
+            "text": "Weißt du denn schon viel über die Erde? Lass uns dein Wissen testen!"
+          },
+          {
+            "speaker": "right",
+            "text": "Die Erde ist der größte Planet in unserem Sonnensystem!",
+            "question": [
+              {
+                "answer": "Wahr",
+                "isCorrect": false
+              },
+              {
+                "answer": "Falsch",
+                "isCorrect": true
+              }
+            ]
+          },
+          {
+            "speaker": "right",
+            "text": "Auf der Erde gibt es flüssiges Wasser, was Leben ermöglicht!",
+            "question": [
+              {
+                "answer": "Wahr",
+                "isCorrect": true
+              },
+              {
+                "answer": "Falsch",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "speaker": "right",
+            "text": "Die Erde hat eine Neigung (schief)!",
+            "question": [
+              {
+                "answer": "Wahr",
+                "isCorrect": true
+              },
+              {
+                "answer": "Falsch",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "speaker": "right",
+            "text": "Der Mond stabilisiert die Neigung der Erdbahn und verhindert extreme Klimaschwankungen!",
+            "question": [
+              {
+                "answer": "Wahr",
+                "isCorrect": true
+              },
+              {
+                "answer": "Falsch",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "speaker": "right",
+            "text": "Die Erde ist zu weit von der Sonne entfernt, deshalb ist sie eiskalt.",
+            "question": [
+              {
+                "answer": "Wahr",
+                "isCorrect": false
+              },
+              {
+                "answer": "Falsch",
+                "isCorrect": true
+              }
+            ]
+          },
+          {
+            "speaker": "right",
+            "text": "Die Sonne dreht sich um die Erde.",
+            "question": [
+              {
+                "answer": "Wahr",
+                "isCorrect": false
+              },
+              {
+                "answer": "Falsch",
+                "isCorrect": true
+              }
+            ]
+          },
+          {
+            "speaker": "right",
+            "text": "Auf der Erde gibt es mehr als 100 aktive Vulkane.",
+            "question": [
+              {
+                "answer": "Wahr",
+                "isCorrect": true
+              },
+              {
+                "answer": "Falsch",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "speaker": "right",
+            "text": "Die Erde dreht sich um ihre eigene Achse (1x am Tag).",
+            "question": [
+              {
+                "answer": "Wahr",
+                "isCorrect": true
+              },
+              {
+                "answer": "Falsch",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "speaker": "right",
+            "text": "Die Temperaturen auf der Erde bewegen sich zwischen -89°C und +58°C.",
+            "question": [
+              {
+                "answer": "Wahr",
+                "isCorrect": true
+              },
+              {
+                "answer": "Falsch",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "speaker": "right",
+            "text": "Die Erde ist der einzige Planet mit einer Atmosphäre. Deshalb gibt es nur hier Jahreszeiten.",
+            "question": [
+              {
+                "answer": "Wahr",
+                "isCorrect": false
+              },
+              {
+                "answer": "Falsch",
+                "isCorrect": true
+              }
+            ]
+          },
+          {
+            "speaker": "right",
+            "text": "Die Erde ist der einzige Planet mit Leben in unserem Sonnensystem.",
+            "question": [
+              {
+                "answer": "Wahr",
+                "isCorrect": true
+              },
+              {
+                "answer": "Falsch",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "speaker": "right",
+            "text": "Der Mond hat eine Atmosphäre wie die Erde, nur dünner.",
+            "question": [
+              {
+                "answer": "Wahr",
+                "isCorrect": false
+              },
+              {
+                "answer": "Falsch",
+                "isCorrect": true
+              }
+            ]
+          },
+          {
+            "speaker": "right",
+            "text": "Auf dem Mond gibt es Berge, die höher als der Mount Everest sind.",
+            "question": [
+              {
+                "answer": "Wahr",
+                "isCorrect": true
+              },
+              {
+                "answer": "Falsch",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "speaker": "right",
+            "text": "Wie ich sehe weißt du so einiges über deinen Heimatplaneten. Möchtest du gerne etwas über meinen Heimatplaneten wissen?",
+            "question": [
+              {
+                "answer": "Ja, ich möchte mehr erfahren!",
+                "isCorrect": true,
+                "route": "/proxima"
+              },
+              {
+                "answer": "Nein, lass uns die Planeten entdecken!",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "speaker": "right",
+            "text": "Na dann! Welchen Planeten sollen wir als erstes besuchen?",
+            "route": "/spaceship-see-map"
+          }
+        ]
+      }
+   ]
+}
+    
+  
+  

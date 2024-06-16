@@ -38,3 +38,7 @@ export const getPlanetName = (planet: Planets, lang: string = "de"): string => {
             return "Planet";
     }
 };
+
+export const getPlanetsWithSpaceshipParts = (): Planets[] => {
+    return ["MERCURY","VENUS","EARTH", "MARS"]
+}

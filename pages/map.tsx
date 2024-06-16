@@ -2,12 +2,14 @@ import React, {useEffect, useRef, useState} from "react";
 import "./map.css";
 import Layout from "../app/layout";
 import {
-    getPlanetState
+    getPlanetState, setPlanetState
 } from "@/app/utils/storageUtils";
 import {getPlanetName, Planets} from "@/app/utils/planetUtils";
 import ActionButton from "@/app/components/actionButton/ActionButton";
+import {useRouter} from "next/router";
 
 const MapPage: React.FC = () => {
+    const router = useRouter();
     const [selectedPlanet, setSelectedPlanet] = useState<string | null>(null);
     const [planetCompletion, setPlanetCompletion] = useState<{
         [key: string]: boolean;
@@ -15,6 +17,12 @@ const MapPage: React.FC = () => {
     const orbitContainerRef = useRef<HTMLDivElement>(null);
     const videoRefs = useRef<{ [key: string]: HTMLVideoElement | null }>({});
     const [showOnly, setShowOnly] = useState(false);
+    const [allPlanetsCompleted, setAllPlanetsCompleted] = useState(false);
+    const [nextRoute, setNextRoute] = useState<string>("/map");
+
+    const handleRouting = () => {
+        router.push(nextRoute);
+    };
 
     useEffect(() => {
         const fetchPlanetCompletion = async () => {
@@ -24,26 +32,33 @@ const MapPage: React.FC = () => {
                 saturn: (await getPlanetState("SATURN")) !== null,
                 jupiter: (await getPlanetState("JUPITER")) !== null,
                 mars: (await getPlanetState("MARS")) !== null,
-                earth: (await getPlanetState("EARTH")) !== null,
+                earth: true,
                 venus: (await getPlanetState("VENUS")) !== null,
                 mercury: (await getPlanetState("MERCURY")) !== null,
                 sun: (await getPlanetState("SUN")) !== null,
             };
-
-            // Check if all planets should show without function
+            await setPlanetState("EARTH",true)
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.has('show-only')) {
                 setShowOnly(true);
+                let path = urlParams.get('next-route')
+                if (path !== null){
+                    setNextRoute(path)
+                }
             }
-
             setPlanetCompletion(completionData);
+
+            // Check if all planets with spaceship parts are completed
+            if(completionData["earth"] && completionData["mercury"] && completionData["venus"] && completionData["mars"]){
+                setAllPlanetsCompleted(true);
+            }
         };
 
         //fix for screens with smaller height
         if (orbitContainerRef.current) {
             const orbitContainer = orbitContainerRef.current;
             if (window.screen.availHeight <= 950) {
-                orbitContainer.style.height = "170vh";
+                orbitContainer.style.height = "105vh";
             }
         }
 
@@ -92,10 +107,11 @@ const MapPage: React.FC = () => {
                         disabled={!isEnabled(planet)}
                         videoRefs={videoRefs}
                         showOnly={showOnly}
+                        allPlanetsCompleted={allPlanetsCompleted}
                     />
                 ))}
                 {showOnly &&
-                        <ActionButton onClick={() =>{}}/>
+                    <ActionButton onClick={handleRouting}/>
                 }
             </div>
         </Layout>
@@ -109,7 +125,8 @@ function PlanetDetails({
                            planetCompleted,
                            disabled,
                            videoRefs,
-                           showOnly
+                           showOnly,
+                           allPlanetsCompleted
                        }: {
     planet: Planets;
     currentPlanet: string | null;
@@ -117,16 +134,26 @@ function PlanetDetails({
     planetCompleted: boolean;
     disabled: boolean,
     videoRefs: React.MutableRefObject<{ [key: string]: HTMLVideoElement | null }>;
-    showOnly: boolean
+    showOnly: boolean,
+    allPlanetsCompleted: boolean
 }) {
     const planetRef = useRef<HTMLDivElement>(null);
+    const router = useRouter();
 
     const planetClick = (planet: string): void => {
+        if (allPlanetsCompleted) {
+            router.push("/planet-profile?planet=" + planet.toLowerCase())
+            return;
+        }
         if (disabled || showOnly) return;
         if (currentPlanet && videoRefs.current[currentPlanet]) {
             videoRefs.current[currentPlanet]?.play();
         }
         setCurrentPlanet(planet);
+
+        if (!planetCompleted) {
+            router.push(`/animation-rocket?landing=true&planet=${planet.toLowerCase()}`);
+        }
     };
 
     const handleMouseEnter = (): void => {

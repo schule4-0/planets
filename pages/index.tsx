@@ -1,7 +1,25 @@
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import {getCharacterName} from "@/app/utils/storageUtils";
+
 export default function Home() {
-    return (
-        <main className="flex min-h-screen flex-col items-center justify-center p-24">
-            <h1 className="text-3xl">planets – schule 4.0</h1>
-        </main>
-    );
+    const router = useRouter();
+    const characterName = getCharacterName()
+
+    useEffect(() => {
+        const fetchCharacterName = async () => {
+            try {
+                const characterName = await getCharacterName();
+
+                if (characterName !== null && characterName !== "") {
+                    router.push('/map');
+                } else {
+                    router.push('/startpage');
+                }
+            } catch (error) {
+                router.push('/startpage');
+            }
+        };
+        fetchCharacterName();
+    }, []);
 }

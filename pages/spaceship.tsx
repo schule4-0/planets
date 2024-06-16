@@ -12,14 +12,17 @@ import {
     getRocketType
 } from '@/app/utils/storageUtils';
 import {getRocketColorIndex, getRocketColors} from '@/app/utils/colorUtils';
+import {useRouter} from "next/router";
 
 const Spaceship: React.FC = () => {
+
     const isClient = typeof window !== 'undefined';
     const [selectedColor, setSelectedRocketColor] = useState<string>('orange');
     const [selectedRocketType, setSelectedRocketType] = useState<string>('rocket1');
     const [selectRocketTypeIndex, setSelectRocketTypeIndex] = useState<number>(0);
     const [selectedColorIndex, setSelectedColorIndex] = useState<number>(0);
     const rocketTypes: string[] = ["rocket1", "rocket2"];
+    const router = useRouter();
 
     useEffect(() => {
         const loadStoredValues = async () => {
@@ -50,7 +53,7 @@ const Spaceship: React.FC = () => {
     };
 
     const handleColorClick = async (index: number) => {
-        const colorWord = getRocketColors()[index].word;
+        const colorWord = getRocketColors()[index].code;
         setSelectedRocketColor(colorWord);
         setSelectedColorIndex(index)
         if (isClient) await setRocketColor(colorWord);
@@ -97,9 +100,8 @@ const Spaceship: React.FC = () => {
         </Layout>
     );
 
-    // TODO: Implement routing logic
-    const characterPage = () => {
-        // Implement navigation logic here
+    const nextPage = () => {
+        router.push('/earth2');
     };
 
     return (
@@ -108,7 +110,7 @@ const Spaceship: React.FC = () => {
                 leftChildren={renderLeftChildren()}
                 rightChildren={renderRightChildren()}
             />
-            <ActionButton onClick={characterPage()}/>
+            <ActionButton onClick={nextPage}/>
         </div>
     );
 };

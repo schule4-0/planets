@@ -1,0 +1,17 @@
+{
+  "story": [
+    {
+      "images": [
+        {
+          "backgroundimg": "/images/background_rocket.svg",
+          "leftCharacter": "player",
+          "rightCharacter": "/images/alien.svg"
+        }
+      ],
+      "action": {
+        "text": "Klicke hier!",
+        "route": "/map"
+      }
+    }
+  ]
+}
