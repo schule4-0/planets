@@ -1,0 +1,28 @@
+{
+    "story": [
+      {
+        "images": [
+          {
+            "backgroundimg": "/images/planets/ground/mars_ground.jpg",
+            "leftCharacter": "astro-player",
+            "rightCharacter": "/images/alien.svg"
+          }
+        ],
+        "dialog": [
+          {
+            "speaker": "right",
+            "text": "Schau mal!"
+          },
+          {
+            "speaker": "right",
+            "text": "Ja genau auf dem Mars ist Eis zu finden! Wissenschaftler vermuten es gab damals noch viel mehr Eis auf dem Mars, aber leider ging das ganze Eis durch die schwache Atomsphäre im Weltall verloren."
+          },
+          {
+            "speaker": "right",
+            "text": "Komm wir müssen weiter zu den nächsten Planeten. Unser Abenteuer ist noch nicht vorbei!"
+          }
+        ]
+      }
+    ]
+  }
+  

@@ -101,7 +101,7 @@ const Spaceship: React.FC = () => {
     );
 
     const nextPage = () => {
-        router.push('/dialog2');
+        router.push('/earth2');
     };
 
     return (

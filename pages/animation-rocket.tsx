@@ -3,15 +3,17 @@ import lottie, { AnimationItem } from 'lottie-web';
 import { useSearchParams } from 'next/navigation';
 import { getRocketColor, getRocketType } from "@/app/utils/storageUtils";
 import { getRocketColors } from "@/app/utils/colorUtils";
+import { useRouter } from "next/router";
 
-const LottieAnimation = () => {
+const AnimationRocket = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const animationRef = useRef<AnimationItem | null>(null);
     const searchParams = useSearchParams();
     const planet = searchParams ? searchParams.get('planet') : "earth";
-    const landing = searchParams ? searchParams.get('landing') : "true";
+    const landing = searchParams ? searchParams.get('landing') : null;
     const [selectedColor, setSelectedRocketColor] = useState<string>('orange');
     const [selectedRocketType, setSelectedRocketType] = useState<string>('rocket1');
+    const router = useRouter();
 
     useEffect(() => {
         const loadStoredValues = async () => {
@@ -30,6 +32,8 @@ const LottieAnimation = () => {
     }, []);
 
     useEffect(() => {
+        if (landing === null) return;
+
         const animationPath = landing === "true" ? '/rocketLanding.json' : '/rocket.json';
 
         if (containerRef.current) {
@@ -43,12 +47,24 @@ const LottieAnimation = () => {
             });
         }
 
+        animationRef.current?.addEventListener('complete', onAnimationComplete);
+
         return () => {
             animationRef.current?.destroy();
         };
     }, [landing]);
 
+    const onAnimationComplete = () => {
+        if (landing === "true") {
+            router.push("" + planet);
+        } else {
+            router.push("/map");
+        }
+    };
+
     useEffect(() => {
+        if (landing === null) return;
+
         setTimeout(() => {
             const elements = document.querySelectorAll('*');
             const targetOpacity = '0.8';
@@ -62,7 +78,7 @@ const LottieAnimation = () => {
 
             swapImage();
         }, 50);
-    }, [selectedColor, selectedRocketType, planet]);
+    }, [selectedColor, selectedRocketType, planet, landing]);
 
     const swapImage = () => {
         if (animationRef.current) {
@@ -80,17 +96,21 @@ const LottieAnimation = () => {
                     if (image) {
                         image.setAttribute('href', `/images/planets/${planet}.png`);
                     }
-                    containerRef.current?.classList.remove("hidden");
                 }
             });
         }
+        containerRef.current?.classList.remove("hidden");
     };
 
     return (
-        <div className={`bg-star flex ${landing ? 'justify-end' : 'justify-start'} page-container`}>
-            <div className="w-auto h-full hidden" ref={containerRef}></div>
-        </div>
+        <>
+            {landing && (
+                <div className={`bg-star flex ${landing === "true" ? 'justify-start' : 'justify-end'} page-container`}>
+                    <div className="w-auto h-full hidden" ref={containerRef}></div>
+                </div>
+            )}
+        </>
     );
 };
 
-export default LottieAnimation;
+export default AnimationRocket;

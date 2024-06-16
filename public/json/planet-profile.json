@@ -1,90 +1,138 @@
 {
   "mercury": {
-    "header": "Merkur",
+    "header": "Merkur-Erkundung: Der kleine Planet",
     "info": {
-      "Größe": "4.880 km Durchmesser",
-      "Entfernung": "57,9 Millionen km zur Sonne",
-      "Temperatur": "−173°C bis 427°C",
-      "Monde": "Keine",
-      "Besonderheiten": "Kleinster Planet des Sonnensystems",
-      "Leben möglich?": "Nein"
+      "Gas- oder Gesteinsplanet": "Gesteinsplanet",
+      "Alter": "Ca. 4.6 Milliarden Jahre (gleiches Alter wie das Sonnensystem)",
+      "Größe": "Durchmesser: Ca. 4.880 km",
+      "Temperatur": "",
+      "Tag": "bis zu 430 °C",
+      "Nacht": "bis zu -180 °C",
+      "Entfernung zur Sonne": "Ca. 57,9 Millionen km",
+      "Entfernung zur Erde": "Zwischen 77 und 222 Millionen km",
+      "Tagesdauer": "Ca. 58,6 Erdtage",
+      "Jahresdauer (Umlauf um die Sonne)": "Ca. 88 Erdtage",
+      "Besonderheit": "Merkur hat extreme Temperaturschwankungen zwischen Tag und Nacht und keine Atmosphäre, die diese Schwankungen ausgleichen könnte.",
+      "Monde": "Keine"
     }
   },
   "venus": {
-    "header": "Venus",
+    "header": "Venus-Erkundung: Der heiße Planet",
     "info": {
-      "Größe": "12.104 km Durchmesser",
-      "Entfernung": "108,2 Millionen km zur Sonne",
-      "Temperatur": "Durchschnittlich 464°C",
-      "Monde": "Keine",
-      "Besonderheiten": "Heißeste Oberfläche aller Planeten",
-      "Leben möglich?": "Nein"
+      "Gas- oder Gesteinsplanet": "Gesteinsplanet",
+      "Alter": "Ca. 4.6 Milliarden Jahre (gleiches Alter wie das Sonnensystem)",
+      "Größe": "Durchmesser: Ca. 12.104 km",
+      "Temperatur": "Durchschnittlich ca. 465 °C (wegen des starken Treibhauseffekts)",
+      "Entfernung zur Sonne": "Ca. 108,2 Millionen km",
+      "Entfernung zur Erde": "Zwischen 38 und 261 Millionen km",
+      "Tagesdauer": "Ca. 243 Erdtage (Venus rotiert retrograd, das heißt, sie dreht sich in die entgegengesetzte Richtung zu den meisten Planeten)",
+      "Jahresdauer (Umlauf um die Sonne)": "Ca. 225 Erdtage",
+      "Besonderheit": "Venus hat eine dichte Atmosphäre aus Kohlendioxid und Schwefelsäurewolken, die den stärksten Treibhauseffekt im Sonnensystem verursacht.",
+      "Monde": "Keine"
     }
   },
   "earth": {
     "header": "Erde",
     "info": {
-      "Größe": "12.742 km Durchmesser",
-      "Entfernung": "149,6 Millionen km zur Sonne",
+      "Gas- oder Gesteinsplanet": "Gesteinsplanet",
+      "Alter": "Ca. 4.6 Milliarden Jahre (gleiches Alter wie das Sonnensystem)",
+      "Größe": "Durchmesser: Ca. 12.742 km",
       "Temperatur": "−88°C bis 58°C",
-      "Monde": "1",
-      "Besonderheiten": "Einziger Planet mit flüssigem Wasser",
-      "Leben möglich?": "Ja"
+      "Entfernung zur Sonne": "Ca. 149,6 Millionen km",
+      "Entfernung zum Mond": "Ca. 384.400 km",
+      "Tagesdauer": "Ca. 24 Stunden",
+      "Jahresdauer (Umlauf um die Sonne)": "Ca. 365,25 Tage",
+      "Besonderheit": "Die Erde ist der einzige bekannte Planet mit flüssigem Wasser und Leben.",
+      "Monde": "1"
     }
   },
   "mars": {
-    "header": "Mars - Der rote Planet",
+    "header": "Mars-Erkundung: Der rote Planet",
     "info": {
-      "Größe": "6.779 km Durchmesser",
-      "Entfernung": "227,9 Millionen km zur Sonne",
-      "Temperatur": "−143°C bis 35°C",
-      "Monde": "2",
-      "Besonderheiten": "Hat den höchsten Berg des Sonnensystems, Olympus Mons",
-      "Leben möglich?": "Unwahrscheinlich"
+      "Gas- oder Gesteinsplanet": "Gesteinsplanet",
+      "Alter": "Ca. 4.6 Milliarden Jahre (gleiches Alter wie das Sonnensystem)",
+      "Größe": "Durchmesser: Ca. 6.779 km",
+      "Temperatur": "Durchschnittlich ca. -60 °C (kann zwischen -125 °C in der Nacht und 20 °C am Tag variieren)",
+      "Entfernung zur Sonne": "Ca. 227,9 Millionen km",
+      "Entfernung zur Erde": "Zwischen 54,6 und 401 Millionen km",
+      "Tagesdauer": "Ca. 24,6 Stunden",
+      "Jahresdauer (Umlauf um die Sonne)": "Ca. 687 Erdtage",
+      "Besonderheit": "Mars besitzt den höchsten Berg und den größten Canyon im Sonnensystem, Olympus Mons und Valles Marineris.",
+      "Monde": "Zwei (Phobos und Deimos)"
     }
   },
   "jupiter": {
     "header": "Jupiter",
     "info": {
-      "Größe": "139.820 km Durchmesser",
-      "Entfernung": "778,5 Millionen km zur Sonne",
-      "Temperatur": "−145°C (obere Atmosphäre)",
-      "Monde": "79 bekannte Monde",
-      "Besonderheiten": "Größter Planet im Sonnensystem",
-      "Leben möglich?": "Unwahrscheinlich"
+      "Gas- oder Gesteinsplanet": "Gasplanet",
+      "Alter": "Ca. 4,6 Milliarden Jahre",
+      "Größe": "Durchmesser von etwa 139.820 km",
+      "Temperatur": "Durchschnittlich -145 °C",
+      "Entfernung zur Sonne": "Ca. 778 Millionen km",
+      "Entfernung zur Erde": "Variiert, durchschnittlich ca. 628 Millionen km",
+      "Tagesdauer": "9 Stunden und 55 Minuten",
+      "Jahresdauer": "11,86 Erdenjahre",
+      "Besonderheit": "Der Große Rote Fleck, ein gigantischer Sturm, der seit mindestens 400 Jahren wütet",
+      "Monde": "95 bekannte Monde, darunter die vier größten Galileischen Monde (Io, Europa, Ganymed, Kallisto)"
     }
   },
   "saturn": {
     "header": "Saturn",
     "info": {
-      "Größe": "116.460 km Durchmesser",
-      "Entfernung": "1,434 Milliarden km zur Sonne",
-      "Temperatur": "−178°C (obere Atmosphäre)",
-      "Monde": "83 bekannte Monde",
-      "Besonderheiten": "Bekannt für seine markanten Ringe",
-      "Leben möglich?": "Unwahrscheinlich"
+      "Gas- oder Gesteinsplanet": "Gasplanet",
+      "Alter": "Ca. 4,6 Milliarden Jahre",
+      "Größe": "Durchmesser von etwa 116.460 km",
+      "Temperatur": "Durchschnittlich -178 °C",
+      "Entfernung zur Sonne": "Ca. 1,43 Milliarden km",
+      "Entfernung zur Erde": "Variiert, durchschnittlich ca. 1,2 Milliarden km",
+      "Tagesdauer": "10 Stunden und 42 Minuten",
+      "Jahresdauer": "29,46 Erdenjahre",
+      "Besonderheit": "Das Ringsystem, bestehend aus unzähligen kleinen Partikeln, die von Mikrometern bis zu Metern groß sind",
+      "Monde": "146 bekannte Monde, darunter Titan, der zweitgrößte Mond im Sonnensystem und größer als der Planet Merkur"
     }
   },
   "uranus": {
     "header": "Uranus",
     "info": {
-      "Größe": "50.724 km Durchmesser",
-      "Entfernung": "2,871 Milliarden km zur Sonne",
-      "Temperatur": "−224°C",
-      "Monde": "27 bekannte Monde",
-      "Besonderheiten": "Rotiert auf seiner Seite",
-      "Leben möglich?": "Unwahrscheinlich"
+      "Gas- oder Gesteinsplanet": "Gasplanet",
+      "Alter": "Etwa 4,5 Milliarden Jahre",
+      "Größe": "Durchmesser von etwa 50.724 km",
+      "Temperatur": "Durchschnittlich -224 °C",
+      "Entfernung zur Sonne": "Ca. 2,9 Milliarden km (19,22 AE)",
+      "Entfernung zur Erde": "Etwa 2,6 Milliarden km",
+      "Tagesdauer": "Ca. 17 Stunden und 14 Minuten",
+      "Jahresdauer": "Ca. 84 Erdenjahre",
+      "Besonderheit": "Uranus hat eine extreme Achsenneigung von etwa 98 Grad, was bedeutet, dass er quasi 'auf der Seite liegt' und seine Pole abwechselnd in Richtung der Sonne zeigen. Dies führt zu extremen jahreszeitlichen Schwankungen.",
+      "Monde": "27 bekannte Monde, Titania ist der größte von ihnen."
     }
   },
   "neptune": {
     "header": "Neptun",
     "info": {
-      "Größe": "49.244 km Durchmesser",
-      "Entfernung": "4,495 Milliarden km zur Sonne",
-      "Temperatur": "−218°C",
-      "Monde": "14 bekannte Monde",
-      "Besonderheiten": "Stärkste Winde im Sonnensystem",
-      "Leben möglich?": "Unwahrscheinlich"
+      "Gas- oder Gesteinsplanet": "Gasplanet (auch „Planet der Stürme“ genannt)",
+      "Alter": "Etwa 4,5 Milliarden Jahre",
+      "Größe": "Durchmesser von etwa 49.244 km",
+      "Temperatur": "Durchschnittlich -214 °C",
+      "Entfernung zur Sonne": "Ca. 4,5 Milliarden km (30,07 AE)",
+      "Entfernung zur Erde": "Etwa 4,3 Milliarden km",
+      "Tagesdauer": "Ca. 16 Stunden",
+      "Jahresdauer": "Ca. 165 Erdenjahre",
+      "Besonderheit": "Neptun hat die stärksten Winde im Sonnensystem, die Geschwindigkeiten von bis zu 2.100 km/h erreichen können. Es regnet dort Diamanten.",
+      "Monde": "14 bekannte Monde, der größte ist Triton."
+    }
+  },
+  "sun": {
+    "header": "Sonne",
+    "info": {
+      "Gas- oder Gesteinsplanet": "Die Sonne ist kein Planet, sondern ein Stern. Sie besteht hauptsächlich aus den Gasen Wasserstoff und Helium.",
+      "Alter": "etwa 4,5 Milliarden Jahre",
+      "Größe": "Der Durchmesser der Sonne ist rund 1,4 Millionen km, etwa 109-mal so groß wie der der Erde.",
+      "Temperatur": "Die Sonne hat im Kern eine Temperatur von etwa 15 Millionen °C. An der Oberfläche 'nur' noch 4.000-6.000 °C.",
+      "Entfernung zur Erde": "etwa 150 Millionen km",
+      "Tagesdauer": "Die Sonne dreht sich in etwa 25-35 Tagen einmal um ihre eigene Achse.",
+      "Jahresdauer": "Die Sonne umkreist das Zentrum der Milchstraße einmal in etwa 225-250 Millionen Jahren.",
+      "Besonderheit": "Die Sonne ist der einzige Stern in unserem Sonnensystem und die einzige Quelle für Licht und Wärme auf der Erde.",
+      "Monde": "Die Sonne hat keine Monde, da sie ein Stern und kein Planet ist."
     }
   }
 }

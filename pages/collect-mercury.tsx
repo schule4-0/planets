@@ -11,6 +11,8 @@ const CollectMars: React.FC = () => {
 
     return (
         <div className="relative page-container bg-star">
+            <h1 className="absolute top-0 left-1/2 transform -translate-x-1/2 text-center text-white z-10 w-full">Finde
+                das fehlende Raumschiffteil</h1>
             <div className="absolute bottom-0 left-0 w-full h-[70%]">
                 <Image
                     src="/images/planets/ground/collect_mercure.png"

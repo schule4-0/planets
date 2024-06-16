@@ -17,6 +17,7 @@ interface CardData {
 
 interface MemoryGameProps {
     cardData: CardData;
+    onEnd: () => void;
 }
 
 type Card = {
@@ -26,7 +27,7 @@ type Card = {
     matched: boolean;
 };
 
-const MemoryGame: FC<MemoryGameProps> = ({cardData}) => {
+const MemoryGame: FC<MemoryGameProps> = ({cardData, onEnd}) => {
     const [cards, setCards] = useState<Card[]>([]);
     const [flipped, setFlipped] = useState<number[]>([]);
     const [matched, setMatched] = useState<number[]>([]);
@@ -80,6 +81,9 @@ const MemoryGame: FC<MemoryGameProps> = ({cardData}) => {
             setAllMatched(true);
         }
     };
+    const nextPage = () => {
+        onEnd();
+    };
 
     return (
         <div className="grid grid-cols-4 gap-4 bg-star">
@@ -93,7 +97,7 @@ const MemoryGame: FC<MemoryGameProps> = ({cardData}) => {
                 <PopupWindow content={popupContent.content} imageUrl={popupContent.imageUrl}
                              onClose={handleClosePopup}/>
             )}
-            {allMatched && <ActionButton onClick={() => console.log("Action button clicked" + allMatched)}/>}
+            {allMatched && <ActionButton onClick={nextPage()}/>}
         </div>
     );
 };

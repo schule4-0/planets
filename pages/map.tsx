@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from "react";
 import "./map.css";
 import Layout from "../app/layout";
 import {
-    getPlanetState
+    getPlanetState, setPlanetState
 } from "@/app/utils/storageUtils";
 import {getPlanetName, Planets} from "@/app/utils/planetUtils";
 import ActionButton from "@/app/components/actionButton/ActionButton";
@@ -32,13 +32,12 @@ const MapPage: React.FC = () => {
                 saturn: (await getPlanetState("SATURN")) !== null,
                 jupiter: (await getPlanetState("JUPITER")) !== null,
                 mars: (await getPlanetState("MARS")) !== null,
-                earth: (await getPlanetState("EARTH")) !== null,
+                earth: true,
                 venus: (await getPlanetState("VENUS")) !== null,
                 mercury: (await getPlanetState("MERCURY")) !== null,
                 sun: (await getPlanetState("SUN")) !== null,
             };
-
-            // Check if all planets should show without function
+            await setPlanetState("EARTH",true)
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.has('show-only')) {
                 setShowOnly(true);
@@ -49,16 +48,17 @@ const MapPage: React.FC = () => {
             }
             setPlanetCompletion(completionData);
 
-            // Check if all planets are completed
-            const allCompleted = Object.values(completionData).every(Boolean);
-            setAllPlanetsCompleted(allCompleted);
+            // Check if all planets with spaceship parts are completed
+            if(completionData["earth"] && completionData["mercury"] && completionData["venus"] && completionData["mars"]){
+                setAllPlanetsCompleted(true);
+            }
         };
 
         //fix for screens with smaller height
         if (orbitContainerRef.current) {
             const orbitContainer = orbitContainerRef.current;
             if (window.screen.availHeight <= 950) {
-                orbitContainer.style.height = "170vh";
+                orbitContainer.style.height = "105vh";
             }
         }
 
@@ -111,7 +111,7 @@ const MapPage: React.FC = () => {
                     />
                 ))}
                 {showOnly &&
-                        <ActionButton onClick={handleRouting}/>
+                    <ActionButton onClick={handleRouting}/>
                 }
             </div>
         </Layout>
@@ -138,10 +138,11 @@ function PlanetDetails({
     allPlanetsCompleted: boolean
 }) {
     const planetRef = useRef<HTMLDivElement>(null);
+    const router = useRouter();
 
     const planetClick = (planet: string): void => {
-        if (allPlanetsCompleted){
-            window.location.href = "/planet-profile?planet=" + planet.toLowerCase();
+        if (allPlanetsCompleted) {
+            router.push("/planet-profile?planet=" + planet.toLowerCase())
             return;
         }
         if (disabled || showOnly) return;
@@ -149,6 +150,10 @@ function PlanetDetails({
             videoRefs.current[currentPlanet]?.play();
         }
         setCurrentPlanet(planet);
+
+        if (!planetCompleted) {
+            router.push(`/animation-rocket?landing=true&planet=${planet.toLowerCase()}`);
+        }
     };
 
     const handleMouseEnter = (): void => {

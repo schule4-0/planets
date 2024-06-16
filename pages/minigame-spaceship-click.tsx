@@ -3,8 +3,11 @@ import SelectLayout from '@/app/selectLayout';
 import ActionButton from '@/app/components/actionButton/ActionButton';
 import Image from 'next/image';
 import './minigame-spaceship.css';
+import { useRouter } from "next/router";
 
 const MinigameSpaceshipClick: React.FC = () => {
+    const router = useRouter();
+
     const actionButtonRef = useRef<HTMLInputElement>(null);
     const images = [
         { id: 'Top', src: '/images/raumschiff_top.png', alt: 'Raumschiffteil Oben' },
@@ -143,6 +146,9 @@ const MinigameSpaceshipClick: React.FC = () => {
             />
         </div>
     );
+    const nextPage = () => {
+        router.push('/endquiz');
+    };
 
     return (
         <div className="bg-star">
@@ -151,7 +157,7 @@ const MinigameSpaceshipClick: React.FC = () => {
                 rightChildren={renderRightChildren()}
             />
             <div ref={actionButtonRef} className="hidden">
-                <ActionButton onClick={() => console.log("Action button clicked")} />
+                <ActionButton onClick={nextPage} />
             </div>
         </div>
     );

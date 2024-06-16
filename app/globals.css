@@ -144,11 +144,11 @@ h1, .h1 {
 .subtitles{
     font-family: var(--font-heading), serif;
     font-weight: normal;
-    font-size: 1rem;
+    font-size: 1.25rem;
 }
 
 h2, .h2 {
-    font-size: 0.5rem;
+    font-size: 1rem;
 }
 
 .bg-header {

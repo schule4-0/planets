@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import TextDragAndDrop from "@/app/components/textDragAndDrop/TextDragAndDrop";
-import JsonData from "@/public/jsons/minigame-venus.json"
+import JsonData from "@/public/json/minigame-mars.json"
 import ActionButton from "@/app/components/actionButton/ActionButton";
 
 const MinigameMars: React.FC = () => {
