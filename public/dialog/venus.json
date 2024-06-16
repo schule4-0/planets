@@ -3,7 +3,7 @@
       {
         "images": [
           {
-            "backgroundimg": "/images/planets/ground/venus_ground.jpg",
+            "backgroundimg": "/images/background_venus.svg",
             "leftCharacter": "astro-player",
             "rightCharacter": "/images/alien.svg"
           }
