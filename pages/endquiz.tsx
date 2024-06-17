@@ -8,7 +8,7 @@ const Endquiz = () => {
   const router = useRouter();
 
   const handleRouting = () => {
-    router.push('/end');
+    router.push('/minigame-spaceship-click');
   };
 
   return (

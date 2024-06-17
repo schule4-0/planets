@@ -147,7 +147,7 @@ const MinigameSpaceshipClick: React.FC = () => {
         </div>
     );
     const nextPage = () => {
-        router.push('/endquiz');
+        router.push('/end');
     };
 
     return (
