@@ -35,7 +35,7 @@ const CollectedSpaceshipPart: FC<CollectedSpaceshipPartProps> = ({ imgSrc, plane
 
     const handleRouting = () => {
         if (currentParts === totalParts){
-            router.push('minigame-spaceship-click');
+            router.push('/endquiz');
         }else {
             router.push(nextPage);
         }
