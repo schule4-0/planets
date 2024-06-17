@@ -1,15 +1,16 @@
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+'use client'; // Add this line
+
+import {useEffect} from 'react';
+import {useRouter} from 'next/navigation';
 import {getCharacterName} from "@/app/utils/storageUtils";
 
-export default function Home() {
+const NotFound = () => {
     const router = useRouter();
 
     useEffect(() => {
         const fetchCharacterName = async () => {
             try {
                 const characterName = await getCharacterName();
-
                 if (characterName !== null && characterName !== "") {
                     router.push('/map');
                 } else {
@@ -21,4 +22,17 @@ export default function Home() {
         };
         fetchCharacterName();
     }, []);
-}
+
+    return (
+        <html>
+            <head>
+                <title>Weiterleitung...</title>
+            </head>
+            <body>
+                <div className={"w-full bg-star"} style={{height: "100vh"}}></div>
+            </body>
+        </html>
+    );
+};
+
+export default NotFound;
