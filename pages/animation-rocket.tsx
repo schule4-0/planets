@@ -84,16 +84,13 @@ const AnimationRocket = () => {
         if (animationRef.current) {
             const elements = animationRef.current.renderer.elements;
             elements.forEach((element: any, index: number) => {
-                if (index === 4) {
-                    const image = element?.baseElement?.querySelector("image");
-                    if (image) {
+                const image = element?.baseElement?.querySelector("image");
+                if (image) {
+                    if (index === 4 && landing === "false" || landing === "true" && index === 1) {
                         const colorWord = getRocketColors().find(color => color.code === selectedColor)?.word;
                         image.setAttribute('href', `/images/rocket/${selectedRocketType}_${colorWord}.png`);
                     }
-                }
-                if (index === 8) {
-                    const image = element?.baseElement?.querySelector("image");
-                    if (image) {
+                    if (index === 8 && landing === "false" || landing === "true" && index === 2) {
                         image.setAttribute('href', `/images/planets/${planet}.png`);
                     }
                 }
