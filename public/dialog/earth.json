@@ -11,7 +11,7 @@
         "dialog": [
           {
             "speaker": "left",
-            "text": "Wer bist du denn?!"
+            "text": "Wer bist du denn?"
           },
           {
             "speaker": "right",
@@ -19,7 +19,7 @@
           },
           {
             "speaker": "left",
-            "text": "Hi Ivorix!. Freut mich dich kennenzulernen! Was machst du denn auf der Erde?"
+            "text": "Hallo Ivorix! Freut mich dich kennenzulernen! Was machst du denn auf der Erde?"
           },
           {
             "speaker": "right",
@@ -35,7 +35,7 @@
           },
           {
             "speaker": "left",
-            "text": "Na klar! Zuerst müssen wir aber meine Rakete zusammenbauen."
+            "text": "Na klar! Zuerst müssen wir aber eine Rakete bauen."
           }
         ]
       }

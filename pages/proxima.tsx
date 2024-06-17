@@ -8,7 +8,7 @@ const Proxima = () => {
   const router = useRouter();
 
   const handleRouting = () => {
-    router.push('/map'); 
+    router.push('/spaceship-see-map');
   };
 
   return (
