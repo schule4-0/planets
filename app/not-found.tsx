@@ -14,10 +14,10 @@ const NotFound = () => {
                 if (characterName !== null && characterName !== "") {
                     router.push('/map');
                 } else {
-                    router.push('/startpage');
+                    router.push('/');
                 }
             } catch (error) {
-                router.push('/startpage');
+                router.push('/');
             }
         };
         fetchCharacterName();
