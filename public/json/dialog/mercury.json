@@ -1,0 +1,32 @@
+{
+    "story": [
+      {
+        "images": [
+          {
+            "backgroundImg": "/images/background/background_mercury.svg",
+            "leftCharacter": "astro-player",
+            "rightCharacter": "/images/alien.svg"
+          }
+        ],
+        "dialog": [
+          {
+            "speaker": "right",
+            "text": "Sag Hallo zum Merkur! Er ist der kleinste Planet in unserem Sonnensystem und ist unserer Sonne am nächsten."
+          },
+          {
+            "speaker": "right",
+            "text": "Die Temperaturen hier schwanken extrem – auf der Tagseite kann es bis zu 430 Grad Celsius heiß werden, während es auf der Nachtseite bis zu minus 180 Grad Celsius kalt ist!"
+          },
+          {
+            "speaker": "right",
+            "text": "Die Atmosphäre des Merkur ist extrem dünn, wie die unseres Erdmondes und bietet keinen Schutz vor der Hitze der Sonne oder der Kälte des Weltalls. Deshalb gibt es hier keine stabile Temperatur wie auf der Erde."
+          },
+          {
+            "speaker": "right",
+            "text": "Schau mal! Siehst du die Krater? Der Merkur ist voller Krater, weil ihn die Atmosphäre nicht vor Meteoriten schützen kann. Viele dieser Krater sind wahrscheinlich sehr alt, da es kaum Erosion auf dem Merkur gibt."
+          }
+        ]
+      }
+    ]
+  }
+  

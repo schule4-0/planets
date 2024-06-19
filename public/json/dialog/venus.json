@@ -1,0 +1,49 @@
+{
+    "story": [
+      {
+        "images": [
+          {
+            "backgroundImg": "/images/background/background_venus.svg",
+            "leftCharacter": "astro-player",
+            "rightCharacter": "/images/alien.svg"
+          }
+        ],
+        "dialog": [
+          {
+            "speaker": "right",
+            "text": "Willkommen auf der Venus! Sie ist fast so groß wie die Erde und wird wegen ihrer dichten Wolkendecke auch als ‚Schwesterplanet der Erde‘ bezeichnet."
+          },
+          {
+            "speaker": "right",
+            "text": "Diese Wolkendecke besteht hauptsächlich aus Schwefelsäure, die der Venus ihre gelbliche Farbe verleiht."
+          },
+          {
+            "speaker": "right",
+            "text": "Die Atmosphäre der Venus ist sehr dicht und besteht größtenteils aus Kohlendioxid. Diese dichte Atmosphäre erzeugt einen starken Treibhauseffekt, wodurch es hier unglaublich heiß wird."
+          },
+          {
+            "speaker": "right",
+            "text": "Die durchschnittliche Temperatur auf der Venus beträgt etwa 465 Grad Celsius, was sie zum heißesten Planeten in unserem Sonnensystem macht! "
+          },
+          {
+            "speaker": "right",
+            "text": "Der Treibhauseffekt passiert, wenn die Atmosphäre eines Planeten die Wärme der Sonne einfängt. Auf der Venus hält die dicke Schicht aus Kohlendioxid die Wärme fest und lässt sie nicht entweichen."
+          },
+          {
+            "speaker": "right",
+            "text": "Deshalb wird es hier unglaublich heiß. Die Venus zeigt uns, wie extrem der Treibhauseffekt wirken kann."
+          },
+          {
+            "speaker": "right",
+            "text": "Indem wir die Veränderungen und die Atmosphäre der Venus studieren, können wir besser verstehen, wie Treibhausgase das Klima verändern und wie wichtig es ist, unsere eigene Atmosphäre zu schützen, um einen extremen Klimawandel auf der Erde zu vermeiden."
+          },
+          {
+            "speaker": "right",
+            "text": "Wow, die Venus ist voll von Vulkanen! Früher gab es wohl viel vulkanische Aktivität und wahrscheinlich gibt es immer noch aktive Vulkane."
+          }
+        ]
+      }
+    ]
+  }
+  
+

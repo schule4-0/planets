@@ -1,0 +1,112 @@
+{
+    "story": [
+      {
+        "images": [
+          {
+            "backgroundImg": "/images/background/background_childroom.png",
+            "leftCharacter": "player",
+            "rightCharacter": "/images/alien.svg"
+          }
+        ],
+        "dialog": [
+          {
+            "speaker": "right",
+            "text": "Yuhuu, wir haben es geschafft! Wir haben alle Teile gefunden! Lass und gleich die Teile zusammenbauen damit ich nach Hause fliegen kann. Aber vorher will ich wissen, ob du auch gut aufgepasst hast!"
+          },
+          {
+            "speaker": "right",
+            "text": "Welcher Planet hat die meisten Monde?",
+            "question": [
+              {
+                "answer": "Saturn",
+                "isCorrect": true
+              },
+              {
+                "answer": "Jupiter",
+                "isCorrect": false
+              },
+              {
+                "answer": "Neptun",
+                "isCorrect": false
+              },
+              {
+                "answer": "Merkur",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "speaker": "right",
+            "text": "Welcher Planet ist am weitesten von der Sonne entfernt?",
+            "question": [
+              {
+                "answer": "Pluto",
+                "isCorrect": false
+              },
+              {
+                "answer": "Neptun",
+                "isCorrect": true
+              },
+              {
+                "answer": "Merkur",
+                "isCorrect": false
+              },
+              {
+                "answer": "Saturn",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "speaker": "right",
+            "text": "Auf welchem Planeten gibt es keine Monde?",
+            "question": [
+              {
+                "answer": "Venus",
+                "isCorrect": true
+              },
+              {
+                "answer": "Merkur",
+                "isCorrect": false
+              },
+              {
+                "answer": "Erde",
+                "isCorrect": false
+              },
+              {
+                "answer": "Mars",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "speaker": "right",
+            "text": "Welcher Planet dreht sich entgegen der Rotationsrichtung der anderen Planeten?",
+            "question": [
+              {
+                "answer": "Uranus",
+                "isCorrect": true
+              },
+              {
+                "answer": "Venus",
+                "isCorrect": false
+              },
+              {
+                "answer": "Jupiter",
+                "isCorrect": false
+              },
+              {
+                "answer": "Saturn",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "speaker": "right",
+            "text": "So wie es aussieht hast du so einiges über dein Sonnensystem gelernt. Ich bin sehr stolz auf dich und wirklich sehr dankbar für diene Hilfe. Ich werde allen erzählen was für ein heldenhafter Erdling du bist!"
+          }
+        ]
+      }
+    ]
+  }
+  
