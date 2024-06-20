@@ -7,8 +7,8 @@ import SVGColorChanger from '@/app/components/svg/SVGColorChanger';
 const CHARACTER_WIDTH = 20;
 const CHARACTER_HEIGHT = 20;
 const METEOR_FALL_SPEED = 3;
-const METEOR_CREATION_INTERVAL = 1500;
-const SCORE_THRESHOLD = 100;
+const METEOR_CREATION_INTERVAL = 600;
+const SCORE_THRESHOLD = 125;
 
 const getRandomSize = () => {
     return Math.random() * (12 - 6) + 6;
