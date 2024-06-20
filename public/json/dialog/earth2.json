@@ -1,0 +1,20 @@
+{
+    "story": [
+      {
+        "images": [
+          {
+            "backgroundImg":  "/images/background/background_childroom.png",
+            "leftCharacter": "player",
+            "rightCharacter": "/images/alien.svg"
+          }
+        ],
+        "dialog": [
+          {
+            "speaker": "right",
+            "text": "Sehr gut wir haben es geschafft! Los geht die Suche!"
+          }
+        ]
+      }
+    ]
+  }
+  
