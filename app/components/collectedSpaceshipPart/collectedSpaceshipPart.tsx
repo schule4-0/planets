@@ -45,7 +45,6 @@ const CollectedSpaceshipPart: FC<CollectedSpaceshipPartProps> = ({ imgSrc, plane
         <div className={"bg-contain bg-no-repeat bg-bottom h-full w-full"}
              style={{backgroundImage: "url(/images/planets/ground/collected_" + planet.toLowerCase() + ".png)"}}>
             <div className={"flex flex-col items-center pt-24 bg-star"}>
-                <h1>{currentParts}</h1>
                 <Image src={imgSrc} alt="Raumschiff Teil" width={300} height={300}/>
             </div>
             <ActionButton onClick={handleRouting}/>
