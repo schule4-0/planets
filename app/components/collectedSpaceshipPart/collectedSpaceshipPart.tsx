@@ -35,7 +35,7 @@ const CollectedSpaceshipPart: FC<CollectedSpaceshipPartProps> = ({ imgSrc, plane
 
     const handleRouting = () => {
         if (currentParts === totalParts){
-            router.push('/endquiz');
+            router.push('/dialog/endquiz');
         }else {
             router.push(nextPage);
         }

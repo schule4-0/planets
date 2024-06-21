@@ -126,11 +126,11 @@ header {
 }
 
 .bg-star {
-    background-image: url("../public/images/star-field.svg");
+    background-image: url("../public/images/background/star-field.svg");
 }
 
 h1, .h1, h2, .h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
+    font-family: var(--font-heading), serif;
     font-weight: bold;
 }
 
