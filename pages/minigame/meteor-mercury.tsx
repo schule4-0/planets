@@ -196,6 +196,16 @@ const MeteorMercury: React.FC = () => {
                     alt="Meteor"
                 />
             ))}
+            {showInstructions && (
+                <>
+                    <div className="absolute bottom-16 left-8 text-white text-center z-50">
+                        <p>Klicke um nach links zu laufen</p>
+                    </div>
+                    <div className="absolute bottom-16 right-8 text-white text-center z-50">
+                        <p>Klicke um nach rechts zu laufen</p>
+                    </div>
+                </>
+            )}
             <button className="absolute bottom-8 left-8 z-50" onClick={moveLeft}>
                 <Image src="/images/meteor/button_left.png" alt="Left" width={64} height={64}/>
             </button>
