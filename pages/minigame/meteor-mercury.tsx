@@ -198,11 +198,11 @@ const MeteorMercury: React.FC = () => {
             ))}
             {showInstructions && (
                 <>
-                    <div className="absolute bottom-16 left-8 text-white text-center z-50">
-                        <p>Klicke um nach links zu laufen</p>
+                    <div className="absolute bottom-24 left-8 text-white text-center z-50">
+                        <p>Klicke um nach<br/>links zu laufen</p>
                     </div>
-                    <div className="absolute bottom-16 right-8 text-white text-center z-50">
-                        <p>Klicke um nach rechts zu laufen</p>
+                    <div className="absolute bottom-24 right-8 text-white text-center z-50">
+                        <p>Klicke um nach<br />rechts zu laufen</p>
                     </div>
                 </>
             )}
