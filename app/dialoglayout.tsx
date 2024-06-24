@@ -117,23 +117,23 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
     }
   };
 
-  const leftImage = () => {
-    if (images.leftCharacter === "player") {
-      return (
-        <CharacterImage
-          color={selectedHairColorCode}
-          type={"kids/" + selectedHair}
-          skinColor={selectedSkinColorCode}
-        />
+  const leftImage = () =>{
+    if (images.leftCharacter === "player"){
+      return(
+          <CharacterImage
+              color={selectedHairColorCode}
+              type={"character/" + selectedHair}
+              skinColor={selectedSkinColorCode}
+          />
       )
     }
-    if (images.leftCharacter === "astro-player") {
-      return (
-        <CharacterImage
-          color={selectedHairColorCode}
-          type={"kids/astro-" + selectedHair}
-          skinColor={selectedSkinColorCode}
-        />
+    if (images.leftCharacter === "astro-player"){
+      return(
+          <CharacterImage
+              color={selectedHairColorCode}
+              type={"character/astro-" + selectedHair}
+              skinColor={selectedSkinColorCode}
+          />
       )
     }
     return (
