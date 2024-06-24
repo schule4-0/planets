@@ -7,8 +7,8 @@ import SVGColorChanger from '@/app/components/svg/SVGColorChanger';
 const CHARACTER_WIDTH = 20;
 const CHARACTER_HEIGHT = 20;
 const METEOR_FALL_SPEED = 3;
-const METEOR_CREATION_INTERVAL = 1500;
-const SCORE_THRESHOLD = 100;
+const METEOR_CREATION_INTERVAL = 800;
+const SCORE_THRESHOLD = 125;
 
 const getRandomSize = () => {
     return Math.random() * (12 - 6) + 6;
@@ -196,6 +196,16 @@ const MeteorMercury: React.FC = () => {
                     alt="Meteor"
                 />
             ))}
+            {showInstructions && (
+                <>
+                    <div className="absolute bottom-24 left-8 text-white text-center z-50">
+                        <p>Klicke um nach<br/>links zu laufen</p>
+                    </div>
+                    <div className="absolute bottom-24 right-8 text-white text-center z-50">
+                        <p>Klicke um nach<br />rechts zu laufen</p>
+                    </div>
+                </>
+            )}
             <button className="absolute bottom-8 left-8 z-50" onClick={moveLeft}>
                 <Image src="/images/meteor/button_left.png" alt="Left" width={64} height={64}/>
             </button>
