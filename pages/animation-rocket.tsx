@@ -34,7 +34,7 @@ const AnimationRocket = () => {
     useEffect(() => {
         if (landing === null) return;
 
-        const animationPath = landing === "true" ? '/rocketLanding.json' : '/rocket.json';
+        const animationPath = landing === "true" ? '/animation/rocketLanding.json' : 'animation/rocket.json';
 
         if (containerRef.current) {
             animationRef.current = lottie.loadAnimation({
@@ -56,7 +56,7 @@ const AnimationRocket = () => {
 
     const onAnimationComplete = () => {
         if (landing === "true") {
-            router.push("" + planet);
+            router.push("/dialog/" + planet);
         } else {
             router.push("/map");
         }
