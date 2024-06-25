@@ -40,7 +40,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
   const [selectedHair, setSelectedHair] = useState<string>('short-curly');
   const [selectedHairColorCode, setSelectedHairColorCode] = useState<string>('#000000');
   const [selectedSkinColorCode, setSelectedSkinColorCode] = useState<string>('#FCD8B1');
-  const [feedback, setFeedback] = useState<{ index: number; isCorrect: boolean; hint?: string } | null>(null);
+  const [feedback, setFeedback] = useState<{ index: number; isCorrect: boolean; hint?: string }[]>([]);
   const [attempts, setAttempts] = useState<number[]>([]);
   const [hideSpeechBubble, setHideSpeechBubble] = useState<boolean>(false);
   const [showActionButton, setShowActionButton] = useState<boolean>(false);
@@ -62,7 +62,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
   useEffect(() => {
     setDialog(dialogData.story[currentSceneIndex].dialog);
     setImages(dialogData.story[currentSceneIndex].images[0]);
-    setFeedback(null);
+    setFeedback([]);
     setAttempts([]);
     setHideSpeechBubble(false);
     setShowActionButton(false);
@@ -79,7 +79,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
     const currentDialogLength = dialogData.story[currentSceneIndex].dialog.length;
     if (currentDialogIndex < currentDialogLength - 1) {
       setCurrentDialogIndex(currentDialogIndex + 1);
-      setFeedback(null);
+      setFeedback([]);
       setAttempts([]);
       setHideSpeechBubble(false);
       setShowActionButton(false);
@@ -95,7 +95,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
   };
 
   const handleAnswerClick = (index: number, isCorrect: boolean, hint?: string) => {
-    setFeedback({ index, isCorrect, hint });
+    setFeedback(prev => [...prev, { index, isCorrect, hint }]);
 
     const currentDialog = dialog[currentDialogIndex];
     const questionCount = currentDialog.question ? currentDialog.question.length : 0;
@@ -147,11 +147,12 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
       )
     }
     return (
-        <Image src={images.leftCharacter} alt="Linke Figur" width={200} height={250} />
+      <Image src={images.leftCharacter} alt="Linke Figur" width={200} height={250} />
     )
   }
-  function renderAction(){
-    if (dialogData.story[0].action !== undefined){
+
+  function renderAction() {
+    if (dialogData.story[0].action !== undefined) {
       return <>
         <div className={"absolute left-1/2 top-1/2 -ml-28 -mt-32"}>
           <h1 className={"hover:cursor-pointer"} onClick={() => router.push(dialogData.story[0].action.route)}>{dialogData.story[0].action.text}</h1>
@@ -161,40 +162,49 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
     return null
   }
 
-  function renderDialog(){
+  function renderDialog() {
     if (dialogData.story[0].action === undefined) {
       return <div className={"h-full"}><div className="flex justify-center p-10 relative z-0 h-full">
         <div className="w-3/5 flex flex-col items-center mb-5">
           {dialog[currentDialogIndex].speaker === 'left' && (
-              <SpeechBubble text={dialog[currentDialogIndex].text} direction="left"/>
+            <SpeechBubble text={dialog[currentDialogIndex].text} direction="left" />
           )}
           {!hideSpeechBubble && dialog[currentDialogIndex].speaker === 'right' && (
-              <SpeechBubble text={feedback && !feedback.isCorrect && feedback.hint ? feedback.hint : dialog[currentDialogIndex].text} direction="right" />
+            <SpeechBubble text={
+              feedback.find(fb => fb.index === currentDialogIndex && !fb.isCorrect)?.hint
+              || dialog[currentDialogIndex].text
+            } direction="right" />
           )}
           {dialog[currentDialogIndex].image && (
-              <div className="flex justify-center mb-4 w-full">
-                <Image src={dialog[currentDialogIndex].image as string} alt="Dialog Bild" width={300} height={100}/>
-              </div>
+            <div className="flex justify-center mb-4 w-full">
+              <Image src={dialog[currentDialogIndex].image as string} alt="Dialog Bild" width={300} height={100} />
+            </div>
           )}
           <div className="w-full flex flex-col items-center mt-auto">
             {dialog[currentDialogIndex].question?.map((q, index) => (
-                <div key={index} className="w-full max-w-md px-4 py-2">
-                  <button
-                      className={`w-full h-24 rounded-lg transition-colors duration-300
-                    ${feedback && feedback.index === index
-                          ? (feedback.isCorrect
-                              ? 'bg-[#186B21] text-white'
-                              : 'bg-[#8D2020] text-white')
-                          : attempts.includes(index)
-                              ? 'bg-[#8D2020] text-white opacity-50'
-                              : 'bg-[#9747FF] text-white'}
-                    text-center`}
-                      onClick={() => handleAnswerClick(index, q.isCorrect, q.hint)}
-                      disabled={attempts.includes(index)}
-                  >
-                    {q.answer}
-                  </button>
-                </div>
+              <div key={index} className="w-full max-w-md px-4 py-2">
+                <button
+                  className={`w-full h-24 rounded-lg transition-colors duration-300
+                  ${feedback.some(fb => fb.index === index && fb.isCorrect)
+                      ? 'bg-[#186B21] text-white'
+                      : feedback.some(fb => fb.index === index && !fb.isCorrect)
+                        ? 'bg-[#DD0000] text-white'
+                        : attempts.includes(index)
+                          ? 'bg-[#B12828] text-white'
+                          : 'bg-[#9747FF] text-white'}
+                  text-center`}
+                  onClick={() => handleAnswerClick(index, q.isCorrect, q.hint)}
+                  disabled={attempts.includes(index)}
+                >
+                  {feedback.some(fb => fb.index === index) && (
+                    <span className={`mr-2 ${feedback.find(fb => fb.index === index)?.isCorrect ? 'text-white' : 'text-white'}`}>
+                      {feedback.find(fb => fb.index === index)?.isCorrect ? '✓' : '✗'}
+                    </span>
+                  )}
+                  {q.answer}
+                </button>
+
+              </div>
             ))}
           </div>
         </div>
@@ -208,17 +218,17 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
   }
 
   return (
-      <div className="bg-cover bg-center relative page-container"
-           style={{backgroundImage: `url(${images.backgroundImg})`}}>
-        <div className="absolute bottom-0 left-0 mb-9 ml-5" style={{width: '200px'}}>
-          {leftImage()}
-        </div>
-        <div className="absolute bottom-0 right-0 mb-9 mr-20">
-          <Image src={images.rightCharacter} alt="Rechte Figur" width={200} height={250} style={{width: "200px"}} className={"h-auto"}/>
-        </div>
-        {renderAction()}
-        {renderDialog()}
+    <div className="bg-cover bg-center relative page-container"
+      style={{ backgroundImage: `url(${images.backgroundImg})` }}>
+      <div className="absolute bottom-0 left-0 mb-9 ml-5" style={{ width: '200px' }}>
+        {leftImage()}
       </div>
+      <div className="absolute bottom-0 right-0 mb-9 mr-20">
+        <Image src={images.rightCharacter} alt="Rechte Figur" width={200} height={250} />
+      </div>
+      {renderAction()}
+      {renderDialog()}
+    </div>
   );
 };
 
