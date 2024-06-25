@@ -28,10 +28,10 @@ interface DialogLayoutProps {
 }
 
 const DialogLayout: React.FC<DialogLayoutProps> = ({
-  dialogData,
-  actionButton,
-  onEnd,
-}) => {
+                                                     dialogData,
+                                                     actionButton,
+                                                     onEnd,
+                                                   }) => {
   const router = useRouter();
   const [currentSceneIndex, setCurrentSceneIndex] = useState(0);
   const [currentDialogIndex, setCurrentDialogIndex] = useState(0);
@@ -43,6 +43,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
   const [feedback, setFeedback] = useState<{ index: number; isCorrect: boolean; hint?: string }[]>([]);
   const [attempts, setAttempts] = useState<number[]>([]);
   const [hideSpeechBubble, setHideSpeechBubble] = useState<boolean>(false);
+  const [showActionButton, setShowActionButton] = useState<boolean>(false);
 
   useEffect(() => {
     const loadStoredValues = async () => {
@@ -64,7 +65,15 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
     setFeedback([]);
     setAttempts([]);
     setHideSpeechBubble(false);
+    setShowActionButton(false);
   }, [currentSceneIndex, dialogData.story]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowActionButton(true);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, [currentDialogIndex]);
 
   const handleNext = () => {
     const currentDialogLength = dialogData.story[currentSceneIndex].dialog.length;
@@ -73,6 +82,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
       setFeedback([]);
       setAttempts([]);
       setHideSpeechBubble(false);
+      setShowActionButton(false);
     } else {
       const nextSceneIndex = currentSceneIndex + 1;
       if (nextSceneIndex < dialogData.story.length) {
@@ -200,7 +210,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
         </div>
       </div>
         <div className="absolute bottom-0 right-0 text-right pb-6 pr-6 z-10">
-          {actionButton && !dialog[currentDialogIndex].question && React.cloneElement(actionButton as React.ReactElement<any>, { onClick: handleNext })}
+          {actionButton && !dialog[currentDialogIndex].question && showActionButton && React.cloneElement(actionButton as React.ReactElement<any>, { onClick: handleNext })}
         </div>
       </div>
     }
