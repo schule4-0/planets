@@ -37,27 +37,36 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
   const [currentDialogIndex, setCurrentDialogIndex] = useState(0);
   const [dialog, setDialog] = useState<DialogItem[]>(dialogData.story[0].dialog);
   const [images, setImages] = useState(dialogData.story[currentSceneIndex].images[0]);
-  const [selectedHair, setSelectedHair] = useState<string>('short-curly');
-  const [selectedHairColorCode, setSelectedHairColorCode] = useState<string>('#000000');
-  const [selectedSkinColorCode, setSelectedSkinColorCode] = useState<string>('#FCD8B1');
   const [feedback, setFeedback] = useState<{ index: number; isCorrect: boolean; hint?: string }[]>([]);
   const [attempts, setAttempts] = useState<number[]>([]);
   const [hideSpeechBubble, setHideSpeechBubble] = useState<boolean>(false);
   const [showActionButton, setShowActionButton] = useState<boolean>(false);
+  const isClient = typeof window !== 'undefined';
+  const [selectedHair, setSelectedHair] = useState<string>('short-curly');
+  const [selectedHairColorCode, setSelectedHairColorCode] = useState<string>('#000000');
+  const [selectedSkinColorCode, setSelectedSkinColorCode] = useState<string>('#FCD8B1');
 
   useEffect(() => {
     const loadStoredValues = async () => {
-      const storedHair = await getHair() || 'short-curly';
-      const storedHairColorCode = await getHairColor() || '#000000';
-      const storedSkinColorCode = await getSkinColor() || '#FCD8B1';
+      if (isClient) {
+        const storedHair = await getHair();
+        if (storedHair) {
+          setSelectedHair(storedHair);
+        }
 
-      setSelectedHair(storedHair);
-      setSelectedHairColorCode(storedHairColorCode);
-      setSelectedSkinColorCode(storedSkinColorCode);
+        const storedHairColorCode = await getHairColor();
+        if (storedHairColorCode) {
+          setSelectedHairColorCode(storedHairColorCode);
+        }
+
+        const storedSkinColorCode = await getSkinColor();
+        if (storedSkinColorCode) {
+          setSelectedSkinColorCode(storedSkinColorCode);
+        }
+      }
     };
-
     loadStoredValues();
-  }, []);
+  }, [isClient]);
 
   useEffect(() => {
     setDialog(dialogData.story[currentSceneIndex].dialog);
