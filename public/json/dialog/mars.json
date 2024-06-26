@@ -1,0 +1,32 @@
+{
+    "story": [
+      {
+        "images": [
+          {
+            "backgroundImg": "/images/background/background_mars.svg",
+            "leftCharacter": "astro-player",
+            "rightCharacter": "/images/alien.svg"
+          }
+        ],
+        "dialog": [
+          {
+            "speaker": "right",
+            "text": "Nun sind wir auf dem Mars gelandet. Er ist nur halb so groß wie die Erde und wird wegen seiner roten Farbe auch ‚Roter Planet‘ genannt."
+          },
+          {
+            "speaker": "right",
+            "text": "Seine Farbe kommt vom Eisenoxid, welches auf der ganzen Oberfläche zu finden ist. Eisenoxid ist ein Fachbegriff für Rost!"
+          },
+          {
+            "speaker": "right",
+            "text": "Die Atmosphäre ist viel dünner und ist nicht so schützend wie die unserer Erde. Deshalb ist es hier um einiges kälter. "
+          },
+          {
+            "speaker": "right",
+            "text": "Die kältesten Temperaturen auf der Erde liegen nur bei ungefähr minus 90 Grad Celsius!"
+          }
+        ]
+      }
+    ]
+  }
+  

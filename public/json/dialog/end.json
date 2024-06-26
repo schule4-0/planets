@@ -1,0 +1,36 @@
+{
+    "story": [
+      {
+        "images": [
+          {
+            "backgroundImg": "/images/background/background_childroom.png",
+            "leftCharacter": "player",
+            "rightCharacter": "/images/alien.svg"
+          }
+        ],
+        "dialog": [
+          {
+            "speaker": "left",
+            "text": "Schade, dass du schon gehen musst. Ich hatte eine Menge Spaß!"
+          },
+          {
+            "speaker": "right",
+            "text": "Mir hat es auch viel Spaß gemacht! Ich komme dich irgendwann mal besuchen, aber bis dahin lasse ich die ein paar Zusatzaufgaben da."
+          },
+          {
+            "speaker": "right",
+            "text": "Wenn du Lust hast auf weitere Herausforderungen, dann schau sie dir gerne an. Also gut pass auf dich auf. Tschüss!"
+          },
+          {
+            "speaker": "left",
+            "text": "Tschüss Ivorix! Gute Heimreise!"
+          },
+          {
+            "speaker": "right",
+            "text": "Räume nun dein Tablet auf und schreib mir einen Brief. Wie fandest du unsere Reise? Welcher Planet ist dein Lieblingsplanet und warum?"
+          }
+        ]
+      }
+    ]
+  }
+  
