@@ -118,7 +118,8 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({ dialogData, actionButton, o
       setHideSpeechBubble(true);
       const question = dialog[currentDialogIndex].question?.[index];
       if (question?.route) {
-        setTimeout(() => router.push(question.route), 1000);
+        const URL = question.route;
+        setTimeout(() => router.push(URL), 1000);
       } else {
         setTimeout(handleNext, 1000);
       }
