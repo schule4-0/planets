@@ -12,9 +12,9 @@ const MapPage: React.FC = () => {
     const [planetCompletion, setPlanetCompletion] = useState<{
         [key: string]: boolean;
     }>({});
-    const orbitContainerRef = useRef<HTMLDivElement>(null);
     const videoRefs = useRef<{ [key: string]: HTMLVideoElement | null }>({});
     const [allPlanetsCompleted, setAllPlanetsCompleted] = useState(false);
+    const [showOnly, setShowOnly] = useState(false);
 
     useEffect(() => {
         const fetchPlanetCompletion = async () => {
@@ -36,15 +36,13 @@ const MapPage: React.FC = () => {
             if(completionData["earth"] && completionData["mercury"] && completionData["venus"] && completionData["mars"]){
                 setAllPlanetsCompleted(true);
             }
-        };
 
-        //fix for screens with smaller height
-        if (orbitContainerRef.current) {
-            const orbitContainer = orbitContainerRef.current;
-            if (window.screen.availHeight <= 950) {
-                orbitContainer.style.height = "111vh";
+            // Check if all planets should show without function
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('show-only')) {
+                setShowOnly(true);
             }
-        }
+        };
 
         fetchPlanetCompletion();
     }, []);
@@ -79,8 +77,7 @@ const MapPage: React.FC = () => {
     return (
         <Layout>
             <div
-                ref={orbitContainerRef}
-                className={` bg-star h-screen hide-scrollbar relative overflow-y-hidden overflow-x-auto`}>
+                className={`bg-star page-container hide-scrollbar relative overflow-hidden ${showOnly ? "show-only" : ""}`}>
                 {Array.from(planets).map((planet) => (
                     <PlanetDetails
                         planet={planet}
@@ -91,6 +88,7 @@ const MapPage: React.FC = () => {
                         disabled={!isEnabled(planet)}
                         videoRefs={videoRefs}
                         allPlanetsCompleted={allPlanetsCompleted}
+                        showOnly={showOnly}
                     />
                 ))}
             </div>
@@ -105,7 +103,8 @@ function PlanetDetails({
                            planetCompleted,
                            disabled,
                            videoRefs,
-                           allPlanetsCompleted
+                           allPlanetsCompleted,
+                           showOnly
                        }: {
     planet: Planets;
     currentPlanet: string | null;
@@ -113,12 +112,14 @@ function PlanetDetails({
     planetCompleted: boolean;
     disabled: boolean,
     videoRefs: React.MutableRefObject<{ [key: string]: HTMLVideoElement | null }>;
-    allPlanetsCompleted: boolean
+    allPlanetsCompleted: boolean,
+    showOnly: boolean
 }) {
     const planetRef = useRef<HTMLDivElement>(null);
     const router = useRouter();
 
     const planetClick = (planet: string): void => {
+        if (showOnly) return;
         if (allPlanetsCompleted) {
             router.push("/planet-profile?planet=" + planet.toLowerCase())
             return;
@@ -135,12 +136,12 @@ function PlanetDetails({
     };
 
     const handleMouseEnter = (): void => {
-        if (disabled) return;
+        if (disabled || showOnly) return;
         videoRefs.current[planet]?.pause();
     };
 
     const handleMouseLeave = (): void => {
-        if (disabled) return;
+        if (disabled || showOnly) return;
         if (currentPlanet !== planet) {
             videoRefs.current[planet]?.play();
         }
@@ -156,7 +157,7 @@ function PlanetDetails({
     return (
         <div className={`orbit absolute rounded-full orbit--${planet.toLowerCase()}`}>
             <div
-                className={`${disabled && !allPlanetsCompleted? "disable" : ""} planet absolute flex flex-col align-middle gap-4 z-50`}
+                className={`${disabled && !allPlanetsCompleted? "disable" : ""} planet absolute flex flex-col align-middle gap-5 z-50`}
                 ref={planetRef}
             >
                 <video
