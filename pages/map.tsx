@@ -195,8 +195,6 @@ function PlanetDetails({
     };
 
     const getVideoSource = (planet: string): { [key: string]: string } => {
-        console.log(planet)
-        console.log(planetCompleted)
         return {
             "mp4": `/images/planets/${planet.toLowerCase()}.mp4`,
             "webm": `/images/planets/${planet.toLowerCase()}.webm`
