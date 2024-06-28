@@ -196,8 +196,9 @@ function PlanetDetails({
 
     const getVideoSource = (planet: string): { [key: string]: string } => {
         return {
-            "mp4": `/images/planets/${planet.toLowerCase()}.mp4`,
-            "webm": `/images/planets/${planet.toLowerCase()}.webm`
+            "mp4": "file_example_MP4_480_1_5MG.mp4"
+            //"mp4": `/images/planets/${planet.toLowerCase()}.mp4`,
+            //"webm": `/images/planets/${planet.toLowerCase()}.webm`
         };
     };
 
