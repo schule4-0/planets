@@ -197,7 +197,7 @@ function PlanetDetails({
     const getVideoSource = (planet: string): { [key: string]: string } => {
         return {
             "mp4": `/images/planets/${planet.toLowerCase()}.mp4`,
-            //"webm": `/images/planets/${planet.toLowerCase()}.webm`
+            "webm": `/images/planets/${planet.toLowerCase()}.webm`
         };
     };
 
@@ -220,6 +220,7 @@ function PlanetDetails({
                     height={100}
                     onClick={() => planetClick(planet)}
                     onMouseEnter={handleMouseEnter}
+                    playsInline
                     onMouseLeave={handleMouseLeave}
                 >
                     {Object.entries(getVideoSource(planet)).map(([type, src]) => (
