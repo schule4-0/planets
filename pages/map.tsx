@@ -212,17 +212,8 @@ function PlanetDetails({
                     ref={(el) => {
                         if (el) videoRefs.current[planet] = el;
                     }}
-                    id={planet}
-                    className={"hover:cursor-pointer"}
+                    controls
                     autoPlay
-                    loop
-                    muted
-                    width={100}
-                    height={100}
-                    onClick={() => planetClick(planet)}
-                    onMouseEnter={handleMouseEnter}
-                    playsInline
-                    onMouseLeave={handleMouseLeave}
                 >
                     {Object.entries(getVideoSource(planet)).map(([type, src]) => (
                         <source key={type} src={src} type={`video/${type}`}/>
