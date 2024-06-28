@@ -196,7 +196,7 @@ function PlanetDetails({
 
     const getVideoSource = (planet: string): { [key: string]: string } => {
         return {
-            "mp4": "Big_Buck_Bunny_360_10s_1MB.mp4"
+            "mp4": "bun33s.mp4"
             //"mp4": `/images/planets/${planet.toLowerCase()}.mp4`,
             //"webm": `/images/planets/${planet.toLowerCase()}.webm`
         };
@@ -227,6 +227,7 @@ function PlanetDetails({
                     {Object.entries(getVideoSource(planet)).map(([type, src]) => (
                         <source key={type} src={src} type={`video/${type}`}/>
                     ))}
+                    Your browser does not support the video tag.
                 </video>
                 <div
                     className={`hover:cursor-pointer planet__name ${currentPlanet === planet ? "planet__name--selected" : ""} ${planetCompleted ? "planet__name--completed" : ""}`}
