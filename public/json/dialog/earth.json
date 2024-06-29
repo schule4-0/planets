@@ -35,8 +35,180 @@
           },
           {
             "speaker": "left",
-            "text": "Na klar! Zuerst müssen wir aber eine Rakete bauen."
+            "text": "Na klar! Warst du denn vorher schonmal auf der Erde?"
+          },
+          {
+            "speaker": "right",
+            "text": "Nein, aber ich habe schon viel darüber gehört! Zum Beispiel, dass die Erde der dritte Planet von der Sonne aus, sowie der einzige bekannte Planet, auf dem es Leben gibt."
+          },
+          {
+            "speaker": "right",
+            "text": "Weißt du denn schon viel über die Erde? Lass uns dein Wissen testen!"
+          },
+          {
+            "speaker": "right",
+            "text": "Die Erde ist der größte Planet in unserem Sonnensystem!",
+            "question": [
+              {
+                "answer": "Wahr",
+                "isCorrect": false
+              },
+              {
+                "answer": "Falsch",
+                "isCorrect": true
+              }
+            ]
+          },
+          {
+            "speaker": "right",
+            "text": "Der größte Planet in unserem Sonnensystem ist Jupiter."
+          },
+          {
+            "speaker": "right",
+            "text": "Auf der Erde gibt es flüssiges Wasser, was Leben ermöglicht!",
+            "question": [
+              {
+                "answer": "Wahr",
+                "isCorrect": true
+              },
+              {
+                "answer": "Falsch",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "speaker": "right",
+            "text": "Alle Lebewesen benötigen Wasser zum Überleben, sonst wäre kein Leben auf der Erde möglich."
+          },
+          {
+            "speaker": "right",
+            "text": "Die Erde hat eine Neigung (schief)!",
+            "question": [
+              {
+                "answer": "Wahr",
+                "isCorrect": true
+              },
+              {
+                "answer": "Falsch",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "speaker": "right",
+            "text": "Die Erde ist tatsächlich geneigt. Diese Neigung ist der Grund, warum wir Jahreszeiten haben."
+          },
+          {
+            "speaker": "right",
+            "text": "Der Mond stabilisiert die Neigung der Erdbahn und verhindert extreme Klimaschwankungen!",
+            "question": [
+              {
+                "answer": "Wahr",
+                "isCorrect": true
+              },
+              {
+                "answer": "Falsch",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "speaker": "right",
+            "text": "Der Mond hilft dabei, die Neigung der Erde stabil zu halten, was ebenfalls wichtig für ein stabiles Klima ist."
+          },
+          {
+            "speaker": "right",
+            "text": "Die Erde dreht sich um ihre eigene Achse (1x am Tag)",
+            "question": [
+              {
+                "answer": "Wahr",
+                "isCorrect": true
+              },
+              {
+                "answer": "Falsch",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "speaker": "right",
+            "text": "Die Erde dreht sich tatsächlich einmal am Tag (innerhalb von 24 Stunden) um ihre eigene Achse. Das verursacht Tag und Nacht."
+          },
+          {
+            "speaker": "right",
+            "text": "Die Sonne dreht sich um die Erde.",
+            "question": [
+              {
+                "answer": "Wahr",
+                "isCorrect": false
+              },
+              {
+                "answer": "Falsch",
+                "isCorrect": true
+              }
+            ]
+          },
+          {
+            "speaker": "right",
+            "text": "Die Erde dreht sich um die Sonne, nicht umgekehrt. Die Sonne steht im Zentrum unseres Sonnensystems."
+          },
+          {
+            "speaker": "right",
+            "text": "Die Temperaturen auf der Erde liegen zwischen -89°C und +58°C.",
+            "question": [
+              {
+                "answer": "Wahr",
+                "isCorrect": true
+              },
+              {
+                "answer": "Falsch",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "speaker": "right",
+            "text": "Die Erde hat sehr unterschiedliche Temperaturen, von ganz kalt bis sehr heiß. -89°C in der Antarktis und +58°C in der Wüste."
+          },
+          {
+            "speaker": "right",
+            "text": "Die Erde ist der einzige Planet mit Leben in unserem Sonnensystem.",
+            "question": [
+              {
+                "answer": "Wahr",
+                "isCorrect": true
+              },
+              {
+                "answer": "Falsch",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "speaker": "right",
+            "text": "Bisher wurde nur auf der Erde Leben gefunden. Andere Planeten haben kein bekanntes Leben."
+          },
+          {
+            "speaker": "right",
+            "text": "Wie ich sehe weißt du so einiges über deinen Heimatplaneten. Möchtest du gerne etwas über meinen Heimatplaneten wissen?",
+            "question": [
+              {
+                "answer": "Ja, ich möchte mehr erfahren!",
+                "isCorrect": true,
+                "route": "/dialog/proxima"
+              },
+              {
+                "answer": "Nein, lass uns die Planeten entdecken!",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "speaker": "right",
+            "text": "Um das Abenteuer nun aber zu beginnen, müssen wir zuerst meine Rakete zusammenbauen."
           }
+        
         ]
       }
     ]
