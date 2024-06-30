@@ -204,7 +204,7 @@ function PlanetDetails({
     return (
         <div className={`orbit absolute rounded-full orbit--${planet.toLowerCase()}`}>
             <div
-                className={`${disabled && !allPlanetsCompleted? "disable" : ""} planet absolute flex flex-col align-middle gap-5 z-30`}
+                className={`${disabled && !allPlanetsCompleted? "disable" : ""} planet absolute flex flex-col align-middle gap-5 z-40`}
                 ref={planetRef}
             >
                 <video
