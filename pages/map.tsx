@@ -129,8 +129,8 @@ const MapPage: React.FC = () => {
                     <ActionButton onClick={handleRouting}/>
                 )}
                 { allPlanetsCompleted && !showOnly && (
-                    <div className={"fixed bg-black w-full h-full page-container z-50 bg-opacity-50"}>
-                        <div className={"absolute w-1/2 h-1/2 top-1/4 left-1/4 rounded-2xl bg-white text-black text-center flex-col flex justify-center z-50"}>
+                    <div className={"fixed bg-black w-full h-full page-container z-40 bg-opacity-50"}>
+                        <div className={"absolute w-1/2 h-1/2 top-1/4 left-1/4 rounded-2xl bg-white text-black text-center flex-col flex justify-center z-40"}>
                             <p>Super gemacht!</p>
                             <p>Räume nun das Tablet auf</p>
                         </div>
@@ -204,7 +204,7 @@ function PlanetDetails({
     return (
         <div className={`orbit absolute rounded-full orbit--${planet.toLowerCase()}`}>
             <div
-                className={`${disabled && !allPlanetsCompleted? "disable" : ""} planet absolute flex flex-col align-middle gap-5 z-50`}
+                className={`${disabled && !allPlanetsCompleted? "disable" : ""} planet absolute flex flex-col align-middle gap-5 z-40`}
                 ref={planetRef}
             >
                 <video
