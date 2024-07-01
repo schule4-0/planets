@@ -56,7 +56,11 @@ const AnimationRocket = () => {
 
     const onAnimationComplete = () => {
         if (landing === "true") {
-            router.push("/dialog/" + planet);
+            if(planet=== "earth"){
+                router.push("/dialog/earth3");
+            }else {
+                router.push("/dialog/" + planet);
+            }
         } else {
             router.push("/map");
         }

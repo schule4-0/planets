@@ -8,7 +8,7 @@ const Earth2 = () => {
   const router = useRouter();
 
   const handleRouting = () => {
-    router.push('/dialog/earth3');
+    router.push('/animation-rocket?landing=true&planet=earth');
   };
 
   return (
