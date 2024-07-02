@@ -8,6 +8,7 @@ import {
   getHairColor,
   getSkinColor
 } from '@/app/utils/storageUtils';
+import {wait} from "next/dist/lib/wait";
 
 interface DialogItem {
   speaker: string;
@@ -66,6 +67,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
       }
     };
     loadStoredValues();
+    wait(5000)
   }, [isClient]);
 
   useEffect(() => {

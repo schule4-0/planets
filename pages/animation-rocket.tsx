@@ -4,6 +4,7 @@ import { useSearchParams } from 'next/navigation';
 import {getRocketColor, getRocketType} from "@/app/utils/storageUtils";
 import { getRocketColors } from "@/app/utils/colorUtils";
 import { useRouter } from "next/router";
+import {wait} from "next/dist/lib/wait";
 
 const AnimationRocket = () => {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -29,6 +30,7 @@ const AnimationRocket = () => {
         };
 
         loadStoredValues();
+        wait(500)
     }, []);
 
     useEffect(() => {
