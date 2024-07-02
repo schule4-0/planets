@@ -1,10 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import lottie, { AnimationItem } from 'lottie-web';
 import { useSearchParams } from 'next/navigation';
-import {getPlanetState, getRocketColor, getRocketType, getStoredValue, setPlanetState} from "@/app/utils/storageUtils";
+import {getRocketColor, getRocketType} from "@/app/utils/storageUtils";
 import { getRocketColors } from "@/app/utils/colorUtils";
 import { useRouter } from "next/router";
-import {Planets} from "@/app/utils/planetUtils";
 
 const AnimationRocket = () => {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -14,8 +13,6 @@ const AnimationRocket = () => {
     const landing = searchParams ? searchParams.get('landing') : null;
     const [selectedColor, setSelectedRocketColor] = useState<string>('orange');
     const [selectedRocketType, setSelectedRocketType] = useState<string>('rocket1');
-    const [planetCompletion, setPlanetCompletion] = useState<Boolean>(false);
-
     const router = useRouter();
 
     useEffect(() => {
@@ -28,19 +25,6 @@ const AnimationRocket = () => {
             const rocketColors = await getRocketColor();
             if (rocketColors) {
                 setSelectedRocketColor(rocketColors);
-            }
-            const completionData = {
-                neptune: (await getPlanetState("NEPTUNE")) !== null,
-                uranus: (await getPlanetState("URANUS")) !== null,
-                saturn: (await getPlanetState("SATURN")) !== null,
-                jupiter: (await getPlanetState("JUPITER")) !== null,
-                mars: (await getPlanetState("MARS")) !== null,
-                venus: (await getPlanetState("VENUS")) !== null,
-                mercury: (await getPlanetState("MERCURY")) !== null,
-                sun: (await getPlanetState("SUN")) !== null,
-            };
-            if(completionData["mercury"] && completionData["venus"] && completionData["mars"]){
-                setPlanetCompletion(true)
             }
         };
 
@@ -72,16 +56,17 @@ const AnimationRocket = () => {
 
     const onAnimationComplete = () => {
         if (landing === "true") {
-            if(planet=== "earth"){
-                if(planetCompletion){
-                    router.push("/dialog/end")
-                }
-                router.push("/dialog/earth3");
-            }else {
+            if (planet === "earth") {
+                router.push("/dialog/endquiz")
+            } else {
                 router.push("/dialog/" + planet);
             }
         } else {
-            router.push("/map");
+            if (planet === "earth") {
+                router.push("/dialog/earth3");
+            } else {
+                router.push("/map");
+            }
         }
     };
 
