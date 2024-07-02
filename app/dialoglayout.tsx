@@ -8,6 +8,7 @@ import {
   getHairColor,
   getSkinColor
 } from '@/app/utils/storageUtils';
+import {wait} from "next/dist/lib/wait";
 
 interface DialogItem {
   speaker: string;
@@ -49,6 +50,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
   useEffect(() => {
     const loadStoredValues = async () => {
       if (isClient) {
+        await wait(200);
         const storedHair = await getHair();
         if (storedHair) {
           setSelectedHair(storedHair);

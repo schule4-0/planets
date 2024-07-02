@@ -4,6 +4,7 @@ import ActionButton from '@/app/components/actionButton/ActionButton';
 import Image from "next/image";
 import "./spaceship.css";
 
+// currently not used because of Drag and Drop issues on Ipad 9 gen and older
 const DragdropSpaceship: React.FC = () => {
 
     const dropRefs = useRef<{ [key: string]: HTMLImageElement | null }>({});
