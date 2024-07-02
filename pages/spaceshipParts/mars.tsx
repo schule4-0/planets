@@ -17,7 +17,7 @@ const Mars: React.FC = () => {
             ) : (
                 <>
                     <div className="absolute bottom-0 right-72 top-40">
-                        <SpeechBubble text={"Schau!"} direction={"right"} />
+                        <SpeechBubble text={"Wo ist das Raumschiffteil?"} direction={"right"} />
                     </div>
                     <div className="absolute bottom-0 top--2 left-0 w-full h-[70%]">
                         <Image
