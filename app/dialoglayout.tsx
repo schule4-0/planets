@@ -50,6 +50,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
   useEffect(() => {
     const loadStoredValues = async () => {
       if (isClient) {
+        await wait(200);
         const storedHair = await getHair();
         if (storedHair) {
           setSelectedHair(storedHair);
@@ -67,7 +68,6 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
       }
     };
     loadStoredValues();
-    wait(5000)
   }, [isClient]);
 
   useEffect(() => {

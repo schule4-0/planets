@@ -19,6 +19,7 @@ const AnimationRocket = () => {
     useEffect(() => {
         const loadStoredValues = async () => {
             const rocketType = await getRocketType();
+            await wait(200);
             if (rocketType) {
                 setSelectedRocketType(rocketType);
             }
@@ -30,7 +31,6 @@ const AnimationRocket = () => {
         };
 
         loadStoredValues();
-        wait(500)
     }, []);
 
     useEffect(() => {
