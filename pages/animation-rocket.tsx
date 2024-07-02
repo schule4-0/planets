@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import lottie, { AnimationItem } from 'lottie-web';
 import { useSearchParams } from 'next/navigation';
-import { getRocketColor, getRocketType } from "@/app/utils/storageUtils";
+import {getRocketColor, getRocketType} from "@/app/utils/storageUtils";
 import { getRocketColors } from "@/app/utils/colorUtils";
 import { useRouter } from "next/router";
+import {wait} from "next/dist/lib/wait";
 
 const AnimationRocket = () => {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -56,9 +57,17 @@ const AnimationRocket = () => {
 
     const onAnimationComplete = () => {
         if (landing === "true") {
-            router.push("/dialog/" + planet);
+            if (planet === "earth") {
+                router.push("/dialog/endquiz")
+            } else {
+                router.push("/dialog/" + planet);
+            }
         } else {
-            router.push("/map");
+            if (planet === "earth") {
+                router.push("/dialog/earth3");
+            } else {
+                router.push("/map");
+            }
         }
     };
 

@@ -8,7 +8,7 @@ const Proxima = () => {
   const router = useRouter();
 
   const handleRouting = () => {
-    router.push('/dialog/rocket-see-map');
+    router.push('/build-rocket');
   };
 
   return (

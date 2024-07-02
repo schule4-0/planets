@@ -35,7 +35,7 @@ const CollectedSpaceshipPart: FC<CollectedSpaceshipPartProps> = ({ imgSrc, plane
 
     const handleRouting = () => {
         if (currentParts === totalParts){
-            router.push('/dialog/endquiz');
+            router.push('/animation-rocket?landing=true&planet=earth');
         }else {
             router.push(nextPage);
         }
