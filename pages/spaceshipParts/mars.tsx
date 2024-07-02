@@ -1,6 +1,4 @@
 import React, {useState} from 'react';
-import Image from 'next/image';
-import SpeechBubble from "@/app/components/speechBubble/speechBubble";
 import CollectedSpaceshipPart from "@/app/components/collectedSpaceshipPart/collectedSpaceshipPart";
 
 const Mars: React.FC = () => {
@@ -15,25 +13,16 @@ const Mars: React.FC = () => {
             {collected ? (
                     <CollectedSpaceshipPart imgSrc={"/images/spaceship/spaceship_bottom.png"} planet={"MARS"} nextPage={"/map"}/>
             ) : (
-                <>
-                    <div className="absolute bottom-0 right-72 top-40">
-                        <SpeechBubble text={"Wo ist das Raumschiffteil?"} direction={"right"} />
-                    </div>
-                    <div className="absolute bottom-0 top--2 left-0 w-full h-[70%]">
-                        <Image
-                            src="/images/planets/ground/collect_mars.png"
-                            alt="collect spaceship"
-                            layout="fill"
-                            objectFit="fill"
-                            className="z-10"
-                        />
-                    </div>
+                <div className="w-full h-full bg-contain bg-bottom bg-no-repeat"
+                     style={{backgroundImage: "url(/images/planets/ground/collect_mars.png)"}}>
+                    <h1 className="text-center text-white w-full pt-4">Finde
+                        das fehlende Raumschiffteil</h1>
                     <div
-                        className="relative hover:cursor-pointer top-[65%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-40 z-50"
+                        className="absolute hover:cursor-pointer top-[66%] left-[23%] w-32 h-20 z-50"
                         onClick={clickPart}
-                        style={{ cursor: 'pointer', opacity: 0 }}
+                        style={{cursor: 'pointer', opacity: 0}}
                     />
-                </>
+                </div>
             )}
         </div>
     );
