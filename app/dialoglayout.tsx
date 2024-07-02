@@ -28,23 +28,27 @@ interface DialogLayoutProps {
 }
 
 const DialogLayout: React.FC<DialogLayoutProps> = ({
-                                                     dialogData,
-                                                     actionButton,
-                                                     onEnd,
-                                                   }) => {
+  dialogData,
+  actionButton,
+  onEnd,
+}) => {
   const router = useRouter();
   const [currentSceneIndex, setCurrentSceneIndex] = useState(0);
   const [currentDialogIndex, setCurrentDialogIndex] = useState(0);
-  const [dialog, setDialog] = useState<DialogItem[]>(dialogData.story[0].dialog);
-  const [images, setImages] = useState(dialogData.story[currentSceneIndex].images[0]);
+  const [dialog, setDialog] = useState<DialogItem[]>(dialogData?.story[0]?.dialog || []);
+  const [images, setImages] = useState(dialogData?.story[0]?.images[0] || {});
   const [feedback, setFeedback] = useState<{ index: number; isCorrect: boolean; hint?: string }[]>([]);
   const [attempts, setAttempts] = useState<number[]>([]);
   const [hideSpeechBubble, setHideSpeechBubble] = useState<boolean>(false);
   const [showActionButton, setShowActionButton] = useState<boolean>(false);
+  const [currentHint, setCurrentHint] = useState<string | undefined>(undefined);
   const isClient = typeof window !== 'undefined';
   const [selectedHair, setSelectedHair] = useState<string>('short-curly');
   const [selectedHairColorCode, setSelectedHairColorCode] = useState<string>('#000000');
   const [selectedSkinColorCode, setSelectedSkinColorCode] = useState<string>('#FCD8B1');
+  const [correctCount, setCorrectCount] = useState(0);
+  const [incorrectCount, setIncorrectCount] = useState(0);
+  const [answeredQuestions, setAnsweredQuestions] = useState(new Set());
 
   useEffect(() => {
     const loadStoredValues = async () => {
@@ -69,13 +73,14 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
   }, [isClient]);
 
   useEffect(() => {
-    setDialog(dialogData.story[currentSceneIndex].dialog);
-    setImages(dialogData.story[currentSceneIndex].images[0]);
+    setDialog(dialogData?.story[currentSceneIndex]?.dialog || []);
+    setImages(dialogData?.story[currentSceneIndex]?.images[0] || {});
     setFeedback([]);
     setAttempts([]);
     setHideSpeechBubble(false);
     setShowActionButton(false);
-  }, [currentSceneIndex, dialogData.story]);
+    setCurrentHint(undefined);
+  }, [currentSceneIndex, dialogData]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -85,16 +90,17 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
   }, [currentDialogIndex]);
 
   const handleNext = () => {
-    const currentDialogLength = dialogData.story[currentSceneIndex].dialog.length;
+    const currentDialogLength = dialogData?.story[currentSceneIndex]?.dialog?.length || 0;
     if (currentDialogIndex < currentDialogLength - 1) {
       setCurrentDialogIndex(currentDialogIndex + 1);
       setFeedback([]);
       setAttempts([]);
       setHideSpeechBubble(false);
       setShowActionButton(false);
+      setCurrentHint(undefined);
     } else {
       const nextSceneIndex = currentSceneIndex + 1;
-      if (nextSceneIndex < dialogData.story.length) {
+      if (nextSceneIndex < dialogData?.story?.length) {
         setCurrentSceneIndex(nextSceneIndex);
         setCurrentDialogIndex(0);
       } else {
@@ -104,10 +110,17 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
   };
 
   const handleAnswerClick = (index: number, isCorrect: boolean, hint?: string) => {
+    if (!answeredQuestions.has(currentDialogIndex)) {
+      setAnsweredQuestions(prev => new Set(prev.add(currentDialogIndex)));
+      if (isCorrect) {
+        setCorrectCount(prev => prev + 1);
+      } else {
+        setIncorrectCount(prev => prev + 1);
+      }
+    }
     setFeedback(prev => [...prev, { index, isCorrect, hint }]);
-
     const currentDialog = dialog[currentDialogIndex];
-    const questionCount = currentDialog.question ? currentDialog.question.length : 0;
+    const questionCount = currentDialog?.question?.length || 0;
 
     const proceedToNext = () => {
       if (questionCount <= 2) {
@@ -117,15 +130,16 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
 
     if (!isCorrect) {
       setAttempts(prev => [...prev, index]);
-      proceedToNext();
-    } else {
+      setCurrentHint(hint); // Set the current hint for the wrong answer
+    }
+    if (isCorrect) {
       setHideSpeechBubble(true);
       setTimeout(() => {
         if (currentDialogIndex < dialog.length) {
           const currentDialog = dialog[currentDialogIndex];
-          if (currentDialog.question && index < currentDialog.question.length) {
+          if (currentDialog?.question && index < currentDialog.question.length) {
             const question = currentDialog.question[index];
-            if (question && question.route) {
+            if (question?.route) {
               router.push(question.route);
               return;
             }
@@ -136,23 +150,23 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
     }
   };
 
-  const leftImage = () =>{
-    if (images.leftCharacter === "player"){
-      return(
-          <CharacterImage
-              color={selectedHairColorCode}
-              type={"character/" + selectedHair}
-              skinColor={selectedSkinColorCode}
-          />
+  const leftImage = () => {
+    if (images.leftCharacter === "player") {
+      return (
+        <CharacterImage
+          color={selectedHairColorCode}
+          type={"character/" + selectedHair}
+          skinColor={selectedSkinColorCode}
+        />
       )
     }
-    if (images.leftCharacter === "astro-player"){
-      return(
-          <CharacterImage
-              color={selectedHairColorCode}
-              type={"character/astro-" + selectedHair}
-              skinColor={selectedSkinColorCode}
-          />
+    if (images.leftCharacter === "astro-player") {
+      return (
+        <CharacterImage
+          color={selectedHairColorCode}
+          type={"character/astro-" + selectedHair}
+          skinColor={selectedSkinColorCode}
+        />
       )
     }
     return (
@@ -161,36 +175,40 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
   }
 
   function renderAction() {
-    if (dialogData.story[0].action !== undefined) {
+    if (dialogData?.story[0]?.action !== undefined) {
       return <>
         <div className={"absolute left-1/2 top-1/2 -ml-28 -mt-32"}>
           <h1 className={"hover:cursor-pointer"} onClick={() => router.push(dialogData.story[0].action.route)}>{dialogData.story[0].action.text}</h1>
         </div>
       </>
     }
-    return null
+    return null;
   }
 
   function renderDialog() {
-    if (dialogData.story[0].action === undefined) {
-      return <div className={"h-full"}><div className="flex justify-center p-10 relative z-0 h-full">
+    const isFinalDialog = currentSceneIndex === (dialogData?.story?.length || 0) - 1 && currentDialogIndex === (dialog?.length || 0) - 1;
+    const isEndQuizPath = router.pathname === '/dialog/endquiz';
+
+    return <div className={"h-full"}>
+      <div className="flex justify-center p-10 relative z-0 h-full">
         <div className="w-3/5 flex flex-col items-center mb-5">
-          {dialog[currentDialogIndex].speaker === 'left' && (
+          {dialog[currentDialogIndex]?.speaker === 'left' && (
             <SpeechBubble text={dialog[currentDialogIndex].text} direction="left" />
           )}
-          {!hideSpeechBubble && dialog[currentDialogIndex].speaker === 'right' && (
+          {!hideSpeechBubble && dialog[currentDialogIndex]?.speaker === 'right' && (
             <SpeechBubble text={
-              feedback.find(fb => fb.index === currentDialogIndex && !fb.isCorrect)?.hint
-              || dialog[currentDialogIndex].text
+              isFinalDialog && isEndQuizPath
+                ? `Super, du hast ${correctCount} Fragen richtig und ${incorrectCount} Fragen falsch beantwortet!`
+                : currentHint || dialog[currentDialogIndex].text
             } direction="right" />
           )}
-          {dialog[currentDialogIndex].image && (
+          {dialog[currentDialogIndex]?.image && (
             <div className="flex justify-center mb-4 w-full">
               <Image src={dialog[currentDialogIndex].image as string} alt="Dialog Bild" width={300} height={100} />
             </div>
           )}
           <div className="w-full flex flex-col items-center mt-auto">
-            {dialog[currentDialogIndex].question?.map((q, index) => (
+            {dialog[currentDialogIndex]?.question?.map((q, index) => (
               <div key={index} className="w-full max-w-md px-4 py-2">
                 <button
                   className={`w-full h-24 rounded-lg transition-colors duration-300
@@ -212,24 +230,21 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
                   )}
                   {q.answer}
                 </button>
-
               </div>
             ))}
           </div>
         </div>
       </div>
-        <div className="absolute bottom-0 right-0 text-right pb-6 pr-6 z-10">
-          {actionButton && !dialog[currentDialogIndex].question && showActionButton && React.cloneElement(actionButton as React.ReactElement<any>, { onClick: handleNext })}
-        </div>
+      <div className="absolute bottom-0 right-0 text-right pb-6 pr-6 z-10">
+        {actionButton && !dialog[currentDialogIndex]?.question && showActionButton && React.cloneElement(actionButton as React.ReactElement<any>, { onClick: handleNext })}
       </div>
-    }
-    return null
+    </div>
   }
 
   return (
     <div className="bg-cover bg-center relative page-container"
       style={{ backgroundImage: `url(${images.backgroundImg})` }}>
-      <div className="absolute bottom-0 left-0 mb-9 ml-5" style={{ width: '200px' }}>
+      <div className="absolute bottom-0 left-0 mb-9 ml-5">
         {leftImage()}
       </div>
       <div className="absolute bottom-0 right-0 mb-9 mr-20">

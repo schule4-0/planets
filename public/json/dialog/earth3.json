@@ -270,7 +270,7 @@
             {
               "answer": "Ja, ich möchte mehr erfahren!",
               "isCorrect": true,
-              "route": "/proxima"
+              "route": "/dialog/proxima"
             },
             {
               "answer": "Nein, lass uns die Planeten entdecken!",
@@ -281,7 +281,7 @@
         {
           "speaker": "right",
           "text": "Na dann! Welchen Planeten sollen wir als erstes besuchen?",
-          "route": "/spaceship-see-map"
+          "route": "/rocket-see-map"
         }
       ]
     }
