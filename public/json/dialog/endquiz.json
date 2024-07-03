@@ -1,112 +1,123 @@
 {
-    "story": [
-      {
-        "images": [
-          {
-            "backgroundImg": "/images/background/background_childroom.png",
-            "leftCharacter": "player",
-            "rightCharacter": "/images/alien.svg"
-          }
-        ],
-        "dialog": [
-          {
-            "speaker": "right",
-            "text": "Yuhuu, wir haben es geschafft! Wir haben alle Teile gefunden! Lass und gleich die Teile zusammenbauen damit ich nach Hause fliegen kann. Aber vorher will ich wissen, ob du auch gut aufgepasst hast!"
-          },
-          {
-            "speaker": "right",
-            "text": "Welcher Planet hat die meisten Monde?",
-            "question": [
-              {
-                "answer": "Saturn",
-                "isCorrect": true
-              },
-              {
-                "answer": "Jupiter",
-                "isCorrect": false
-              },
-              {
-                "answer": "Neptun",
-                "isCorrect": false
-              },
-              {
-                "answer": "Merkur",
-                "isCorrect": false
-              }
-            ]
-          },
-          {
-            "speaker": "right",
-            "text": "Welcher Planet ist am weitesten von der Sonne entfernt?",
-            "question": [
-              {
-                "answer": "Pluto",
-                "isCorrect": false
-              },
-              {
-                "answer": "Neptun",
-                "isCorrect": true
-              },
-              {
-                "answer": "Merkur",
-                "isCorrect": false
-              },
-              {
-                "answer": "Saturn",
-                "isCorrect": false
-              }
-            ]
-          },
-          {
-            "speaker": "right",
-            "text": "Auf welchem Planeten gibt es keine Monde?",
-            "question": [
-              {
-                "answer": "Venus",
-                "isCorrect": true
-              },
-              {
-                "answer": "Merkur",
-                "isCorrect": false
-              },
-              {
-                "answer": "Erde",
-                "isCorrect": false
-              },
-              {
-                "answer": "Mars",
-                "isCorrect": false
-              }
-            ]
-          },
-          {
-            "speaker": "right",
-            "text": "Welcher Planet dreht sich entgegen der Rotationsrichtung der anderen Planeten?",
-            "question": [
-              {
-                "answer": "Uranus",
-                "isCorrect": true
-              },
-              {
-                "answer": "Venus",
-                "isCorrect": false
-              },
-              {
-                "answer": "Jupiter",
-                "isCorrect": false
-              },
-              {
-                "answer": "Saturn",
-                "isCorrect": false
-              }
-            ]
-          },
-          {
-            "speaker": "right",
-            "text": "So wie es aussieht hast du so einiges über dein Sonnensystem gelernt. Ich bin sehr stolz auf dich und wirklich sehr dankbar für diene Hilfe. Ich werde allen erzählen was für ein heldenhafter Erdling du bist!"
-          }
-        ]
-      }
-    ]
-  }
-  
+  "story": [
+    {
+      "images": [
+        {
+          "backgroundImg": "/images/background/background_childroom.png",
+          "leftCharacter": "player",
+          "rightCharacter": "/images/alien.svg"
+        }
+      ],
+      "dialog": [
+        {
+          "speaker": "right",
+          "text": "Yuhuu, wir haben es geschafft! Wir haben alle Teile gefunden! Lass uns die Teile zusammenbauen, damit ich nach Hause fliegen kann. Aber vorher will ich wissen, ob du gut aufgepasst hast!"
+        },
+        {
+          "speaker": "right",
+          "text": "Warum können wir auf der Erde atmen?",
+          "question": [
+            {
+              "answer": "Weil die Erde eine Atmosphäre mit Sauerstoff hat.",
+              "isCorrect": true
+            },
+            {
+              "answer": "Wegen der Bäume, die Strom erzeugen.",
+              "isCorrect": false,
+              "hint": "Bäume machen etwas anderes, das uns hilft zu atmen."
+            },
+            {
+              "answer": "Wegen des Wassers, das Sauerstoff produziert.",
+              "isCorrect": false,
+              "hint": "Wasser hat eine wichtige Rolle, produziert aber keinen Sauerstoff."
+            },
+            {
+              "answer": "Wegen der Luft vom Mond.",
+              "isCorrect": false,
+              "hint": "Der Mond ist weit weg."
+            }
+          ]
+        },
+        {
+          "speaker": "right",
+          "text": "Warum ist Wasser wichtig für das Leben auf der Erde?",
+          "question": [
+            {
+              "answer": "Weil es lustig ist, darin zu schwimmen.",
+              "isCorrect": false,
+              "hint": "Ist das der Hauptgrund?"
+            },
+            {
+              "answer": "Wegen des Wasseranteils im Erdkern.",
+              "isCorrect": false,
+              "hint": "Der Erdkern besteht aus etwas anderem."
+            },
+            {
+              "answer": "Weil alle Lebewesen Wasser brauchen.",
+              "isCorrect": true
+            },
+            {
+              "answer": "Weil Wasser die Sonne kühlt.",
+              "isCorrect": false,
+              "hint": "Die Sonne ist weit weg."
+            }
+          ]
+        },
+        {
+          "speaker": "right",
+          "text": "Warum gibt es auf der Erde die vier Jahreszeiten?",
+          "question": [
+            {
+              "answer": "Wegen der Bahn der Erde und der Mondbahn.",
+              "isCorrect": false,
+              "hint": "Es hat mit der Neigung der Erde zu tun."
+            },
+            {
+              "answer": "Wegen der Neigung der Erde und ihrer Drehung um die Sonne.",
+              "isCorrect": true
+            },
+            {
+              "answer": "Weil die Erde mal näher und mal weiter von der Sonne entfernt ist.",
+              "isCorrect": false,
+              "hint": "Es liegt nicht an der Entfernung zur Sonne."
+            },
+            {
+              "answer": "Wegen riesiger Magnete auf der Erde.",
+              "isCorrect": false,
+              "hint": "Magnete steuern das Wetter nicht."
+            }
+          ]
+        },
+        {
+          "speaker": "right",
+          "text": "Warum können Tiere und Menschen auf der Erde überleben?",
+          "question": [
+            {
+              "answer": "Wegen der richtigen Temperatur und genug Sauerstoff.",
+              "isCorrect": true
+            },
+            {
+              "answer": "Weil die Erde in einem Eiswürfel ist.",
+              "isCorrect": false,
+              "hint": "Die Erde ist nicht gefroren."
+            },
+            {
+              "answer": "Weil die Erde mit anderen Planeten kämpft.",
+              "isCorrect": false,
+              "hint": "Planeten kämpfen nicht."
+            },
+            {
+              "answer": "Weil die Erde alle 100 Jahre neuen Sauerstoff bekommt.",
+              "isCorrect": false,
+              "hint": "Die Erde hat immer Sauerstoff."
+            }
+          ]
+        },
+        {
+          "speaker": "right",
+          "text": "Du hast viel über dein Sonnensystem gelernt. Ich bin stolz auf dich und dankbar für deine Hilfe. Ich werde allen von deinem heldenhaften Einsatz erzählen!"
+        }
+      ]
+    }
+  ]
+}
