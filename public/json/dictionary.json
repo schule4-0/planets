@@ -1,0 +1,19 @@
+{
+  "items" :[
+  {
+    "header" : "Erosion",
+    "info" : "Erosion ist ein Prozess, bei dem Erde, Steine und andere Materialien von einem Ort zu einem anderen getragen werden. Das passiert oft durch Wasser, Wind oder Eis. Stell dir vor, wie der Wind Sand von einer Sandburg wegbläst oder wie Regen kleine Stückchen Erde von einem Hügel herunterspült.",
+    "image" : "/images/erosion.jpg"
+  },
+{
+  "header" : "Schwefelsäure",
+  "info" : "Schwefelsäure ist eine sehr starke Flüssigkeit, die in Fabriken und Laboren verwendet wird. Stell dir vor, du hast eine Zaubertrankflasche, aber statt eines Zaubertranks ist eine Flüssigkeit darin, die sehr vorsichtig behandelt werden muss, weil sie sehr stark ist. Schwefelsäure kann Dinge auflösen, so wie Wasser Zucker auflöst, aber sie ist viel, viel stärker und kann sogar Metalle auflösen!",
+  "image" : "/images/schwefelsaure.jpg"
+},
+{
+  "header" : "Kohlenstoffdioxid",
+  "info" : "Kohlenstoffdioxid ist ein unsichtbares Gas, das wir jeden Tag ein- und ausatmen. Wenn wir atmen, nehmen wir Sauerstoff in unsere Lungen auf und atmen Kohlendioxid aus. Pflanzen brauchen Kohlendioxid, um zu wachsen. Sie nehmen es aus der Luft und verwandeln es in Sauerstoff, den wir dann wieder einatmen können. Es ist auch das Gas, das in Sprudelgetränken Bläschen macht.",
+  "image" : "/images/kohlendioxid.jpg"
+}
+    ]
+}

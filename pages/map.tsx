@@ -6,19 +6,42 @@ import {
 } from "@/app/utils/storageUtils";
 import {getPlanetName, Planets} from "@/app/utils/planetUtils";
 import {useRouter} from "next/router";
+import ActionButton from "@/app/components/actionButton/ActionButton";
+
+type PlanetCompletion = {
+    neptune: boolean;
+    uranus: boolean;
+    saturn: boolean;
+    jupiter: boolean;
+    mars: boolean;
+    earth: boolean;
+    venus: boolean;
+    mercury: boolean;
+    sun: boolean;
+};
 
 const MapPage: React.FC = () => {
+    const router = useRouter();
     const [selectedPlanet, setSelectedPlanet] = useState<string | null>(null);
-    const [planetCompletion, setPlanetCompletion] = useState<{
-        [key: string]: boolean;
-    }>({});
-    const orbitContainerRef = useRef<HTMLDivElement>(null);
+    const [planetCompletion, setPlanetCompletion] = useState<PlanetCompletion>({
+        neptune: false,
+        uranus: false,
+        saturn: false,
+        jupiter: false,
+        mars: false,
+        earth: true,
+        venus: false,
+        mercury: false,
+        sun: false,
+    });
     const videoRefs = useRef<{ [key: string]: HTMLVideoElement | null }>({});
+    const [allEnabledPlanetsCompleted, setAllEnabledPlanetsCompleted] = useState(false);
     const [allPlanetsCompleted, setAllPlanetsCompleted] = useState(false);
+    const [showOnly, setShowOnly] = useState(false);
 
     useEffect(() => {
         const fetchPlanetCompletion = async () => {
-            const completionData = {
+            const completionData: PlanetCompletion = {
                 neptune: (await getPlanetState("NEPTUNE")) !== null,
                 uranus: (await getPlanetState("URANUS")) !== null,
                 saturn: (await getPlanetState("SATURN")) !== null,
@@ -29,25 +52,30 @@ const MapPage: React.FC = () => {
                 mercury: (await getPlanetState("MERCURY")) !== null,
                 sun: (await getPlanetState("SUN")) !== null,
             };
-            await setPlanetState("EARTH",true)
+            await setPlanetState("EARTH", true);
             setPlanetCompletion(completionData);
 
-            // Check if all planets with spaceship parts are completed
-            if(completionData["earth"] && completionData["mercury"] && completionData["venus"] && completionData["mars"]){
-                setAllPlanetsCompleted(true);
+            // Check if all enabled planets are completed
+            const enabledPlanets: (keyof PlanetCompletion)[] = ["earth", "mercury", "venus", "mars"];
+            const allEnabledCompleted = enabledPlanets.every(planet => completionData[planet]);
+            setAllEnabledPlanetsCompleted(allEnabledCompleted);
+            console.log(allEnabledCompleted)
+
+            // Check if all planets are completed
+            const allPlanets: (keyof PlanetCompletion)[] = ["neptune", "uranus", "saturn", "jupiter", "mars", "earth", "venus", "mercury", "sun"];
+            const allCompleted = allPlanets.every(planet => completionData[planet]);
+            setAllPlanetsCompleted(allCompleted);
+            console.log(allPlanetsCompleted)
+
+            // Check if the show-only parameter is present
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('show-only')) {
+                setShowOnly(true);
             }
         };
 
-        //fix for screens with smaller height
-        if (orbitContainerRef.current) {
-            const orbitContainer = orbitContainerRef.current;
-            if (window.screen.availHeight <= 950) {
-                orbitContainer.style.height = "111vh";
-            }
-        }
-
         fetchPlanetCompletion();
-    }, []);
+    }, [allPlanetsCompleted]);
 
     useEffect(() => {
         if (selectedPlanet && videoRefs.current[selectedPlanet]) {
@@ -76,23 +104,38 @@ const MapPage: React.FC = () => {
         "NEPTUNE"
     ]);
 
+    const handleRouting = () => {
+        router.push('/map');
+    };
+
     return (
         <Layout>
             <div
-                ref={orbitContainerRef}
-                className={` bg-star h-screen hide-scrollbar relative overflow-y-hidden overflow-x-auto`}>
+                className={`bg-star page-container hide-scrollbar relative overflow-hidden ${showOnly ? "show-only" : ""}`}>
                 {Array.from(planets).map((planet) => (
                     <PlanetDetails
                         planet={planet}
                         key={planet}
                         currentPlanet={selectedPlanet}
                         setCurrentPlanet={setSelectedPlanet}
-                        planetCompleted={planetCompletion[planet.toLowerCase()]}
+                        planetCompleted={planetCompletion[planet.toLowerCase() as keyof PlanetCompletion]}
                         disabled={!isEnabled(planet)}
                         videoRefs={videoRefs}
-                        allPlanetsCompleted={allPlanetsCompleted}
+                        allPlanetsCompleted={allEnabledPlanetsCompleted}
+                        showOnly={showOnly}
                     />
                 ))}
+                { showOnly && (
+                    <ActionButton onClick={handleRouting}/>
+                )}
+                { allPlanetsCompleted && !showOnly && (
+                    <div className={"fixed bg-black w-full h-full page-container z-40 bg-opacity-50"}>
+                        <div className={"absolute w-1/2 h-1/2 top-1/4 left-1/4 rounded-2xl bg-white text-black text-center flex-col flex justify-center z-40"}>
+                            <p>Super gemacht!</p>
+                            <p>Räume nun das Tablet auf</p>
+                        </div>
+                    </div>
+                )}
             </div>
         </Layout>
     );
@@ -105,7 +148,8 @@ function PlanetDetails({
                            planetCompleted,
                            disabled,
                            videoRefs,
-                           allPlanetsCompleted
+                           allPlanetsCompleted,
+                           showOnly
                        }: {
     planet: Planets;
     currentPlanet: string | null;
@@ -113,21 +157,25 @@ function PlanetDetails({
     planetCompleted: boolean;
     disabled: boolean,
     videoRefs: React.MutableRefObject<{ [key: string]: HTMLVideoElement | null }>;
-    allPlanetsCompleted: boolean
+    allPlanetsCompleted: boolean,
+    showOnly: boolean
 }) {
     const planetRef = useRef<HTMLDivElement>(null);
     const router = useRouter();
 
-    const planetClick = (planet: string): void => {
+    const planetClick = (stringPlanet: string): void => {
+        if (showOnly) return;
         if (allPlanetsCompleted) {
-            router.push("/planet-profile?planet=" + planet.toLowerCase())
+            router.push("/planet-profile?planet=" + stringPlanet.toLowerCase())
+            // mark also planets as completed which aren't enabled for the popup
+            setPlanetState(planet,true)
             return;
         }
         if (disabled) return;
         if (currentPlanet && videoRefs.current[currentPlanet]) {
             videoRefs.current[currentPlanet]?.play();
         }
-        setCurrentPlanet(planet);
+        setCurrentPlanet(stringPlanet);
 
         if (!planetCompleted) {
             router.push(`/animation-rocket?landing=true&planet=${planet.toLowerCase()}`);
@@ -135,12 +183,12 @@ function PlanetDetails({
     };
 
     const handleMouseEnter = (): void => {
-        if (disabled) return;
+        if (disabled || showOnly) return;
         videoRefs.current[planet]?.pause();
     };
 
     const handleMouseLeave = (): void => {
-        if (disabled) return;
+        if (disabled || showOnly) return;
         if (currentPlanet !== planet) {
             videoRefs.current[planet]?.play();
         }
@@ -156,7 +204,7 @@ function PlanetDetails({
     return (
         <div className={`orbit absolute rounded-full orbit--${planet.toLowerCase()}`}>
             <div
-                className={`${disabled && !allPlanetsCompleted? "disable" : ""} planet absolute flex flex-col align-middle gap-4 z-50`}
+                className={`${disabled && !allPlanetsCompleted? "disable" : ""} planet absolute flex flex-col align-middle gap-5 z-40`}
                 ref={planetRef}
             >
                 <video

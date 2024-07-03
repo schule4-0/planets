@@ -12,7 +12,7 @@
   }
   
   .speech-bubble.left {
-    justify-content: flex-start;
+    align-self: flex-start;
   }
   
   .speech-bubble.left:before {
@@ -24,7 +24,7 @@
   }
   
   .speech-bubble.right {
-    justify-content: flex-end;
+    align-self: flex-end;
   }
   
   .speech-bubble.right:before {
