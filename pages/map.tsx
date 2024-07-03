@@ -105,7 +105,7 @@ const MapPage: React.FC = () => {
     ]);
 
     const handleRouting = () => {
-        router.push('/dialog/earth');
+        router.push('/map');
     };
 
     return (
