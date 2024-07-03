@@ -8,7 +8,7 @@ import {
   getHairColor,
   getSkinColor
 } from '@/app/utils/storageUtils';
-import {wait} from "next/dist/lib/wait";
+import { wait } from "next/dist/lib/wait";
 
 interface DialogItem {
   speaker: string;
@@ -132,7 +132,8 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
 
     if (!isCorrect) {
       setAttempts(prev => [...prev, index]);
-      setCurrentHint(hint); // Set the current hint for the wrong answer
+      setCurrentHint(hint); 
+      proceedToNext(); 
     }
     if (isCorrect) {
       setHideSpeechBubble(true);
