@@ -64,7 +64,7 @@
 
         video {
             width: 49px;
-            margin-right: 25px;
+            margin-right: 10px;
         }
     }
 }
@@ -79,7 +79,7 @@
         align-items: flex-end;
         flex-direction: column-reverse;
         top: 20%;
-        right: -30px;
+        right: -20px;
 
         video {
             width: 78px;
