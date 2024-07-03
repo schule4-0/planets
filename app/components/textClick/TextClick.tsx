@@ -80,7 +80,7 @@ const TextClick: FC<TextDragAndDropProps> = ({jsonFile, actionButton}) => {
 
     return (
         <div className="flex px-7 py-8 pr-0 min-page-container">
-            <div className="w-2/5">
+            <div className="w-1/2">
                 <h1 className="mb-12">{data.header}</h1>
                 <div className="drag-container">
                     {data.dragText.map((item, index) => (
@@ -100,8 +100,8 @@ const TextClick: FC<TextDragAndDropProps> = ({jsonFile, actionButton}) => {
                 </div>
                 <p className="mt-4">{data.infoText}</p>
             </div>
-            <div className="drop-zones w-3/5 bg-cover h1-sub" style={{backgroundImage: `url(${data.dropZones.image})`}}>
-                <div className="h-full flex flex-col flex-wrap justify-between w-fit m-auto pl-24">
+            <div className="drop-zones w-3/6 bg-cover h1-sub" style={{backgroundImage: `url(${data.dropZones.image})`}}>
+                <div className="h-full flex flex-col flex-wrap justify-between w-fit m-auto pl-32">
                     {data.dropZones.dropZone.map((zone) => (
                         <div
                             key={zone.id}
