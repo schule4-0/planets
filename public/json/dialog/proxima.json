@@ -3,7 +3,7 @@
       {
         "images": [
           {
-            "backgroundImg":  "/images/background/background_rocket.png",
+            "backgroundImg":  "/images/background/background_childroom.png",
             "leftCharacter": "player",
             "rightCharacter": "/images/alien.svg"
           }
@@ -22,8 +22,8 @@
             "text": "Mit heutigen Raumschiffen von der Erde wäre eine Reise dorthin viele tausend Jahre lang!"
           },
           {
-            "speaker": "right",
-            "text": "Lass uns nun die anderen Planeten entdecken!"
+            "speaker": "left",
+            "text": "Wow! Um die Suche nun aber zu beginnen, müssen wir zuerst meine Rakete zusammenbauen."
           }
 
         ]

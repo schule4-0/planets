@@ -207,10 +207,10 @@ const MeteorMercury: React.FC = () => {
                 </>
             )}
             <button className="absolute bottom-8 left-8 z-50" onClick={moveLeft}>
-                <Image src="/images/meteor/button_left.png" alt="Left" width={64} height={64}/>
+                <Image src="/images/meteor/button_left.png" alt="Left" width={80} height={80}/>
             </button>
             <button className="absolute bottom-8 right-8 z-50" onClick={moveRight}>
-                <Image src="/images/meteor/button_right.png" alt="Right" width={64} height={64}/>
+                <Image src="/images/meteor/button_right.png" alt="Right" width={80} height={80}/>
             </button>
         </div>
     );

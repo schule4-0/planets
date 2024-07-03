@@ -54,7 +54,7 @@ const Dictionary: React.FC = () => {
                                         setSelectedLetter(letter);
                                         router.push(`?dictionary=${letter}`, undefined, {shallow: true});
                                     }}
-                                    className={`subtitles !font-bold mx-1`}
+                                    className={`subtitles !font-bold mx-4`}
                                     style={{color: selectedLetter === letter ? 'var(--active-color)' : 'black'}}
                                 >
                                     {letter}
