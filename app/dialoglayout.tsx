@@ -253,8 +253,8 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({
       <div className="absolute bottom-0 right-0 mb-9 mr-20">
         <Image src={images.rightCharacter} alt="Rechte Figur" width={200} height={250} />
       </div>
-      {renderAction()}
       {renderDialog()}
+      {renderAction()}
     </div>
   );
 };
