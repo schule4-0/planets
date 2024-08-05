@@ -9,6 +9,7 @@ import {
   getSkinColor
 } from '@/app/utils/storageUtils';
 import { wait } from "next/dist/lib/wait";
+import ActionButton from "@/app/components/actionButton/ActionButton";
 
 interface DialogItem {
   speaker: string;
@@ -24,15 +25,14 @@ interface DialogItem {
 
 interface DialogLayoutProps {
   dialogData: any;
-  actionButton?: React.ReactNode;
   onEnd: () => void;
 }
 
 const DialogLayout: React.FC<DialogLayoutProps> = ({
   dialogData,
-  actionButton,
   onEnd,
 }) => {
+  const actionButton =<ActionButton onClick={() => {}}/>;
   const router = useRouter();
   const [currentSceneIndex, setCurrentSceneIndex] = useState(0);
   const [currentDialogIndex, setCurrentDialogIndex] = useState(0);

@@ -14,7 +14,6 @@ const Proxima = () => {
   return (
     <DialogLayout
       dialogData={dialogData}
-      actionButton={<ActionButton onClick={() => { } } />}
       onEnd={handleRouting}
     />
   );

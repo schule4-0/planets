@@ -2,7 +2,6 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import DialogLayout from '../../app/dialoglayout';
 import dialogData from '@/public/json/dialog/earth.json';
-import ActionButton from '@/app/components/actionButton/ActionButton';
 
 const Earth = () => {
   const router = useRouter();
@@ -14,7 +13,6 @@ const Earth = () => {
   return (
     <DialogLayout
       dialogData={dialogData}
-      actionButton={<ActionButton onClick={() => { } } />}
       onEnd={handleRouting}
     />
   );
