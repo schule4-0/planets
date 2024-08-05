@@ -65,7 +65,7 @@ const AnimationRocket = () => {
             if (planet === "earth") {
                 router.push("/dialog/earth3");
             } else {
-                router.push("/map");
+                router.push("/map/interactive");
             }
         }
     };
