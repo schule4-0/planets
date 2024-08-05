@@ -11,7 +11,7 @@ const Mars: React.FC = () => {
     return (
         <div className="relative page-container bg-star">
             {collected ? (
-                    <CollectedSpaceshipPart imgSrc={"/images/spaceship/spaceship_bottom.png"} planet={"MARS"} nextPage={"/map"}/>
+                    <CollectedSpaceshipPart imgSrc={"/images/spaceship/spaceship_bottom.png"} planet={"MARS"} nextPage={"/map/interactive"}/>
             ) : (
                 <div className="w-full h-full bg-contain bg-bottom bg-no-repeat"
                      style={{backgroundImage: "url(/images/planets/ground/collect_mars.png)"}}>
