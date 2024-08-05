@@ -53,10 +53,10 @@ const Dictionary: React.FC = () => {
                                     onClick={() => {
                                         if (selectedLetter === letter) {
                                             setSelectedLetter('');
-                                            router.push(`${router.pathname}?dictionary`, undefined, { shallow: true });
+                                            router.push(`${router.pathname}?dictionary`, undefined, {shallow: true});
                                         } else {
                                             setSelectedLetter(letter);
-                                            router.push(`?dictionary=${letter}`, undefined, { shallow: true });
+                                            router.push(`?dictionary=${letter}`, undefined, {shallow: true});
                                         }
                                     }}
                                     className={`subtitles !font-bold mx-4`}
