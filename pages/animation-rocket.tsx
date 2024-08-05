@@ -65,7 +65,7 @@ const AnimationRocket = () => {
             if (planet === "earth") {
                 router.push("/dialog/earth3");
             } else {
-                router.push("/map");
+                router.push("/map/interactive");
             }
         }
     };
@@ -109,7 +109,7 @@ const AnimationRocket = () => {
 
     return (
         <>
-            {landing && (
+            {landing && planet && (
                 <div className={`bg-star flex ${landing === "true" ? 'justify-start' : 'justify-end'} page-container`}>
                     <div className="w-auto h-full hidden" ref={containerRef}></div>
                 </div>

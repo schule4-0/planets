@@ -8,7 +8,7 @@ const RocketSeeMap = () => {
     const router = useRouter();
 
     const handleRouting = () => {
-        router.push('/map');
+        router.push('/map/interactive');
     };
 
     return (
