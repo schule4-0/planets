@@ -29,7 +29,7 @@ const NotFound = () => {
                 <title>Weiterleitung...</title>
             </head>
             <body>
-                <div className={"w-full bg-star"} style={{height: "100vh"}}></div>
+                <div className={"w-full bg-star h-screen"}></div>
             </body>
         </html>
     );

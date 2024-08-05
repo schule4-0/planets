@@ -163,9 +163,9 @@ function PlanetDetails({
         if (currentPlanet && videoRefs.current[currentPlanet]) {
             videoRefs.current[currentPlanet]?.play();
         }
-        setCurrentPlanet(stringPlanet);
 
         if (!planetCompleted) {
+            setCurrentPlanet(stringPlanet);
             router.push(`/animation-rocket?landing=true&planet=${planet.toLowerCase()}`);
         }
     };
