@@ -1,8 +1,7 @@
 import React from 'react';
-import { useRouter } from 'next/router';
+import {useRouter} from 'next/router';
 import DialogLayout from '../../app/dialoglayout';
 import dialogData from '@/public/json/dialog/earth2.json';
-import ActionButton from '@/app/components/actionButton/ActionButton';
 
 const Earth2 = () => {
   const router = useRouter();
