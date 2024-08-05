@@ -41,11 +41,13 @@ const Dictionary: React.FC = () => {
             <div className="fixed w-full flex justify-center items-center page-container bg-black bg-opacity-50 z-50">
                 <div className="w-5/6 h-5/6 bg-white text-black rounded-2xl p-6">
                     <div className="h-2/6">
+                        {/* header of the dialog popup */}
                         <div className="flex justify-between">
                             <h1>Lexikon</h1>
                             <Image src="/images/close.png" alt="schließen" width={60} height={60}
                                    onClick={() => router.push(router.pathname)} className={"cursor-pointer"}/>
                         </div>
+                        {/* displays each letter of the alphabet to select specific dictation items */}
                         <div className="text-center">
                             {alphabet.map(letter => (
                                 <button
@@ -53,10 +55,10 @@ const Dictionary: React.FC = () => {
                                     onClick={() => {
                                         if (selectedLetter === letter) {
                                             setSelectedLetter('');
-                                            router.push(`${router.pathname}?dictionary`, undefined, { shallow: true });
+                                            router.push(`${router.pathname}?dictionary`, undefined, {shallow: true});
                                         } else {
                                             setSelectedLetter(letter);
-                                            router.push(`?dictionary=${letter}`, undefined, { shallow: true });
+                                            router.push(`?dictionary=${letter}`, undefined, {shallow: true});
                                         }
                                     }}
                                     className={`subtitles !font-bold mx-4`}
@@ -67,6 +69,7 @@ const Dictionary: React.FC = () => {
                             ))}
                         </div>
                     </div>
+                    {/* displays selected dictation items */}
                     <div className="h-4/6 overflow-y-auto">
                         {filteredItems.map((item, index) => (
                             <div key={index} className="mb-9 flex items-start gap-3">

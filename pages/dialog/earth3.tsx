@@ -14,7 +14,6 @@ const Earth3 = () => {
   return (
     <DialogLayout
       dialogData={dialogData}
-      actionButton={<ActionButton onClick={() => { } } />}
       onEnd={handleRouting}
     />
   );

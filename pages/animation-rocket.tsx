@@ -109,7 +109,7 @@ const AnimationRocket = () => {
 
     return (
         <>
-            {landing && (
+            {landing && planet && (
                 <div className={`bg-star flex ${landing === "true" ? 'justify-start' : 'justify-end'} page-container`}>
                     <div className="w-auto h-full hidden" ref={containerRef}></div>
                 </div>

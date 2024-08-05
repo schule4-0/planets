@@ -1,4 +1,4 @@
-'use client'; // Add this line
+'use client';
 
 import {useEffect} from 'react';
 import {useRouter} from 'next/navigation';
@@ -29,7 +29,7 @@ const NotFound = () => {
                 <title>Weiterleitung...</title>
             </head>
             <body>
-                <div className={"w-full bg-star"} style={{height: "100vh"}}></div>
+                <div className={"w-full bg-star h-screen"}></div>
             </body>
         </html>
     );
