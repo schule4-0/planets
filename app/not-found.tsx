@@ -12,7 +12,7 @@ const NotFound = () => {
             try {
                 const characterName = await getCharacterName();
                 if (characterName !== null && characterName !== "") {
-                    router.push('/map');
+                    router.push('/map/interactive');
                 } else {
                     router.push('/');
                 }
