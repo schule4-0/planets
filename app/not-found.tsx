@@ -1,4 +1,4 @@
-'use client'; // Add this line
+'use client';
 
 import {useEffect} from 'react';
 import {useRouter} from 'next/navigation';
@@ -12,7 +12,7 @@ const NotFound = () => {
             try {
                 const characterName = await getCharacterName();
                 if (characterName !== null && characterName !== "") {
-                    router.push('/map');
+                    router.push('/map/interactive');
                 } else {
                     router.push('/');
                 }
@@ -29,7 +29,7 @@ const NotFound = () => {
                 <title>Weiterleitung...</title>
             </head>
             <body>
-                <div className={"w-full bg-star"} style={{height: "100vh"}}></div>
+                <div className={"w-full bg-star h-screen"}></div>
             </body>
         </html>
     );

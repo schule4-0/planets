@@ -1,8 +1,7 @@
 import React from 'react';
-import { useRouter } from 'next/router';
+import {useRouter} from 'next/router';
 import DialogLayout from '../../app/dialoglayout';
 import dialogData from '@/public/json/dialog/venus2.json';
-import ActionButton from '@/app/components/actionButton/ActionButton';
 
 const Venus2 = () => {
   const router = useRouter();
@@ -14,8 +13,7 @@ const Venus2 = () => {
   return (
     <DialogLayout
       dialogData={dialogData}
-      actionButton={<ActionButton onClick={() => { } } />}
-      onEnd={handleRouting} 
+      onEnd={handleRouting}
     />
   );
 };

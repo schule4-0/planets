@@ -10,7 +10,7 @@
       ],
       "action": {
         "text": "Klicke hier!",
-        "route": "/map?show-only"
+        "route": "/map/show-only"
       }
     }
   ]

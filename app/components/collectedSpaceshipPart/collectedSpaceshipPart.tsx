@@ -1,7 +1,7 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import Image from 'next/image';
-import { getPlanetsWithSpaceshipParts, Planets } from '@/app/utils/planetUtils';
-import { getPlanetState, setPlanetState } from '@/app/utils/storageUtils';
+import {getPlanetsWithSpaceshipParts, Planets} from '@/app/utils/planetUtils';
+import {getPlanetState, setPlanetState} from '@/app/utils/storageUtils';
 import ActionButton from "@/app/components/actionButton/ActionButton";
 import {useRouter} from "next/router";
 
@@ -11,7 +11,7 @@ interface CollectedSpaceshipPartProps {
     nextPage: string;
 }
 
-const CollectedSpaceshipPart: FC<CollectedSpaceshipPartProps> = ({ imgSrc, planet,nextPage }) => {
+const CollectedSpaceshipPart: FC<CollectedSpaceshipPartProps> = ({imgSrc, planet, nextPage}) => {
     const router = useRouter();
     const [currentParts, setCurrentParts] = useState(0);
     const planetsWithParts = getPlanetsWithSpaceshipParts();
@@ -19,10 +19,10 @@ const CollectedSpaceshipPart: FC<CollectedSpaceshipPartProps> = ({ imgSrc, plane
 
     useEffect(() => {
         updateCurrentParts();
-    }, );
+    },);
 
     const updateCurrentParts = async () => {
-        await setPlanetState(planet,true)
+        await setPlanetState(planet, true)
         let count = 0;
         for (const planet of planetsWithParts) {
             const state = await getPlanetState(planet);
@@ -34,9 +34,9 @@ const CollectedSpaceshipPart: FC<CollectedSpaceshipPartProps> = ({ imgSrc, plane
     };
 
     const handleRouting = () => {
-        if (currentParts === totalParts){
+        if (currentParts === totalParts) {
             router.push('/animation-rocket?landing=true&planet=earth');
-        }else {
+        } else {
             router.push(nextPage);
         }
     };
