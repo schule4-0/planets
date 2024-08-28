@@ -25,7 +25,7 @@ A teacher's guide has been produced for the learning units, which can be found i
 To adjust the texts in the JSON file, you can change the corresponding `“text”` fields within the `“dialog”` object. Here is a short guide:
 
 #### 1. Open the desired JSON file
-The JSON files are located in the folder  [public/json](https://github.com/schule4-0/planets/tree/main/public/json)
+The JSON files are located in the folder  [public/json/dialog](https://github.com/schule4-0/planets/tree/main/public/json/dialog)
 
 #### 2. Search for the section `“dialog”`.
 Within the `“story”` array you will find the `“dialog”` section. This contains a list of objects, each of which has a `“speaker”` and a `“text”`.
@@ -45,7 +45,7 @@ To change a text, search for the corresponding `“text”` field and adjust the
 To customize the responses in the JSON file, you can change the corresponding `“answer”` and `“isCorrect”` fields within the `“dialog”` object. Here is a short guide:
 
 #### 1. Open the desired JSON file
-The JSON files are located in the folder [public/json](https://github.com/schule4-0/planets/tree/main/public/json)
+The JSON files are located in the folder [public/json/dialog](https://github.com/schule4-0/planets/tree/main/public/json/dialog)
 
 
 #### 2. Search for the section `“question”`.
@@ -67,17 +67,46 @@ You can customize the “answer” texts and, if necessary, change the “isCorr
 values to false for an incorrect answer or true for a correct answer.
 
 ### Planet profiles
+To adjust and customize the Planet profiles adapt the json properties. Here is a short guide:
 
-### Minigame Mars
+#### 1. Open the desired JSON file
+The JSON file is located in the folder [public/json](https://github.com/schule4-0/planets/tree/main/public/json)
+its `“planet-profile.json”`
+
+#### 2. Adapt the Planets
+Every Planet is its own Json object which looks like that :
+
+**Example:**
+```json
+"mercury": {
+  "header": "Merkur-Erkundung: Der kleine Planet",
+    "info": {
+    "Gas- oder Gesteinsplanet": "Gesteinsplanet",
+    "Alter": "Ca. 4.6 Milliarden Jahre (gleiches Alter wie das Sonnensystem)",
+    "Größe": "Durchmesser: Ca. 4.880 km",
+    "Temperatur": "",
+    "Tag": "bis zu 430 °C",
+    "Nacht": "bis zu -180 °C",
+    "Entfernung zur Sonne": "Ca. 57,9 Millionen km",
+    "Entfernung zur Erde": "Zwischen 77 und 222 Millionen km",
+    "Tagesdauer": "Ca. 58,6 Erdtage",
+    "Jahresdauer (Umlauf um die Sonne)": "Ca. 88 Erdtage",
+    "Besonderheit": "Merkur hat extreme Temperaturschwankungen zwischen Tag und Nacht und keine Atmosphäre, die diese Schwankungen ausgleichen könnte.",
+    "Monde": "Keine"
+    }
+},
+````
+
+Here we can adapt every Information about the planet. The Planet Name is the `“header”` is for the Planet Name.
 
 ### Minigame Venus
 
-To adjust the Memory Game on Venus we can adjust 2 object `“page”` and `“cards”`. With the `“page”` object we can change `“headline”` and `“content”` of the whole page.
+To adjust and customize the Memory Game on Venus we can adjust 2 object `“page”` and `“cards”`. With the `“page”` object we can change `“headline”` and `“content”` of the whole page.
 The `“cards”` object lets us edit every Memory card and add `“keyword”`, `“src”` for image path and `“content”`. Here is a short guide:
 
 #### 1. Open the desired JSON file
 The JSON file is located in the folder [public/json/minigame](https://github.com/schule4-0/planets/tree/main/public/json/minigame)
-
+its `“memmory-venus.json”`
 #### 2. Adapt Page
 The page has a headline and a content description. To customize these parts, just customize the text in the json
 
