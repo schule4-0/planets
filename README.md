@@ -1,58 +1,38 @@
 ## Planeten Entdecker
 
-"Planeten Entdecker" ist eine interaktive Webseite, die in Zusammenarbeit mit Studierenden
-der Pädagogische Hochschule Weingarten uns Studierenden der Hochschule für Medien entstanden ist.
-Sie zielt darauf ab, Lehrkräfte bei der Unterrichtsvorbereitung zu unterstützen und SchülerInnen eine
-spannende Möglichkeit zu bieten, das Planetensystem zu erkunden. 
-Die Webseite stellt maßgeschneiderte Lernmaterialien bereit und integriert spielerische Elemente,
-um das Verständnis und das Interesse an unserem Sonnensystem zu fördern. Mit "Planeten Entdecker"
-wird das Klassenzimmer zu einem interaktiven Lernraum, in dem SchülerInnen die Planeten hautnah
-erleben können.
+"Planeten Entdecker” is an interactive website that was created in collaboration with students
+Weingarten University of Education and students from the University of Applied Sciences for Media.
+It aims to support teachers in preparing lessons and to offer pupils an exciting opportunity to explore the planetary system.
+exciting opportunity to explore the planetary system.
+The website provides customized learning materials and integrates playful elements,
+to promote understanding and interest in our solar system. With “Planet Explorer”
+the classroom becomes an interactive learning space where pupils can experience the planets up close.
+experience the planets
 
 ## Installation
-
+For easy project setup run the Docker
 #### Docker
 
-#### Console
-First, run the development server:
+##  Information for teachers
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+A teacher's guide has been produced for the learning units, which can be found in the folder [public/infos/Lehrerhandbuch.pdf](https://github.com/schule4-0/planets/tree/main/public/infos/Lehrerhandbuch.pdf)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Infos für Lehrkräfte
-
-Zu den Lerneinheiten wurde ein Lehrerhandbuch angefertigt, diese finden Sie im Ordner [public/infos/Lehrerhandbuch.pdf](https://github.com/schule4-0/planets/tree/main/public/infos/Lehrerhandbuch.pdf)
-
-## Austauschen von Textinhalten
+## Exchanging content
 
 
-### Dialoge
+### Dialogs
 
-Um die Texte in der JSON-Datei anzupassen, kannst du die entsprechenden `"text"` Felder innerhalb des `"dialog"` Objekts ändern. Hier ist eine kurze Anleitung:
+To adjust the texts in the JSON file, you can change the corresponding `“text”` fields within the `“dialog”` object. Here is a short guide:
 
-#### 1. Öffne die gewünschte JSON-Datei
-Die JSON-Dateien befinden sich im Ordner [public/json](https://github.com/schule4-0/planets/tree/main/public/json)
+#### 1. Open the desired JSON file
+The JSON files are located in the folder  [public/json](https://github.com/schule4-0/planets/tree/main/public/json)
 
-#### 2. Suche nach dem Abschnitt `"dialog"`
-Innerhalb des `"story"` Arrays findest du den `"dialog"` Abschnitt. Dieser enthält eine Liste von Objekten, die jeweils einen `"speaker"` und einen `"text"` haben.
+#### 2. Search for the section `“dialog”`.
+Within the `“story”` array you will find the `“dialog”` section. This contains a list of objects, each of which has a `“speaker”` and a `“text”`.
+#### 3. Edit the texts
+To change a text, search for the corresponding `“text”` field and adjust the value.
 
-#### 3. Bearbeite die Texte
-Um einen Text zu ändern, suche das entsprechende `"text"` Feld und passe den Wert an.
-
-**Beispiel:**
+**Example:**
 ```json
 {
   "speaker": "left",
@@ -60,20 +40,19 @@ Um einen Text zu ändern, suche das entsprechende `"text"` Feld und passe den We
 }
 ````
 
-### Antworten
+### Answers
 
-Um die Antworten in der JSON-Datei anzupassen, kannst du die entsprechenden `"answer"` und `"isCorrect"` Felder innerhalb des `"dialog"` Objekts ändern. Hier ist eine kurze Anleitung:
+To customize the responses in the JSON file, you can change the corresponding `“answer”` and `“isCorrect”` fields within the `“dialog”` object. Here is a short guide:
+
+#### 1. Open the desired JSON file
+The JSON files are located in the folder [public/json](https://github.com/schule4-0/planets/tree/main/public/json)
 
 
-#### 1. Öffne die gewünschte JSON-Datei
-Die JSON-Dateien befinden sich im Ordner [public/json](https://github.com/schule4-0/planets/tree/main/public/json)
+#### 2. Search for the section `“question”`.
+Within the `“story”` array you will find the `“question”` section. This contains the possible answers, each of which has an `“answer”` and an `“isCorrect”`.
+Change the “answer” and “isCorrect” fields accordingly. 
 
-
-#### 2. Suche nach dem Abschnitt `"question"`
-Innerhalb des `"story"` Arrays findest du den `"question"` Abschnitt. Dieser enthält die möglichen Antworten, die jeweils einen `"answer"` und einen `"isCorrect"` haben.
-
-Ändere dort die "answer" und "isCorrect" Felder entsprechend.
-**Beispiel:**
+**Example:**
 ```json
 {
   "answer": "Wahr",
@@ -84,12 +63,52 @@ Innerhalb des `"story"` Arrays findest du den `"question"` Abschnitt. Dieser ent
   "isCorrect": true
 }
 ````
-Du kannst die "answer" Texte anpassen und, falls notwendig, die "isCorrect"
-Werte auf false für eine falsche Antwort oder true für eine richtige Antwort ändern.
+You can customize the “answer” texts and, if necessary, change the “isCorrect”
+values to false for an incorrect answer or true for a correct answer.
 
-### Steckbriefe der Planeten
-### Minispiel Mars
-### Minispiel Venus
+### Planet profiles
+
+### Minigame Mars
+
+### Minigame Venus
+
+To adjust the Memory Game on Venus we can adjust 2 object `“page”` and `“cards”`. With the `“page”` object we can change `“headline”` and `“content”` of the whole page.
+The `“cards”` object lets us edit every Memory card and add `“keyword”`, `“src”` for image path and `“content”`. Here is a short guide:
+
+#### 1. Open the desired JSON file
+The JSON file is located in the folder [public/json/minigame](https://github.com/schule4-0/planets/tree/main/public/json/minigame)
+
+#### 2. Adapt Page
+The page has a headline and a content description. To customize these parts, just customize the text in the json
+
+**Example:**
+```json
+  "page" : [
+  {
+    "headline": "Venus Entdeckungen: Ein Gedächtnisspiel",
+    "content" : "Decke abwechselnd zwei Karten auf und sammle Paare von passenden Bildern, um mehr über die Venus zu lernen."
+  }
+]
+````
+
+#### 3. Edit the cards
+The cards have a `"keyword"` which acts as the ID for the cards and the alt text for the images.
+Then `"src"` for the path to the image of the card.
+And finally `"content"` as the descriptive text that is displayed when the right cardpair is found.
+
+To customize these parts, just customize the card attributes in the json. Also add new or remove cards the same way.
+
+**Example:**
+```json
+   "cards": [
+  {
+    "keyword": "atmosphere",
+    "src": "/images/memory/atmosphere.svg",
+    "content": "Die Atmosphäre der Venus besteht hauptsächlich aus Kohlendioxid und erzeugt einen starken Treibhauseffekt."
+  }
+]
+````
+
 
 ## Licensed
-Licensed under the GNU GENERAL PUBLIC license.
+Licensed under the GNU General Public License v3.0
