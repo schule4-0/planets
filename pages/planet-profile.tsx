@@ -15,7 +15,7 @@ const PlanetProfile: React.FC = () => {
     const router = useRouter();
 
     const handleRouting = () => {
-        router.push('/map');
+        router.push('/map/interactive');
     };
 
     function getImagePath(planet: PlanetKey): string {
