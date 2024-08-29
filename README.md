@@ -184,6 +184,30 @@ To customize these parts, just customize the card attributes in the json. Also a
 ]
 ````
 
+### 4. Editing the Dictionary
+
+#### 1. Open the JSON File
+   The dictionary content is stored in a JSON file located in the folder public/json. The file you need to edit is named dictionary.json.
+
+#### 2. Structure of a Dictionary Entry
+   Each dictionary entry is an object with the following attributes:
+
+- header: The title or term of the dictionary entry.
+- info: The detailed description or explanation of the term.
+- image: The path to an image that visually represents the term.
+
+#### 3. Add or Edit Entries
+To Add a New Entry: Copy one of the existing entries and paste it within the "items" array. Change the "header", "info", and "image" fields to reflect the new term.
+To Edit an Existing Entry: Simply find the term you want to change and modify the "header", "info", or "image" fields as needed.
+
+**Example:**
+```json
+    {
+      "header": "Erosion",
+      "info": "Erosion ist ein Prozess, bei dem Erde, Steine und andere Materialien von einem Ort zu einem anderen getragen werden. Das passiert oft durch Wasser, Wind oder Eis. Stell dir vor, wie der Wind Sand von einer Sandburg wegbläst oder wie Regen kleine Stückchen Erde von einem Hügel herunterspült.",
+      "image": "/images/erosion.jpg"
+    }
+````
 
 ## Licensed
 Licensed under the GNU General Public License v3.0
