@@ -184,7 +184,7 @@ To customize these parts, just customize the card attributes in the json. Also a
 ]
 ````
 
-### 4. Editing the Dictionary
+### Editing the Dictionary
 
 #### 1. Open the JSON File
    The dictionary content is stored in a JSON file located here [public/json/dictionary.json](https://github.com/schule4-0/planets/tree/main/public/json/dictionary.json).
