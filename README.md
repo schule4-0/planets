@@ -3,11 +3,10 @@
 "Planeten Entdecker” is an interactive website that was created in collaboration with students
 from the "PH Weingarten" and students from the "Hochschule der Medien".
 It aims to support teachers in preparing lessons and to offer pupils an exciting opportunity to explore the planetary system.
-exciting opportunity to explore the planetary system.
 The website provides customized learning materials and integrates playful elements,
-to promote understanding and interest in our solar system. With “Planet Explorer”
+to promote understanding and interest in our solar system. With “Planeten Entdecker”
 the classroom becomes an interactive learning space where pupils can experience the planets up close.
-experience the planets
+
 
 
 ### Installation
@@ -56,7 +55,7 @@ docker-compose up -d
 
 4. **Access the Website**
 
-Open your web browser and go to [http://localhost:3000]
+Open your web browser and go to http://localhost:3000
 
 
 
