@@ -1,7 +1,7 @@
 ## Planeten Entdecker
 
 "Planeten Entdecker” is an interactive website that was created in collaboration with students
-Weingarten University of Education and students from the University of Applied Sciences for Media.
+from the "PH Weingarten" and students from the "Hochschule der Medien".
 It aims to support teachers in preparing lessons and to offer pupils an exciting opportunity to explore the planetary system.
 exciting opportunity to explore the planetary system.
 The website provides customized learning materials and integrates playful elements,
