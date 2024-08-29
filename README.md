@@ -9,9 +9,56 @@ to promote understanding and interest in our solar system. With “Planet Explor
 the classroom becomes an interactive learning space where pupils can experience the planets up close.
 experience the planets
 
-## Installation
-For easy project setup run the Docker
-#### Docker
+
+### Installation
+
+For easy project setup, use Docker.
+
+### Docker
+
+To run the "Planeten Entdecker" website locally using Docker Compose, follow these steps:
+
+#### Prerequisites
+
+Ensure you have the following installed on your machine:
+
+- [Docker](https://www.docker.com/get-started) (version 20.x or higher)
+- [Docker Compose](https://docs.docker.com/compose/install/) (if not included with Docker)
+
+#### Instructions
+
+1. **Clone the Repository**
+
+  First, clone the "Planeten Entdecker" repository to your local machine:
+
+   ```bash
+   git clone https://github.com/schule4-0/planets.git
+   cd planets
+   ```
+   
+
+2. **Build Docker Image**
+
+If the Docker image needs to be built (usually only necessary if you haven't built the 			   image before or if the Docker image needs updating), run:
+
+ ```bash 
+docker-compose build
+```
+
+3. **Start Docker Compose**
+
+Use Docker Compose to start the project. Make sure you are in the root directory of the project, and run the following command:
+
+```bash
+docker-compose up -d
+```
+
+
+4. **Access the Website**
+
+Open your web browser and go to [http://localhost:3000]
+
+
 
 ##  Information for teachers
 
